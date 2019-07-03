@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, withRouter } from 'react-router-dom';
-import { loginDemo } from './../actions/session_actions';
+import { login } from './../actions/session_actions';
 
 class Splash extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class Splash extends React.Component {
     }
 
     demoLogin() {
-       this.props.demoLogin().then(() => this.helperfxn) 
+       this.props.demoLogin({username: 'Demo User', password:'123456'}).then(() => this.helperfxn) 
     }
 
     componentDidMount() {
@@ -23,25 +23,25 @@ class Splash extends React.Component {
     }
 
     render() {
+
         return (
         <div className="splash">
             <div className="splash-nav">
                 <div className="splash-navlinks">
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/login">Log In</Link>
-                    <button onClick={this.demoLogin}>Demo</button>
+                    {/* <Link to="/signup">Sign Up</Link>
+                    <Link to="/login">Log In</Link> */}
                 </div>
             </div>
 
             <div className="splash-img">
                 <h1>Music for everyone.</h1>
                 <h3>Millions of songs. No credit card needed.</h3>
-                <button id="splash-button">GET DOTIFY FREE</button>
+                <button onClick={this.demoLogin} id="splash-button"> DOTIFY DEMO </button>
             </div>
 
-            <div className="splash-bottom">
-                <p className="bottom-words">Dotify</p>
-                <div className="bottom-lists">
+            <div className="footer">
+                <p className="words">Dotify</p>
+                <div className="lists">
                     <div>
                         <h3>Sources</h3>
                         <h4><a href="">GitHub </a> </h4>
@@ -56,7 +56,7 @@ class Splash extends React.Component {
                 </div>
 
             </div>
-            
+
         </div>
 
         )
@@ -64,7 +64,7 @@ class Splash extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    demoLogin: () => dispatch(loginDemo())
+    demoLogin: () => dispatch(demoLogin())
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Splash))

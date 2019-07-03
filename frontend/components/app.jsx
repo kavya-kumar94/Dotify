@@ -14,15 +14,21 @@ import {
     HashRouter
 } from 'react-router-dom';
 
-const App = () => (    
- <div>
-      <Splash/>
-    <Switch>
-      
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-    </Switch>
-  </div>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+   return(
+    <div>
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+       <AuthRoute exact path="/login" component={LoginFormContainer} />
+       <AuthRoute exact path="/" component={GreetingContainer} />
+       <AuthRoute exact path="/" component={Splash} />
+    </div>
+   )
+  } 
+}    
 
 export default App;

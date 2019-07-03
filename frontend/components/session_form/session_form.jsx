@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(() => this.props.history.push('/'));
     }
 
     guestLogin() {
@@ -80,8 +80,11 @@ class SessionForm extends React.Component {
     }
 
     render() {
-        let { formType, processForm, loginDemo } = this.props;
-        const emailInput = formType === 'signup' ? (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="email" />  </div>) : null
+        let { formType } = this.props;
+        const emailInput = formType === 'signup' ? 
+        (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="email" />  </div>)
+         : null
+
         return (
             <div className="session-page">
                 <div>

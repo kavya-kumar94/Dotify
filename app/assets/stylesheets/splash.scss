@@ -4,13 +4,6 @@
   background-attachment: fixed;
 }
 
-.splash-nav {
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgba(0, 0, 0, 0.5);
-  height: 80px;
-}
-
-
 .splash-img {
   height: 700px;
   display: flex;
@@ -55,9 +48,10 @@
     display:block;
     background-color: #1ED760;
   }
+}
 
-  .splash-bottom {
-  font-family: "Circular Bold";
+  .footer {
+  font-family: Arial, Helvetica, sans-serif;
   background-color: black;
   height: 200px;
   width: 100%;
@@ -65,53 +59,27 @@
   top: 700px;
   color: white;
 
-  p:last-of-type {
-    font-family: "Circular";
-    font-size: 12px;
-    position: absolute;
-    bottom: 0px;
-    right: 120px;
-  }
-}
+    .words {
+      position: absolute;
+      font-size: 18px;
+      color: white;
+      letter-spacing: -0.04em;
+    }
 
+    .lists {
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      left: 200px;
+      
+        h3 {
+          font-size: 13px;
+          text-transform: uppercase;
+          color: grey;
+        }
 
-.bottom-words {
-  position: absolute;
-  top: 32px;
-  left: 74px;
-  font-size: 18px;
-  color: white;
-  letter-spacing: -0.04em;
-}
-
-.bottom-lists {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  left: 200px;
-
-  a {
-    color: white;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: orange;
-  }
-
-  div {
-    padding-top: 20px;
-    padding-right: 30px;
-  }
-
-  h3 {
-    font-size: 13px;
-    text-transform: uppercase;
-    color: grey;
-  }
-
-  h4 {
-    font-size: 15px;
-  }
-}
-}
+        h4 {
+          font-size: 15px;
+        };
+    };
+  };
