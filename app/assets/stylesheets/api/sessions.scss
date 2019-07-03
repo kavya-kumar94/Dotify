@@ -1,3 +1,24 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.session-page {
+  font-family: "Circular";
+};
+
+button#demo {
+  font-family: "Circular";
+  font-size: 13px;
+  text-decoration: none;
+  text-align: center;
+  padding: 4px;
+  width: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: black;
+  outline: none;
+}
+
+button#demo:hover {
+  color: rgb(4, 167, 4);
+}

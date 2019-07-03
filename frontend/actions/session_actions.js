@@ -5,7 +5,6 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
 export const receiveCurrentUser = currentUser => {
-    debugger;
     return ({
         type: RECEIVE_CURRENT_USER,
         currentUser
@@ -17,13 +16,11 @@ export const logoutCurrentUser = () => ({
 });
 
 export const receiveErrors = errors => {
-    debugger
     return({
         type: RECEIVE_SESSION_ERRORS,
         errors
     })
 };
-
 
 export const loginDemo = () => dispatch => (
     ApiUtil.loginDemo().then(user => (

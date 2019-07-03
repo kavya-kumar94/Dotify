@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(login(user)),
         receiveErrors: (errors) => dispatch(receiveErrors(errors)),
-        loginDemo: () => dispatch(loginDemo())
+        loginDemo: () => dispatch(loginDemo()) 
     };
 };
 
