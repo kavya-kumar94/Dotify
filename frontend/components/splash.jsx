@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, withRouter } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/auth_route_util.js'
-import LoginFormContainer from './session/login_form_container'
-import SignupFormContainer from './session/signup_form_container'
 import { loginDemo } from './../actions/session_actions';
 
 class Splash extends React.Component {
@@ -26,6 +23,7 @@ class Splash extends React.Component {
     }
 
     render() {
+        return (
         <div className="splash">
             <div className="splash-nav">
                 <div className="splash-navlinks">
@@ -40,7 +38,28 @@ class Splash extends React.Component {
                 <h3>Millions of songs. No credit card needed.</h3>
                 <button id="splash-button">GET DOTIFY FREE</button>
             </div>
+
+            <div className="splash-bottom">
+                <p className="bottom-words">Dotify</p>
+                <div className="bottom-lists">
+                    <div>
+                        <h3>Sources</h3>
+                        <h4><a href="">GitHub </a> </h4>
+                        <h4><a href="">LinkedIn </a> </h4>
+                    </div>
+                    <div>
+                        <h3>Useful Links</h3>
+                        <h4><a href="/#/signup"> Sign Up </a> </h4>
+                        <h4><a href="/#/login"> Log In </a> </h4>
+                        <h4><a href="/#/"> Home </a> </h4>
+                    </div>
+                </div>
+
+            </div>
+            
         </div>
+
+        )
     }
 }
 
