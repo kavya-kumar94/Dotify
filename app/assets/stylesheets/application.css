@@ -13,6 +13,94 @@
  *= require_tree .
  *= require_self
  */
+/* 
+
+ html {
+   overflow: hidden;
+   height: 100%;
+ }
+
+* {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font-size: 100%;
+   vertical-align: baseline;
+   background: transparent;
+   list-style: none;
+}
 
 
- 
+#root {
+  min-height: 100vh;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+}
+
+.auth-link {
+  text-decoration: none;
+  color: #D9DADC;
+  font-weight: 700;
+  padding: 28px 17px;
+}
+
+
+.signup-login {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 470px;
+}
+
+.signup-login li {
+  margin-right: 12px;
+  padding-top: 30px;
+}
+
+.auth-link:hover {
+  color: #1ED760;
+}
+
+.session-form ul {
+  border: 0;
+  padding: 0;
+  max-width: 26.875em;
+  margin: 0 auto;
+}
+
+.demo-button {
+  margin-top: 16px;
+  background-color: #1db954;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 16px 48px 18px;
+  transition-property: background-color;
+  transition-duration: .3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+.demo-button:hover {
+  background-color: #1ED760;
+}
+
+.demo-login-container {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.cover-container {
+  position: relative;
+  min-height: 1px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 46%;
+} */

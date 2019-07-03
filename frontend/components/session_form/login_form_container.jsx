@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { login } from '../../actions/session_actions';
+import { login, receiveErrors, loginDemo  } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        errors: errors.session,
+        errors: state.errors.session,
         formType: 'login',
-        navLink: <Link to="/signup">sign up instead</Link>,
+        currentUser: state.session.id
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         processForm: (user) => dispatch(login(user)),
+        receiveErrors: (errors) => dispatch(receiveErrors(errors)),
+        loginDemo: () => dispatch(loginDemo())
     };
 };
 
