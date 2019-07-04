@@ -2,13 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+button:focus {
+  outline: 0;
+}
+
 .session-content {
+  width: 430px;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   margin-top: 23px;
-  margin-left: 560px;
   flex-direction: column;
+  justify-items: center;
+  margin: auto;
+  padding-top: 30px;
 };
+
 
 .header2{
   display: flex;
@@ -35,10 +43,144 @@
   background-color: rgb(59, 89, 152);
   color: white;
   font-size: 14px;
+  outline: none;
+  margin-bottom: 20px;
 }
 
 .FB:hover {
-  background-color: mediumblue;
+  background-color: #3a61b3;
+}
+
+.sign-up-tag {
+  font-weight: bold;
+  margin-bottom: 22px;
+  margin-left: 54px;
+}
+
+.email-address {
+  margin-left: 33px;
+}
+
+.log-in-tag {
+  font-weight: bold;
+  padding-bottom: 20px;
+  margin-left: 54px;
+}
+
+.login-header{
+  margin: auto;
+}
+.line-thru {
+  display: block;
+  font-size: 0.875em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+.line-thru:before {
+    width: 40px;
+    height: 10px;
+    background-color: #FFF;
+    content: '';
+    margin: -5px 0 0 -20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.line-thru:after {
+    border-bottom: 1px solid #dfe0e6;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    width: 100%;
+    z-index: -2;
+}
+
+.line-thru2 {
+  display: block;
+  font-size: 0.875em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+.line-thru2:before {
+    width: 40px;
+    height: 10px;
+    background-color: #FFF;
+    content: '';
+    margin: -5px 0 0 -20px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+}
+
+.line-thru2:after {
+    border-bottom: 1px solid #dfe0e6;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 49%;
+    width: 100%;
+    z-index: -2;
+}
+
+.strong {
+  font-weight: 500;
+}
+
+input::-webkit-input-placeholder  {
+  -webkit-transition: opacity 0.3s linear; color: gray;
+}
+input:focus::-webkit-input-placeholder  {
+  opacity: 0.5;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 5px rgb(59, 153, 252);
+  border: 1px solid rgb(59, 153, 252);
+}
+
+input[type="password"]:focus {
+  box-shadow: 0 0 5px rgb(59, 153, 252);
+  border: 1px solid rgb(59, 153, 252);
+}
+
+input[type="text"] {
+  border: 1px solid lightgray;
+  width: 100%;
+  padding: 10px;
+  font-size: .9375em;
+  border-radius: 2px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  margin-bottom: 18px;
+}
+
+input[type="password"] {
+  border: 1px solid lightgray;
+  width: 100%;
+  padding: 10px;
+  font-size: .9375em;
+  border-radius: 2px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+    margin-bottom: 18px;
 }
 
 .session-header {
@@ -59,12 +201,21 @@ button#demo {
   padding-left: 50px;
   padding-right: 50px;
   color: black;
-  outline: none;
 };
 
 button#demo:hover {
   color: rgb(4, 167, 4);
 };
+
+
+.sign-up {
+  display: flex;
+  justify-items: center;
+}
+
+button.sign-up {
+  justify-items: center;
+}
 
 .login-signup {
   font-family: Arial, Helvetica, sans-serif;
@@ -117,3 +268,81 @@ span:hover {
   padding-top: 5px;
 }
 
+#session-submit {
+    display: block;
+    z-index: 1;
+    border-radius: 500px;
+    padding: 16px 48px 18px;
+    background-color: #1DB954;
+    border: 0px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: white;
+    font-weight: bold;
+    width: 220px;
+    text-align: center;
+    margin-left: 54px;
+    margin-bottom: 24px;
+  }
+
+  #session-submit:hover {
+    display:block;
+    background-color: #1ED760;
+  }
+
+  .noaccount {
+    display: flex;
+  }
+
+  .yesaccount {
+    display: flex;
+  }
+
+  .account-check {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .9375em;
+    margin: auto;
+    display: flex;
+    font-weight: 400;
+    display:inline-block;
+  }
+
+
+  .bottom-button{
+    display: block;
+    z-index: 1;
+    border-radius: 500px;
+    padding: 16px 48px 18px;
+    background-color: white;
+    border: 0px;
+    box-shadow: inset 0 0 0 2px #616467;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #616467;
+    font-weight: bold;
+    width: 320px;
+    text-align: center;
+    margin: auto;
+  }
+
+  .bottom-button:hover {
+    color: #fff;
+    background-color: #616467;
+  }
+
+  .account-check > span {
+    color: #1DB954;
+  }
+
+  .account-check > span:hover {
+    color: #1ED760;
+  }
+
+  .noaccount > .account-check {
+    font-weight: bold;
+  }
+
+  .donthave {
+    margin-left: 76.5px;
+    margin-bottom: 25px;
+  }

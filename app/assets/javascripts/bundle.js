@@ -573,16 +573,18 @@ function (_React$Component) {
       } else {
         enter.click();
       }
-    }
-  }, {
-    key: "renderErrors",
-    value: function renderErrors() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "error-".concat(i)
-        }, error);
-      }));
-    }
+    } // renderErrors() {
+    //     return (
+    //         <ul>
+    //             {this.props.errors.map((error, i) => (
+    //                 <li key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -610,9 +612,23 @@ function (_React$Component) {
         className: "demo-user"
       }, formType === 'login' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sign-up"
-      }, formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sign-up-tag"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "FB"
-      }, "SIGN UP WITH FACEBOOK") : 'To continue, log in to Dotify.'), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "SIGN UP WITH FACEBOOK"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+        className: "line-thru"
+      }, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "email-address"
+      }, "Sign up with your email address")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "log-in-tag"
+      }, "To continue, log in to Dotify."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "FB"
+      }, "LOG IN WITH FACEBOOK"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+        className: "line-thru2"
+      }, "or"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -629,8 +645,24 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit",
         type: "submit",
-        value: formType === 'login' ? 'Log In' : 'Sign Up'
-      }))));
+        value: formType === 'login' ? 'LOG IN' : 'SIGN UP'
+      }), formType === 'login' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "noaccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-check"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "donthave"
+      }, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "bottom-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/signup"
+      }, "SIGN UP FOR SPOTIFY")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "yesaccount"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "account-check"
+      }, "Already have an account? \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/login"
+      }, "Log In")))))));
     }
   }]);
 
@@ -956,7 +988,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -965,7 +997,7 @@ __webpack_require__.r(__webpack_exports__);
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return [];
+      return {};
 
     default:
       return state;

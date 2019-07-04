@@ -67,17 +67,17 @@ class SessionForm extends React.Component {
         }
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {error}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
+    // renderErrors() {
+    //     return (
+    //         <ul>
+    //             {this.props.errors.map((error, i) => (
+    //                 <li key={`error-${i}`}>
+    //                     {error}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // }
 
     render() {
         let { formType } = this.props;
@@ -98,37 +98,74 @@ class SessionForm extends React.Component {
 
                 <div className="session-content">
 
-                <div className="demo-user">
-                    {formType ==='login' ? <div>
-                    </div> : null}
-                </div>
+                    <div className="demo-user">
+                        {formType ==='login' ? <div>
+                        </div> : null}
+                    </div>
 
-                <div className="sign-up">
-                        {formType === 'signup' ? 
-                         <button className="FB">SIGN UP WITH FACEBOOK</button> 
-                        : 'To continue, log in to Dotify.'}
-                </div>
+                    <div className="sign-up">
+                            {formType === 'signup' ? 
+                            <div className="sign-up-tag">
+                            <button className="FB">SIGN UP WITH FACEBOOK</button> 
+                            <strong className="line-thru"> 
+                                or
+                            </strong> 
+                            <div className="email-address">
+                        Sign up with your email address
+                            </div>
+                            </div>
+                            : 
+                            <div className="login-header">
+                                <div className="log-in-tag">To continue, log in to Dotify.
+                                </div>
+                                <button className="FB">LOG IN WITH FACEBOOK</button> 
+                                <strong className="line-thru2">
+                                        or
+                                </strong>
+                            </div>
+                            }
+                    </div>
 
-                    {this.renderErrors()}
+                    {/* {this.renderErrors()} */}
 
-                <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
 
-                        <input type="text"
-                                id="username"
-                                value={this.state.username}
-                                onChange={this.update('username')}
-                                placeholder="Username"
-                                />
-                        {emailInput}
-                        <input type="password"
-                                id="password"
-                                value={this.state.password}
-                                onChange={this.update('password')}
-                                placeholder="Password"
-                                />
-                        <br/>
-                        <input id="session-submit" type="submit" value={formType === 'login' ? 'Log In' : 'Sign Up'} />
-                </form>
+                            <input type="text"
+                                    id="username"
+                                    value={this.state.username}
+                                    onChange={this.update('username')}
+                                    placeholder="Username"
+                                    />
+                            {emailInput}
+                            <input type="password"
+                                    id="password"
+                                    value={this.state.password}
+                                    onChange={this.update('password')}
+                                    placeholder="Password"
+                                    />
+                            <br/>
+                            <input id="session-submit" type="submit" value={formType === 'login' ? 'LOG IN' : 'SIGN UP'} />
+
+                            {formType === 'login' ? 
+                            <div className="noaccount">
+                                <div className="account-check">
+                                    <div className="donthave">
+                                    Don't have an account?
+                                    </div>
+                                    <button className="bottom-button"><Link to="/signup">SIGN UP FOR SPOTIFY</Link></button>
+                
+                                </div>
+                            </div>
+                             :
+                             <div className="yesaccount">
+                                <div className="account-check">Already have an account? &nbsp;
+
+                                    <span>
+                                        <Link to="/login">Log In</Link>
+                                    </span>
+                                </div> 
+                             </div> }
+                    </form>
                 </div>
             </div>
         );
