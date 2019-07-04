@@ -158,7 +158,6 @@ var receiveNewUsers = function receiveNewUsers(users) {
   };
 };
 var clearErrors = function clearErrors() {
-  debugger;
   return {
     type: CLEAR_SESSION_ERRORS
   };
@@ -509,9 +508,9 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
-    _this.guestLogin = _this.guestLogin.bind(_assertThisInitialized(_this));
-    _this.guestLoginHelper = _this.guestLoginHelper.bind(_assertThisInitialized(_this));
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this)); // this.guestLogin = this.guestLogin.bind(this);
+    // this.guestLoginHelper = this.guestLoginHelper.bind(this)
+
     return _this;
   }
 
@@ -519,8 +518,12 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.title = this.props.formType;
-    } // componentWillUnmount() {
-    //     this.props.receiveErrors([]);
+      this.props.clearErrors();
+    } // componentDidUpdate(prevProps) {
+    //     debugger
+    //     if (this.props.formType !== prevProps.formType) {
+    //         this.props.clearErrors();
+    //     } 
     // }
 
   }, {
@@ -543,47 +546,32 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
-    }
-  }, {
-    key: "guestLogin",
-    value: function guestLogin() {
-      var _this3 = this;
-
-      var splitUser = 'demouser'.split('');
-      var splitPassword = '123456'.split('');
-      var enter = document.getElementById('submit');
-      this.setState({
-        username: '',
-        password: ''
-      }), function () {
-        _this3.guestLoginHelper(splitUser, splitPassword, enter);
-      };
-    }
-  }, {
-    key: "guestLoginHelper",
-    value: function guestLoginHelper(splitUser, splitPassword, enter) {
-      var _this4 = this;
-
-      if (splitUser.length > 0) {
-        this.setState({
-          username: this.state.username + splitUser.shift()
-        }, function () {
-          window.setTimeout(function () {
-            return _this4.guestLoginHelper(splitUser, splitPassword, enter);
-          }, 65);
-        });
-      } else if (splitPassword.length > 0) {
-        this.setState({
-          password: this.state.password + splitPassword.shift()
-        }, function () {
-          window.setTimeout(function () {
-            return _this4.guestLoginHelper(splitUser, splitPassword, enter);
-          }, 65);
-        });
-      } else {
-        enter.click();
-      }
-    } // renderErrors() {
+    } // guestLogin() {
+    //     const splitUser = 'demouser'.split('');
+    //     const splitPassword = '123456'.split('');
+    //     const enter = document.getElementById('submit');
+    //     this.setState({username: '', password: ''}) , () => {
+    //         this.guestLoginHelper(splitUser, splitPassword, enter)
+    //     }
+    // }
+    // guestLoginHelper(splitUser, splitPassword, enter) {
+    //     if (splitUser.length > 0) {
+    //         this.setState({username: this.state.username + splitUser.shift()}, () => {
+    //             window.setTimeout(() => 
+    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
+    //         }
+    //         );
+    //     } else if (splitPassword.length > 0) {
+    //         this.setState({ password: this.state.password + splitPassword.shift() }, () => {
+    //             window.setTimeout(() =>
+    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
+    //         }
+    //         );
+    //     } else {
+    //         enter.click();
+    //     }
+    // }
+    // renderErrors() {
     //     return (
     //         <ul>
     //             {this.props.errors.map((error, i) => (
@@ -595,6 +583,12 @@ function (_React$Component) {
     //     );
     // }
 
+  }, {
+    key: "errorReset",
+    value: function errorReset() {
+      this.props.clearErrors();
+      this.props.history.push("/signup");
+    }
   }, {
     key: "render",
     value: function render() {
@@ -688,13 +682,25 @@ function (_React$Component) {
         value: this.state.username,
         onChange: this.update('username'),
         placeholder: "Username"
-      }), invalidUsername, emailInput, invalidEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), invalidUsername ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidUsername) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
+      }), emailInput, invalidEmail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidEmail) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
-        id: "password",
+        id: "invalid-field",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Password"
-      }), invalidPassword, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), invalidPassword ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidPassword) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit",
         type: "submit",
         value: formType === 'login' ? 'LOG IN' : 'SIGN UP'
@@ -704,11 +710,10 @@ function (_React$Component) {
         className: "account-check"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "donthave"
-      }, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.props.clearErrors,
-        className: "bottom-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "bottom-button"
       }, "SIGN UP FOR DOTIFY")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yesaccount"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

@@ -43,7 +43,6 @@ export const receiveNewUsers = (users) => ({
 
 
 export const clearErrors = () => {
-    debugger;
     return {
         type: CLEAR_SESSION_ERRORS,
     }

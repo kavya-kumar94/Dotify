@@ -11,17 +11,21 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
-        this.guestLogin = this.guestLogin.bind(this);
-        this.guestLoginHelper = this.guestLoginHelper.bind(this)
+        // this.guestLogin = this.guestLogin.bind(this);
+        // this.guestLoginHelper = this.guestLoginHelper.bind(this)
     }
 
    
     componentDidMount() {
         document.title = this.props.formType;
+        this.props.clearErrors();
     }
-
-    // componentWillUnmount() {
-    //     this.props.receiveErrors([]);
+    
+    // componentDidUpdate(prevProps) {
+    //     debugger
+    //     if (this.props.formType !== prevProps.formType) {
+    //         this.props.clearErrors();
+    //     } 
     // }
 
     update(field) {
@@ -40,32 +44,32 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
-    guestLogin() {
-        const splitUser = 'demouser'.split('');
-        const splitPassword = '123456'.split('');
-        const enter = document.getElementById('submit');
-        this.setState({username: '', password: ''}) , () => {
-            this.guestLoginHelper(splitUser, splitPassword, enter)
-        }
-    }
+    // guestLogin() {
+    //     const splitUser = 'demouser'.split('');
+    //     const splitPassword = '123456'.split('');
+    //     const enter = document.getElementById('submit');
+    //     this.setState({username: '', password: ''}) , () => {
+    //         this.guestLoginHelper(splitUser, splitPassword, enter)
+    //     }
+    // }
 
-    guestLoginHelper(splitUser, splitPassword, enter) {
-        if (splitUser.length > 0) {
-            this.setState({username: this.state.username + splitUser.shift()}, () => {
-                window.setTimeout(() => 
-                    this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-            }
-            );
-        } else if (splitPassword.length > 0) {
-            this.setState({ password: this.state.password + splitPassword.shift() }, () => {
-                window.setTimeout(() =>
-                    this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-            }
-            );
-        } else {
-            enter.click();
-        }
-    }
+    // guestLoginHelper(splitUser, splitPassword, enter) {
+    //     if (splitUser.length > 0) {
+    //         this.setState({username: this.state.username + splitUser.shift()}, () => {
+    //             window.setTimeout(() => 
+    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
+    //         }
+    //         );
+    //     } else if (splitPassword.length > 0) {
+    //         this.setState({ password: this.state.password + splitPassword.shift() }, () => {
+    //             window.setTimeout(() =>
+    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
+    //         }
+    //         );
+    //     } else {
+    //         enter.click();
+    //     }
+    // }
 
     // renderErrors() {
     //     return (
@@ -78,6 +82,11 @@ class SessionForm extends React.Component {
     //         </ul>
     //     );
     // }
+
+    errorReset() {
+        this.props.clearErrors();
+        this.props.history.push("/signup");
+    }
 
     render() {
         let { formType, errors } = this.props;
@@ -162,7 +171,6 @@ class SessionForm extends React.Component {
                     </div>
 
                     {/* {this.renderErrors()} */}
-
                     <form onSubmit={this.handleSubmit}>
 
                             <input type="text"
@@ -171,17 +179,17 @@ class SessionForm extends React.Component {
                                     onChange={this.update('username')}
                                     placeholder="Username"
                                     />
-                            {invalidUsername}
+                            {invalidUsername ? <div className="invalid">{invalidUsername}</div> : <div className="none"></div>}
                             {emailInput}
-                            {invalidEmail}
+                            {invalidEmail ? <div className="invalid">{invalidEmail}</div> : <div className="none"></div>}
 
                             <input type="password"
-                                    id="password"
+                                    id="invalid-field"
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     placeholder="Password"
                                     />
-                            {invalidPassword}
+                            {invalidPassword ? <div className="invalid">{invalidPassword}</div> : <div className="none"></div>}
                             <br/>
                             <input id="session-submit" type="submit" value={formType === 'login' ? 'LOG IN' : 'SIGN UP'} />
 
@@ -191,7 +199,7 @@ class SessionForm extends React.Component {
                                     <div className="donthave">
                                     Don't have an account?
                                     </div>
-                                    <button onClick={this.props.clearErrors} className="bottom-button"><Link to="/signup">SIGN UP FOR DOTIFY</Link></button>
+                                    <Link to="/signup"><button className="bottom-button">SIGN UP FOR DOTIFY</button></Link>
                 
                                 </div>
                             </div>
@@ -204,9 +212,10 @@ class SessionForm extends React.Component {
                                     </span>
                                 </div> 
                              </div> }
+
                     </form>
-                </div>
-            </div>
+                    </div>
+                 </div>
         );
     }
 }
