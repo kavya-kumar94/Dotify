@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, loginDemo, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, loginDemo, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,9 +98,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USER", function() { return RECEIVE_NEW_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USERS", function() { return RECEIVE_NEW_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUser", function() { return receiveNewUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUsers", function() { return receiveNewUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginDemo", function() { return loginDemo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
@@ -110,6 +116,9 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
+var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
+var RECEIVE_NEW_USERS = 'RECEIVE_NEW_USERS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -125,6 +134,24 @@ var receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
+  };
+};
+var receiveNewUser = function receiveNewUser(payload) {
+  return {
+    type: RECEIVE_NEW_USER,
+    payload: payload
+  };
+};
+var receiveAllUsers = function receiveAllUsers(users) {
+  return {
+    type: RECEIVE_ALL_USERS,
+    users: users
+  };
+};
+var receiveNewUsers = function receiveNewUsers(users) {
+  return {
+    type: RECEIVE_NEW_USERS,
+    users: users
   };
 };
 var loginDemo = function loginDemo() {
@@ -223,19 +250,19 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/signup",
         component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/login",
         component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/",
         component: _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/",
         component: _components_splash__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -273,6 +300,16 @@ var Greeting = function Greeting(_ref) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "login-signup"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "title"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "white",
+      to: "/"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "/assets/white_spotify.png"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "header",
+      to: "/"
+    }, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "links"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
@@ -442,6 +479,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var SessionForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -492,18 +530,14 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      var _this3 = this;
-
       e.preventDefault();
       var user = Object.assign({}, this.state);
-      this.props.processForm(user).then(function () {
-        return _this3.props.history.push('/');
-      });
+      this.props.processForm(user);
     }
   }, {
     key: "guestLogin",
     value: function guestLogin() {
-      var _this4 = this;
+      var _this3 = this;
 
       var splitUser = 'demouser'.split('');
       var splitPassword = '123456'.split('');
@@ -512,20 +546,20 @@ function (_React$Component) {
         username: '',
         password: ''
       }), function () {
-        _this4.guestLoginHelper(splitUser, splitPassword, enter);
+        _this3.guestLoginHelper(splitUser, splitPassword, enter);
       };
     }
   }, {
     key: "guestLoginHelper",
     value: function guestLoginHelper(splitUser, splitPassword, enter) {
-      var _this5 = this;
+      var _this4 = this;
 
       if (splitUser.length > 0) {
         this.setState({
           username: this.state.username + splitUser.shift()
         }, function () {
           window.setTimeout(function () {
-            return _this5.guestLoginHelper(splitUser, splitPassword, enter);
+            return _this4.guestLoginHelper(splitUser, splitPassword, enter);
           }, 65);
         });
       } else if (splitPassword.length > 0) {
@@ -533,7 +567,7 @@ function (_React$Component) {
           password: this.state.password + splitPassword.shift()
         }, function () {
           window.setTimeout(function () {
-            return _this5.guestLoginHelper(splitUser, splitPassword, enter);
+            return _this4.guestLoginHelper(splitUser, splitPassword, enter);
           }, 65);
         });
       } else {
@@ -561,30 +595,35 @@ function (_React$Component) {
       }), "  ") : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "session-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "black",
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/black_spotify.png"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "session-header",
+        to: "/"
+      }, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "demoUser"
-      }, formType === 'login' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "demo",
-        onClick: this.guestLogin
-      }, "Demo User"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "or"
-      }, "or")) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, formType === 'login' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signUp"
-      }, formType === 'signup' ? 'Sign up for an account!' : 'Log in with your username'), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, formType === 'signup' ? 'Sign up for an account!' : 'To continue, log in to Dotify.'), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "username",
         value: this.state.username,
         onChange: this.update('username'),
-        placeholder: "username"
+        placeholder: "Username"
       }), emailInput, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         id: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        placeholder: "password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        placeholder: "Password"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit",
         type: "submit",
         value: formType === 'login' ? 'Log In' : 'Sign Up'
@@ -742,9 +781,17 @@ function (_React$Component) {
         id: "splash-button"
       }, " DOTIFY DEMO ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "words"
-      }, "Dotify"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "white",
+        to: "/"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: "/assets/white_spotify.png"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "/",
+        className: "logo"
+      }, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sources"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: ""
@@ -765,19 +812,9 @@ function (_React$Component) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    demoLogin: function (_demoLogin) {
-      function demoLogin() {
-        return _demoLogin.apply(this, arguments);
-      }
-
-      demoLogin.toString = function () {
-        return _demoLogin.toString();
-      };
-
-      return demoLogin;
-    }(function () {
-      return dispatch(demoLogin());
-    })
+    demoLogin: function demoLogin() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])());
+    }
   };
 };
 
@@ -824,9 +861,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
-    delete window.currentUser;
+    window.getState = store.getState;
+    window.dispatch = store.dispatch; // delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    window.getState = store.getState;
+    window.dispatch = store.dispatch;
   }
 
   var root = document.getElementById('root');
@@ -995,6 +1035,18 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_NEW_USER"]:
+      var tempState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.followers, action.payload.following);
+      delete tempState[action.payload.user.id];
+      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, tempState, _defineProperty({}, action.payload.user.id, action.payload.user));
+      return newState;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_USERS"]:
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.users);
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_NEW_USERS"]:
+      return action.users;
 
     default:
       return state;
@@ -30505,7 +30557,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

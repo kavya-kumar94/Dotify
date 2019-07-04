@@ -5,7 +5,7 @@
 }
 
 .splash-img {
-  height: 700px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,17 +53,21 @@
   .footer {
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
-  height: 200px;
+  height: 540px;
   width: 100%;
   position: absolute;
-  top: 700px;
+  display: flex;
+  // top: 700px;
   color: white;
 
-    .words {
+    .logo {
       position: absolute;
       font-size: 18px;
       color: white;
       letter-spacing: -0.04em;
+      padding-top: 105px;
+      padding-left: 115px;
+      font-size: 25px;
     }
 
     .lists {
@@ -71,15 +75,35 @@
       flex-direction: row;
       position: absolute;
       left: 200px;
+      padding-top: 100px;
       
         h3 {
           font-size: 13px;
           text-transform: uppercase;
           color: grey;
+          padding-left: 126px;
+        }
+
+        h4:hover {
+          color: #1ED760
         }
 
         h4 {
           font-size: 15px;
+          padding-left: 126px;
         };
-    };
+
+      };
+
+      .footer-header {
+        display: flex;
+      }
+
+      .footer-header > span {
+        height: 40px;
+        width: 40px;
+        padding-left: 70px;
+        padding-top: 100px;
+        font-weight: bold;
+      }
   };

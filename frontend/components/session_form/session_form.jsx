@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 class SessionForm extends React.Component {
     constructor(props) {
         super(props);
@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user).then(() => this.props.history.push('/'));
+        this.props.processForm(user);
     }
 
     guestLogin() {
@@ -88,19 +88,19 @@ class SessionForm extends React.Component {
         return (
             <div className="session-page">
                 <div>
-                    <p>Dotify</p>
+                    <span className="session-title">
+                        <Link className="black" to="/"><img src="/assets/black_spotify.png" /></Link>
+                    </span>
+                        <Link className="session-header" to="/">Dotify</Link>
                 </div>
 
                 <div className="demoUser">
                     {formType ==='login' ? <div>
-                        <button id="demo" onClick={this.guestLogin}>Demo User</button>
-                        <br></br>
-                        <p className="or">or</p>
                     </div> : null}
                 </div>
 
                 <div className="signUp">
-                    {formType==='signup' ? 'Sign up for an account!' : 'Log in with your username'}
+                    {formType==='signup' ? 'Sign up for an account!' : 'To continue, log in to Dotify.'}
                 </div>
 
                     {this.renderErrors()}
@@ -111,18 +111,16 @@ class SessionForm extends React.Component {
                                 id="username"
                                 value={this.state.username}
                                 onChange={this.update('username')}
-                                placeholder="username"
+                                placeholder="Username"
                             />
-
                         {emailInput}
-
                         <input type="password"
                                 id="password"
                                 value={this.state.password}
                                 onChange={this.update('password')}
-                                placeholder="password"
+                                placeholder="Password"
                             />
-
+                        <br/>
                         <input id="session-submit" type="submit" value={formType === 'login' ? 'Log In' : 'Sign Up'} />
                 </form>
             </div>

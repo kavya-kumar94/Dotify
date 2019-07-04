@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Splash from '../components/splash'
 
 import {
@@ -22,10 +22,10 @@ class App extends React.Component {
   render() {
    return(
     <div>
-        <AuthRoute exact path="/signup" component={SignupFormContainer} />
-       <AuthRoute exact path="/login" component={LoginFormContainer} />
-       <AuthRoute exact path="/" component={GreetingContainer} />
-       <AuthRoute exact path="/" component={Splash} />
+        <Route exact path="/signup" component={SignupFormContainer} />
+       <Route exact path="/login" component={LoginFormContainer} />
+       <Route exact path="/" component={GreetingContainer} />
+       <Route exact path="/" component={Splash} />
     </div>
    )
   } 

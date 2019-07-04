@@ -6,6 +6,14 @@ import { Link } from 'react-router-dom';
 const Greeting = ({ currentUser, logout }) => {
     const sessionLinks = () => (
         <div className="login-signup">
+
+            <div className="title">
+                <span>
+                    <Link className="white" to="/"><img src="/assets/white_spotify.png" /></Link>
+                </span>
+                <Link className="header" to="/">Dotify</Link>
+            </div>
+
             <div className="links">
                 <span>
                     <Link to="/signup">Sign up</Link>

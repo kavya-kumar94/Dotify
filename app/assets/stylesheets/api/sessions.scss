@@ -3,11 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .session-page {
-  font-family: "Circular";
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
 };
 
+.session-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.session-header {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
 button#demo {
-  font-family: "Circular";
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   text-decoration: none;
   text-align: center;
@@ -36,7 +48,8 @@ button#demo:hover {
 
 
 .links {
-  padding: 30px 70px;
+  padding-right: 70px;
+  padding-top: 30px;
   color: #D9DADC;
   justify-content: space-between;
   font-family: Arial, Helvetica, sans-serif;
@@ -51,3 +64,25 @@ button#demo:hover {
 span:hover {
   color: #1ED760;
 }
+
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  float: left;
+  padding-top: 22px;
+  padding-right: 800px;
+  display: flex;
+}
+
+.title > span {
+  height: 40px;
+  width: 40px;
+}
+
+.header {
+  padding-left: 2px;
+  padding-top: 5px;
+}
+

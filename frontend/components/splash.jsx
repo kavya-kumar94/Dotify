@@ -40,7 +40,12 @@ class Splash extends React.Component {
             </div>
 
             <div className="footer">
-                <p className="words">Dotify</p>
+                <div className="footer-header">
+                    <span>
+                        <Link className="white" to="/"><img src="/assets/white_spotify.png" /></Link>
+                    </span>
+                    <Link to="/" className="logo">Dotify</Link>
+                </div>
                 <div className="lists">
                     <div>
                         <h3>Sources</h3>
@@ -64,7 +69,7 @@ class Splash extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    demoLogin: () => dispatch(demoLogin())
+    demoLogin: () => dispatch(login())
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Splash))
