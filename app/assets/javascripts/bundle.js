@@ -90,23 +90,25 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, loginDemo, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, CLEAR_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, clearErrors, loginDemo, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USER", function() { return RECEIVE_NEW_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USERS", function() { return RECEIVE_NEW_USERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUser", function() { return receiveNewUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUsers", function() { return receiveNewUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginDemo", function() { return loginDemo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
@@ -115,10 +117,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
-var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 var RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 var RECEIVE_NEW_USERS = 'RECEIVE_NEW_USERS';
+var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -132,7 +135,7 @@ var logoutCurrentUser = function logoutCurrentUser() {
 };
 var receiveErrors = function receiveErrors(errors) {
   return {
-    type: RECEIVE_SESSION_ERRORS,
+    type: RECEIVE_ERRORS,
     errors: errors
   };
 };
@@ -152,6 +155,12 @@ var receiveNewUsers = function receiveNewUsers(users) {
   return {
     type: RECEIVE_NEW_USERS,
     users: users
+  };
+};
+var clearErrors = function clearErrors() {
+  debugger;
+  return {
+    type: CLEAR_SESSION_ERRORS
   };
 };
 var loginDemo = function loginDemo() {
@@ -254,7 +263,7 @@ function (_React$Component) {
         exact: true,
         path: "/signup",
         component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
         exact: true,
         path: "/login",
         component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -262,7 +271,7 @@ function (_React$Component) {
         exact: true,
         path: "/",
         component: _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
         exact: true,
         path: "/",
         component: _components_splash__WEBPACK_IMPORTED_MODULE_6__["default"]
@@ -434,6 +443,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     receiveErrors: function receiveErrors(errors) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["receiveErrors"])(errors));
     },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["clearErrors"])());
+    },
     loginDemo: function loginDemo() {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["loginDemo"])());
     }
@@ -507,12 +519,10 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.title = this.props.formType;
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.props.receiveErrors([]);
-    }
+    } // componentWillUnmount() {
+    //     this.props.receiveErrors([]);
+    // }
+
   }, {
     key: "update",
     value: function update(field) {
@@ -588,7 +598,49 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var formType = this.props.formType;
+      var _this$props = this.props,
+          formType = _this$props.formType,
+          errors = _this$props.errors;
+      var invalidUsername = null;
+      var invalidPassword = null;
+      var invalidEmail = null;
+      var classUsername = 'form-control';
+      var classPassword = 'form-control';
+      var classEmail = 'form-control';
+      var invalidUsernamePassword = errors[0] && errors[0].indexOf('Incorrect') != -1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alert alert-warning"
+      }, errors[0]) : null;
+
+      if (errors.includes('username')) {
+        invalidUsername = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "invalid-input"
+        }, "Please enter your Dotify username.");
+        classUsername = 'form-control invalid';
+      } else {
+        invalidUsername = null;
+        classUsername = 'form-control';
+      }
+
+      if (errors.includes('password')) {
+        invalidPassword = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "invalid-input"
+        }, "Please enter your password.");
+        classPassword = 'form-control invalid';
+      } else {
+        invalidPassword = null;
+        classPassword = 'form-control';
+      }
+
+      if (errors.includes('email') && formType === 'signup') {
+        invalidEmail = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "invalid-input"
+        }, "Please enter your email.");
+        classEmail = 'form-control invalid';
+      } else if (formType === 'signup') {
+        invalidEmail = null;
+        classEmail = 'form-control';
+      }
+
       var emailInput = formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.update('email'),
@@ -628,7 +680,7 @@ function (_React$Component) {
         className: "FB"
       }, "LOG IN WITH FACEBOOK"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
         className: "line-thru2"
-      }, "or"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "or")), invalidUsernamePassword), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -636,13 +688,13 @@ function (_React$Component) {
         value: this.state.username,
         onChange: this.update('username'),
         placeholder: "Username"
-      }), emailInput, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), invalidUsername, emailInput, invalidEmail, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         id: "password",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }), invalidPassword, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         id: "session-submit",
         type: "submit",
         value: formType === 'login' ? 'LOG IN' : 'SIGN UP'
@@ -653,14 +705,16 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "donthave"
       }, "Don't have an account?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.clearErrors,
         className: "bottom-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/signup"
-      }, "SIGN UP FOR SPOTIFY")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "SIGN UP FOR DOTIFY")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yesaccount"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account-check"
       }, "Already have an account? \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        onClick: this.props.clearErrors,
         to: "/login"
       }, "Log In")))))));
     }
@@ -704,6 +758,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     receiveErrors: function receiveErrors(errors) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["receiveErrors"])(errors));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["clearErrors"])());
     },
     loginDemo: function (_loginDemo) {
       function loginDemo() {
@@ -988,16 +1045,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return {};
+      return [];
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_SESSION_ERRORS"]:
+      return [];
 
     default:
       return state;

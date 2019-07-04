@@ -20,9 +20,9 @@ class SessionForm extends React.Component {
         document.title = this.props.formType;
     }
 
-    componentWillUnmount() {
-        this.props.receiveErrors([]);
-    }
+    // componentWillUnmount() {
+    //     this.props.receiveErrors([]);
+    // }
 
     update(field) {
         return e => this.setState({
@@ -80,7 +80,41 @@ class SessionForm extends React.Component {
     // }
 
     render() {
-        let { formType } = this.props;
+        let { formType, errors } = this.props;
+
+        let invalidUsername = null;
+        let invalidPassword = null;
+        let invalidEmail = null;
+        let classUsername = 'form-control';
+        let classPassword = 'form-control';
+        let classEmail = 'form-control';
+
+        const invalidUsernamePassword = errors[0] && errors[0].indexOf('Incorrect') != -1 ? <div className="alert alert-warning">{errors[0]}</div> : null;
+
+        if (errors.includes('username')) {
+            invalidUsername = <div className="invalid-input">Please enter your Dotify username.</div>
+            classUsername = 'form-control invalid';
+        } else {
+            invalidUsername = null;
+            classUsername = 'form-control';
+        }
+
+        if (errors.includes('password')) {
+            invalidPassword = <div className="invalid-input">Please enter your password.</div>
+            classPassword = 'form-control invalid';
+        } else {
+            invalidPassword = null;
+            classPassword = 'form-control';
+        }
+
+        if (errors.includes('email') &&  formType === 'signup') {
+            invalidEmail = <div className="invalid-input">Please enter your email.</div>
+            classEmail = 'form-control invalid';
+        } else if (formType==='signup'){
+            invalidEmail = null;
+            classEmail = 'form-control';
+        }
+
         const emailInput = formType === 'signup' ? 
         (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
          : null
@@ -124,6 +158,7 @@ class SessionForm extends React.Component {
                                 </strong>
                             </div>
                             }
+                            {invalidUsernamePassword}
                     </div>
 
                     {/* {this.renderErrors()} */}
@@ -136,13 +171,17 @@ class SessionForm extends React.Component {
                                     onChange={this.update('username')}
                                     placeholder="Username"
                                     />
+                            {invalidUsername}
                             {emailInput}
+                            {invalidEmail}
+
                             <input type="password"
                                     id="password"
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     placeholder="Password"
                                     />
+                            {invalidPassword}
                             <br/>
                             <input id="session-submit" type="submit" value={formType === 'login' ? 'LOG IN' : 'SIGN UP'} />
 
@@ -152,7 +191,7 @@ class SessionForm extends React.Component {
                                     <div className="donthave">
                                     Don't have an account?
                                     </div>
-                                    <button className="bottom-button"><Link to="/signup">SIGN UP FOR SPOTIFY</Link></button>
+                                    <button onClick={this.props.clearErrors} className="bottom-button"><Link to="/signup">SIGN UP FOR DOTIFY</Link></button>
                 
                                 </div>
                             </div>
@@ -161,7 +200,7 @@ class SessionForm extends React.Component {
                                 <div className="account-check">Already have an account? &nbsp;
 
                                     <span>
-                                        <Link to="/login">Log In</Link>
+                                        <Link onClick={this.props.clearErrors} to="/login">Log In</Link>
                                     </span>
                                 </div> 
                              </div> }

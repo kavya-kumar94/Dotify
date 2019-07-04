@@ -22,10 +22,10 @@ class App extends React.Component {
   render() {
    return(
     <div>
-        <Route exact path="/signup" component={SignupFormContainer} />
-       <Route exact path="/login" component={LoginFormContainer} />
+      <Route exact path="/signup" component={SignupFormContainer} />
+       <AuthRoute exact path="/login" component={LoginFormContainer} />
        <Route exact path="/" component={GreetingContainer} />
-       <Route exact path="/" component={Splash} />
+       <AuthRoute exact path="/" component={Splash} />
     </div>
    )
   } 
