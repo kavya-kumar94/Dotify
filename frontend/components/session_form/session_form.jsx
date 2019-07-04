@@ -82,25 +82,31 @@ class SessionForm extends React.Component {
     render() {
         let { formType } = this.props;
         const emailInput = formType === 'signup' ? 
-        (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="email" />  </div>)
+        (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
          : null
 
         return (
             <div className="session-page">
-                <div>
-                    <span className="session-title">
-                        <Link className="black" to="/"><img src="/assets/black_spotify.png" /></Link>
+
+                <div className="header2">
+                    <span>
+                        <Link to="/"><img src="/assets/black_spotify.png" /></Link>
                     </span>
-                        <Link className="session-header" to="/">Dotify</Link>
+                    <Link className="session-header" to="/">Dotify</Link>
                 </div>
 
-                <div className="demoUser">
+
+                <div className="session-content">
+
+                <div className="demo-user">
                     {formType ==='login' ? <div>
                     </div> : null}
                 </div>
 
-                <div className="signUp">
-                    {formType==='signup' ? 'Sign up for an account!' : 'To continue, log in to Dotify.'}
+                <div className="sign-up">
+                        {formType === 'signup' ? 
+                         <button className="FB">SIGN UP WITH FACEBOOK</button> 
+                        : 'To continue, log in to Dotify.'}
                 </div>
 
                     {this.renderErrors()}
@@ -112,17 +118,18 @@ class SessionForm extends React.Component {
                                 value={this.state.username}
                                 onChange={this.update('username')}
                                 placeholder="Username"
-                            />
+                                />
                         {emailInput}
                         <input type="password"
                                 id="password"
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="Password"
-                            />
+                                />
                         <br/>
                         <input id="session-submit" type="submit" value={formType === 'login' ? 'Log In' : 'Sign Up'} />
                 </form>
+                </div>
             </div>
         );
     }

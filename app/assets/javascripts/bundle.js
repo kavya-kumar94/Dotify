@@ -591,14 +591,13 @@ function (_React$Component) {
         type: "text",
         onChange: this.update('email'),
         value: this.state.email,
-        placeholder: "email"
+        placeholder: "Email"
       }), "  ") : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "session-title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        className: "black",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/assets/black_spotify.png"
@@ -606,10 +605,14 @@ function (_React$Component) {
         className: "session-header",
         to: "/"
       }, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "demoUser"
+        className: "session-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "demo-user"
       }, formType === 'login' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "signUp"
-      }, formType === 'signup' ? 'Sign up for an account!' : 'To continue, log in to Dotify.'), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "sign-up"
+      }, formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "FB"
+      }, "SIGN UP WITH FACEBOOK") : 'To continue, log in to Dotify.'), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -627,7 +630,7 @@ function (_React$Component) {
         id: "session-submit",
         type: "submit",
         value: formType === 'login' ? 'Log In' : 'Sign Up'
-      })));
+      }))));
     }
   }]);
 

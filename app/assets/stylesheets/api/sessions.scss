@@ -2,20 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.session-page {
+.session-content {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
+  margin-top: 23px;
+  margin-left: 560px;
+  flex-direction: column;
 };
 
-.session-title {
+.header2{
+  display: flex;
+  padding-bottom: 27px;
+  border-bottom: 1px solid lightgrey;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.header2 > span {
+  height: 55px;
+  width: 55px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
 }
 
+.FB {
+  height: 50px;
+  border-radius: 500px;
+  padding-left: 50px;
+  padding-right: 50px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  background-color: rgb(59, 89, 152);
+  color: white;
+  font-size: 14px;
+}
+
+.FB:hover {
+  background-color: mediumblue;
+}
+
 .session-header {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
+  padding-left: 3px;
+  padding-top: 5px;
 }
 
 button#demo {
