@@ -6,21 +6,27 @@ import { login } from './../actions/session_actions';
 class Splash extends React.Component {
     constructor(props) {
         super(props);
-        this.demoLogin = this.demoLogin.bind(this);
-        this.helperfxn = this.helperfxn.bind(this);
+        this.demoUser = this.demoUser.bind(this);
+        // this.demoLogin = this.demoLogin.bind(this);
+        // this.helperfxn = this.helperfxn.bind(this);
     }
 
-    demoLogin() {
-       this.props.demoLogin({username: 'Demo User', password:'123456'}).then(() => this.helperfxn) 
+    // demoLogin() {
+    //    this.props.demoLogin({username: 'Demo User', password:'123456'}).then(() => this.helperfxn) 
+    // }
+    demoUser(e) {
+        e.preventDefault();
+        const demouser = { username: 'demouser', password: '123456' };
+        this.props.loginDemo(demouser);
     }
 
     componentDidMount() {
         document.title = 'Dotify'
     }
 
-    helperfxn() {
-        this.props.history.push('/browse/featured');
-    }
+    // helperfxn() {
+    //     this.props.history.push('/browse/featured');
+    // }
 
     render() {
 
@@ -36,7 +42,7 @@ class Splash extends React.Component {
             <div className="splash-img">
                 <h1>Music for everyone.</h1>
                 <h3>Millions of songs. No credit card needed.</h3>
-                <button onClick={this.demoLogin} id="splash-button"> DOTIFY DEMO </button>
+                <button onClick={this.demoUser} id="splash-button"> DOTIFY DEMO </button>
             </div>
 
             <div className="footer">
@@ -69,7 +75,7 @@ class Splash extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    demoLogin: () => dispatch(login())
+    loginDemo: (user) => dispatch(login(user))
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(Splash))

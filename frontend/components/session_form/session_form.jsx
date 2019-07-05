@@ -34,8 +34,11 @@ class SessionForm extends React.Component {
         });
     }
 
-    demoUser() {
-        this.props.loginDemo();
+    demoUser(e) {
+        e.preventDefault();
+        this.state = { username: 'demouser', password: '123456'};
+        const demouser = Object.assign({}, this.state);
+        this.props.processForm(demouser);
     }
 
     handleSubmit(e) {
@@ -83,10 +86,10 @@ class SessionForm extends React.Component {
     //     );
     // }
 
-    errorReset() {
-        this.props.clearErrors();
-        this.props.history.push("/signup");
-    }
+    // errorReset() {
+    //     this.props.clearErrors();
+    //     this.props.history.push("/signup");
+    // }
 
     render() {
         let { formType, errors } = this.props;
@@ -101,33 +104,33 @@ class SessionForm extends React.Component {
         const invalidUsernamePassword = errors[0] && errors[0].indexOf('Incorrect') != -1 ? <div className="alert alert-warning">{errors[0]}</div> : null;
 
         if (errors.includes('username')) {
-            invalidUsername = <div className="invalid-input">Please enter your Dotify username.</div>
-            classUsername = 'form-control invalid';
+            invalidUsername = <div>Please enter your Dotify username.</div>
+            // classUsername = 'form-control invalid';
         } else {
             invalidUsername = null;
-            classUsername = 'form-control';
+            // classUsername = 'form-control';
         }
 
         if (errors.includes('password')) {
-            invalidPassword = <div className="invalid-input">Please enter your password.</div>
-            classPassword = 'form-control invalid';
+            invalidPassword = <div>Please enter your password.</div>
+            // classPassword = 'form-control invalid';
         } else {
             invalidPassword = null;
-            classPassword = 'form-control';
+            // classPassword = 'form-control';
         }
 
         if (errors.includes('email') &&  formType === 'signup') {
-            invalidEmail = <div className="invalid-input">Please enter your email.</div>
-            classEmail = 'form-control invalid';
+            invalidEmail = <div>Please enter your email.</div>
+            // classEmail = 'form-control invalid';
         } else if (formType==='signup'){
             invalidEmail = null;
-            classEmail = 'form-control';
+            // classEmail = 'form-control';
         }
 
         const emailInput = formType === 'signup' ? 
-        (<div> <input type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
+            (<div> <input className={ invalidEmail ? "error" : "none2"} type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
          : null
-
+        // debugger;
         return (
             <div className="session-page">
 
@@ -172,9 +175,8 @@ class SessionForm extends React.Component {
 
                     {/* {this.renderErrors()} */}
                     <form onSubmit={this.handleSubmit}>
-
                             <input type="text"
-                                    id="username"
+                                    className= { invalidUsername ? "error" : "none2"}
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     placeholder="Username"
@@ -184,7 +186,7 @@ class SessionForm extends React.Component {
                             {invalidEmail ? <div className="invalid">{invalidEmail}</div> : <div className="none"></div>}
 
                             <input type="password"
-                                    id="invalid-field"
+                                    className={ invalidPassword ? "error" : "none2" }
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     placeholder="Password"
@@ -192,7 +194,6 @@ class SessionForm extends React.Component {
                             {invalidPassword ? <div className="invalid">{invalidPassword}</div> : <div className="none"></div>}
                             <br/>
                             <input id="session-submit" type="submit" value={formType === 'login' ? 'LOG IN' : 'SIGN UP'} />
-
                             {formType === 'login' ? 
                             <div className="noaccount">
                                 <div className="account-check">
@@ -200,7 +201,8 @@ class SessionForm extends React.Component {
                                     Don't have an account?
                                     </div>
                                     <Link to="/signup"><button className="bottom-button">SIGN UP FOR DOTIFY</button></Link>
-                
+                                    <button onClick={this.demoUser} className="demo2">DEMO</button>
+
                                 </div>
                             </div>
                              :

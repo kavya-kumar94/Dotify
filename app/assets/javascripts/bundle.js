@@ -258,7 +258,7 @@ function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
         exact: true,
         path: "/signup",
         component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -537,8 +537,14 @@ function (_React$Component) {
     }
   }, {
     key: "demoUser",
-    value: function demoUser() {
-      this.props.loginDemo();
+    value: function demoUser(e) {
+      e.preventDefault();
+      this.state = {
+        username: 'demouser',
+        password: '123456'
+      };
+      var demouser = Object.assign({}, this.state);
+      this.props.processForm(demouser);
     }
   }, {
     key: "handleSubmit",
@@ -582,13 +588,11 @@ function (_React$Component) {
     //         </ul>
     //     );
     // }
+    // errorReset() {
+    //     this.props.clearErrors();
+    //     this.props.history.push("/signup");
+    // }
 
-  }, {
-    key: "errorReset",
-    value: function errorReset() {
-      this.props.clearErrors();
-      this.props.history.push("/signup");
-    }
   }, {
     key: "render",
     value: function render() {
@@ -606,41 +610,31 @@ function (_React$Component) {
       }, errors[0]) : null;
 
       if (errors.includes('username')) {
-        invalidUsername = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "invalid-input"
-        }, "Please enter your Dotify username.");
-        classUsername = 'form-control invalid';
+        invalidUsername = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please enter your Dotify username."); // classUsername = 'form-control invalid';
       } else {
-        invalidUsername = null;
-        classUsername = 'form-control';
+        invalidUsername = null; // classUsername = 'form-control';
       }
 
       if (errors.includes('password')) {
-        invalidPassword = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "invalid-input"
-        }, "Please enter your password.");
-        classPassword = 'form-control invalid';
+        invalidPassword = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please enter your password."); // classPassword = 'form-control invalid';
       } else {
-        invalidPassword = null;
-        classPassword = 'form-control';
+        invalidPassword = null; // classPassword = 'form-control';
       }
 
       if (errors.includes('email') && formType === 'signup') {
-        invalidEmail = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "invalid-input"
-        }, "Please enter your email.");
-        classEmail = 'form-control invalid';
+        invalidEmail = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please enter your email."); // classEmail = 'form-control invalid';
       } else if (formType === 'signup') {
-        invalidEmail = null;
-        classEmail = 'form-control';
+        invalidEmail = null; // classEmail = 'form-control';
       }
 
       var emailInput = formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: invalidEmail ? "error" : "none2",
         type: "text",
         onChange: this.update('email'),
         value: this.state.email,
         placeholder: "Email"
-      }), "  ") : null;
+      }), "  ") : null; // debugger;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -678,7 +672,7 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        id: "username",
+        className: invalidUsername ? "error" : "none2",
         value: this.state.username,
         onChange: this.update('username'),
         placeholder: "Username"
@@ -692,7 +686,7 @@ function (_React$Component) {
         className: "none"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
-        id: "invalid-field",
+        className: invalidPassword ? "error" : "none2",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Password"
@@ -714,7 +708,10 @@ function (_React$Component) {
         to: "/signup"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "bottom-button"
-      }, "SIGN UP FOR DOTIFY")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "SIGN UP FOR DOTIFY")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.demoUser,
+        className: "demo2"
+      }, "DEMO"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yesaccount"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account-check"
@@ -835,33 +832,33 @@ function (_React$Component) {
     _classCallCheck(this, Splash);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Splash).call(this, props));
-    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
-    _this.helperfxn = _this.helperfxn.bind(_assertThisInitialized(_this));
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this)); // this.demoLogin = this.demoLogin.bind(this);
+    // this.helperfxn = this.helperfxn.bind(this);
+
     return _this;
-  }
+  } // demoLogin() {
+  //    this.props.demoLogin({username: 'Demo User', password:'123456'}).then(() => this.helperfxn) 
+  // }
+
 
   _createClass(Splash, [{
-    key: "demoLogin",
-    value: function demoLogin() {
-      var _this2 = this;
-
-      this.props.demoLogin({
-        username: 'Demo User',
+    key: "demoUser",
+    value: function demoUser(e) {
+      e.preventDefault();
+      var demouser = {
+        username: 'demouser',
         password: '123456'
-      }).then(function () {
-        return _this2.helperfxn;
-      });
+      };
+      this.props.loginDemo(demouser);
     }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.title = 'Dotify';
-    }
-  }, {
-    key: "helperfxn",
-    value: function helperfxn() {
-      this.props.history.push('/browse/featured');
-    }
+    } // helperfxn() {
+    //     this.props.history.push('/browse/featured');
+    // }
+
   }, {
     key: "render",
     value: function render() {
@@ -874,7 +871,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "splash-img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Music for everyone."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Millions of songs. No credit card needed."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.demoLogin,
+        onClick: this.demoUser,
         id: "splash-button"
       }, " DOTIFY DEMO ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer"
@@ -909,8 +906,8 @@ function (_React$Component) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    demoLogin: function demoLogin() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])());
+    loginDemo: function loginDemo(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["login"])(user));
     }
   };
 };
@@ -1287,13 +1284,7 @@ var logout = function logout() {
 var loginDemo = function loginDemo() {
   return $.ajax({
     method: 'POST',
-    url: 'api/session',
-    data: {
-      user: {
-        username: 'demouser',
-        password: '123456'
-      }
-    }
+    url: 'api/session'
   });
 };
 

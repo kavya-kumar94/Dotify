@@ -158,8 +158,12 @@ input[type="password"]:focus {
   border: 1px solid rgb(59, 153, 252);
 }
 
-input[type="text"] {
+.none2 {
   border: 1px solid lightgray;
+}
+
+input[type="text"] {
+  // border: 1px solid lightgray;
   width: 100%;
   padding: 10px;
   font-size: .9375em;
@@ -172,7 +176,7 @@ input[type="text"] {
 }
 
 input[type="password"] {
-  border: 1px solid lightgray;
+  // border: 1px solid lightgray;
   width: 100%;
   padding: 10px;
   font-size: .9375em;
@@ -331,6 +335,28 @@ span:hover {
     background-color: #616467;
   }
 
+  .demo2 {
+    display: block;
+    z-index: 1;
+    border-radius: 500px;
+    padding: 16px 48px 18px;
+    background-color: lightcoral;
+    border: 0px;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .demo2:hover {
+    color: #fff;
+    background-color: rgb(236, 177, 177);
+  }
+
   .account-check > span {
     color: #1DB954;
   }
@@ -354,11 +380,10 @@ span:hover {
     margin-bottom: 18px;
   }
 
-  .form-control {
-    display: flex;
+  .error:focus {
+    outline: none;
   }
 
-  .has-error .form-control {
-      box-shadow: 0 0 5px red;
-      border: 1px solid red;
-  }
+ .error {
+   border:1px solid #eb1e32;
+ }
