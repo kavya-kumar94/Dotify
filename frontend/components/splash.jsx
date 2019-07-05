@@ -48,7 +48,7 @@ class Splash extends React.Component {
             <div className="footer">
                 <div className="footer-header">
                     <span>
-                        <Link className="white" to="/"><img src="/assets/white_spotify.png" /></Link>
+                        <Link className="white" to="/"><img src="assets/images/white_spotify.png" /></Link>
                     </span>
                     <Link to="/" className="logo">Dotify</Link>
                 </div>

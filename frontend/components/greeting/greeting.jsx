@@ -9,7 +9,7 @@ const Greeting = ({ currentUser, logout }) => {
 
             <div className="title">
                 <span>
-                    <Link className="white" to="/"><img src="/assets/white_spotify.png" /></Link>
+                    <Link className="white" to="/"><img src="assets/images/white_spotify.png" /></Link>
                 </span>
                 <Link className="header" to="/">Dotify</Link>
             </div>
