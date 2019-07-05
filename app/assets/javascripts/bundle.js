@@ -313,7 +313,7 @@ var Greeting = function Greeting(_ref) {
       className: "white",
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "assets/images/white_spotify.png"
+      src: "/assets/white_spotify.png"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "header",
       to: "/"
@@ -881,7 +881,7 @@ function (_React$Component) {
         className: "white",
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "assets/images/white_spotify.png"
+        src: "/assets/white_spotify.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/",
         className: "logo"
