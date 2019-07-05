@@ -175,6 +175,14 @@ input[type="text"] {
   margin-bottom: 14px;
 }
 
+.links > .divider {
+  height: 20px;
+  width: 1px;
+  margin: 0px 15px;
+  background-color: #D9DADC;
+  list-style: none;
+}
+
 input[type="password"] {
   // border: 1px solid lightgray;
   width: 100%;
@@ -231,6 +239,7 @@ button.sign-up {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-end;
+  z-index: 2;
 };
 
 

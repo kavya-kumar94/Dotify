@@ -15,6 +15,9 @@ const Greeting = ({ currentUser, logout }) => {
             </div>
 
             <div className="links">
+                <li role="separator" className="divider">
+
+                </li>
                 <span>
                     <Link to="/signup">Sign up</Link>
                 </span>
