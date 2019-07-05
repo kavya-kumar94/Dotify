@@ -55,8 +55,8 @@ class Splash extends React.Component {
                 <div className="lists">
                     <div>
                         <h3>Sources</h3>
-                        <h4><a href="">GitHub </a> </h4>
-                        <h4><a href="">LinkedIn </a> </h4>
+                            <h4><a href="https://github.com/kavya-kumar94/Dotify" target="_blank">GitHub </a> </h4>
+                            <h4><a href="https://www.linkedin.com/in/kavya-kumar-452635100/" target="_blank">LinkedIn </a> </h4>
                     </div>
                     <div>
                         <h3>Useful Links</h3>

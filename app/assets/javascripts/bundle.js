@@ -888,9 +888,11 @@ function (_React$Component) {
       }, "Dotify")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lists"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Sources"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
+        href: "https://github.com/kavya-kumar94/Dotify",
+        target: "_blank"
       }, "GitHub "), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
+        href: "https://www.linkedin.com/in/kavya-kumar-452635100/",
+        target: "_blank"
       }, "LinkedIn "), " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Useful Links"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "/#/signup"
       }, " Sign Up "), " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
