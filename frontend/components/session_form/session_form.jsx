@@ -136,7 +136,7 @@ class SessionForm extends React.Component {
 
                 <div className="header2">
                     <span>
-                        <Link to="/"><img src="/assets/black_spotify.png" /></Link>
+                        <Link to="/"><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/black_spotify.png"/></Link>
                     </span>
                     <Link className="session-header" to="/">Dotify</Link>
                 </div>

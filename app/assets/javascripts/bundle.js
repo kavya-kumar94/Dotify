@@ -313,7 +313,7 @@ var Greeting = function Greeting(_ref) {
       className: "white",
       to: "/"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-      src: "/assets/white_spotify.png"
+      src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/white_spotify.png"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "header",
       to: "/"
@@ -645,7 +645,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/black_spotify.png"
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/black_spotify.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "session-header",
         to: "/"
@@ -884,7 +884,7 @@ function (_React$Component) {
         className: "white",
         to: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "/assets/white_spotify.png"
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/white_spotify.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/",
         className: "logo"
