@@ -97,11 +97,29 @@ class SessionForm extends React.Component {
         let invalidUsername = null;
         let invalidPassword = null;
         let invalidEmail = null;
+        let invalidUser = null;
+        let invalidEm = null;
         let classUsername = 'form-control';
         let classPassword = 'form-control';
         let classEmail = 'form-control';
 
         const invalidUsernamePassword = errors[0] && errors[0].indexOf('Incorrect') != -1 ? <div className="alert alert-warning">{errors[0]}</div> : null;
+
+        if (errors.includes('user') && formType==='signup') {
+            invalidUser = <div>That username already exists. Please try again.</div>
+            // classUsername = 'form-control invalid';
+        } else {
+            invalidUser = null;
+            // classUsername = 'form-control';
+        }
+
+        if (errors.includes('em') && formType==='signup') {
+            invalidEm = <div>That email already exists. Please try again.</div>
+            // classUsername = 'form-control invalid';
+        } else {
+            invalidEm = null;
+            // classUsername = 'form-control';
+        }
 
         if (errors.includes('username')) {
             invalidUsername = <div>Please enter your Dotify username.</div>
@@ -128,9 +146,8 @@ class SessionForm extends React.Component {
         }
 
         const emailInput = formType === 'signup' ? 
-            (<div> <input className={ invalidEmail ? "error" : "none2"} type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
+            (<div> <input className={ (invalidEmail || invalidEm) ? "error" : "none2"} type="text" onChange={this.update('email')} value={this.state.email} placeholder="Email" />  </div>)
          : null
-        // debugger;
         return (
             <div className="session-page">
 
@@ -176,13 +193,15 @@ class SessionForm extends React.Component {
                     {/* {this.renderErrors()} */}
                     <form onSubmit={this.handleSubmit}>
                             <input type="text"
-                                    className= { invalidUsername ? "error" : "none2"}
+                                    className= { (invalidUsername || invalidUser) ? "error" : "none2"}
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     placeholder="Username"
                                     />
+                            {invalidUser ? < div className="invalid">{invalidUser}</div> : <div className="none"></div> }
                             {invalidUsername ? <div className="invalid">{invalidUsername}</div> : <div className="none"></div>}
                             {emailInput}
+                            {invalidEm ? < div className="invalid">{invalidEm}</div> : <div className="none"></div> }
                             {invalidEmail ? <div className="invalid">{invalidEmail}</div> : <div className="none"></div>}
 
                             <input type="password"

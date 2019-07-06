@@ -6,6 +6,14 @@ class Api::UsersController < ApplicationController
           errors << 'username'
       end
 
+      if User.all.include?(User.find_by(username: params[:user][:username]))
+        errors << 'user'
+      end
+
+      if User.all.include?(User.find_by(email: params[:user][:email]))
+        errors << 'em'
+      end
+
       if params[:user][:password] == ""
           errors << 'password'
       end
@@ -27,6 +35,12 @@ class Api::UsersController < ApplicationController
               render json: ['That username already exists. Please try again.'], status: 422
           end
     end
+
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+    end
+
   end
   
   private

@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, CLEAR_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, clearErrors, loginDemo, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, CLEAR_SESSION_ERRORS, REMOVE_USER, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, clearErrors, removeUser, deleteUser, loginDemo, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102,6 +102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USERS", function() { return RECEIVE_NEW_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER", function() { return REMOVE_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
@@ -109,6 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUsers", function() { return receiveNewUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeUser", function() { return removeUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginDemo", function() { return loginDemo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
@@ -122,6 +125,7 @@ var RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 var RECEIVE_NEW_USERS = 'RECEIVE_NEW_USERS';
 var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
+var REMOVE_USER = "REMOVE_USER";
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -160,6 +164,21 @@ var receiveNewUsers = function receiveNewUsers(users) {
 var clearErrors = function clearErrors() {
   return {
     type: CLEAR_SESSION_ERRORS
+  };
+};
+var removeUser = function removeUser(user) {
+  return {
+    type: REMOVE_USER,
+    userId: user.id
+  };
+};
+var deleteUser = function deleteUser(user) {
+  return function (dispatch) {
+    return ApiUtil.deleteUser(user).then(function (user) {
+      return dispatch(removeUser(user));
+    }), function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    };
   };
 };
 var loginDemo = function loginDemo() {
@@ -605,12 +624,26 @@ function (_React$Component) {
       var invalidUsername = null;
       var invalidPassword = null;
       var invalidEmail = null;
+      var invalidUser = null;
+      var invalidEm = null;
       var classUsername = 'form-control';
       var classPassword = 'form-control';
       var classEmail = 'form-control';
       var invalidUsernamePassword = errors[0] && errors[0].indexOf('Incorrect') != -1 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "alert alert-warning"
       }, errors[0]) : null;
+
+      if (errors.includes('user') && formType === 'signup') {
+        invalidUser = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "That username already exists. Please try again."); // classUsername = 'form-control invalid';
+      } else {
+        invalidUser = null; // classUsername = 'form-control';
+      }
+
+      if (errors.includes('em') && formType === 'signup') {
+        invalidEm = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "That email already exists. Please try again."); // classUsername = 'form-control invalid';
+      } else {
+        invalidEm = null; // classUsername = 'form-control';
+      }
 
       if (errors.includes('username')) {
         invalidUsername = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Please enter your Dotify username."); // classUsername = 'form-control invalid';
@@ -631,13 +664,12 @@ function (_React$Component) {
       }
 
       var emailInput = formType === 'signup' ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: invalidEmail ? "error" : "none2",
+        className: invalidEmail || invalidEm ? "error" : "none2",
         type: "text",
         onChange: this.update('email'),
         value: this.state.email,
         placeholder: "Email"
-      }), "  ") : null; // debugger;
-
+      }), "  ") : null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -675,15 +707,23 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        className: invalidUsername ? "error" : "none2",
+        className: invalidUsername || invalidUser ? "error" : "none2",
         value: this.state.username,
         onChange: this.update('username'),
         placeholder: "Username"
+      }), invalidUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidUser) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
       }), invalidUsername ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid"
       }, invalidUsername) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "none"
-      }), emailInput, invalidEmail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), emailInput, invalidEm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidEm) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
+      }), invalidEmail ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid"
       }, invalidEmail) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "none"
@@ -947,6 +987,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 window.login = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["login"];
 window.logout = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logout"];
 window.signup = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signup"];
+window.deleteUser = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["deleteUser"];
 document.addEventListener('DOMContentLoaded', function () {
   var store;
 
@@ -1253,7 +1294,7 @@ var ProtectedRoute = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["withR
 /*!*******************************************!*\
   !*** ./frontend/util/session_api_util.js ***!
   \*******************************************/
-/*! exports provided: login, signup, logout, loginDemo */
+/*! exports provided: login, signup, logout, loginDemo, deleteUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1262,6 +1303,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginDemo", function() { return loginDemo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
 var login = function login(user) {
   return $.ajax({
     method: 'POST',
@@ -1290,6 +1332,12 @@ var loginDemo = function loginDemo() {
   return $.ajax({
     method: 'POST',
     url: 'api/session'
+  });
+};
+var deleteUser = function deleteUser(user) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "/api/users/".concat(user.id)
   });
 };
 

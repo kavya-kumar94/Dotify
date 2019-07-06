@@ -29,3 +29,9 @@ export const loginDemo = () => (
     })
 );
 
+export const deleteUser = (user) => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/users/${user.id}`
+    })
+);

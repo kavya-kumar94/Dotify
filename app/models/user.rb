@@ -1,10 +1,24 @@
 class User < ApplicationRecord
     validates :session_token, :password_digest, :username, presence: true
+    validates :session_token, :username, uniqueness: true
     validates :password, length: {minimum: 6, allow_nil: true}
     attr_reader :password
 
-    has_many :followers
-    has_many :playlists
+    has_many :playlistfollowers,
+        foreign_key: :follower_id,
+        class_name: :PlaylistFollow
+    
+    has_many :followees,
+        foreign_key: :followee_id,
+        class_name: :UserFollow
+
+    has_many :userfollowers,
+        foreign_key: :follower_id,
+        class_name: :UserFollow
+
+    has_many :playlists,
+        foreign_key: :creator_id,
+        class_name: :Playlist
     
     after_initialize :ensure_session_token
 

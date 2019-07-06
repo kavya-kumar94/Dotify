@@ -7,6 +7,7 @@ export const RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_NEW_USERS = 'RECEIVE_NEW_USERS';
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
+export const REMOVE_USER = "REMOVE_USER"
 
 export const receiveCurrentUser = currentUser => {
     return ({
@@ -41,12 +42,25 @@ export const receiveNewUsers = (users) => ({
     users
 });
 
-
 export const clearErrors = () => {
     return {
         type: CLEAR_SESSION_ERRORS,
     }
 };
+
+export const removeUser = (user) => ({
+    type: REMOVE_USER,
+    userId: user.id
+})
+
+
+export const deleteUser = (user) => dispatch => (
+    ApiUtil.deleteUser(user).then( user => (
+        dispatch(removeUser(user))
+    )), err => (
+        dispatch(receiveErrors(err.responseJSON))
+    )
+)
 
 export const loginDemo = () => dispatch => (
     ApiUtil.loginDemo().then(user => (
