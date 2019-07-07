@@ -11,6 +11,7 @@ class Api::PlaylistSongsController < ApplicationController
     def destroy
         @playlist_song = PlaylistSong.find(params[:id])
         @playlist_song.delete
+        render `/api/playlists/#{playlist_id}`
     end
 
     private
