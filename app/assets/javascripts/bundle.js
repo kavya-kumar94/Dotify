@@ -562,6 +562,7 @@ function (_React$Component) {
   }, {
     key: "demoUser",
     value: function demoUser(e) {
+      // debugger;
       e.preventDefault();
       this.state = {
         username: 'demouser',

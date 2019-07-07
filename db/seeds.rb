@@ -31,33 +31,33 @@ user6 = User.create(username: 'kavya', email: 'kavya@gmail.com', password: '1234
 
 # User follows
 
-# demouser.following << user2
-# demouser.following << user3
-# demouser.following << user4
-# demouser.following << user5
+# user6.following << user2
+# user6.following << user3
+# user6.following << user4
+# user6.following << user5
 
-# demouser.followers << user6
-# demouser.followers << user2
-# demouser.followers << user3
+# user6.followers << user6
+# user6.followers << user2
+# user6.followers << user3
 
 # Playlists
 
-a = Playlist.create(title: 'Chill', creator_id: demouser.id)
+a = Playlist.create(title: 'Chill', creator_id: user6.id)
 
-b = Playlist.create(title: 'Summer', creator_id: demouser.id)
+b = Playlist.create(title: 'Summer', creator_id: user6.id)
 
-c = Playlist.create(title: 'Best of MJ', creator_id: demouser.id)
+c = Playlist.create(title: 'Best of MJ', creator_id: user6.id)
 
 d = Playlist.create(title: 'Favorites', creator_id: user2.id)
 
 e = Playlist.create(title: 'Pumped Pop', creator_id: user2.id)
 
-f = Playlist.create(title: 'Smooth', creator_id: demouser.id)
+f = Playlist.create(title: 'Smooth', creator_id: user6.id)
 
 
-# demouser.followed_playlists << a
-# demouser.followed_playlists << c
-# demouser.followed_playlists << f
+# user6.followed_playlists << a
+# user6.followed_playlists << c
+# user6.followed_playlists << f
 
 # Genre
 
