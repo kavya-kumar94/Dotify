@@ -530,9 +530,9 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
-    _this.usernameTyper = _this.usernameTyper.bind(_assertThisInitialized(_this));
-    _this.passwordTyper = _this.passwordTyper.bind(_assertThisInitialized(_this)); // this.guestLogin = this.guestLogin.bind(this);
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this)); // this.usernameTyper = this.usernameTyper.bind(this);
+    // this.passwordTyper = this.passwordTyper.bind(this);
+    // this.guestLogin = this.guestLogin.bind(this);
     // this.guestLoginHelper = this.guestLoginHelper.bind(this)
 
     return _this;
@@ -562,7 +562,7 @@ function (_React$Component) {
   }, {
     key: "demoUser",
     value: function demoUser(e) {
-      // e.preventDefault();
+      e.preventDefault();
       this.state = {
         username: 'demouser',
         password: '123456'
@@ -576,57 +576,42 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
-    }
-  }, {
-    key: "usernameTyper",
-    value: function usernameTyper() {
-      // debugger;
-      var i = 0;
-      var username = ' demouser';
-      var speed = 75;
-      /* The speed/duration of the effect in milliseconds */
-
-      var username_field = document.getElementById("username");
-      username_field.value = "";
-
-      var typeWriter = function typeWriter() {
-        // this.props.clearErrors();
-        if (i < username.length) {
-          username_field.value += username.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
-        }
-      };
-
-      typeWriter(); // this.props.clearErrors();
-
-      setTimeout(this.passwordTyper, 1000);
-      setTimeout(this.demoUser, 1800);
-    }
-  }, {
-    key: "passwordTyper",
-    value: function passwordTyper() {
-      // this.props.clearErrors();
-      var i = 0;
-      var password = '123456';
-      var speed = 75;
-      /* The speed/duration of the effect in milliseconds */
-
-      var password_field = document.getElementById("password");
-      password_field.value = "";
-
-      var typeWriter = function typeWriter() {
-        if (i < password.length) {
-          password_field.value += password.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
-        }
-      };
-
-      typeWriter();
-    }
-  }, {
-    key: "render",
+    } // usernameTyper() {
+    //     // debugger;
+    //     this.props.clearErrors();
+    //     let i = 0;
+    //     let username = ' demouser'
+    //     const speed = 75; /* The speed/duration of the effect in milliseconds */
+    //     let username_field = document.getElementById("username");
+    //     username_field.value = "";
+    //     const typeWriter = () => {
+    //         if (i < username.length) {
+    //             username_field.value += username.charAt(i);
+    //             i++;
+    //             setTimeout(typeWriter, speed);
+    //         }
+    //     };
+    //     typeWriter();
+    //     // this.props.clearErrors();
+    //     setTimeout(this.passwordTyper, 1000);
+    //     setTimeout(this.demoUser, 1800);
+    // };
+    // passwordTyper() {
+    //     // this.props.clearErrors();
+    //     let i = 0;
+    //     const password = '123456'
+    //     const speed = 75; /* The speed/duration of the effect in milliseconds */
+    //     let password_field = document.getElementById("password");
+    //     password_field.value = "";
+    //     const typeWriter = () => {
+    //         if (i < password.length) {
+    //             password_field.value += password.charAt(i);
+    //             i++;
+    //             setTimeout(typeWriter, speed);
+    //         }
+    //     };
+    //     typeWriter();
+    // };
     // guestLogin() {
     //     const splitUser = 'demouser'.split('');
     //     const splitPassword = '123456'.split('');
@@ -667,6 +652,9 @@ function (_React$Component) {
     //     this.props.clearErrors();
     //     this.props.history.push("/signup");
     // }
+
+  }, {
+    key: "render",
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
@@ -804,7 +792,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "bottom-button"
       }, "SIGN UP FOR DOTIFY")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.usernameTyper,
+        onClick: this.demoUser,
         className: "demo2"
       }, "DEMO"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yesaccount"

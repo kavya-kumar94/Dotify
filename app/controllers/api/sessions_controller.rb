@@ -1,7 +1,8 @@
 class Api::SessionsController < ApplicationController
+
     def create
         errors = []
-
+        
         if params[:user][:username] == ""
             errors << 'username'
         end
