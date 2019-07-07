@@ -14,6 +14,16 @@
  *= require_self
  */
 
+@font-face {
+  font-family: "Circular Bold";
+  src: image-url('CircularStd-Bold.otf');
+}
+
+@font-face {
+  font-family: "Circular";
+  src: image-url('CircularStd-Book.otf');
+}
+
 @import 'splash.scss';
 @import 'reset.scss';
 @import url('https://fonts.googleapis.com/css?family=Raleway:800&display=swap');
