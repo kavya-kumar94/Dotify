@@ -17,9 +17,13 @@ class Artist < ApplicationRecord
         class_name: :Genre 
     
     has_many :albums,
-        foreign_key: :album_id,
+        foreign_key: :artist_id,
         class_name: :Album
 
+    has_many :songs,
+        through: :albums,
+        source: :songs
+        
     has_one_attached :artist_image
 
 end

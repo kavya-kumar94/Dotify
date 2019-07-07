@@ -1,5 +1,5 @@
 json.set! song.id do 
-    json.extract! song, :id, :title, :album_id, :artist_id, :genre_id, :duration  
+    json.extract! song, :id, :title, :album_id, :genre_id, :duration  
     # json.id song.id
     # json.title song.title
     json.album song.album.title

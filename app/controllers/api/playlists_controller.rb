@@ -2,7 +2,7 @@ class Api::PlaylistsController < ApplicationController
     # before_action :require_logged_in
 
     def create
-        @playlist = Playlist.new(playlist_params)
+        @playlist = Playlist.create(playlist_params)
         @playlist.user_id = current_user.id
 
         if @playlist.save

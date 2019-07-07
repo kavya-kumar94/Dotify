@@ -26,7 +26,7 @@ class Api::UsersController < ApplicationController
           render json: errors, status: 422
           return
       else
-          @user = User.new(user_params)
+          @user = User.create(user_params)
 
           if @user.save
               login(@user)
@@ -34,6 +34,7 @@ class Api::UsersController < ApplicationController
           else
               render json: ['That username already exists. Please try again.'], status: 422
           end
+      end
     end
 
     def destroy
@@ -41,8 +42,11 @@ class Api::UsersController < ApplicationController
         @user.destroy
     end
 
-  end
-  
+    def show
+      @user = User.find(params[:id])
+    end
+    
+    
   private
 
   def user_params

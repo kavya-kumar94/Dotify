@@ -27,6 +27,10 @@ class Playlist < ApplicationRecord
         foreign_key: :playlist_id,
         class_name: :PlaylistSong
 
+    has_many :songs,
+        through: :playlist_songs,
+        source: :song 
+        
     has_one_attached :playlist_image
     
 end

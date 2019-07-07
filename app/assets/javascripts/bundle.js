@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_NEW_USER, RECEIVE_ALL_USERS, RECEIVE_NEW_USERS, CLEAR_SESSION_ERRORS, REMOVE_USER, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveNewUser, receiveAllUsers, receiveNewUsers, clearErrors, removeUser, deleteUser, loginDemo, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_create_USER, RECEIVE_ALL_USERS, RECEIVE_create_USERS, CLEAR_SESSION_ERRORS, REMOVE_USER, receiveCurrentUser, logoutCurrentUser, receiveErrors, receivecreateUser, receiveAllUsers, receivecreateUsers, clearErrors, removeUser, deleteUser, loginDemo, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,17 +98,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USER", function() { return RECEIVE_NEW_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_create_USER", function() { return RECEIVE_create_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_NEW_USERS", function() { return RECEIVE_NEW_USERS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_create_USERS", function() { return RECEIVE_create_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER", function() { return REMOVE_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUser", function() { return receiveNewUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivecreateUser", function() { return receivecreateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveNewUsers", function() { return receiveNewUsers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivecreateUsers", function() { return receivecreateUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeUser", function() { return removeUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
@@ -121,9 +121,9 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-var RECEIVE_NEW_USER = 'RECEIVE_NEW_USER';
+var RECEIVE_create_USER = 'RECEIVE_create_USER';
 var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
-var RECEIVE_NEW_USERS = 'RECEIVE_NEW_USERS';
+var RECEIVE_create_USERS = 'RECEIVE_create_USERS';
 var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 var REMOVE_USER = "REMOVE_USER";
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
@@ -143,9 +143,9 @@ var receiveErrors = function receiveErrors(errors) {
     errors: errors
   };
 };
-var receiveNewUser = function receiveNewUser(payload) {
+var receivecreateUser = function receivecreateUser(payload) {
   return {
-    type: RECEIVE_NEW_USER,
+    type: RECEIVE_create_USER,
     payload: payload
   };
 };
@@ -155,9 +155,9 @@ var receiveAllUsers = function receiveAllUsers(users) {
     users: users
   };
 };
-var receiveNewUsers = function receiveNewUsers(users) {
+var receivecreateUsers = function receivecreateUsers(users) {
   return {
-    type: RECEIVE_NEW_USERS,
+    type: RECEIVE_create_USERS,
     users: users
   };
 };
@@ -1219,16 +1219,16 @@ var usersReducer = function usersReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_NEW_USER"]:
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_create_USER"]:
       var tempState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.followers, action.payload.following);
       delete tempState[action.payload.user.id];
-      var newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, tempState, _defineProperty({}, action.payload.user.id, action.payload.user));
-      return newState;
+      var createState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, tempState, _defineProperty({}, action.payload.user.id, action.payload.user));
+      return createState;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_USERS"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.users);
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_NEW_USERS"]:
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_create_USERS"]:
       return action.users;
 
     default:
