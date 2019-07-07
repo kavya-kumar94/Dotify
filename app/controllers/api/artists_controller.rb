@@ -7,9 +7,4 @@ class Api::ArtistsController < ApplicationController
         @artist = Artist.find(params[:id])
     end
 
-    private
-    def artist_params
-        params.require(:artist).permit(:name, :genre_id)
-    end
-
 end

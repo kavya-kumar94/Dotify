@@ -4,9 +4,9 @@ class Api::SongsController < ApplicationController
     render :show
   end
 
-  private
-  def song_params
-    params.require(:song).permit(:title, :album_id, :genre_id, :duration)
+  def index
+    @songs = Song.all
   end
+
 
 end

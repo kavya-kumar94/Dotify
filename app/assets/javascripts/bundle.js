@@ -530,7 +530,9 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this)); // this.guestLogin = this.guestLogin.bind(this);
+    _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this));
+    _this.usernameTyper = _this.usernameTyper.bind(_assertThisInitialized(_this));
+    _this.passwordTyper = _this.passwordTyper.bind(_assertThisInitialized(_this)); // this.guestLogin = this.guestLogin.bind(this);
     // this.guestLoginHelper = this.guestLoginHelper.bind(this)
 
     return _this;
@@ -560,7 +562,7 @@ function (_React$Component) {
   }, {
     key: "demoUser",
     value: function demoUser(e) {
-      e.preventDefault();
+      // e.preventDefault();
       this.state = {
         username: 'demouser',
         password: '123456'
@@ -574,7 +576,58 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
-    } // guestLogin() {
+    }
+  }, {
+    key: "usernameTyper",
+    value: function usernameTyper() {
+      // debugger;
+      var i = 0;
+      var username = ' demouser';
+      var speed = 75;
+      /* The speed/duration of the effect in milliseconds */
+
+      var username_field = document.getElementById("username");
+      username_field.value = "";
+
+      var typeWriter = function typeWriter() {
+        // this.props.clearErrors();
+        if (i < username.length) {
+          username_field.value += username.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      };
+
+      typeWriter(); // this.props.clearErrors();
+
+      setTimeout(this.passwordTyper, 1000);
+      setTimeout(this.demoUser, 1800);
+    }
+  }, {
+    key: "passwordTyper",
+    value: function passwordTyper() {
+      // this.props.clearErrors();
+      var i = 0;
+      var password = '123456';
+      var speed = 75;
+      /* The speed/duration of the effect in milliseconds */
+
+      var password_field = document.getElementById("password");
+      password_field.value = "";
+
+      var typeWriter = function typeWriter() {
+        if (i < password.length) {
+          password_field.value += password.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      };
+
+      typeWriter();
+    }
+  }, {
+    key: "render",
+    // guestLogin() {
     //     const splitUser = 'demouser'.split('');
     //     const splitPassword = '123456'.split('');
     //     const enter = document.getElementById('submit');
@@ -614,9 +667,6 @@ function (_React$Component) {
     //     this.props.clearErrors();
     //     this.props.history.push("/signup");
     // }
-
-  }, {
-    key: "render",
     value: function render() {
       var _this$props = this.props,
           formType = _this$props.formType,
@@ -707,6 +757,7 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
+        id: "username",
         className: invalidUsername || invalidUser ? "error" : "none2",
         value: this.state.username,
         onChange: this.update('username'),
@@ -729,6 +780,7 @@ function (_React$Component) {
         className: "none"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
+        id: "password",
         className: invalidPassword ? "error" : "none2",
         value: this.state.password,
         onChange: this.update('password'),
@@ -752,7 +804,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "bottom-button"
       }, "SIGN UP FOR DOTIFY")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.demoUser,
+        onClick: this.usernameTyper,
         className: "demo2"
       }, "DEMO"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "yesaccount"

@@ -11,6 +11,8 @@ class SessionForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoUser = this.demoUser.bind(this);
+        this.usernameTyper = this.usernameTyper.bind(this);
+        this.passwordTyper = this.passwordTyper.bind(this);
         // this.guestLogin = this.guestLogin.bind(this);
         // this.guestLoginHelper = this.guestLoginHelper.bind(this)
     }
@@ -35,7 +37,7 @@ class SessionForm extends React.Component {
     }
 
     demoUser(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.state = { username: 'demouser', password: '123456'};
         const demouser = Object.assign({}, this.state);
         this.props.processForm(demouser);
@@ -47,6 +49,46 @@ class SessionForm extends React.Component {
         this.props.processForm(user);
     }
 
+    usernameTyper() {
+        // debugger;
+        let i = 0;
+        let username = ' demouser'
+        const speed = 75; /* The speed/duration of the effect in milliseconds */
+        let username_field = document.getElementById("username");
+        username_field.value = "";
+        
+        const typeWriter = () => {
+            // this.props.clearErrors();
+            if (i < username.length) {
+                username_field.value += username.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        };
+        
+        typeWriter();
+        // this.props.clearErrors();
+        setTimeout(this.passwordTyper, 1000);
+        setTimeout(this.demoUser, 1800);
+    };
+    
+    passwordTyper() {
+        // this.props.clearErrors();
+        let i = 0;
+        const password = '123456'
+        const speed = 75; /* The speed/duration of the effect in milliseconds */
+        let password_field = document.getElementById("password");
+        password_field.value = "";
+
+        const typeWriter = () => {
+            if (i < password.length) {
+                password_field.value += password.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        };
+        typeWriter();
+    };
     // guestLogin() {
     //     const splitUser = 'demouser'.split('');
     //     const splitPassword = '123456'.split('');
@@ -193,6 +235,7 @@ class SessionForm extends React.Component {
                     {/* {this.renderErrors()} */}
                     <form onSubmit={this.handleSubmit}>
                             <input type="text"
+                                    id="username"
                                     className= { (invalidUsername || invalidUser) ? "error" : "none2"}
                                     value={this.state.username}
                                     onChange={this.update('username')}
@@ -205,6 +248,7 @@ class SessionForm extends React.Component {
                             {invalidEmail ? <div className="invalid">{invalidEmail}</div> : <div className="none"></div>}
 
                             <input type="password"
+                                    id="password"
                                     className={ invalidPassword ? "error" : "none2" }
                                     value={this.state.password}
                                     onChange={this.update('password')}
@@ -220,7 +264,7 @@ class SessionForm extends React.Component {
                                     Don't have an account?
                                     </div>
                                     <Link to="/signup"><button className="bottom-button">SIGN UP FOR DOTIFY</button></Link>
-                                    <button onClick={this.demoUser} className="demo2">DEMO</button>
+                                    <button onClick={this.usernameTyper} className="demo2">DEMO</button>
 
                                 </div>
                             </div>
