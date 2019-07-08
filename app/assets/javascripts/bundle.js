@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_create_USER, RECEIVE_ALL_USERS, RECEIVE_create_USERS, CLEAR_SESSION_ERRORS, REMOVE_USER, receiveCurrentUser, logoutCurrentUser, receiveErrors, receivecreateUser, receiveAllUsers, receivecreateUsers, clearErrors, removeUser, deleteUser, loginDemo, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_ERRORS, RECEIVE_ALL_USERS, CLEAR_SESSION_ERRORS, REMOVE_USER, receiveCurrentUser, logoutCurrentUser, receiveErrors, receiveAllUsers, clearErrors, removeUser, deleteUser, loginDemo, signup, login, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,17 +98,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_create_USER", function() { return RECEIVE_create_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_USERS", function() { return RECEIVE_ALL_USERS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_create_USERS", function() { return RECEIVE_create_USERS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_SESSION_ERRORS", function() { return CLEAR_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_USER", function() { return REMOVE_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivecreateUser", function() { return receivecreateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveAllUsers", function() { return receiveAllUsers; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivecreateUsers", function() { return receivecreateUsers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeUser", function() { return removeUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteUser", function() { return deleteUser; });
@@ -120,10 +116,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
-var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-var RECEIVE_create_USER = 'RECEIVE_create_USER';
-var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
-var RECEIVE_create_USERS = 'RECEIVE_create_USERS';
+var RECEIVE_ERRORS = 'RECEIVE_ERRORS'; // export const RECEIVE_create_USER = 'RECEIVE_create_USER';
+
+var RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS'; // export const RECEIVE_create_USERS = 'RECEIVE_create_USERS';
+
 var CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 var REMOVE_USER = "REMOVE_USER";
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
@@ -142,25 +138,21 @@ var receiveErrors = function receiveErrors(errors) {
     type: RECEIVE_ERRORS,
     errors: errors
   };
-};
-var receivecreateUser = function receivecreateUser(payload) {
-  return {
-    type: RECEIVE_create_USER,
-    payload: payload
-  };
-};
+}; // export const receivecreateUser = (payload) => ({
+//     type: RECEIVE_create_USER,
+//     payload
+// });
+
 var receiveAllUsers = function receiveAllUsers(users) {
   return {
     type: RECEIVE_ALL_USERS,
     users: users
   };
-};
-var receivecreateUsers = function receivecreateUsers(users) {
-  return {
-    type: RECEIVE_create_USERS,
-    users: users
-  };
-};
+}; // export const receivecreateUsers = (users) => ({
+//     type: RECEIVE_create_USERS,
+//     users
+// });
+
 var clearErrors = function clearErrors() {
   return {
     type: CLEAR_SESSION_ERRORS

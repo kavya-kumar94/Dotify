@@ -23,14 +23,14 @@ class Modal extends React.Component {
         let component;
         switch (modal.modal) {
             case 'new_playlist':
-                component = < newPlaylistForm />;
+                component = <newPlaylistForm />;
                 break;
-            case 'add_to_playlist':
-                component = <AddSongForm songId={modal.song_id} />;
-                break;
-            case 'user_modal':
-                component = <UserModal currentUserId={modal.currentUserId} subjectUser={modal.subjectUser} />;
-                break;
+            // case 'add_to_playlist':
+            //     component = <AddSongForm songId={modal.song_id} />;
+            //     break;
+            // case 'user_modal':
+            //     component = <UserModal currentUserId={modal.currentUserId} subjectUser={modal.subjectUser} />;
+            //     break;
             default:
                 return null;
         }

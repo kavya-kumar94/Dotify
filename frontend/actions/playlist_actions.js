@@ -1,4 +1,5 @@
 import * as PlaylistApiUtil from '../util/playlist_api_util'
+import * as PlaylistSongApiUtil from '../util/playlist_song_api_util'
 
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
@@ -53,10 +54,19 @@ export const createPlaylist = (playlist) => dispatch => {
         err => dispatch(receivePlaylistErrors(err.responseJSON));
 }
 
-export const updatePlaylist = (playlist) => dispatch => {
-    return PlaylistApiUtil.updatePlaylist(playlist).then( playlist => dispatch(receivePlaylist(playlist))),
-        err => dispatch(receivePlaylistErrors(err.responseJSON));
-}
+
+export const addSongToPlaylist = (playlistId, songId) => dispatch => (
+    PlaylistSongApiUtil.addSongToPlaylist(playlistId, songId).then(
+        message => dispatch(receivePlaylistErrors(message)),
+        err => dispatch(receivePlaylistErrors(err.responseJSON))
+    )
+);
+
+
+// export const updatePlaylist = (playlist) => dispatch => {
+//     return PlaylistApiUtil.updatePlaylist(playlist).then( playlist => dispatch(receivePlaylist(playlist))),
+//         err => dispatch(receivePlaylistErrors(err.responseJSON));
+// }
 
 export const deletePlaylist = (playlist) => dispatch => {
     return PlaylistApiUtil.deletePlaylist(playlist).then( playlist => dispatch(destroyPlaylist(playlist)))
