@@ -13,8 +13,6 @@ class SessionForm extends React.Component {
         this.demoUser = this.demoUser.bind(this);
         // this.usernameTyper = this.usernameTyper.bind(this);
         // this.passwordTyper = this.passwordTyper.bind(this);
-        // this.guestLogin = this.guestLogin.bind(this);
-        // this.guestLoginHelper = this.guestLoginHelper.bind(this)
     }
 
    
@@ -22,13 +20,6 @@ class SessionForm extends React.Component {
         document.title = this.props.formType;
         this.props.clearErrors();
     }
-    
-    // componentDidUpdate(prevProps) {
-    //     debugger
-    //     if (this.props.formType !== prevProps.formType) {
-    //         this.props.clearErrors();
-    //     } 
-    // }
 
     update(field) {
         return e => this.setState({
@@ -37,7 +28,6 @@ class SessionForm extends React.Component {
     }
 
     demoUser(e) {
-        // debugger;
         e.preventDefault();
         this.state = { username: 'demouser', password: '123456' }
         const demouser = Object.assign({}, this.state)
@@ -90,49 +80,6 @@ class SessionForm extends React.Component {
     //     };
     //     typeWriter();
     // };
-    // guestLogin() {
-    //     const splitUser = 'demouser'.split('');
-    //     const splitPassword = '123456'.split('');
-    //     const enter = document.getElementById('submit');
-    //     this.setState({username: '', password: ''}) , () => {
-    //         this.guestLoginHelper(splitUser, splitPassword, enter)
-    //     }
-    // }
-
-    // guestLoginHelper(splitUser, splitPassword, enter) {
-    //     if (splitUser.length > 0) {
-    //         this.setState({username: this.state.username + splitUser.shift()}, () => {
-    //             window.setTimeout(() => 
-    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-    //         }
-    //         );
-    //     } else if (splitPassword.length > 0) {
-    //         this.setState({ password: this.state.password + splitPassword.shift() }, () => {
-    //             window.setTimeout(() =>
-    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-    //         }
-    //         );
-    //     } else {
-    //         enter.click();
-    //     }
-    // }
-
-    // renderErrors() {
-    //     return (
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
-
-    // errorReset() {
-    //     this.props.clearErrors();
-    //     this.props.history.push("/signup");
-    // }
 
     render() {
         let { formType, errors } = this.props;
@@ -233,7 +180,6 @@ class SessionForm extends React.Component {
                             {invalidUsernamePassword}
                     </div>
 
-                    {/* {this.renderErrors()} */}
                     <form onSubmit={this.handleSubmit}>
                             <input type="text"
                                     id="username"

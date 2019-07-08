@@ -532,8 +532,6 @@ function (_React$Component) {
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.demoUser = _this.demoUser.bind(_assertThisInitialized(_this)); // this.usernameTyper = this.usernameTyper.bind(this);
     // this.passwordTyper = this.passwordTyper.bind(this);
-    // this.guestLogin = this.guestLogin.bind(this);
-    // this.guestLoginHelper = this.guestLoginHelper.bind(this)
 
     return _this;
   }
@@ -543,13 +541,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       document.title = this.props.formType;
       this.props.clearErrors();
-    } // componentDidUpdate(prevProps) {
-    //     debugger
-    //     if (this.props.formType !== prevProps.formType) {
-    //         this.props.clearErrors();
-    //     } 
-    // }
-
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -562,7 +554,6 @@ function (_React$Component) {
   }, {
     key: "demoUser",
     value: function demoUser(e) {
-      // debugger;
       e.preventDefault();
       this.state = {
         username: 'demouser',
@@ -613,46 +604,6 @@ function (_React$Component) {
     //     };
     //     typeWriter();
     // };
-    // guestLogin() {
-    //     const splitUser = 'demouser'.split('');
-    //     const splitPassword = '123456'.split('');
-    //     const enter = document.getElementById('submit');
-    //     this.setState({username: '', password: ''}) , () => {
-    //         this.guestLoginHelper(splitUser, splitPassword, enter)
-    //     }
-    // }
-    // guestLoginHelper(splitUser, splitPassword, enter) {
-    //     if (splitUser.length > 0) {
-    //         this.setState({username: this.state.username + splitUser.shift()}, () => {
-    //             window.setTimeout(() => 
-    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-    //         }
-    //         );
-    //     } else if (splitPassword.length > 0) {
-    //         this.setState({ password: this.state.password + splitPassword.shift() }, () => {
-    //             window.setTimeout(() =>
-    //                 this.guestLoginHelper(splitUser, splitPassword, enter), 65)
-    //         }
-    //         );
-    //     } else {
-    //         enter.click();
-    //     }
-    // }
-    // renderErrors() {
-    //     return (
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
-    // errorReset() {
-    //     this.props.clearErrors();
-    //     this.props.history.push("/signup");
-    // }
 
   }, {
     key: "render",
