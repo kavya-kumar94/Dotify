@@ -1,8 +1,7 @@
-export const fetchPlaylists = (playlists) => {
+export const fetchPlaylists = () => {
   return $.ajax({
     method: "GET",
     url: "/api/playlists",
-    data: {playlists}
   });
 };
 
@@ -17,9 +16,7 @@ export const createPlaylist = (playlist) => {
   return $.ajax({
     method: "POST",
     url: "/api/playlists",
-    data: { playlist },
-    contentType: false,
-    processData: false
+    data: { playlist }
   });
 }
 
