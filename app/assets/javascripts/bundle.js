@@ -1166,7 +1166,7 @@ var usersReducer = function usersReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_create_USER"]:
+    case RECEIVE_create_USER:
       var tempState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.followers, action.payload.following);
       delete tempState[action.payload.user.id];
       var createState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, tempState, _defineProperty({}, action.payload.user.id, action.payload.user));
@@ -1175,7 +1175,7 @@ var usersReducer = function usersReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_USERS"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.users);
 
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_create_USERS"]:
+    case RECEIVE_create_USERS:
       return action.users;
 
     default:

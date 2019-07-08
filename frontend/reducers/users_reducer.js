@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import { RECEIVE_CURRENT_USER, RECEIVE_ALL_USERS, RECEIVE_create_USER, RECEIVE_create_USERS } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, RECEIVE_ALL_USERS } from '../actions/session_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
