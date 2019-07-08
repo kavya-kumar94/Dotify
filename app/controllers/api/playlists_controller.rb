@@ -9,7 +9,8 @@ class Api::PlaylistsController < ApplicationController
             current_user.followed_playlists << @playlist 
             render :show
         else 
-            render json: ["Unable to create playlist"], status: 401
+            render json: @playlist.errors.messages, status: 401
+            # render json: ["Unable to create playlist"], status: 401
         end
 
     end
@@ -36,7 +37,7 @@ class Api::PlaylistsController < ApplicationController
         if @playlist.update(playlist_params)
             render :show
         else
-            render json: @playlist.errors.full_messages, status: 401
+            render json: @playlist.errors.messages, status: 401
         end
     end
 
