@@ -7,7 +7,12 @@
     <link rel="icon" href="https://www.scdn.co/i/_global/favicon.ico" type="image/x-icon">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  
+    <% if logged_in? %>
+      <script id="bootstrap-current-user" type="text/javascript">
+        window.currentUser = <%= render("api/users/user.json.jbuilder",
+          user: current_user).html_safe %>
+      </script>
+    <% end %>
   </head>
 
   <body>

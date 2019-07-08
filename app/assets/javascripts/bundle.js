@@ -277,9 +277,6 @@ function (_React$Component) {
         exact: true,
         path: "/login",
         component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
-        path: "/browse/featured",
-        component: Main
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Route"], {
         exact: true,
         path: "/",
@@ -1165,18 +1162,18 @@ var usersReducer = function usersReducer() {
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
-
-    case RECEIVE_create_USER:
-      var tempState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.payload.followers, action.payload.following);
-      delete tempState[action.payload.user.id];
-      var createState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, tempState, _defineProperty({}, action.payload.user.id, action.payload.user));
-      return createState;
+    // case RECEIVE_create_USER:
+    //     let tempState = merge({}, state,
+    //     action.payload.followers,
+    //     action.payload.following); 
+    //     delete tempState[action.payload.user.id];
+    //     let createState = merge({}, tempState, { [action.payload.user.id]: action.payload.user });
+    //     return createState
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_USERS"]:
       return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, action.users);
-
-    case RECEIVE_create_USERS:
-      return action.users;
+    // case RECEIVE_create_USERS:
+    //     return action.users
 
     default:
       return state;
