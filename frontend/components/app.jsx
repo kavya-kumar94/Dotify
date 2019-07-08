@@ -24,6 +24,7 @@ class App extends React.Component {
     <div>
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
        <AuthRoute exact path="/login" component={LoginFormContainer} />
+       <ProtectedRoute path='/browse/featured' component={Main} />
        <Route exact path="/" component={GreetingContainer} />
        <AuthRoute exact path="/" component={Splash} />
     </div>
