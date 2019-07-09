@@ -89,6 +89,7 @@ class SessionForm extends React.Component {
         let invalidEmail = null;
         let invalidUser = null;
         let invalidEm = null;
+        let invalidCombo = null;
         let classUsername = 'form-control';
         let classPassword = 'form-control';
         let classEmail = 'form-control';
@@ -100,6 +101,14 @@ class SessionForm extends React.Component {
             // classUsername = 'form-control invalid';
         } else {
             invalidUser = null;
+            // classUsername = 'form-control';
+        }
+
+        if (errors.includes('combo') && formType==='login') {
+            invalidCombo = <div>Incorrect username/password.</div>
+            // classUsername = 'form-control invalid';
+        } else {
+            invalidCombo = null;
             // classUsername = 'form-control';
         }
 
@@ -183,11 +192,12 @@ class SessionForm extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                             <input type="text"
                                     id="username"
-                                    className= { (invalidUsername || invalidUser) ? "error" : "none2"}
+                                    className= { (invalidUsername || invalidUser || invalidCombo) ? "error" : "none2"}
                                     value={this.state.username}
                                     onChange={this.update('username')}
                                     placeholder="Username"
                                     />
+                        {(invalidCombo && !invalidUsername) ? < div className="invalid">{invalidCombo}</div> : <div className="none"></div>}
                             {invalidUser ? < div className="invalid">{invalidUser}</div> : <div className="none"></div> }
                             {invalidUsername ? <div className="invalid">{invalidUsername}</div> : <div className="none"></div>}
                             {emailInput}

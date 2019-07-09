@@ -1444,6 +1444,7 @@ function (_React$Component) {
       var invalidEmail = null;
       var invalidUser = null;
       var invalidEm = null;
+      var invalidCombo = null;
       var classUsername = 'form-control';
       var classPassword = 'form-control';
       var classEmail = 'form-control';
@@ -1455,6 +1456,12 @@ function (_React$Component) {
         invalidUser = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "That username already exists. Please try again."); // classUsername = 'form-control invalid';
       } else {
         invalidUser = null; // classUsername = 'form-control';
+      }
+
+      if (errors.includes('combo') && formType === 'login') {
+        invalidCombo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Incorrect username/password."); // classUsername = 'form-control invalid';
+      } else {
+        invalidCombo = null; // classUsername = 'form-control';
       }
 
       if (errors.includes('em') && formType === 'signup') {
@@ -1526,10 +1533,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "username",
-        className: invalidUsername || invalidUser ? "error" : "none2",
+        className: invalidUsername || invalidUser || invalidCombo ? "error" : "none2",
         value: this.state.username,
         onChange: this.update('username'),
         placeholder: "Username"
+      }), invalidCombo && !invalidUsername ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "invalid"
+      }, invalidCombo) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "none"
       }), invalidUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "invalid"
       }, invalidUser) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

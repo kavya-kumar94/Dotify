@@ -7,6 +7,10 @@ class Api::SessionsController < ApplicationController
             errors << 'username'
         end
 
+        if !User.find_by_credentials(params[:user][:username],params[:user][:password])
+            errors << 'combo'
+        end
+
         # if params[:user][:email] == ""
         #     errors << 'email'
         # end
