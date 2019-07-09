@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 import { login, logout, signup, deleteUser } from './actions/session_actions'
+import {receiveArtists } from './actions/artist_actions';
 
+window.receiveArtists = receiveArtists;
 window.login = login;
 window.logout = logout;
 window.signup = signup;

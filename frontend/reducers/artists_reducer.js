@@ -7,7 +7,6 @@ import { merge } from 'lodash';
 
 const artistsReducer = (state = {}, action) => {
     Object.freeze(state);
-
     switch (action.type) {
         case RECEIVE_ARTISTS:
             return merge({}, state, action.artists)

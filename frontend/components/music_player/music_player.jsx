@@ -2,7 +2,7 @@ import React from 'react';
 
 import Navbar from './navbar/navbar_container';
 import Player from './player';
-import Main from './main';
+import Main from './main/main';
 
 import { clearPlaylistErrors } from '../../actions/playlist_actions';
 import { connect } from 'react-redux';
