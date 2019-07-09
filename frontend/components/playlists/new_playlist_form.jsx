@@ -39,7 +39,7 @@ class newPlaylistForm extends React.Component {
         let { closeModal } = this.props;
         return (
             <div className="modal-wrapper">
-                <button className="modal-x" onClick={closeModal}> × </button>
+                <button className="modal-x" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
                 <form className="playlist-form" onSubmit={this.handleSubmit}>
                     <h1>Create new playlist</h1>
                     <div className="playlist-input">

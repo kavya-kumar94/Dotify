@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import GreetingContainer from './greeting/greeting_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
+import MusicPlayer from './music_player/music_player';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Splash from '../components/splash'
 
@@ -22,11 +23,11 @@ class App extends React.Component {
   render() {
    return(
     <div>
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-       <AuthRoute exact path="/login" component={LoginFormContainer} />
-       {/* <ProtectedRoute path='/browse/featured' component={Main} /> */}
-       <Route exact path="/" component={GreetingContainer} />
-       <AuthRoute exact path="/" component={Splash} />
+        <ProtectedRoute exact path='/browse/featured' component={MusicPlayer} />
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
+        <Route exact path="/" component={GreetingContainer} />
+        <Route exact path="/" component={Splash} />
     </div>
    )
   } 

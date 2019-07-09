@@ -17,7 +17,7 @@ class Splash extends React.Component {
     demoUser(e) {
         e.preventDefault();
         const demouser = { username: 'demouser', password: '123456' };
-        this.props.loginDemo(demouser);
+        this.props.loginDemo(demouser).then( () => this.props.history.push('/browse/featured'));
     }
 
     componentDidMount() {
