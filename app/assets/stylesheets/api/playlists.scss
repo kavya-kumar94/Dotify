@@ -1,3 +1,88 @@
 // Place all the styles related to the api/playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+    color: white;
+    font-family: "Circular Bold";
+}
+
+.playlist-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  background-color: #272727;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  height: 100px;
+  margin-top: 100px;
+  left: 50%;
+  text-align: center;
+}
+
+#playlist-mod {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+}
+
+.modal-cancel {
+  background: none;
+  border: none;
+  z-index: 10;
+  height: 40px;
+  width: 40px;
+}
+
+.playlist-form {
+    text-align: center;
+}
+
+.yesplay {
+  font-family: "Circular";
+   z-index: 1;
+    border-radius: 500px;
+    padding: 12px 38px 12px;
+    background-color: #1DB954;
+    border: 0px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: white;
+    margin: 5px;
+}
+
+.canc-play {
+  font-family: "Circular";
+   z-index: 1;
+    border-radius: 500px;
+    padding: 12px 38px 12px;
+    background-color: rgba(24, 24, 24, 0.7);
+    border: 1px solid white;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: white;
+    margin: 5px;
+}
+

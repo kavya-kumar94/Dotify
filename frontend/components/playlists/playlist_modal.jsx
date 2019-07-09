@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { closeModal } from '../actions/modal_actions';
-import newPlaylistForm from './new_playlist_form'
-// import AddSongForm from './add_song_form';
-// import UserModal from './user_modal';
+import { closeModal } from '../../actions/modal_actions';
+import NewPlaylistForm from './new_playlist_form'
 
 class Modal extends React.Component {
 
@@ -12,7 +10,6 @@ class Modal extends React.Component {
     }
 
     render() {
-
         let { modal, closeModal } = this.props;
 
         if (!modal) {
@@ -21,16 +18,12 @@ class Modal extends React.Component {
 
 
         let component;
-        switch (modal.modal) {
-            case 'new_playlist':
-                component = <newPlaylistForm />;
+
+        switch (modal) {
+            case 'new-playlist':
+                debugger;
+                component = <NewPlaylistForm />;
                 break;
-            // case 'add_to_playlist':
-            //     component = <AddSongForm songId={modal.song_id} />;
-            //     break;
-            // case 'user_modal':
-            //     component = <UserModal currentUserId={modal.currentUserId} subjectUser={modal.subjectUser} />;
-            //     break;
             default:
                 return null;
         }
@@ -46,16 +39,16 @@ class Modal extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
+const msp = state => {
     return {
         modal: state.ui.modal
     };
 };
 
-const mapDispatchToProps = dispatch => {
+const mdp = dispatch => {
     return {
         closeModal: () => dispatch(closeModal())
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(msp, mdp)(Modal);

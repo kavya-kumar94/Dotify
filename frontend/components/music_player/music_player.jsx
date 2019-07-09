@@ -21,9 +21,6 @@ class MusicPlayer extends React.Component {
                     <Navbar />
                     <Player />
                      <Main />
-                    {/* <Switch>
-                    </Switch> */}
-
                 </div>
         )
     }

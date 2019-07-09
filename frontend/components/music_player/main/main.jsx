@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect, withRouter, Link, NavLink } from 'react-router-dom';
 import { logoutCurrentUser } from '../../../actions/session_actions';
 import { AuthRoute, ProtectedRoute } from '../../../util/route_util';
-import ArtistIndex from './artists';
-
+import ArtistIndex from './artist_index';
+import PlaylistIndex from './playlist_index'
+import AlbumIndex from './album_index'
 
 class Main extends React.Component {
     // constructor(props) {
@@ -38,15 +39,11 @@ class Main extends React.Component {
                         </div>
                     </li>
                 </ul>
-
-                <ArtistIndex />
-                {/* <p className="made-for">Made for {currentUser.username}</p> */}
-
-                {/* <ProtectedRoute exact path="/library/playlists" render={() => <PlaylistIndex />} /> */}
-                {/* <Route exact path="/library/songs" render={() => <FavoriteSongs />} /> */}
-                {/* <ProtectedRoute exact path="/library/albums" render={() => <Albums />} /> */}
-                {/* <Redirect to="/library/playlists" /> */}
-                {/* <ProtectedRoute exact path="/library/artists" component={ <ArtistIndex />} /> */}
+                    {/* <div className="username-show">{currentUser.username}</div> */}
+                <ProtectedRoute exact path='/library/artists' component={ArtistIndex} />
+                <ProtectedRoute exact path='/library/playlists' component={PlaylistIndex} />
+                <ProtectedRoute exact path='/library/albums' component={AlbumIndex} />
+            
             </div>
         )
     }

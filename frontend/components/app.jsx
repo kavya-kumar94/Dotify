@@ -6,6 +6,8 @@ import LoginFormContainer from './session_form/login_form_container';
 import MusicPlayer from './music_player/music_player';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Splash from '../components/splash'
+import Landing from './landing'
+import Modal from './playlists/playlist_modal'
 
 import {
     Route,
@@ -23,11 +25,11 @@ class App extends React.Component {
   render() {
    return(
     <div>
-        <ProtectedRoute exact path='/browse/featured' component={MusicPlayer} />
+        <Modal />
+        <ProtectedRoute path='/' component={MusicPlayer} />
+        <Route exact path="/" component={Landing} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
         <AuthRoute exact path="/login" component={LoginFormContainer} />
-        <Route exact path="/" component={GreetingContainer} />
-        <Route exact path="/" component={Splash} />
     </div>
    )
   } 

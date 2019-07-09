@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import { createPlaylist } from '../../actions/playlist_actions';
 
-class newPlaylistForm extends React.Component {
+class NewPlaylistForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,17 +36,18 @@ class newPlaylistForm extends React.Component {
 
 
     render() {
+        debugger;
         let { closeModal } = this.props;
         return (
-            <div className="modal-wrapper">
-                <button className="modal-x" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
+            <div className="modal">
+                <button className="modal-cancel" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
                 <form className="playlist-form" onSubmit={this.handleSubmit}>
                     <h1>Create new playlist</h1>
                     <div className="playlist-input">
                         <label>Playlist Name</label>
                         <input
-                            autoFocus="autoFocus"
                             type="text"
+                            id="playlist-mod"
                             value={this.state.name}
                             onChange={this.changeTitle}
                             placeholder="New Playlist"
@@ -54,8 +55,8 @@ class newPlaylistForm extends React.Component {
                         </input>
                     </div>
                     <div className="modal-buttons">
-                        <button onClick={closeModal}>CANCEL</button>
-                        <button type="submit">CREATE</button>
+                        <button className="canc-play" onClick={closeModal}>CANCEL</button>
+                        <button className="yesplay" type="submit">CREATE</button>
                     </div>
                 </form>
             </div>
@@ -75,4 +76,4 @@ const mdp = (dispatch) => ({
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
 })
 
-export default withRouter(connect(msp, mdp)(newPlaylistForm));
+export default withRouter(connect(msp, mdp)(NewPlaylistForm));

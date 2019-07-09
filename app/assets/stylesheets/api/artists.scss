@@ -9,13 +9,18 @@
 .img-crop {
     display: flex;
     flex-direction: row;
+    font-family: "Circular";
+    text-align: center;
 }
 
-.img-crop li {
+.img-crop > div{
     max-height: 150px;
     max-width: 150px;
     padding: 50px;
-    margin: auto;
+}
+
+.img-crop > div:hover {
+    opacity: 0.4;
 }
 
 img {
@@ -24,4 +29,5 @@ img {
     max-height: 150px;
     flex-direction: row;
     border-radius: 50%;
+    padding-bottom: 10px;
 }

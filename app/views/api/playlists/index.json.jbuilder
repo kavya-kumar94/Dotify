@@ -1,4 +1,4 @@
-json.playlists do
+# json.playlists do
     @playlists.each do |playlist|
         json.set! playlist.id do
             json.extract! playlist, :id, :title, :creator_id
@@ -11,4 +11,4 @@ json.playlists do
             # json.firstImage playlist.songs.empty? ? nil : playlist.songs.first.album.cover_image
         end
     end
-end
+# end

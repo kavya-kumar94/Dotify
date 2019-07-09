@@ -1,4 +1,4 @@
-json.artists do
+# json.artists do
   @artists.each do |artist|
     json.set! artist.id do
       json.extract! artist, :name, :id
@@ -7,4 +7,4 @@ json.artists do
       # end
     end
   end
-end
+# end
