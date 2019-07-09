@@ -336,10 +336,10 @@ var RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
 var DELETE_PLAYLIST = "DELETE_PLAYLIST";
 var RECEIVE_PLAYLIST_ERRORS = "RECEIVE_PLAYLIST_ERRORS";
 var CLEAR_PLAYLIST_ERRORS = "CLEAR_PLAYLIST_ERRORS";
-var receivePlaylist = function receivePlaylist(playlist) {
+var receivePlaylist = function receivePlaylist(payload) {
   return {
     type: RECEIVE_PLAYLIST,
-    playlist: playlist
+    payload: payload
   };
 };
 var receivePlaylists = function receivePlaylists(playlists) {
@@ -1092,6 +1092,9 @@ function (_React$Component) {
         exact: true,
         path: "/library/albums",
         component: _album_index__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+        path: "/library/playlists/:playlistId",
+        component: PlaylistShow
       }));
     }
   }]);
@@ -1654,6 +1657,7 @@ function (_React$Component) {
   }, {
     key: "redirect",
     value: function redirect() {
+      debugger;
       this.props.history.push("/playlists/".concat(this.props.last_playlist.id));
     }
   }, {
@@ -1662,10 +1666,9 @@ function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
-      var playlist = this.state;
-      this.setState({
-        name: ''
-      });
+      debugger;
+      var playlist = this.state; // this.setState({ title: '' });
+
       this.props.createPlaylist(playlist).then(this.props.closeModal).then(function () {
         return _this2.redirect();
       });
@@ -1673,7 +1676,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       var closeModal = this.props.closeModal;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "modal"
@@ -1690,7 +1692,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Playlist Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         id: "playlist-mod",
-        value: this.state.name,
+        value: this.state.title,
         onChange: this.changeTitle,
         placeholder: "New Playlist"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1710,7 +1712,7 @@ function (_React$Component) {
 
 var msp = function msp(state) {
   return {
-    last_playlist: Object.values(state.entities.playlists).slice(-1)[0]
+    last_playlist: state.entities.playlists[Object.values(state.entities.playlists).length - 1]
   };
 };
 
@@ -1792,7 +1794,6 @@ function (_React$Component) {
 
       switch (modal) {
         case 'new-playlist':
-          debugger;
           component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_new_playlist_form__WEBPACK_IMPORTED_MODULE_3__["default"], null);
           break;
 
@@ -2751,8 +2752,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -2766,7 +2765,7 @@ var playlistsReducer = function playlistsReducer() {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.playlists);
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_PLAYLIST"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, _defineProperty({}, action.playlist.id, action.playlist));
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.payload.playlists);
 
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_PLAYLIST"]:
       var newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
@@ -2893,9 +2892,11 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/song_actions */ "./frontend/actions/song_actions.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2906,11 +2907,14 @@ var songsReducer = function songsReducer() {
   Object.freeze(state);
 
   switch (action.type) {
+    case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLIST"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.payload.songs);
+
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SONGS"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.songs);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, action.songs);
 
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SONG"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, _defineProperty({}, action.song.id, action.song));
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_2__["merge"])({}, state, _defineProperty({}, action.song.id, action.song));
 
     default:
       return state;

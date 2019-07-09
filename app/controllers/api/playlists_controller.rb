@@ -2,11 +2,11 @@ class Api::PlaylistsController < ApplicationController
     # before_action :require_logged_in
 
     def create
-        @playlist = Playlist.create(playlist_params)
-        @playlist.user_id = current_user.id
+        @playlist = Playlist.new(playlist_params)
+        @playlist.creator_id = current_user.id
 
         if @playlist.save
-            current_user.followed_playlists << @playlist 
+            # current_user.followed_playlists << @playlist 
             render :show
         else 
             render json: @playlist.errors.messages, status: 401

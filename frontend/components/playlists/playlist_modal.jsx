@@ -21,7 +21,6 @@ class Modal extends React.Component {
 
         switch (modal) {
             case 'new-playlist':
-                debugger;
                 component = <NewPlaylistForm />;
                 break;
             default:

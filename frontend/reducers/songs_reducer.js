@@ -2,6 +2,7 @@ import {
     RECEIVE_SONG,
     RECEIVE_SONGS,
 } from '../actions/song_actions';
+import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 
 import { merge } from 'lodash';
 
@@ -9,6 +10,8 @@ const songsReducer = (state = {}, action) => {
     Object.freeze(state);
 
     switch (action.type) {
+        case RECEIVE_PLAYLIST:
+            return merge({}, state, action.payload.songs);
         case RECEIVE_SONGS:
             return merge({}, state, action.songs)
         case RECEIVE_SONG:

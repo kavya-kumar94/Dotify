@@ -43,7 +43,7 @@ class Main extends React.Component {
                 <ProtectedRoute exact path='/library/artists' component={ArtistIndex} />
                 <ProtectedRoute exact path='/library/playlists' component={PlaylistIndex} />
                 <ProtectedRoute exact path='/library/albums' component={AlbumIndex} />
-            
+                <ProtectedRoute path='/library/playlists/:playlistId' component={PlaylistShow}/>
             </div>
         )
     }

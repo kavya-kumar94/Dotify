@@ -20,14 +20,16 @@ class NewPlaylistForm extends React.Component {
 
 
     redirect() {
+        debugger;
         this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
     }
 
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger;
         let playlist = this.state;
-        this.setState({ name: '' });
+        // this.setState({ title: '' });
         this.props.createPlaylist(playlist)
             .then(this.props.closeModal)
             .then(() => this.redirect());
@@ -36,7 +38,6 @@ class NewPlaylistForm extends React.Component {
 
 
     render() {
-        debugger;
         let { closeModal } = this.props;
         return (
             <div className="modal">
@@ -48,7 +49,7 @@ class NewPlaylistForm extends React.Component {
                         <input
                             type="text"
                             id="playlist-mod"
-                            value={this.state.name}
+                            value={this.state.title}
                             onChange={this.changeTitle}
                             placeholder="New Playlist"
                         >
@@ -67,7 +68,7 @@ class NewPlaylistForm extends React.Component {
 
 
 const msp = (state) => ({
-    last_playlist: Object.values(state.entities.playlists).slice(-1)[0]
+    last_playlist: state.entities.playlists[Object.values(state.entities.playlists).length-1]
 });
 
 

@@ -7,10 +7,10 @@ export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const RECEIVE_PLAYLIST_ERRORS = "RECEIVE_PLAYLIST_ERRORS";
 export const CLEAR_PLAYLIST_ERRORS = "CLEAR_PLAYLIST_ERRORS";
 
-export const receivePlaylist = (playlist) => {
+export const receivePlaylist = (payload) => {
     return {
         type: RECEIVE_PLAYLIST,
-        playlist
+        payload
     }
 }
 
