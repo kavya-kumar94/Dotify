@@ -6,7 +6,7 @@ export const fetchSong = songId => (
 );
 
 
-export const fetchSongsFromAlbum = (albumId) => (
+export const fetchSongs = (albumId) => (
     $.ajax({
         method: 'GET',
         url: `/api/albums/${albumId}/songs`

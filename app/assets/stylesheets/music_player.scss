@@ -1,6 +1,7 @@
 .main_nav {
     grid-area: navbar;
     background: #031018;
+    padding-bottom: 20px;
 }
 
 .main-div {
@@ -101,8 +102,8 @@
         "navbar navbar main main main main main main main main main main main main main main main main main main main main"
         "navbar navbar main main main main main main main main main main main main main main main main main main main main"
         "navbar navbar main main main main main main main main main main main main main main main main main main main main"
-        "player player player player player player player player player player player player player player player player player player player player player player"
         "player player player player player player player player player player player player player player player player player player player player player player";
+        // "player player player player player player player player player player player player player player player player player player player player player player";
 
 }
 
@@ -195,29 +196,65 @@ img.white-browse {
 .left-play {
     display: flex;
     flex-direction: row;
+    margin: auto 0;
 }
 
 .right-play {
     display: flex;
     flex-direction: row;
+    margin: auto 0;
 }
 
 .center-play {
     display: flex;
     flex-direction: row;
+    margin: auto 0;
+}
+
+.center-play .play {
+    height: 45px;
+    width: 45px;
+    margin: auto;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+.center-play .prev {
+    height: 15px;
+    width: 15px;
+    margin: auto;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+.center-play .next {
+    height: 15px;
+    width: 15px;
+    margin: auto;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.center-play .shuffle {
+    height: 28px;
+    width: 28px;
+    margin: auto;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.center-play .repeat {
+    height: 25px;
+    width: 25px;
+    margin: auto;
+    margin-left: 11px;
+    margin-right: 11px;
 }
 
 .left-play img {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
 }
 
 .right-play img {
-    height: 20px;
-    width: 20px;
-}
-
-.center-play img {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
 }

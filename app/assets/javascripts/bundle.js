@@ -1197,8 +1197,8 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "center-play"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "repeat",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png"
+        className: "shuffle",
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "prev",
         src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"
@@ -1209,8 +1209,8 @@ function (_React$Component) {
         className: "next",
         src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "shuffle",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png"
+        className: "repeat",
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right-play"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -2679,20 +2679,20 @@ var deleteUser = function deleteUser(user) {
 /*!****************************************!*\
   !*** ./frontend/util/song_api_util.js ***!
   \****************************************/
-/*! exports provided: fetchSong, fetchSongsFromAlbum */
+/*! exports provided: fetchSong, fetchSongs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSong", function() { return fetchSong; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSongsFromAlbum", function() { return fetchSongsFromAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSongs", function() { return fetchSongs; });
 var fetchSong = function fetchSong(songId) {
   return $.ajax({
     method: 'GET',
     url: "api/songs/".concat(songId)
   });
 };
-var fetchSongsFromAlbum = function fetchSongsFromAlbum(albumId) {
+var fetchSongs = function fetchSongs(albumId) {
   return $.ajax({
     method: 'GET',
     url: "/api/albums/".concat(albumId, "/songs")
