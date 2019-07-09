@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { fetchPlaylists, fetchPlaylist } from '../../../actions/playlist_actions';
 import Modal from '../../playlists/playlist_modal'
 import { openModal } from '../../../actions/modal_actions'
@@ -18,13 +18,16 @@ class PlaylistIndex extends React.Component {
         const { playlists, openModal } = this.props
         let playlistsNew = playlists.map( playlist => {
             return(
-                <li>{playlist.title}</li>
+                <div className="playlist-link">
+                    <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
+                    <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.creatorName}</NavLink></li>
+                </div>
             )
         })
         return (
             <div>
                 <div className="create-playlist">
-                    <button onClick={()=> openModal("new-playlist") }className="new-playlist-btn">NEW PLAYLIST</button>
+                    <button onClick={() => openModal("new-playlist")} className="new-playlist-btn">NEW PLAYLIST</button>
                 </div>
                 <ul className= "playlist-index">
                 {playlistsNew}
@@ -37,7 +40,6 @@ class PlaylistIndex extends React.Component {
 const msp = state => {
     return {
         playlists: Object.values(state.entities.playlists),
-        creator: state.entities.playlists[state.creator_id]
     }
 }
 

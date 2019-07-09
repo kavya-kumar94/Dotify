@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchAlbums, fetchAlbum } from '../../../actions/album_actions';
+import Modal from '../../playlists/playlist_modal'
+import { openModal } from '../../../actions/modal_actions'
 
 class AlbumIndex extends React.Component {
     constructor(props) {
@@ -13,7 +15,7 @@ class AlbumIndex extends React.Component {
     }
 
     render() {
-        const { albums } = this.props
+        const { albums, openModal } = this.props
         let albumsNew = albums.map(album => {
             return (
                 <li>{album.title}</li>
@@ -21,6 +23,9 @@ class AlbumIndex extends React.Component {
         })
         return (
             <div>
+                <div className="create-playlist">
+                    <button onClick={() => openModal("new-playlist")} className="new-playlist-btn">NEW PLAYLIST</button>
+                </div>
                 <ul>
                     {albumsNew}
                 </ul>
@@ -37,7 +42,8 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        fetchAlbums: () => dispatch(fetchAlbums())
+        fetchAlbums: () => dispatch(fetchAlbums()),
+        openModal: (modal) => dispatch(openModal(modal))
     }
 }
 

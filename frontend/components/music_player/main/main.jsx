@@ -6,6 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../../../util/route_util';
 import ArtistIndex from './artist_index';
 import PlaylistIndex from './playlist_index'
 import AlbumIndex from './album_index'
+import PlaylistShow from './playlist_show'
 
 class Main extends React.Component {
     // constructor(props) {
@@ -18,7 +19,7 @@ class Main extends React.Component {
                 <ul className="browse-links">
                     <li>
                         <div className="link-main">
-                            <NavLink to="/library/playlists">
+                            <NavLink className="not-active" activeClassName="selected" to="/library/playlists">
                             PLAYLISTS 
                             </NavLink>
                         </div>
@@ -26,19 +27,20 @@ class Main extends React.Component {
 
                     <li>
                         <div className="link-main">
-                        <NavLink to="/library/albums">
+                            <NavLink className="not-active" activeClassName="selected" to="/library/albums">
                             ALBUMS
                         </NavLink>
                         </div>
                     </li>
                     <li>
                         <div className="link-main">
-                        <NavLink to="/library/artists">
+                            <NavLink className="not-active" activeClassName="selected" to="/library/artists">
                         ARTISTS
                         </NavLink>
                         </div>
                     </li>
                 </ul>
+                
                     {/* <div className="username-show">{currentUser.username}</div> */}
                 <ProtectedRoute exact path='/library/artists' component={ArtistIndex} />
                 <ProtectedRoute exact path='/library/playlists' component={PlaylistIndex} />

@@ -3,10 +3,11 @@ import React from 'react';
 import Navbar from './navbar/navbar_container';
 import Player from './player';
 import Main from './main/main';
+import PlaylistIndex from '../music_player/main/playlist_index'
 
 import { clearPlaylistErrors } from '../../actions/playlist_actions';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import errorsReducer from '../../reducers/errors_reducer';
 
 
@@ -20,7 +21,8 @@ class MusicPlayer extends React.Component {
                 <div className="music-player">
                     <Navbar />
                     <Player />
-                     <Main />
+                    <Route path='/library' component={Main} />
+                    <Route path='/browse' component={Main} />
                 </div>
         )
     }
