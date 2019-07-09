@@ -22,6 +22,8 @@
 .modal {
     color: white;
     font-family: "Circular Bold";
+    display: flex;
+    flex-direction: column;
 }
 
 .playlist-input {
@@ -37,7 +39,10 @@
   height: 100px;
   margin-top: 100px;
   left: 50%;
-  text-align: center;
+}
+
+.field {
+    font-size: 50px;
 }
 
 #playlist-mod {
@@ -46,18 +51,31 @@
   appearance: none;
   box-shadow: none;
   border: none;
+  font-size: 50px;
 }
 
 .modal-cancel {
   background: none;
   border: none;
   z-index: 10;
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
+  margin-left: 290px;
+  transition: all .2s ease-in-out;
+}
+
+.modal-cancel:hover {
+    transform: scale(1.1);
 }
 
 .playlist-form {
     text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 150px;
 }
 
 .yesplay {
@@ -70,7 +88,8 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     color: white;
-    margin: 5px;
+    margin: 15px;
+    margin-top: 20px;
 }
 
 .canc-play {
@@ -79,10 +98,45 @@
     border-radius: 500px;
     padding: 12px 38px 12px;
     background-color: rgba(24, 24, 24, 0.7);
-    border: 1px solid white;
+    border: 1px solid #b3b3b3;
     font-size: 12px;
     letter-spacing: 0.2em;
-    color: white;
-    margin: 5px;
+    color: #b3b3b3;
+    margin: 15px;
+    margin-top: 20px;
+    transition: all .2s ease-in-out;
 }
 
+.yesplay:hover {
+    transform: scale(1.1);
+    // padding: 12px 40px 12px;
+    background-color: #1ED760;
+}
+
+.canc-play:hover {
+    transform: scale(1.1);
+    // padding: 12px 40px 12px;
+}
+
+.new-playlist-btn {
+    margin-top: 60px;
+    font-family: "Circular";
+    letter-spacing: 0.2em;
+    color: white;
+    border: none;
+    z-index: 1;
+    border-radius: 500px;
+    padding: 10px 23px 10px;
+    background-color: #1DB954;
+    transition: all .2s ease-in-out;
+}
+
+.new-playlist-btn:hover {
+    background-color: #1ED760;
+    transform: scale(1.1);
+}
+
+.create-playlist {
+    display: flex;
+    justify-content: center;
+}
