@@ -24,15 +24,16 @@
 .link-main:hover {
     color: white;
 }
+
 .player-div {
     grid-area: player;
     background-color: #272727;
 }
 
-.not-active{
-    background-color: red;
-    color: red;
-}
+// .not-active{
+//     background-color: red;
+//     color: red;
+// }
 
 .user-nav {
     color: #b3b3b3;
@@ -185,3 +186,38 @@ img.white-browse {
     margin-bottom: 25px;
 }
 
+.player-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.left-play {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-play {
+    display: flex;
+    flex-direction: row;
+}
+
+.center-play {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-play img {
+    height: 20px;
+    width: 20px;
+}
+
+.right-play img {
+    height: 20px;
+    width: 20px;
+}
+
+.center-play img {
+    height: 20px;
+    width: 20px;
+}
