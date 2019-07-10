@@ -44,15 +44,33 @@ user6 = User.create(username: 'kavya', email: 'kavya@gmail.com', password: '1234
 
 a = Playlist.create(title: 'Chill', creator_id: user6.id)
 
+a_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/chill.jpg')
+a.photo.attach(io: a_pic, filename: 'a.jpg')
+
 b = Playlist.create(title: 'Summer', creator_id: user6.id)
+
+b_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/summer.jpg')
+b.photo.attach(io: b_pic, filename: 'b.jpg')
 
 c = Playlist.create(title: 'Best of MJ', creator_id: user6.id)
 
+c_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/mj_play.jpg')
+c.photo.attach(io: c_pic, filename: 'c.jpg')
+
 d = Playlist.create(title: 'Favorites', creator_id: user2.id)
+
+d_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/faves.jpeg')
+d.photo.attach(io: d_pic, filename: 'd.jpg')
 
 e = Playlist.create(title: 'Pumped Pop', creator_id: user2.id)
 
+e_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pumped_pop.jpg')
+e.photo.attach(io: e_pic, filename: 'e.jpg')
+
 f = Playlist.create(title: 'Smooth', creator_id: user6.id)
+
+f_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/smooth.jpg')
+f.photo.attach(io: f_pic, filename: 'f.jpg')
 
 
 # user6.followed_playlists << a
