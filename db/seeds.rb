@@ -45,32 +45,32 @@ user6 = User.create(username: 'kavya', email: 'kavya@gmail.com', password: '1234
 a = Playlist.create(title: 'Chill', creator_id: user6.id)
 
 a_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/chill.jpg')
-a.photo.attach(io: a_pic, filename: 'a.jpg')
+a.playlist_image.attach(io: a_pic, filename: 'a.jpg')
 
 b = Playlist.create(title: 'Summer', creator_id: user6.id)
 
 b_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/summer.jpg')
-b.photo.attach(io: b_pic, filename: 'b.jpg')
+b.playlist_image.attach(io: b_pic, filename: 'b.jpg')
 
 c = Playlist.create(title: 'Best of MJ', creator_id: user6.id)
 
 c_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/mj_play.jpg')
-c.photo.attach(io: c_pic, filename: 'c.jpg')
+c.playlist_image.attach(io: c_pic, filename: 'c.jpg')
 
 d = Playlist.create(title: 'Favorites', creator_id: user2.id)
 
 d_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/faves.jpeg')
-d.photo.attach(io: d_pic, filename: 'd.jpg')
+d.playlist_image.attach(io: d_pic, filename: 'd.jpg')
 
 e = Playlist.create(title: 'Pumped Pop', creator_id: user2.id)
 
 e_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pumped_pop.jpg')
-e.photo.attach(io: e_pic, filename: 'e.jpg')
+e.playlist_image.attach(io: e_pic, filename: 'e.jpg')
 
 f = Playlist.create(title: 'Smooth', creator_id: user6.id)
 
 f_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/smooth.jpg')
-f.photo.attach(io: f_pic, filename: 'f.jpg')
+f.playlist_image.attach(io: f_pic, filename: 'f.jpg')
 
 
 # user6.followed_playlists << a
@@ -88,72 +88,72 @@ rb = Genre.create(id: 3, name: 'R&B')
 drake = Artist.create(id: 1, name: 'Drake', genre_id: 1 )
 
 drake_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
-drake.photo.attach(io: drake_pic, filename: 'drake.jpg')
+drake.artist_image.attach(io: drake_pic, filename: 'drake.jpg')
 
 
 majid = Artist.create(id: 2, name: 'Majid Jordan', genre_id: 3 )
 
 majid_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid.jpg')
-majid.photo.attach(io: majid_pic, filename: 'majid.jpg')
+majid.artist_image.attach(io: majid_pic, filename: 'majid.jpg')
 
 
 mj = Artist.create(id: 3, name: 'Michael Jackson', genre_id: 2 )
 
 mj_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/mj.jpg')
-mj.photo.attach(io: mj_pic, filename: 'mj.jpg')
+mj.artist_image.attach(io: mj_pic, filename: 'mj.jpg')
 
 travis = Artist.create(id: 4, name: 'Travis Scott', genre_id: 1 )
 
 
 travis_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/travis.jpg')
-travis.photo.attach(io: travis_pic, filename: 'mj.jpg')
+travis.artist_image.attach(io: travis_pic, filename: 'mj.jpg')
 
 # Albums
 
 scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 1)
 
 scorpion_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
-scorpion.photo.attach(io: scorpion_pic, filename: 'scorpion.jpg')
+scorpion.album_image.attach(io: scorpion_pic, filename: 'scorpion.jpg')
 
 astroworld = Album.create( title: 'Astroworld', year: 2018, genre_id: 1, artist_id: 4)
 
 astro_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.jpg')
-astroworld.photo.attach(io: astro_pic, filename: 'astro.jpg')
+astroworld.album_image.attach(io: astro_pic, filename: 'astro.jpg')
 
 spacebetween = Album.create( title: 'The Space Between', year: 2017, genre_id: 3, artist_id: 2)
 
 sbw_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/sbw_cover.jpg')
-spacebetween.photo.attach(io: sbw_pic, filename: 'sbw.jpg')
+spacebetween.album_image.attach(io: sbw_pic, filename: 'sbw.jpg')
 
 
 bad = Album.create( title: 'Bad', year: 1987, genre_id: 2, artist_id: 3)
 
 bad_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/bad_cover.png')
-bad.photo.attach(io: bad_pic, filename: 'bad.jpg')
+bad.album_image.attach(io: bad_pic, filename: 'bad.jpg')
 
 
 gottobethere = Album.create( title: 'Got To Be There', year: 1972, genre_id: 2, artist_id: 3)
 
 g2bthere_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/g2bthere_cover.jpg')
-gottobethere.photo.attach(io: g2bthere_pic, filename: 'g2bthere.jpg')
+gottobethere.album_image.attach(io: g2bthere_pic, filename: 'g2bthere.jpg')
 
 
 offthewall = Album.create( title: 'Off The Wall', year: 1979, genre_id: 2, artist_id: 3)
 
 offthewall_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/offthewall_cover.jpg')
-offthewall.photo.attach(io: offthewall_pic, filename: 'offthewall.jpg')
+offthewall.album_image.attach(io: offthewall_pic, filename: 'offthewall.jpg')
 
 
 thriller = Album.create( title: 'Thriller', year: 1983, genre_id: 2, artist_id: 3)
 
 thriller_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/thriller_cover.jpg')
-thriller.photo.attach(io: thriller_pic, filename: 'thriller.jpg')
+thriller.album_image.attach(io: thriller_pic, filename: 'thriller.jpg')
 
 
 pipesofpeace = Album.create( title: 'Pipes of Peace', year: 1983, genre_id: 2, artist_id: 3)
 
 pop_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pop_cover.jpg')
-pipesofpeace.photo.attach(io: pop_pic, filename: 'pop.jpg')
+pipesofpeace.album_image.attach(io: pop_pic, filename: 'pop.jpg')
 
 # Songs
 
