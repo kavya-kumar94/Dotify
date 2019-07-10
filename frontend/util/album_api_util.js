@@ -5,9 +5,9 @@ export const fetchAlbums = () => {
     });
 };
 
-export const fetchAlbum = (id) => {
+export const fetchAlbum = (albumId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/albums/${id}`,
+        url: `/api/albums/${albumId}`,
     });
 };

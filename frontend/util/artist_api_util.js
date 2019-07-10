@@ -5,9 +5,9 @@ export const fetchArtists = () => {
     });
 };
 
-export const fetchArtist = (id) => {
+export const fetchArtist = (artistId) => {
     return $.ajax({
         method: "GET",
-        url: `/api/artists/${id}`
+        url: `/api/artists/${artistId}`
     });
 };

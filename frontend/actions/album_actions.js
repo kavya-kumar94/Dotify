@@ -3,10 +3,10 @@ import * as AlbumApiUtil from '../util/album_api_util'
 export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS"
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM"
 
-export const receiveAlbum = ( album ) => {
+export const receiveAlbum = ( payload ) => {
     return {
         type: RECEIVE_ALBUM,
-        album
+        payload
     };
 };
 
@@ -18,8 +18,8 @@ export const receiveAlbums = ( albums ) => {
 };
 
 
-export const fetchAlbum = (id) => dispatch => {
-    return AlbumApiUtil.fetchAlbum(id).then( album => dispatch(receiveAlbum(album)))
+export const fetchAlbum = (albumId) => dispatch => {
+    return AlbumApiUtil.fetchAlbum(albumId).then( album => dispatch(receiveAlbum(album)))
 }
 
 export const fetchAlbums = () => dispatch => {

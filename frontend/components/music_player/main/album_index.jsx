@@ -15,12 +15,17 @@ class AlbumIndex extends React.Component {
     }
 
     render() {
-        const { albums, openModal } = this.props
+        const { albums } = this.props
         let albumsNew = albums.map(album => {
             return (
                 <div>
-                    <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     <li><NavLink to={`/albums/${album.id}`}>{album.album_image}</NavLink></li>
+                    <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
+                    {/* <h2>{album.title}</h2> */}
+                    <li><NavLink to={`/artists/${album.artist_name}`}>{album.artist_name}</NavLink></li>
+                    {/* <button className="play-btn">PLAY</button> */}
+                    {/* <p>{album.year}</p> */}
+                    {/* <p>{album.songs.count}</p> */}
                 </div>
             )
         })
