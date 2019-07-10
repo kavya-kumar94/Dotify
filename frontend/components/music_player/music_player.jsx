@@ -4,7 +4,7 @@ import Navbar from './navbar/navbar_container';
 import Player from './player';
 import Main from './main/main';
 import PlaylistIndex from '../music_player/main/playlist_index'
-
+import PlaylistShow from '../music_player/main/playlist_show'
 import { clearPlaylistErrors } from '../../actions/playlist_actions';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
@@ -23,7 +23,8 @@ class MusicPlayer extends React.Component {
                     <Player />
                     <Route path='/library' component={Main} />
                     <Route path='/browse' component={Main} />
-                    <Route path='/playlists' component={Main} />
+                    <Route exact path='/playlists' component={Main} />
+                <Route path='/playlists/:playlistId' component={PlaylistShow} />
                 </div>
         )
     }
