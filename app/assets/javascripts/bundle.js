@@ -1001,8 +1001,15 @@ function (_React$Component) {
       this.props.fetchAlbum(this.props.match.params.albumId);
     }
   }, {
+    key: "play",
+    value: function play(e) {// let audio = new Audio(`${this.props.song.audio}`);
+      // audio.play();
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
       if (this.props.album === undefined) return null; // debugger;
 
       var _this$props = this.props,
@@ -1012,7 +1019,9 @@ function (_React$Component) {
         className: "alb-sho"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "alb-img"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
         to: "/albums/".concat(album.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: album.album_image
@@ -1033,11 +1042,27 @@ function (_React$Component) {
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "songs-list"
       }, songs.map(function (song) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "times"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "song-row"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          onClick: _this.play,
+          className: "note-img",
           src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"
-        }), song.title);
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "songtitle"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "song-title"
+        }, song.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "art-name"
+        }, album.artist_name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "song-duration"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration)));
       })));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newAlbum);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "div-margin"
+      }, newAlbum);
     }
   }]);
 
@@ -1242,7 +1267,6 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (this.props.artist === undefined) return null;
-      debugger;
       var _this$props = this.props,
           artist = _this$props.artist,
           albums = _this$props.albums,
@@ -1250,20 +1274,43 @@ function (_React$Component) {
       var newArtist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "artist-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "artist-header"
+        className: "bg-img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "artist-show-bg",
         src: artist.artist_image
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "artist-name"
       }, artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
-      }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, album.title);
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Songs"), songs.map(function (song) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.title);
-      })));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newArtist);
+      }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "art-sho"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Popular"), songs.map(function (song) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "art-song"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          id: "art-note",
+          src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "stitle"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          id: "song-title"
+        }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: "duration"
+        }, song.duration));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "alb-info"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
+          to: "/albums/".concat(album.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: album.album_image
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, album.title));
+      }))));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "div-margin"
+      }, newArtist);
     }
   }]);
 
@@ -1605,7 +1652,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.props.playlist === undefined) return null;
+      if (this.props.playlist === undefined) return null; // debugger;
+
       var playlist = this.props.playlist;
       var newPlaylist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "play-show"
@@ -1614,7 +1662,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: playlist.playlist_image
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newPlaylist);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "div-margin"
+      }, newPlaylist);
     }
   }]);
 
@@ -1622,7 +1672,8 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
-  var playlist = state.entities.playlists[ownProps.match.params.playlistId];
+  var playlist = state.entities.playlists[ownProps.match.params.playlistId]; // debugger;
+
   return {
     playlist: playlist
   };
@@ -2102,7 +2153,11 @@ function (_React$Component) {
     _classCallCheck(this, Player);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Player).call(this, props));
-  }
+  } // play(e) {
+  //     let audio = new Audio(`${this.props.song.audio}`);
+  //     audio.play();
+  // }
+
 
   _createClass(Player, [{
     key: "render",

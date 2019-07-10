@@ -14,6 +14,7 @@ class PlaylistShow extends React.Component {
 
     render() {
         if (this.props.playlist === undefined) return null;
+        // debugger;
         const { playlist } = this.props;
         let newPlaylist = (
             <div className="play-show">
@@ -29,7 +30,7 @@ class PlaylistShow extends React.Component {
         )
 
         return (
-        <div>
+        <div className="div-margin">
             {newPlaylist}
         </div>
         )
@@ -39,7 +40,7 @@ class PlaylistShow extends React.Component {
 
 const msp = (state, ownProps) => {
     const playlist= state.entities.playlists[ownProps.match.params.playlistId];
-
+    // debugger;
     return {
         playlist: playlist,
     }

@@ -5,13 +5,15 @@
 .alb-sho {
     display: flex;
     flex-direction: row;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .songs-list {
     display: flex;
     flex-direction: column;
     list-style: none;
+    margin-left: 100px;
+    justify-content: space-evenly;
 }
 
 .songs-list li {
@@ -21,15 +23,63 @@
     font-size: 13px;
 }
 
-.songs-list img {
+.songtitle {
+    margin-top: 5px;
+}
+
+.note-img {
     height: 30px;
     width: 30px;
 }
+
+// .note-img:after {
+//     content: url(image/play_white.png);
+//     display: block;
+// }
+
+// .note-img:hover{
+//     background-image: image-url('https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png');
+//     background-repeat: no-repeat;
+// }
+
+.song-row {
+    display: flex;
+    flex-direction: row;
+}
+
+#song-title {
+    display: flex;
+    margin-bottom: 10px;
+    font-size: 16px;
+    // padding: 5px;
+}
+
+.times{
+    // display: flex;
+    flex-direction: row;
+}
+
+#song-duration {
+    flex-direction: row;
+    // display: inline-flex;
+    margin-left: 600px;
+}
+// #song-title {
+
+// }
+
+#art-name{
+    color: #b3b3b3;
+    margin-bottom: 10px;
+}
+
+
 .album-show {
     display: flex;
     flex-direction: column;
     list-style: none;
     margin: 50px;
+    margin-top: 50px;
     justify-content: center;
     height: 200px;
     // margin-top: 50px;

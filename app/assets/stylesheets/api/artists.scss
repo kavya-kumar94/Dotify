@@ -31,40 +31,82 @@ img {
     padding-bottom: 10px;
 }
 
+img:hover {
+    opacity: 0.2;
+}
+
 .art-ind img {
     border-radius: 50%;
 }
 
-.artist-show-bg img{
-    height: 100px;
-    width: 100vh;
-    max-width: 100%;
+// .artist-show-bg img{
+//     height: 300px;
+//     width: 100vh;
+//     max-width: 100%;
+// }
+
+.artist-header img {
+    height: 300px;
 }
 
 .artist-show {
     display: flex;
+    font-family: "Circular";
+    // max-width: 100%;
     // flex-direction: column;
     // justify-items: center;
     // align-items: center;
-    // margin: auto;
+    // text-align: center;
+    // font-family: "Circular Bold";
+    padding-top: 10px;
+    padding-left: 100px;
+    margin: auto;
+    // min-width: 100%;
+    margin-bottom: 50px;;
 }
 
+.art-sho {
+    // margin-right: 700px;
+}
+
+.art-sho h3 {
+    font-size: 30px;
+}
+
+.bg-img{
+    height: 500px;
+    width: 500px;
+}
 .artist-header {
     list-style: none;
     display: flex;
-    width: 100vmax;
+    // width: 100vw;
     flex-direction: column;
     margin: auto;
 }
 
 .artist-header h2 {
     margin: auto;
+    font-family: "Circular Bold";
 }
 
+.art-song {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#duration {
+    margin-left: 600px;
+    justify-content: flex-end;
+}
+
+#art-note {
+    height: 30px;
+    width: 30px;
+}
 
 .artist-show h2 {
-    font-family: "Circular Bold";
-    font-size: 50px;
+    font-size: 70px;
     // text-align: center;
 }
 

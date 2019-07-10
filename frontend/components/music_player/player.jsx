@@ -5,6 +5,11 @@ class Player extends React.Component{
         super(props);
     }
 
+    // play(e) {
+    //     let audio = new Audio(`${this.props.song.audio}`);
+    //     audio.play();
+    // }
+
     render() {
         return (
             <div className="player-div">

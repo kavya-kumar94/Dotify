@@ -11,6 +11,11 @@ class AlbumShow extends React.Component {
         this.props.fetchAlbum(this.props.match.params.albumId);
     }
 
+    play(e) {
+        // let audio = new Audio(`${this.props.song.audio}`);
+        // audio.play();
+    }
+
     render() {
         if (this.props.album === undefined) return null;
         // debugger;
@@ -18,7 +23,7 @@ class AlbumShow extends React.Component {
         let newAlbum = (
             <div className="alb-sho">
             <div className="album-show">
-                <li><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
+                <li className="alb-img"><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
                 <h2>{album.title}</h2>
                 <li className="artist-hov"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
                 <button className="play-btn">PLAY</button>
@@ -31,14 +36,34 @@ class AlbumShow extends React.Component {
             <div className="songs-list">
                 {/* <h3>Songs</h3> */}
                 {songs.map(song => {
-                    return <li><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"/>{song.title}</li>
+                    return (
+                        <div className="times">
+
+                            <div className="song-row">
+                                <div>
+                                    <img onClick={this.play} className="note-img" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
+                                </div>
+                                <div className="songtitle">
+                                    <li id="song-title">{song.title}</li>
+                                    <li id="art-name">{album.artist_name}</li>
+                                </div>
+                            </div>
+
+
+                            <div id="song-duration">
+                                <li>{song.duration}</li>
+                            </div>
+
+                            
+                        </div>
+                        )
                 })}
             </div>
         </div>
         )
 
         return (
-            <div>
+            <div className="div-margin">
                 {newAlbum}
             </div>
         )

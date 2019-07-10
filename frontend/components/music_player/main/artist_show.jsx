@@ -14,28 +14,46 @@ class ArtistShow extends React.Component {
 
     render() {
         if (this.props.artist === undefined) return null;
-        debugger;
         const { artist, albums, songs } = this.props;
         let newArtist = (
             <div className="artist-show">
+                <div className="bg-img">
+                    <img className="artist-show-bg" src={artist.artist_image} />
+                </div>
                 <div className="artist-header">
-                    <img className="artist-show-bg" src={artist.artist_image}/>
                     <h2 className="artist-name">{artist.name}</h2>
                     <button className="play-btn">PLAY</button>
+
+
+                <div className="art-sho">
+                    <h3>Popular</h3>
+                    {songs.map( song => {
+                        return <div className="art-song">
+                            <div>
+                                <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
+                            </div>
+                            <div className="stitle">
+                                <li id="song-title">{song.title}</li>
+                            </div>
+                            <div id="duration">
+                                {song.duration}
+                            </div>
+                        </div>
+                    })}
                     <h3>Albums</h3>
                     {albums.map( album => {
-                        return <li>{album.title}</li>
-                    })}
-                    <h3>Songs</h3>
-                    {songs.map( song => {
-                        return <li>{song.title}</li>
-                    })}
+                        return <div className="alb-info">
+                            <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
+                                <li>{album.title}</li>
+                                </div>
+                                })}
+                </div>
                 </div>
             </div>
         )
 
         return (
-            <div>
+            <div className="div-margin">
                 {newArtist}
             </div>
         )

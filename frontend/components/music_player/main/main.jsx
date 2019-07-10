@@ -17,7 +17,7 @@ class Main extends React.Component {
     render() {
        let { currentUser } = this.props
         return(
-            <div className = "main-div">
+            <div className ="main-div">
                 <ul className="browse-links">
                     <li>
                         <div className="link-main">
