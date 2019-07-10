@@ -47,3 +47,9 @@
 # end
 
 json.partial! 'api/playlists/playlist', playlist: @playlist
+
+# json.users do 
+#     json.set! @playlist.creator.id do
+#         json.extract! @playlist.creator, :id, :username
+#     end
+# end

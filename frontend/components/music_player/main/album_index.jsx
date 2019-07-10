@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { fetchAlbums, fetchAlbum } from '../../../actions/album_actions';
 import Modal from '../../playlists/playlist_modal'
 import { openModal } from '../../../actions/modal_actions'
@@ -18,9 +18,10 @@ class AlbumIndex extends React.Component {
         const { albums, openModal } = this.props
         let albumsNew = albums.map(album => {
             return (
-                <li>{album.title}</li>
+                <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
             )
         })
+
         return (
             <div>
                 <div className="create-playlist">

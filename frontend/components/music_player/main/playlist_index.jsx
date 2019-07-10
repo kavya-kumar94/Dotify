@@ -4,6 +4,9 @@ import { NavLink, Link } from 'react-router-dom';
 import { fetchPlaylists, fetchPlaylist } from '../../../actions/playlist_actions';
 import Modal from '../../playlists/playlist_modal'
 import { openModal } from '../../../actions/modal_actions'
+import { ProtectedRoute } from '../../../util/route_util'
+import PlaylistShow from './playlist_show'
+
 
 class PlaylistIndex extends React.Component {
     constructor(props) {

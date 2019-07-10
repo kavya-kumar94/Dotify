@@ -12,6 +12,7 @@
 json.playlists do
     json.set! playlist.id do 
         json.extract! playlist, :id, :title, :creator_id
+        json.creator playlist.creator.username 
     end 
 end
 
@@ -22,3 +23,4 @@ json.songs do
         end
     end
 end 
+

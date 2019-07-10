@@ -8,12 +8,6 @@
     grid-area: main;
 }
 
-.username-show{
-    color: white;
-    height: 50px;
-    width: 150px;
-}
-
 .browse-links{
     font-size: 12px;
     display: flex;
@@ -22,6 +16,14 @@
     color: #b3b3b3;
     letter-spacing: 0.2em;
     justify-content: space-evenly;
+}
+
+.username-show {
+    flex-direction: row;
+    font-size: 40px;
+    color: white;
+    font-family: "Circular Bold";
+    margin-left: 50px;
 }
 
 .link-main {

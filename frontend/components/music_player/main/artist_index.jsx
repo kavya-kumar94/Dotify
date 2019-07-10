@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 import { fetchArtists, fetchArtist } from '../../../actions/artist_actions';
 import Modal from '../../playlists/playlist_modal'
 import { openModal } from '../../../actions/modal_actions'
@@ -18,7 +18,7 @@ class ArtistIndex extends React.Component {
         const { artists, openModal } = this.props
         let artistsNew = artists.map(artist => {
             return (
-                <li>{artist.name}</li>
+                <li><NavLink to={`/artists/${artist.id}`}>{artist.name}</NavLink></li>
             )
         })
         return (

@@ -119,7 +119,7 @@
 }
 
 .new-playlist-btn {
-    margin-top: 60px;
+    // margin-top: 30px;
     font-family: "Circular";
     letter-spacing: 0.2em;
     color: white;
@@ -139,6 +139,8 @@
 .create-playlist {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 35px;
 }
 
 .playlist-link {

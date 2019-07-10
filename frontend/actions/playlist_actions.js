@@ -41,8 +41,8 @@ export const clearPlaylistErrors = () => {
     }
 }
 
-export const fetchPlaylist = (id) => dispatch => {
-    return PlaylistApiUtil.fetchPlaylist(id).then( playlist => dispatch(receivePlaylist(playlist)))
+export const fetchPlaylist = (playlistId) => dispatch => {
+    return PlaylistApiUtil.fetchPlaylist(playlistId).then( playlist => dispatch(receivePlaylist(playlist)))
 }
 
 export const fetchPlaylists = () => dispatch => {

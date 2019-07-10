@@ -7,6 +7,7 @@ import ArtistIndex from './artist_index';
 import PlaylistIndex from './playlist_index'
 import AlbumIndex from './album_index'
 import PlaylistShow from './playlist_show'
+import UserShow from './user_show'
 
 class Main extends React.Component {
     // constructor(props) {
@@ -14,6 +15,7 @@ class Main extends React.Component {
     // }
 
     render() {
+       let { currentUser } = this.props
         return(
             <div className = "main-div">
                 <ul className="browse-links">
@@ -40,21 +42,30 @@ class Main extends React.Component {
                         </div>
                     </li>
                 </ul>
-                
-                    {/* <div className="username-show">{currentUser.username}</div> */}
+
+
+                <ProtectedRoute exact path='/browse/featured' component={UserShow} />
                 <ProtectedRoute exact path='/library/artists' component={ArtistIndex} />
                 <ProtectedRoute exact path='/library/playlists' component={PlaylistIndex} />
                 <ProtectedRoute exact path='/library/albums' component={AlbumIndex} />
-                <ProtectedRoute path='/library/playlists/:playlistId' component={PlaylistShow}/>
+                <Route path='/playlists/:playlistId' component={PlaylistShow} />
+                {/* <PlaylistShow /> */}
+
             </div>
         )
     }
 }
 
-const msp = (state) => {
+const msp = ({entities, session}) => {
     return {
-        currentUser: state.session.id
+        currentUser: entities.users[session.id].username
     }
 }
+
+// const mdp = dispatch => {
+//     return {
+//         receive
+//     }
+// }
 
 export default withRouter(connect(msp, null)(Main));

@@ -23,6 +23,7 @@ class MusicPlayer extends React.Component {
                     <Player />
                     <Route path='/library' component={Main} />
                     <Route path='/browse' component={Main} />
+                    <Route path='/playlists' component={Main} />
                 </div>
         )
     }

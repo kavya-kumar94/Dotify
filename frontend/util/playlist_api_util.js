@@ -5,10 +5,10 @@ export const fetchPlaylists = () => {
   });
 };
 
-export const fetchPlaylist = (id) => {
+export const fetchPlaylist = (playlistId) => {
   return $.ajax({
     method: "GET",
-    url: `/api/playlists/${id}`
+    url: `/api/playlists/${playlistId}`
   });
 }
 

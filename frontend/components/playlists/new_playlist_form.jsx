@@ -20,14 +20,12 @@ class NewPlaylistForm extends React.Component {
 
 
     redirect() {
-        debugger;
         this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
     }
 
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger;
         let playlist = this.state;
         // this.setState({ title: '' });
         this.props.createPlaylist(playlist)
