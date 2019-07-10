@@ -7,6 +7,11 @@
             # json.creator_id playlist.creator_id
             json.creatorName playlist.creator.username
             json.playlistSongIds playlist.playlist_songs.map { |playlist_song| playlist_song.id }
+             if playlist.playlist_image.attached?
+                json.playlist_image url_for(playlist.playlist_image)
+            else
+                json.playlist_image ""
+            end
             # json.imageUrl playlist.image_url
             # json.firstImage playlist.songs.empty? ? nil : playlist.songs.first.album.cover_image
         end

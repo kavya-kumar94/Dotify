@@ -47,6 +47,13 @@
 # end
 
 json.partial! 'api/playlists/playlist', playlist: @playlist
+#  if playlist.playlist_image.attached?
+#     json.playlist_image url_for(playlist.playlist_image)
+# else
+#     json.playlist_image ""
+# end
+
+
 
 # json.users do 
 #     json.set! @playlist.creator.id do

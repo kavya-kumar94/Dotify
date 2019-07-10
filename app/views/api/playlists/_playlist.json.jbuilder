@@ -13,6 +13,11 @@ json.playlists do
     json.set! playlist.id do 
         json.extract! playlist, :id, :title, :creator_id
         json.creator playlist.creator.username 
+        if playlist.playlist_image.attached?
+            json.playlist_image url_for(playlist.playlist_image)
+        else
+            json.playlist_image ""
+        end
     end 
 end
 
@@ -20,6 +25,11 @@ json.songs do
     playlist.songs.each do |song|
         json.set! song.id do
             json.extract! song, :title, :duration, :album_id, :genre_id
+            if song.audio.attached?
+                json.audio url_for(song.audio)
+            else
+                json.audio ""
+            end
         end
     end
 end 

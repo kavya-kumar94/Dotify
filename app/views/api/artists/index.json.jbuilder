@@ -2,9 +2,11 @@
   @artists.each do |artist|
     json.set! artist.id do
       json.extract! artist, :name, :id
-      # if artist.photo.attached?
-      #   json.image_url url_for(artist.photo)
-      # end
+      if artist.artist_image.attached?
+        json.artist_image url_for(artist.artist_image.photo)
+      else
+        json.artist_image ""
+      end
     end
   end
 # end

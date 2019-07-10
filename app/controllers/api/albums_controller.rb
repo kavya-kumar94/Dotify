@@ -1,6 +1,6 @@
 class Api::AlbumsController < ApplicationController
     def index
-        @albums = Album.all
+        @albums = Album.includes(:artist, :songs).with_attached_album_image
 
         if @albums
             render :index
@@ -10,9 +10,9 @@ class Api::AlbumsController < ApplicationController
     end
 
     def show
-        @album = Album.find(params[:id])
+        @album = Album.includes(:artist, :songs).with_attached_album_image.find(params[:id])
         if @album
-            render :show
+            @songs = @album.songs.with_attached_audio
         else
             render json: ['Album does not exist.'], status: 422
         end
