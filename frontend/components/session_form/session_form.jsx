@@ -206,7 +206,7 @@ class SessionForm extends React.Component {
 
                             <input type="password"
                                     id="password"
-                                    className={ invalidPassword ? "error" : "none2" }
+                                    className={ (invalidPassword || invalidCombo) ? "error" : "none2" }
                                     value={this.state.password}
                                     onChange={this.update('password')}
                                     placeholder="Password"
@@ -229,7 +229,7 @@ class SessionForm extends React.Component {
                              <div className="yesaccount">
                                 <div className="account-check">Already have an account? &nbsp;
 
-                                    <span>
+                                    <span id="log">
                                         <Link onClick={this.props.clearErrors} to="/login">Log In</Link>
                                     </span>
                                 </div> 

@@ -307,12 +307,17 @@ span:hover {
   .noaccount {
     display: flex;
   }
-
+  
   .yesaccount {
     display: flex;
     flex-direction: row;
+    text-align: center;
   }
 
+  #log {
+    margin-left: 65px;
+  }
+  
   .account-check {
     font-family: "Circular Bold";
     font-size: .9375em;

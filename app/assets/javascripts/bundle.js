@@ -2723,7 +2723,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         id: "password",
-        className: invalidPassword ? "error" : "none2",
+        className: invalidPassword || invalidCombo ? "error" : "none2",
         value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Password"
@@ -2752,7 +2752,9 @@ function (_React$Component) {
         className: "yesaccount"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "account-check"
-      }, "Already have an account? \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Already have an account? \xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "log"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         onClick: this.props.clearErrors,
         to: "/login"
       }, "Log In")))))));
