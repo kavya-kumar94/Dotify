@@ -892,7 +892,9 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var albums = this.props.albums;
+      var _this$props = this.props,
+          albums = _this$props.albums,
+          openModal = _this$props.openModal;
       var albumsNew = albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
           to: "/albums/".concat(album.id)
@@ -906,7 +908,7 @@ function (_React$Component) {
         className: "create-playlist"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          return Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__["openModal"])("new-playlist");
+          return openModal("new-playlist");
         },
         className: "new-playlist-btn"
       }, "NEW PLAYLIST")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, albumsNew));

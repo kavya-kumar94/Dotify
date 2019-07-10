@@ -15,7 +15,7 @@ class AlbumIndex extends React.Component {
     }
 
     render() {
-        const { albums } = this.props
+        const { albums, openModal } = this.props
         let albumsNew = albums.map(album => {
             return (
                 <div>

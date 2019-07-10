@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { fetchArtists, fetchArtist } from '../../../actions/artist_actions';
 import Modal from '../../playlists/playlist_modal'
 import { openModal } from '../../../actions/modal_actions'
