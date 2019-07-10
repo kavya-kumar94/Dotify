@@ -2,6 +2,7 @@ import {
     RECEIVE_ALBUM,
     RECEIVE_ALBUMS,
 } from '../actions/album_actions';
+
 import { RECEIVE_ARTIST } from '../actions/artist_actions'
 import { merge } from 'lodash';
 

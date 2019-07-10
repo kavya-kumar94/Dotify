@@ -2,21 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.alb-sho {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
 
+.songs-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.songs-list li {
+    font-family: "Circular";
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+
+.songs-list img {
+    height: 30px;
+    width: 30px;
+}
 .album-show {
     display: flex;
     flex-direction: column;
     list-style: none;
     margin: 50px;
     justify-content: center;
+    height: 200px;
+    // margin-top: 50px;
 }
 
 .album-show h2 {
     font-family: "Circular Bold";
     font-size: 35px;
     margin: auto;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    // padding-bottom: 15px;
+    // padding-top: 15px;
 }
 
 .album-show li {
@@ -24,7 +48,7 @@
     font-size: 16px;
     margin: auto;
     color: #b3b3b3;
-    padding-top: 20px;
+    // padding-top: 20px;
 }
 
 .play-btn {

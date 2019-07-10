@@ -6,6 +6,7 @@
 
 .main-div {
     grid-area: main;
+    overflow: hidden;
 }
 
 .browse-links{
@@ -38,6 +39,9 @@
 .player-div {
     grid-area: player;
     background-color: #272727;
+    // position: sticky;
+    // bottom: 0.1px;
+    // left:
 }
 
 // .not-active{

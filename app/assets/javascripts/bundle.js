@@ -1003,9 +1003,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.props.album === undefined) return null;
-      var album = this.props.album;
+      if (this.props.album === undefined) return null; // debugger;
+
+      var _this$props = this.props,
+          album = _this$props.album,
+          songs = _this$props.songs;
       var newAlbum = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "alb-sho"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "album-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
         to: "/albums/".concat(album.id)
@@ -1025,6 +1030,12 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "extra-album",
         src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "songs-list"
+      }, songs.map(function (song) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"
+        }), song.title);
       })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newAlbum);
     }
@@ -1034,9 +1045,22 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
-  var album = state.entities.albums[ownProps.match.params.albumId];
+  var albumId = ownProps.match.params.albumId; // debugger;
+
+  var album = state.entities.albums[albumId];
+  var albumsongs = Object.values(state.entities.songs).filter(function (song) {
+    return song.album_id == albumId;
+  });
+  var songIds = albumsongs.map(function (song) {
+    return song.id;
+  });
+  var songs = [];
+  Object.values(state.entities.songs).forEach(function (track) {
+    return songIds.includes(track.id) ? songs.push(track) : null;
+  });
   return {
-    album: album
+    album: album,
+    songs: songs
   };
 };
 
@@ -1218,6 +1242,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       if (this.props.artist === undefined) return null;
+      debugger;
       var _this$props = this.props,
           artist = _this$props.artist,
           albums = _this$props.albums,
@@ -1233,7 +1258,11 @@ function (_React$Component) {
         className: "artist-name"
       }, artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
-      }, "PLAY")));
+      }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, album.title);
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Songs"), songs.map(function (song) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.title);
+      })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newArtist);
     }
   }]);
@@ -1242,13 +1271,23 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
-  var artist = state.entities.artists[ownProps.match.params.artistId]; // const albums = artist.albums;
-  // const songs = artist.songs
+  var artistId = ownProps.match.params.artistId;
+  var artist = state.entities.artists[artistId];
+  var albums = Object.values(state.entities.albums).filter(function (album) {
+    return album.artist_id == artistId;
+  });
+  var albumIds = albums.map(function (album) {
+    return album.id;
+  }); // debugger;
 
+  var songs = [];
+  Object.values(state.entities.songs).forEach(function (song) {
+    return albumIds.includes(song.album_id) ? songs.push(song) : null;
+  });
   return {
-    artist: artist // albums: albums,
-    // songs: songs
-
+    artist: artist,
+    albums: albums,
+    songs: songs
   };
 };
 
@@ -3415,9 +3454,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/song_actions */ "./frontend/actions/song_actions.js");
 /* harmony import */ var _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/playlist_actions */ "./frontend/actions/playlist_actions.js");
 /* harmony import */ var _actions_artist_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/artist_actions */ "./frontend/actions/artist_actions.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _actions_album_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/album_actions */ "./frontend/actions/album_actions.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3431,16 +3472,19 @@ var songsReducer = function songsReducer() {
 
   switch (action.type) {
     case _actions_playlist_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_PLAYLIST"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_3__["merge"])({}, state, action.payload.songs);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["merge"])({}, state, action.payload.songs);
 
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SONGS"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_3__["merge"])({}, state, action.songs);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["merge"])({}, state, action.songs);
 
     case _actions_song_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SONG"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_3__["merge"])({}, state, _defineProperty({}, action.song.id, action.song));
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["merge"])({}, state, _defineProperty({}, action.song.id, action.song));
 
     case _actions_artist_actions__WEBPACK_IMPORTED_MODULE_2__["RECEIVE_ARTIST"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_3__["merge"])({}, state, action.payload.songs);
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["merge"])({}, state, action.payload.songs);
+
+    case _actions_album_actions__WEBPACK_IMPORTED_MODULE_3__["RECEIVE_ALBUM"]:
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_4__["merge"])({}, state, action.payload.songs);
 
     default:
       return state;

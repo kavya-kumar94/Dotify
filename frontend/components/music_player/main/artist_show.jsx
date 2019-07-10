@@ -14,19 +14,22 @@ class ArtistShow extends React.Component {
 
     render() {
         if (this.props.artist === undefined) return null;
+        debugger;
         const { artist, albums, songs } = this.props;
         let newArtist = (
             <div className="artist-show">
                 <div className="artist-header">
                     <img className="artist-show-bg" src={artist.artist_image}/>
                     <h2 className="artist-name">{artist.name}</h2>
-                    {/* <h2>{albums.map( album => {
-                        return <p>{album.title}</p>
-                    })}</h2>
+                    <button className="play-btn">PLAY</button>
+                    <h3>Albums</h3>
+                    {albums.map( album => {
+                        return <li>{album.title}</li>
+                    })}
+                    <h3>Songs</h3>
                     {songs.map( song => {
                         return <li>{song.title}</li>
-                    })} */}
-                    <button className="play-btn">PLAY</button>
+                    })}
                 </div>
             </div>
         )
@@ -41,13 +44,18 @@ class ArtistShow extends React.Component {
 
 
 const msp = (state, ownProps) => {
-    const artist = state.entities.artists[ownProps.match.params.artistId];
-    // const albums = artist.albums;
-    // const songs = artist.songs
+    const artistId = ownProps.match.params.artistId;
+    const artist = state.entities.artists[artistId];
+    const albums = Object.values(state.entities.albums).filter(album => album.artist_id == artistId);
+    const albumIds = albums.map(album => album.id);
+    // debugger;
+    let songs = [];
+    Object.values(state.entities.songs).forEach( song => albumIds.includes(song.album_id) ? songs.push(song) : null) 
+
     return {
         artist: artist,
-        // albums: albums,
-        // songs: songs
+        albums: albums,
+        songs: songs
     }
 }
 
