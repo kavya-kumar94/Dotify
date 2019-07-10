@@ -899,7 +899,7 @@ function (_React$Component) {
         }, album.album_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
           to: "/albums/".concat(album.id)
         }, album.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-          to: "/artists/".concat(album.artist_name)
+          to: "/artists/".concat(album.artist_id)
         }, album.artist_name)));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1002,7 +1002,7 @@ function (_React$Component) {
       }, album.album_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "artist-hov"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
-        to: "/artists/".concat(album.artist_name)
+        to: "/artists/".concat(album.artist_id)
       }, album.artist_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
       }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, album.year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
