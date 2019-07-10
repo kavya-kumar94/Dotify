@@ -94,15 +94,48 @@ travis.photo.attach(io: travis_pic, filename: 'mj.jpg')
 
 scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 1)
 
+scorpion_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
+scorpion.photo.attach(io: scorpion_pic, filename: 'scorpion.jpg')
 
 astroworld = Album.create( title: 'Astroworld', year: 2018, genre_id: 1, artist_id: 4)
+
+astro_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.jpg')
+astroworld.photo.attach(io: astro_pic, filename: 'astro.jpg')
+
 spacebetween = Album.create( title: 'The Space Between', year: 2017, genre_id: 3, artist_id: 2)
+
+sbw_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/sbw_cover.jpg')
+spacebetween.photo.attach(io: sbw_pic, filename: 'sbw.jpg')
+
+
 bad = Album.create( title: 'Bad', year: 1987, genre_id: 2, artist_id: 3)
+
+bad_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/bad_cover.png')
+bad.photo.attach(io: bad_pic, filename: 'bad.jpg')
+
+
 gottobethere = Album.create( title: 'Got To Be There', year: 1972, genre_id: 2, artist_id: 3)
+
+g2bthere_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/g2bthere_cover.jpg')
+gottobethere.photo.attach(io: g2bthere_pic, filename: 'g2bthere.jpg')
+
+
 offthewall = Album.create( title: 'Off The Wall', year: 1979, genre_id: 2, artist_id: 3)
+
+offthewall_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/offthewall_cover.jpg')
+offthewall.photo.attach(io: offthewall_pic, filename: 'offthewall.jpg')
+
+
 thriller = Album.create( title: 'Thriller', year: 1983, genre_id: 2, artist_id: 3)
+
+thriller_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/thriller_cover.jpg')
+thriller.photo.attach(io: thriller_pic, filename: 'thriller.jpg')
+
+
 pipesofpeace = Album.create( title: 'Pipes of Peace', year: 1983, genre_id: 2, artist_id: 3)
 
+pop_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pop_cover.jpg')
+pipesofpeace.photo.attach(io: pop_pic, filename: 'pop.jpg')
 
 # Songs
 
