@@ -1,11 +1,14 @@
-json.artist do
-  json.extract! @artist, :name, :id, :genre_id
-  if @artist.artist_image.attached?
-    json.artist_image url_for(artist.artist_image.photo)
-  else
-    json.artist_image ""
+json.artists do
+  json.set! @artist.id do
+    json.extract! @artist, :name, :id, :genre_id
+    if @artist.artist_image.attached?
+      json.artist_image url_for(@artist.artist_image)
+    else
+      json.artist_image ""
+    end
   end
   # json.genre artist.genre.name
+end
 
   json.albums do
     @artist.albums.each do |album|
@@ -14,7 +17,7 @@ json.artist do
         json.artist_name album.artist.name
         json.genre album.genre.name
         if @artist.artist_image.attached?
-          json.artist_image url_for(artist.artist_image.photo)
+          json.artist_image url_for(@artist.artist_image)
         else
           json.artist_image ""
         end
@@ -39,5 +42,4 @@ json.artist do
     end
   end
 
-end
 

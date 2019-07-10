@@ -28,8 +28,17 @@ img {
     max-width: 150px;
     max-height: 150px;
     flex-direction: row;
-    border-radius: 50%;
     padding-bottom: 10px;
+}
+
+.art-ind img {
+    border-radius: 50%;
+}
+
+.artist-show-bg img{
+    height: 100px;
+    width: 100vh;
+    max-width: 100%;
 }
 
 .artist-show {
@@ -57,4 +66,22 @@ img {
     font-family: "Circular Bold";
     font-size: 50px;
     // text-align: center;
+}
+
+.art-ind {
+    display: flex;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-family: "Circular";
+    font-size: 14px;
+}
+
+.art-ind li {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }

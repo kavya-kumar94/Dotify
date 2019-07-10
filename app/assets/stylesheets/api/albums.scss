@@ -66,3 +66,21 @@
     margin-left: 7px;
     margin-top: 20px;
 }
+
+.albs {
+    display: flex;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-family: "Circular";
+    font-size: 14px;
+}
+
+.albs li {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}

@@ -14,17 +14,17 @@ class ArtistShow extends React.Component {
 
     render() {
         if (this.props.artist === undefined) return null;
-        const { artist } = this.props;
+        const { artist, albums, songs } = this.props;
         let newArtist = (
             <div className="artist-show">
                 <div className="artist-header">
-                    <li><NavLink to={`/artists/${artist.id}`}>{artist.artist_image}</NavLink></li>
+                    <img className="artist-show-bg" src={artist.artist_image}/>
                     <h2 className="artist-name">{artist.name}</h2>
-                    {/* <h2>{artist.albums.map( album => {
-                        <p>{album.title}</p>
-                    })}</h2> */}
-                    {/* {artist.albums.map( album => {
-                        <li><NavLink to={`/albums/${artist.album}`}>{artist.album}</NavLink></li>
+                    {/* <h2>{albums.map( album => {
+                        return <p>{album.title}</p>
+                    })}</h2>
+                    {songs.map( song => {
+                        return <li>{song.title}</li>
                     })} */}
                     <button className="play-btn">PLAY</button>
                 </div>
@@ -42,8 +42,12 @@ class ArtistShow extends React.Component {
 
 const msp = (state, ownProps) => {
     const artist = state.entities.artists[ownProps.match.params.artistId];
+    // const albums = artist.albums;
+    // const songs = artist.songs
     return {
         artist: artist,
+        // albums: albums,
+        // songs: songs
     }
 }
 

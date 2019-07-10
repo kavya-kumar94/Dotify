@@ -22,6 +22,7 @@ class PlaylistIndex extends React.Component {
         let playlistsNew = playlists.map( playlist => {
             return(
                 <div className="playlist-link">
+                    <li><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image}/></NavLink></li>
                     <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
                     <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.creatorName}</NavLink></li>
                 </div>

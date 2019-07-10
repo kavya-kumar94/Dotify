@@ -18,8 +18,8 @@ class AlbumIndex extends React.Component {
         const { albums, openModal } = this.props
         let albumsNew = albums.map(album => {
             return (
-                <div>
-                    <li><NavLink to={`/albums/${album.id}`}>{album.album_image}</NavLink></li>
+                <div className="albs">
+                    <li><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
                     <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     {/* <h2>{album.title}</h2> */}
                     <li><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
@@ -31,11 +31,11 @@ class AlbumIndex extends React.Component {
         })
 
         return (
-            <div>
+            <div className="albs2">
                 <div className="create-playlist">
                     <button onClick={() => openModal("new-playlist")} className="new-playlist-btn">NEW PLAYLIST</button>
                 </div>
-                <ul>
+                <ul className="alb-ind">
                     {albumsNew}
                 </ul>
             </div>
