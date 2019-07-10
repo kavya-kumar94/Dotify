@@ -1,6 +1,6 @@
 json.artist do
   json.extract! @artist, :name, :id, :genre_id
-  if artist.artist_image.attached?
+  if @artist.artist_image.attached?
     json.artist_image url_for(artist.artist_image.photo)
   else
     json.artist_image ""
@@ -13,7 +13,7 @@ json.artist do
         json.extract! album, :id, :title, :year, :genre_id, :artist_id
         json.artist_name album.artist.name
         json.genre album.genre.name
-        if artist.artist_image.attached?
+        if @artist.artist_image.attached?
           json.artist_image url_for(artist.artist_image.photo)
         else
           json.artist_image ""

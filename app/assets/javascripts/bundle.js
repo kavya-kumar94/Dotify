@@ -995,13 +995,25 @@ function (_React$Component) {
     value: function render() {
       if (this.props.album === undefined) return null;
       var album = this.props.album;
-      var newAlbum = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
+      var newAlbum = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
         to: "/albums/".concat(album.id)
-      }, album.album_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
+      }, album.album_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, album.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "artist-hov"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
         to: "/artists/".concat(album.artist_name)
       }, album.artist_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
-      }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, album.year));
+      }, "PLAY"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, album.year), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "album-pics"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "like-album",
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "extra-album",
+        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
+      })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newAlbum);
     }
   }]);
@@ -1189,11 +1201,17 @@ function (_React$Component) {
     value: function render() {
       if (this.props.artist === undefined) return null;
       var artist = this.props.artist;
-      var newArtist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
+      var newArtist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["NavLink"], {
         to: "/artists/".concat(artist.id)
-      }, artist.artist_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, artist.artist_image)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "artist-name"
+      }, artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
-      }, "PLAY"));
+      }, "PLAY")));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newArtist);
     }
   }]);
@@ -1518,7 +1536,7 @@ function (_React$Component) {
     value: function render() {
       if (this.props.playlist === undefined) return null;
       var playlist = this.props.playlist;
-      var newPlaylist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator));
+      var newPlaylist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, newPlaylist);
     }
   }]);

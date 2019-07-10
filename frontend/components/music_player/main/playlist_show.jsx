@@ -18,6 +18,11 @@ class PlaylistShow extends React.Component {
             <div>
                 <li>{playlist.title}</li>
                 <li>{playlist.creator}</li>
+                <ul>
+                    {/* {playlist.playlistSongIds.map( id => {
+                        return <li>{songs.id}</li> */}
+                    {/* })} */}
+                </ul>
             </div>
         )
 

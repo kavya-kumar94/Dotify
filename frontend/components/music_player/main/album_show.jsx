@@ -15,12 +15,16 @@ class AlbumShow extends React.Component {
         if (this.props.album === undefined) return null;
         const { album } = this.props;
         let newAlbum = (
-            <div>
+            <div className="album-show">
                 <li><NavLink to={`/albums/${album.id}`}>{album.album_image}</NavLink></li>
                 <h2>{album.title}</h2>
-                <li><NavLink to={`/artists/${album.artist_name}`}>{album.artist_name}</NavLink></li>
+                <li className="artist-hov"><NavLink to={`/artists/${album.artist_name}`}>{album.artist_name}</NavLink></li>
                 <button className="play-btn">PLAY</button>
-                <p>{album.year}</p>
+                <li>{album.year}</li>
+                <div className="album-pics">
+                    <img className="like-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"/>
+                    <img className="extra-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"/>
+                </div>
             </div>
         )
 

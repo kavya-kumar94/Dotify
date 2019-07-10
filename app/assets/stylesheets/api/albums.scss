@@ -1,3 +1,68 @@
 // Place all the styles related to the api/albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.album-show {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 50px;
+    justify-content: center;
+}
+
+.album-show h2 {
+    font-family: "Circular Bold";
+    font-size: 35px;
+    margin: auto;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.album-show li {
+    font-family: "Circular";
+    font-size: 16px;
+    margin: auto;
+    color: #b3b3b3;
+    padding-top: 20px;
+}
+
+.play-btn {
+     font-family: "Circular";
+    letter-spacing: 0.2em;
+    color: white;
+    width: 100px;
+    border: none;
+    z-index: 1;
+    padding: 10px;
+    // margin-top: 20px;
+    border-radius: 500px;
+    background-color: #1DB954;
+    transition: all .2s ease-in-out;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.play-btn:hover {
+    background-color: #1ED760;
+    transform: scale(1.1);
+}
+
+.artist-hov:hover {
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.album-pics {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.album-pics img {
+    flex-direction: row;
+    height: 40px;
+    width: 40px;
+    margin-left: 7px;
+    margin-top: 20px;
+}

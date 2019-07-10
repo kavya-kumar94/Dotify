@@ -31,3 +31,30 @@ img {
     border-radius: 50%;
     padding-bottom: 10px;
 }
+
+.artist-show {
+    display: flex;
+    // flex-direction: column;
+    // justify-items: center;
+    // align-items: center;
+    // margin: auto;
+}
+
+.artist-header {
+    list-style: none;
+    display: flex;
+    width: 100vmax;
+    flex-direction: column;
+    margin: auto;
+}
+
+.artist-header h2 {
+    margin: auto;
+}
+
+
+.artist-show h2 {
+    font-family: "Circular Bold";
+    font-size: 50px;
+    // text-align: center;
+}

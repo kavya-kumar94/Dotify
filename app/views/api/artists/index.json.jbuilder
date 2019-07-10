@@ -7,6 +7,8 @@
       else
         json.artist_image ""
       end
+
+    
     end
   end
 # end

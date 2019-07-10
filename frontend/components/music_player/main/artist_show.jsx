@@ -16,13 +16,18 @@ class ArtistShow extends React.Component {
         if (this.props.artist === undefined) return null;
         const { artist } = this.props;
         let newArtist = (
-            <div>
-                <li><NavLink to={`/artists/${artist.id}`}>{artist.artist_image}</NavLink></li>
-                <h2>{artist.name}</h2>
-                {/* {artist.albums.map( album => {
-                    <li><NavLink to={`/albums/${artist.album}`}>{artist.album}</NavLink></li>
-                })} */}
-                <button className="play-btn">PLAY</button>
+            <div className="artist-show">
+                <div className="artist-header">
+                    <li><NavLink to={`/artists/${artist.id}`}>{artist.artist_image}</NavLink></li>
+                    <h2 className="artist-name">{artist.name}</h2>
+                    {/* <h2>{artist.albums.map( album => {
+                        <p>{album.title}</p>
+                    })}</h2> */}
+                    {/* {artist.albums.map( album => {
+                        <li><NavLink to={`/albums/${artist.album}`}>{artist.album}</NavLink></li>
+                    })} */}
+                    <button className="play-btn">PLAY</button>
+                </div>
             </div>
         )
 
@@ -37,7 +42,6 @@ class ArtistShow extends React.Component {
 
 const msp = (state, ownProps) => {
     const artist = state.entities.artists[ownProps.match.params.artistId];
-
     return {
         artist: artist,
     }
