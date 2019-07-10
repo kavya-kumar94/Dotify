@@ -68,13 +68,33 @@ rb = Genre.create(id: 3, name: 'R&B')
 # Artists 
 
 drake = Artist.create(id: 1, name: 'Drake', genre_id: 1 )
+
+drake_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
+drake.photo.attach(io: drake_pic, filename: 'drake.jpg')
+
+
 majid = Artist.create(id: 2, name: 'Majid Jordan', genre_id: 3 )
+
+majid_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid.jpg')
+majid.photo.attach(io: majid_pic, filename: 'majid.jpg')
+
+
 mj = Artist.create(id: 3, name: 'Michael Jackson', genre_id: 2 )
+
+mj_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/mj.jpg')
+mj.photo.attach(io: mj_pic, filename: 'mj.jpg')
+
 travis = Artist.create(id: 4, name: 'Travis Scott', genre_id: 1 )
+
+
+travis_pic = File.open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/travis.jpg')
+travis.photo.attach(io: travis_pic, filename: 'mj.jpg')
 
 # Albums
 
 scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 1)
+
+
 astroworld = Album.create( title: 'Astroworld', year: 2018, genre_id: 1, artist_id: 4)
 spacebetween = Album.create( title: 'The Space Between', year: 2017, genre_id: 3, artist_id: 2)
 bad = Album.create( title: 'Bad', year: 1987, genre_id: 2, artist_id: 3)

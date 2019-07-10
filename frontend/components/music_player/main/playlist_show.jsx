@@ -32,11 +32,9 @@ class PlaylistShow extends React.Component {
 
 const msp = (state, ownProps) => {
     const playlist= state.entities.playlists[ownProps.match.params.playlistId];
-    // const creator = playlist ? state.entities.users[playlists.creatorId] : {};
 
     return {
         playlist: playlist,
-        // creator: creator
     }
 }
 

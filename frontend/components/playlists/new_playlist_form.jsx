@@ -66,7 +66,7 @@ class NewPlaylistForm extends React.Component {
 
 
 const msp = (state) => ({
-    last_playlist: state.entities.playlists[Object.values(state.entities.playlists).length-1]
+    last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length-1]
 });
 
 
