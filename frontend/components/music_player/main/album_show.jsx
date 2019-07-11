@@ -34,30 +34,27 @@ class AlbumShow extends React.Component {
                 </div>
             </div>
             <div className="songs-list">
-                {/* <h3>Songs</h3> */}
-                {songs.map(song => {
-                    return (
-                        <div className="times">
+                        <div className="track6">
+                            {songs.map(song => {
+                                return <div className="art-song">
+                                    <div className="parent">
+                                        <div className="track5">
+                                            <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
+                                            <li id="song-title">{song.title}</li>
+                                        </div>
+                                        {/* </div> */}
+                                        {/* <div className="stitle"> */}
+                                        {/* </div> */}
+                                        {/* <div id="duration"> */}
+                                        <div>
+                                            <li>{song.duration}</li>
+                                        </div>
 
-                            <div className="song-row">
-                                <div>
-                                    <img onClick={this.play} className="note-img" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
+
+                                    </div>
                                 </div>
-                                <div className="songtitle">
-                                    <li id="song-title">{song.title}</li>
-                                    <li id="art-name">{album.artist_name}</li>
-                                </div>
-                            </div>
-
-
-                            <div id="song-duration">
-                                <li>{song.duration}</li>
-                            </div>
-
-                            
+                            })}
                         </div>
-                        )
-                })}
             </div>
         </div>
         )

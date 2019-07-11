@@ -11,15 +11,16 @@ json.artists do
 end
 
   json.albums do
+    # debugger
     @artist.albums.each do |album|
       json.set! album.id do
         json.extract! album, :id, :title, :year, :genre_id, :artist_id
         json.artist_name album.artist.name
         json.genre album.genre.name
-        if @artist.artist_image.attached?
-          json.artist_image url_for(@artist.artist_image)
+        if album.album_image.attached?
+          json.album_image url_for(album.album_image)
         else
-          json.artist_image ""
+          json.album_image ""
         end
         # json.partial! 'api/albums/album', album: album
       end

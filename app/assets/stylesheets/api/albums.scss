@@ -6,14 +6,17 @@
     display: flex;
     flex-direction: row;
     margin-top: 60px;
+    width: 100vw;
+    min-width: 100%;
 }
 
 .songs-list {
     display: flex;
     flex-direction: column;
     list-style: none;
-    margin-left: 100px;
+    // margin-left: 100px;
     justify-content: space-evenly;
+    width: 100vw;
 }
 
 .songs-list li {
@@ -49,7 +52,7 @@
 
 #song-title {
     display: flex;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     font-size: 16px;
     // padding: 5px;
 }

@@ -13,6 +13,7 @@ class ArtistShow extends React.Component {
     }
 
     render() {
+        // debugger;
         if (this.props.artist === undefined) return null;
         const { artist, albums, songs } = this.props;
         let newArtist = (
@@ -27,10 +28,11 @@ class ArtistShow extends React.Component {
 
                 <div className="art-sho">
                     <h3>Popular</h3>
+                    <div className="track6">
                     {songs.map( song => {
                         return <div className="art-song">
                             <div className="parent">
-                                <div>
+                                <div className="track5">
                                 <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
                                 <li id="song-title">{song.title}</li>
                                 </div>
@@ -42,17 +44,21 @@ class ArtistShow extends React.Component {
                                 <li>{song.duration}</li>
                             </div>
 
-                            
+
                             </div>
                         </div>
                     })}
+                        </div>
                     <h3>Albums</h3>
+                    <div className="albs3">
+
                     {albums.map( album => {
-                        return <div className="alb-info">
+                        return <div className="alb-info2">
                             <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
                                 <li>{album.title}</li>
                                 </div>
                                 })}
+                    </div>
                 </div>
                 </div>
             </div>
