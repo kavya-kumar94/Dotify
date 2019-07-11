@@ -38,7 +38,11 @@ class ArtistShow extends React.Component {
                             {/* <div className="stitle"> */}
                             {/* </div> */}
                             {/* <div id="duration"> */}
+                            <div>
                                 <li>{song.duration}</li>
+                            </div>
+
+                            
                             </div>
                         </div>
                     })}

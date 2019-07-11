@@ -1296,7 +1296,7 @@ function (_React$Component) {
           src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "song-title"
-        }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration)));
+        }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration))));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "alb-info"
@@ -2148,9 +2148,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2164,51 +2164,103 @@ function (_React$Component) {
   _inherits(Player, _React$Component);
 
   function Player(props) {
+    var _this;
+
     _classCallCheck(this, Player);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Player).call(this, props));
-  } // play(e) {
-  //     let audio = new Audio(`${this.props.song.audio}`);
-  //     audio.play();
-  // }
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Player).call(this, props));
+    _this.play = _this.play.bind(_assertThisInitialized(_this));
+    return _this;
+  }
 
   _createClass(Player, [{
+    key: "play",
+    value: function play() {
+      var audio = document.getElementById("audio");
+      audio.play();
+    } // play(e) {
+    //     let audio = new Audio(`${this.props.song.audio}`);
+    //     audio.play();
+    // }
+
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "player-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "left-play"
+        id: "now-playing-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "now-playing-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "thumb-image"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "np-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "npt",
+        href: ""
+      }, "Track"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "now-playing-text"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        id: "npa",
+        href: ""
+      }, "Artist Name")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "love-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "love-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "love",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "center-play"
+        id: "love",
+        src: "empty_heart.png"
+      }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "now-playing-controls"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "now-playing-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "np-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "shuffle",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "prev",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "play",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "next",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "repeat",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "right-play"
+        id: "shuffle",
+        src: "shuffle_white.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "np-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "playlist",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "volume",
-        src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png"
-      })));
+        id: "direction",
+        src: "prev_white.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.play,
+        id: "np-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "play",
+        src: "play_white.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "np-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "direction",
+        src: "next_white.png"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "np-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "repeat",
+        src: "repeat_white.png"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "now-playing-right"
+      })) // </div >
+
+      /* <div className="left-play">
+          <img className="love" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"/>
+      </div>
+      <div className="center-play">
+          <img className="shuffle" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png"/>
+          <img className="prev" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
+          <img className="play" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"/>
+          <img className="next" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
+          <img className="repeat" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png"/>
+      </div>
+      <div className="right-play">
+          <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>
+          <img className="volume" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png"/>
+      </div> */
+      // </div>
+      ;
     }
   }]);
 

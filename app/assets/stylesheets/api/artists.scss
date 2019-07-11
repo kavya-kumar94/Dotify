@@ -112,10 +112,10 @@ img:hover {
     width: 30px;
 }
 
-// .artist-show h2 {
-//     font-size: 70px;
-//     // text-align: center;
-// }
+.artist-show h2 {
+    font-size: 70px;
+    // text-align: center;
+}
 
 .art-ind {
     display: flex;
@@ -138,6 +138,7 @@ img:hover {
 .parent {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .art-song {
@@ -147,6 +148,7 @@ img:hover {
     flex-direction: row;
     border: 1px red solid;
     width: 100%;
+    height: 50%;
     // justify-content: space-evenly;
     // width: 100%;
 }
