@@ -16,7 +16,7 @@ json.playlists do
         if playlist.playlist_image.attached?
             json.playlist_image url_for(playlist.playlist_image)
         else
-            json.playlist_image ""
+            json.playlist_image url_for("https://dotify-app-dev.s3-us-west-1.amazonaws.com/emptyplaylist.png")
         end
     end 
 end
