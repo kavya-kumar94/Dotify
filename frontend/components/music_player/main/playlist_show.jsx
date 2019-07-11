@@ -15,13 +15,18 @@ class PlaylistShow extends React.Component {
     render() {
         if (this.props.playlist === undefined) return null;
         // debugger;
-        const { playlist } = this.props;
+        const { playlist , songs} = this.props;
         let newPlaylist = (
             <div className="play-show">
                 <li><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image} /></NavLink></li>
                 <li>{playlist.title}</li>
                 <li>{playlist.creator}</li>
                 <ul>
+                    { songs.map( song => {
+                        return  <div>
+                         {song.title}
+                        </div>
+                    })}
                     {/* {playlist.playlistSongIds.map( id => {
                         return <li>{songs.id}</li> */}
                     {/* })} */}
@@ -39,10 +44,16 @@ class PlaylistShow extends React.Component {
 
 
 const msp = (state, ownProps) => {
-    const playlist= state.entities.playlists[ownProps.match.params.playlistId];
+    const playlistId = ownProps.match.params.playlistId;
+    const playlist= state.entities.playlists[playlistId];
+    const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
+    const songIds = tracks.map( song => song.playlist_id)
+    let songs = [];
+    Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
     // debugger;
     return {
         playlist: playlist,
+        songs: songs
     }
 }
 

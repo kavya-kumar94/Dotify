@@ -1654,14 +1654,18 @@ function (_React$Component) {
     value: function render() {
       if (this.props.playlist === undefined) return null; // debugger;
 
-      var playlist = this.props.playlist;
+      var _this$props = this.props,
+          playlist = _this$props.playlist,
+          songs = _this$props.songs;
       var newPlaylist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "play-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         to: "/playlists/".concat(playlist.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: playlist.playlist_image
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, songs.map(function (song) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, song.title);
+      })));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-margin"
       }, newPlaylist);
@@ -1672,10 +1676,22 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 var msp = function msp(state, ownProps) {
-  var playlist = state.entities.playlists[ownProps.match.params.playlistId]; // debugger;
+  var playlistId = ownProps.match.params.playlistId;
+  var playlist = state.entities.playlists[playlistId];
+  var tracks = Object.values(state.entities.songs).filter(function (song) {
+    return song.playlist_id == playlistId;
+  });
+  var songIds = tracks.map(function (song) {
+    return song.playlist_id;
+  });
+  var songs = [];
+  Object.values(state.entities.songs).forEach(function (song) {
+    return songIds.includes(song.playlist_id) ? songs.push(song) : null;
+  }); // debugger;
 
   return {
-    playlist: playlist
+    playlist: playlist,
+    songs: songs
   };
 };
 
