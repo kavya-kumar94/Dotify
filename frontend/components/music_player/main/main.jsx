@@ -8,7 +8,7 @@ import PlaylistIndex from './playlist_index'
 import AlbumIndex from './album_index'
 import PlaylistShow from './playlist_show'
 import UserShow from './user_show'
-
+import Search from '../main/search'
 class Main extends React.Component {
     // constructor(props) {
     //     super(props);
@@ -16,35 +16,43 @@ class Main extends React.Component {
 
     render() {
        let { currentUser } = this.props
+       let navlinks;
+       if (this.props.location.pathname !== '/search') {
+           navlinks = 
+           <ul className="browse-links">
+               <li>
+                   <div className="link-main">
+                       <NavLink className="not-active" activeClassName="selected" to="/library/playlists">
+                           PLAYLISTS
+                            </NavLink>
+                   </div>
+               </li>
+
+               <li>
+                   <div className="link-main">
+                       <NavLink className="not-active" activeClassName="selected" to="/library/albums">
+                           ALBUMS
+                        </NavLink>
+                   </div>
+               </li>
+               <li>
+                   <div className="link-main">
+                       <NavLink className="not-active" activeClassName="selected" to="/library/artists">
+                           ARTISTS
+                        </NavLink>
+                   </div>
+               </li>
+           </ul>
+       } else {
+           navlinks = <div></div>
+       }
+
         return(
             <div className ="main-div">
-                <ul className="browse-links">
-                    <li>
-                        <div className="link-main">
-                            <NavLink className="not-active" activeClassName="selected" to="/library/playlists">
-                            PLAYLISTS 
-                            </NavLink>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div className="link-main">
-                            <NavLink className="not-active" activeClassName="selected" to="/library/albums">
-                            ALBUMS
-                        </NavLink>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="link-main">
-                            <NavLink className="not-active" activeClassName="selected" to="/library/artists">
-                        ARTISTS
-                        </NavLink>
-                        </div>
-                    </li>
-                </ul>
-
+                {navlinks}
 
                 <ProtectedRoute exact path='/browse/featured' component={UserShow} />
+                <ProtectedRoute exact path='/search' component={Search} />
                 <ProtectedRoute exact path='/library/artists' component={ArtistIndex} />
                 <ProtectedRoute exact path='/library/playlists' component={PlaylistIndex} />
                 <ProtectedRoute exact path='/library/albums' component={AlbumIndex} />

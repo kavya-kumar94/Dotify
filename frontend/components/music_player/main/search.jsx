@@ -7,51 +7,48 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: {
-                input: "",
-            },
+            input: "",
             artists: {},
             albums: {},
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this)
+    }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.props.fetchSearchResults(this.state)
+        }
     }
 
     handleChange(e) {
-        const {  search } = this.state;
+        // const {  search } = this.state;
 
-        this.setState({ search: { input: e.target.value } });
+        this.setState({ input: e.target.value });
     }
 
     render() {
-
         const artists = Object.values(this.state.artists);
         const albums = Object.values(this.state.albums);
-
-        const artistList = artists[0] ? artists.map((artist) => {
-            let albumId = artist.albumIds !== undefined ? artist.albumIds[0] : null;
-
+        const artistList = artists[0] ? (artists.map((artist) => {
             return (
-                <h2>ARTIST</h2>
-            )
-        }) : null;
+                { artist })})) : null;
 
 
 
-        const listAlbums = albums[0] ? albums.map((album) => {
-            let songIds = album.songIds ? album.songIds : [];
+        const albumList = albums[0] ? albums.map((album) => {
             return (
-                <h2>ALBUMS</h2>
-            )
-        }) : null;
+                {album}
+            )}) : null;
 
 
 
-        const resultAlbums = listAlbums ? (
+        const resultAlbums = albumList ? (
             <div className="index-root">
                 <div className="index-container">
                     <h1 className="index-label">Albums</h1>
                     <div className="index">
-                        {listAlbums}
+                        {albumList}
                     </div>
 
                 </div>
@@ -99,6 +96,7 @@ class Search extends React.Component {
                                     type="text"
                                     className="SearchInputBox"
                                     placeholder="Start typing..."
+                                    onKeyPress={this.handleKeyPress}
                                     onChange={this.handleChange} />
                             </div>
                         </div>
@@ -108,6 +106,7 @@ class Search extends React.Component {
         );
     }
 }
+
 
 
 const mdp = dispatch => {

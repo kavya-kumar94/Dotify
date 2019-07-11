@@ -24,7 +24,7 @@ class MusicPlayer extends React.Component {
                 <div className="music-player">
                     <Navbar />
                     <Player />
-                    <Route path='/search' component={Search} />
+                    <Route exact path='/search' component={Main} />
                     <Route path='/library' component={Main} />
                     <Route path='/browse' component={Main} />
                     <Route exact path='/playlists' component={Main} />

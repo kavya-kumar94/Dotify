@@ -3,8 +3,9 @@ import * as SearchAPIUtil from '../util/search_api_util';
 
 export const RECEIVE_SEARCH_RESULTS = "RECEIVE_SEARCH_RESULTS";
 
-export const receiveSearchResults = ({ artists, albums }) => {
-
+export const receiveSearchResults = (results) => {
+    let { artists } = results;
+    let { albums } = results;
     return {
         type: RECEIVE_SEARCH_RESULTS,
         artists,

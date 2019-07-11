@@ -34,7 +34,6 @@ class NewPlaylistForm extends React.Component {
     }
 
     renderErrors() {
-        debugger;
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
@@ -83,7 +82,6 @@ class NewPlaylistForm extends React.Component {
 
 
 const msp = (state) => {
-    debugger;
     return{
         last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length-1],
         errors: state.errors.playlist

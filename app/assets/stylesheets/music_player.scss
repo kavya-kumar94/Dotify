@@ -364,3 +364,24 @@ img.white-browse {
     outline: none;
     margin-top: 20px;
 }
+
+
+.search-input-container {
+    border: none;
+    outline: none;
+    font-family: "Circular Bold";
+    font-size: 40px;
+    background-color: #282828;
+}
+
+
+.SearchInputBox {
+    font-family: "Circular Bold";
+    outline: none;
+    border: none;
+}
+
+.SearchInputBox:active {
+    outline: none;
+    border: none;
+}
