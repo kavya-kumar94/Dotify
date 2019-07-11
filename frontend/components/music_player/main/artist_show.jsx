@@ -17,10 +17,10 @@ class ArtistShow extends React.Component {
         const { artist, albums, songs } = this.props;
         let newArtist = (
             <div className="artist-show">
+                <div className="artist-header">
                 <div className="bg-img">
                     <img className="artist-show-bg" src={artist.artist_image} />
                 </div>
-                <div className="artist-header">
                     <h2 className="artist-name">{artist.name}</h2>
                     <button className="play-btn">PLAY</button>
 
@@ -29,13 +29,15 @@ class ArtistShow extends React.Component {
                     <h3>Popular</h3>
                     {songs.map( song => {
                         return <div className="art-song">
-                            <div>
+                            <div className="parent">
+                                <div>
                                 <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
-                            </div>
-                            <div className="stitle">
                                 <li id="song-title">{song.title}</li>
-                            </div>
-                            <div id="duration">
+                                </div>
+                            {/* </div> */}
+                            {/* <div className="stitle"> */}
+                            {/* </div> */}
+                            {/* <div id="duration"> */}
                                 <li>{song.duration}</li>
                             </div>
                         </div>

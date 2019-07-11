@@ -29,6 +29,7 @@ img {
     max-height: 150px;
     flex-direction: row;
     padding-bottom: 10px;
+    background: url(music_note.jpg) no-repeat scroll 0 0;
 }
 
 img:hover {
@@ -58,14 +59,18 @@ img:hover {
     // align-items: center;
     // text-align: center;
     // font-family: "Circular Bold";
-    padding-top: 10px;
-    padding-left: 100px;
+    // padding-top: 10px;
+    // padding-left: 100px;
+    width: 1000px;
     margin: auto;
+    border: 1px solid blue;
     // min-width: 100%;
     margin-bottom: 50px;;
+
 }
 
 .art-sho {
+    width: 100%;
     // margin-right: 700px;
 }
 
@@ -74,13 +79,14 @@ img:hover {
 }
 
 .bg-img{
-    height: 500px;
-    width: 500px;
+    height: 150px;
+    width: 150px;
+    margin: auto;
 }
 .artist-header {
     list-style: none;
     display: flex;
-    // width: 100vw;
+    width: 100%;
     flex-direction: column;
     margin: auto;
 }
@@ -90,31 +96,26 @@ img:hover {
     font-family: "Circular Bold";
 }
 
-.art-song {
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-evenly;
-    // width: 100%;
-}
 
-.art-song li {
-    flex-direction: row;
-}
 
-#duration {
-    margin-left: 600px;
-    justify-content: flex-end;
-}
+// .art-song li {
+//     flex-direction: row;
+// }
+
+// #duration {
+//     margin-left: 600px;
+//     justify-content: flex-end;
+// }
 
 #art-note {
     height: 30px;
     width: 30px;
 }
 
-.artist-show h2 {
-    font-size: 70px;
-    // text-align: center;
-}
+// .artist-show h2 {
+//     font-size: 70px;
+//     // text-align: center;
+// }
 
 .art-ind {
     display: flex;
@@ -132,4 +133,20 @@ img:hover {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+}
+
+.parent {
+    display: flex;
+    flex-direction: row;
+}
+
+.art-song {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    border: 1px red solid;
+    width: 100%;
+    // justify-content: space-evenly;
+    // width: 100%;
 }

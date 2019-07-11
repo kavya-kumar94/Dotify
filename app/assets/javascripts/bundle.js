@@ -1274,13 +1274,13 @@ function (_React$Component) {
       var newArtist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "artist-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "artist-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bg-img"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "artist-show-bg",
         src: artist.artist_image
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "artist-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
         className: "artist-name"
       }, artist.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "play-btn"
@@ -1289,16 +1289,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Popular"), songs.map(function (song) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "art-song"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "parent"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           id: "art-note",
           src: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "stitle"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           id: "song-title"
-        }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          id: "duration"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration)));
+        }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration)));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "alb-info"
