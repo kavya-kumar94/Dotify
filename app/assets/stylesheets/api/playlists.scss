@@ -174,8 +174,33 @@
 }
 
 .play-show {
+  display: flex;
+  flex-direction: column;
   list-style: none;
-  font-family: "Circular";
-  font-size: 14px;
+  padding: 100px;
+  // margin: auto;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  // justify-content: center;
+  // text-align: center;
 }
 
+.playshowimg {
+  height: 150px;
+  width: 150px;
+}
+
+.play-show h2 {
+  font-family: "Circular Bold";
+  font-size: 40px;
+
+}
+
+.play-show li {
+  // text-align: center;
+  font-family: "Circular";
+  font-size: 16px;
+  color: #b3b3b3;
+}

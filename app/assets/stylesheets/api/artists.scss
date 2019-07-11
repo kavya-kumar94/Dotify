@@ -93,8 +93,14 @@ img:hover {
 .art-song {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    // justify-content: space-evenly;
+    // width: 100%;
 }
+
+.art-song li {
+    flex-direction: row;
+}
+
 #duration {
     margin-left: 600px;
     justify-content: flex-end;

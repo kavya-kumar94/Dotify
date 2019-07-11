@@ -70,7 +70,7 @@ d.save!
 
 e = Playlist.create(title: 'Pumped Pop', creator_id: user2.id)
 
-e_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pumped_pop.jpg')
+e_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pumppop2.jpg')
 e.playlist_image.attach(io: e_pic, filename: 'e.jpg')
 e.save!
 

@@ -18,15 +18,16 @@ class PlaylistShow extends React.Component {
         const { playlist , songs} = this.props;
         let newPlaylist = (
             <div className="play-show">
-                <li><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image} /></NavLink></li>
-                <li>{playlist.title}</li>
+                <li className="playshowimg"><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image} /></NavLink></li>
+                <h2>{playlist.title}</h2>
                 <li>{playlist.creator}</li>
+                {/* <button className="play-btn">PLAY</button> */}
                 <ul>
-                    { songs.map( song => {
+                    {/* { songs.map( song => {
                         return  <div>
                          {song.title}
                         </div>
-                    })}
+                    })} */}
                     {/* {playlist.playlistSongIds.map( id => {
                         return <li>{songs.id}</li> */}
                     {/* })} */}

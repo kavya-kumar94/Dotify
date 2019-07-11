@@ -1298,7 +1298,7 @@ function (_React$Component) {
           id: "song-title"
         }, song.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           id: "duration"
-        }, song.duration));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, song.duration)));
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Albums"), albums.map(function (album) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "alb-info"
@@ -1659,13 +1659,13 @@ function (_React$Component) {
           songs = _this$props.songs;
       var newPlaylist = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "play-show"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "playshowimg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         to: "/playlists/".concat(playlist.id)
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: playlist.playlist_image
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, songs.map(function (song) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, song.title);
-      })));
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, playlist.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, playlist.creator), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null));
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "div-margin"
       }, newPlaylist);

@@ -36,7 +36,7 @@ class ArtistShow extends React.Component {
                                 <li id="song-title">{song.title}</li>
                             </div>
                             <div id="duration">
-                                {song.duration}
+                                <li>{song.duration}</li>
                             </div>
                         </div>
                     })}

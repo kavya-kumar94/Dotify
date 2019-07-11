@@ -12,7 +12,7 @@ export const fetchPlaylist = (playlistId) => {
   });
 }
 
-export const createPlaylist = (playlist) => {
+export const createPlaylist = ( playlist) => {
   return $.ajax({
     method: "POST",
     url: "/api/playlists",

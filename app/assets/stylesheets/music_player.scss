@@ -159,44 +159,46 @@
 
 .not-active {
     color: #b3b3b3;
-    // margin-bottom: 15px;
+    margin-bottom: 15px;
     display: flex;
-    flex-direction: row;
-    border-left: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    transition: all .2s ease-in-out;
-    margin: 7px;
+    // flex-direction: row;
+    // border-left: 2px solid transparent;
+    // border-bottom: 2px solid transparent;
+    // transition: all .2s ease-in-out;
+    // margin: 7px;
 
     &.active{
         color: white;
     //     border-left: 2px solid #1DB954;
-    //     width: 50%;
-    //     transform: scale(1.0);
+    //     width: 40%;
+    //     // margin-left: 3px;
+    //     // transform: scale(1.0);
         
-        // &.active:before {
-        //     content: ""; /* This is necessary for the pseudo element to work. */ 
-        //     // display: block; /* This will put the pseudo element on its own line. */
-        //     margin: 0 ; /* This will center the border. */
-        //     width: 30%; /* Change this to whatever width you want. */
-        //     // padding-top: 20px; /* This creates some space between the element and the border. */
-        //     border-left: 2px solid #1DB954; /* This creates the border. Replace black with whatever color you want. */
-        //     }
+    //     &.active:before {
+    //         content: ""; /* This is necessary for the pseudo element to work. */ 
+    //         // display: block; /* This will put the pseudo element on its own line. */
+    //         // margin: 0 ; /* This will center the border. */
+    //         width: 30%; /* Change this to whatever width you want. */
+    //         // padding-top: 20px; /* This creates some space between the element and the border. */
+    //         border-left: 2px solid #1DB954; /* This creates the border. Replace black with whatever color you want. */
+    //         }
     }
 
     &.selected{
         color: white;
-        // border-bottom: 2px solid #1DB954;
-        // width: 50%;
-        // justify-content: center;
-        transform: scale(1.0);
+        border-bottom: 2px solid #1DB954;
+        // width: 40%;
+    //     justify-content: center;
+    //     // transform: scale(1.0);
+    //     margin-left: 3px;
 
         // &.selected::after {
         //     content: "";
         //     display: block;
-        //     margin: 0 auto;
-        //     width: 30%;
-        //     padding-top:3px;
-        //     border-bottom: 2px solid #1DB954;
+            // margin: 0 auto;
+            // width: 30%;
+            // padding-top:3px;
+            // border-bottom: 2px solid #1DB954;
         // }
     }
 }
