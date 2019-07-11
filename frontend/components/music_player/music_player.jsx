@@ -7,6 +7,7 @@ import PlaylistIndex from '../music_player/main/playlist_index'
 import PlaylistShow from '../music_player/main/playlist_show'
 import AlbumShow from '../music_player/main/album_show'
 import ArtistShow from '../music_player/main/artist_show'
+import Search from '../music_player/main/search'
 import { clearPlaylistErrors } from '../../actions/playlist_actions';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
@@ -23,6 +24,7 @@ class MusicPlayer extends React.Component {
                 <div className="music-player">
                     <Navbar />
                     <Player />
+                    <Route path='/search' component={Search} />
                     <Route path='/library' component={Main} />
                     <Route path='/browse' component={Main} />
                     <Route exact path='/playlists' component={Main} />
