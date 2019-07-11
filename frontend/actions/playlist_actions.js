@@ -50,14 +50,16 @@ export const fetchPlaylists = () => dispatch => {
 }
 
 export const createPlaylist = (playlist) => dispatch => {
-    return PlaylistApiUtil.createPlaylist(playlist).then(playlist => dispatch(receivePlaylist(playlist))),
-        err => dispatch(receivePlaylistErrors(err.responseJSON));
+    return PlaylistApiUtil.createPlaylist(playlist).then(playlist => dispatch(receivePlaylist(playlist))).fail(err => {
+        dispatch(receivePlaylistErrors(err.responseJSON))
+    });
+        
 }
 
 
 export const addSongToPlaylist = (playlistId, songId) => dispatch => (
     PlaylistSongApiUtil.addSongToPlaylist(playlistId, songId).then(
-        message => dispatch(receivePlaylistErrors(message)),
+        // message => dispatch(receivePlaylistErrors(message)),
         err => dispatch(receivePlaylistErrors(err.responseJSON))
     )
 );

@@ -138,12 +138,12 @@ img:hover {
 .parent {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
 }
 
 .art-song {
-    justify-content: space-between;
-    align-items: center;
+    // justify-content: space-between;
+    // align-items: center;
     display: flex;
     flex-direction: row;
     border: 1px red solid;

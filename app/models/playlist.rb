@@ -11,6 +11,7 @@
 
 class Playlist < ApplicationRecord
     validates :title, :creator_id, presence: true
+    validates :title, uniqueness: true
     
     belongs_to :creator,
         foreign_key: :creator_id,

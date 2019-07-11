@@ -2,7 +2,7 @@ import { RECEIVE_PLAYLIST_ERRORS, CLEAR_PLAYLIST_ERRORS } from '../actions/playl
 import { merge } from 'lodash';
 
 
-const playlistErrorsReducer = (state = {}, action) => {
+const playlistErrorsReducer = (state = [], action) => {
     Object.freeze(state);
 
     switch (action.type) {

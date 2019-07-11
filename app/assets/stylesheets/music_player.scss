@@ -272,12 +272,13 @@ img.white-browse {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    // margin-right: 300px;
 }
 
 .left-play {
     display: flex;
     flex-direction: row;
-    margin: auto 0;
+    margin-right: 300px;
 }
 
 .right-play {
@@ -338,4 +339,28 @@ img.white-browse {
 .right-play img {
     height: 25px;
     width: 25px;
+}
+
+#track_img {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 50px; 
+    padding-top: 25px;
+    // margin-right: 300px;
+}
+
+// .play {
+//     display: flex;
+// }
+// .track .track-img {
+// }
+
+.aud {
+    margin-top: 20px;
+    outline: none;
+}
+.aud:active {
+    outline: none;
+    margin-top: 20px;
 }

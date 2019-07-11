@@ -33,15 +33,32 @@ class NewPlaylistForm extends React.Component {
             .then(() => this.redirect());
     }
 
+    renderErrors() {
+        debugger;
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
 
 
     render() {
         let { closeModal } = this.props;
+
+            
         return (
             <div className="modal">
                 <button className="modal-cancel" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
                 <form className="playlist-form" onSubmit={this.handleSubmit}>
                     <h1>Create new playlist</h1>
+                    <div className="err">
+                        {this.renderErrors()}
+                    </div>
                     <div className="playlist-input">
                         <label>Playlist Name</label>
                         <input
@@ -65,9 +82,13 @@ class NewPlaylistForm extends React.Component {
 }
 
 
-const msp = (state) => ({
-    last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length-1]
-});
+const msp = (state) => {
+    debugger;
+    return{
+        last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length-1],
+        errors: state.errors.playlist
+    }
+};
 
 
 const mdp = (dispatch) => ({
