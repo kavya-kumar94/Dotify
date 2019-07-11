@@ -3,6 +3,8 @@ import {
     RECEIVE_ARTISTS,
 } from '../actions/artist_actions';
 
+import { RECEIVE_SEARCH_RESULTS} from '../actions/search_actions'
+
 import { merge } from 'lodash';
 
 const artistsReducer = (state = {}, action) => {
@@ -12,6 +14,8 @@ const artistsReducer = (state = {}, action) => {
             return merge({}, state, action.artists)
         case RECEIVE_ARTIST:
             return merge({}, state, action.payload.artists);
+        case RECEIVE_SEARCH_RESULTS:
+            return merge({}, state, action.artists)
         default:
             return state;
     }

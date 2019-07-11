@@ -3,6 +3,8 @@ import {
     RECEIVE_ALBUMS,
 } from '../actions/album_actions';
 
+import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions'
+
 import { RECEIVE_ARTIST } from '../actions/artist_actions'
 import { merge } from 'lodash';
 
@@ -17,6 +19,8 @@ const albumsReducer = (state = {}, action) => {
             return merge({}, state, action.payload.albums);
         case RECEIVE_ARTIST:
             return merge({}, state, action.payload.albums);
+        case RECEIVE_SEARCH_RESULTS:
+            return merge({}, state, action.albums)
         default:
             return state;
     }

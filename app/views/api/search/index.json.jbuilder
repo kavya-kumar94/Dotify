@@ -29,3 +29,16 @@ else
     json.albums do
     end
 end
+
+# unless @songs.empty?
+#     json.songs do
+#         @songs.each do |song|
+#             json.set! song.id do
+#                 json.extract! song, :id, :title
+#             end
+#         end
+#     end
+# else
+#     json.songs do
+#     end
+# end

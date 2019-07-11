@@ -2,6 +2,7 @@ import {
     RECEIVE_SONG,
     RECEIVE_SONGS,
 } from '../actions/song_actions';
+import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions'
 import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 import { RECEIVE_ARTIST } from '../actions/artist_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
@@ -22,6 +23,8 @@ const songsReducer = (state = {}, action) => {
             return merge({}, state, action.payload.songs)
         case RECEIVE_ALBUM:
             return merge({}, state, action.payload.songs)
+        // case RECEIVE_SEARCH_RESULTS:
+        //     return merge({}, state, action.songs)
         default:
             return state;
     }
