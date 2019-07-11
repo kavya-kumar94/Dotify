@@ -70,7 +70,7 @@ class Search extends React.Component {
 
 
 
-        const displayResults = resultArtists || resultAlbums ? (
+        const displayResults = (resultArtists || resultAlbums) ? (
                 <div className="search-results">
                     <div className="index-container">
                         {resultArtists}
@@ -110,6 +110,7 @@ class Search extends React.Component {
 
 
 const mdp = dispatch => {
+    debugger;
     return {
         fetchSearchResults: (input) => dispatch(fetchSearchResults(input))
     }

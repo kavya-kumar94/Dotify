@@ -10,7 +10,6 @@ const searchReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_SEARCH_RESULTS:
-            debugger;
             return merge({}, action.results);
         default:
             return state;
