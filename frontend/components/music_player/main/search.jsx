@@ -94,7 +94,7 @@ class Search extends React.Component {
 
 
 
-        const displayResults = (artistList || albumList ) ? (
+        const displayResults = ( artistList[0] || albumList[0] ) ? (
                 <div className="search-results">
                     <div className="index-container">
                         {artistList}
@@ -107,7 +107,8 @@ class Search extends React.Component {
                     <div className="search-content">
                         <div className="search-content-container">
                             <div className="no-search">
-                                <h1>Search Results Appear Here.</h1>
+                                <h1>Search Dotify.</h1>
+                            <h3>Find your favorite artists and albums.</h3>
                             </div>
                         </div>
                     </div>

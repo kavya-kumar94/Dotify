@@ -7,8 +7,6 @@ class Player extends React.Component{
         super(props);
         // this.play = this.play.bind(this);
     }
-
-
     // play() {
     //     const audio = document.getElementById("audio");
     //     audio.play();
