@@ -1,5 +1,6 @@
 <img width="295" alt="Screen Shot 2019-07-12 at 10 25 46 AM" src="https://user-images.githubusercontent.com/48187134/61147881-5f25bd00-a492-11e9-930b-99593e7558df.png">
 
+[Dotify live!](https://dotify-app.herokuapp.com/#/)
 ### Table of Contents
 * [Introduction](https://github.com/kavya-kumar94/Dotify#introduction)
 * [Technologies](https://github.com/kavya-kumar94/Dotify#technologies)
