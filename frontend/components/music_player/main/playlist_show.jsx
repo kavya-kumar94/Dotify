@@ -28,7 +28,7 @@ class PlaylistShow extends React.Component {
                 <h2>{playlist.title}</h2>
                 <li>{playlist.creator}</li>
                 <button className="play-btn">PLAY</button>
-                <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE PLAYLIST</button>
+                <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
                 <ul>
                     {/* { songs.map( song => {
                         return  <div>
