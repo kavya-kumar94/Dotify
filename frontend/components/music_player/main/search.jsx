@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchSearchResults } from '../../../actions/search_actions';
+import { fetchSearchResults, clearSearch } from '../../../actions/search_actions';
 import { NavLink } from 'react-router-dom'
 
 class Search extends React.Component {
@@ -13,6 +13,10 @@ class Search extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.clearSearch();
     }
 
     handleKeyPress(e) {
@@ -142,7 +146,8 @@ const msp = state => {
 const mdp = dispatch => {
     // debugger;
     return {
-        fetchSearchResults: (input) => dispatch(fetchSearchResults(input))
+        fetchSearchResults: (input) => dispatch(fetchSearchResults(input)),
+        clearSearch: () => dispatch(clearSearch())
     }
 }
 
