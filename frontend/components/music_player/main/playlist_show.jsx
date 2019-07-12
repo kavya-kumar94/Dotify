@@ -1,20 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-import { fetchPlaylist } from '../../../actions/playlist_actions'
+import { fetchPlaylist, deletePlaylist } from '../../../actions/playlist_actions'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props);
+        this.redirectPlaylists = this.redirectPlaylists.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
     }
 
+    redirectPlaylists() {
+        // debugger;
+        this.props.deletePlaylist(this.props.playlist.id).then(this.props.history.push('/library/playlists'))
+    }
+
     render() {
         if (this.props.playlist === undefined) return null;
-        // debugger;
         const { playlist , songs} = this.props;
         let newPlaylist = (
             <div className="play-show">
@@ -22,7 +27,8 @@ class PlaylistShow extends React.Component {
                 {/* style={{ background- image: url("undefined") }}  */}
                 <h2>{playlist.title}</h2>
                 <li>{playlist.creator}</li>
-                {/* <button className="play-btn">PLAY</button> */}
+                <button className="play-btn">PLAY</button>
+                <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE PLAYLIST</button>
                 <ul>
                     {/* { songs.map( song => {
                         return  <div>
@@ -61,7 +67,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
     return {
-        fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId))
+        fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId)),
+        deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId))
     }
 }
 

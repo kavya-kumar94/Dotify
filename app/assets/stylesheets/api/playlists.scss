@@ -208,3 +208,19 @@
 .err {
   color: red;
 }
+
+.delete-btn-play-show {
+  font-family: "Circular";
+    letter-spacing: 0.2em;
+    color: white;
+    width: 160px;
+    border: none;
+    z-index: 1;
+    padding: 10px;
+    // margin-top: 20px;
+    border-radius: 500px;
+    background-color: #1DB954;
+    transition: all .2s ease-in-out;
+    margin: 20px auto;
+    text-align: center;
+  }

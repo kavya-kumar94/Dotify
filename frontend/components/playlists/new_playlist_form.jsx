@@ -19,9 +19,9 @@ class NewPlaylistForm extends React.Component {
     }
 
 
-    redirect() {
-        this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
-    }
+    // redirect() {
+        // this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
+    // }
 
 
     handleSubmit(e) {
@@ -29,8 +29,8 @@ class NewPlaylistForm extends React.Component {
         let playlist = this.state;
         // this.setState({ title: '' });
         this.props.createPlaylist(playlist)
-            .then(this.props.closeModal)
-            .then(() => this.redirect());
+            .then(this.props.closeModal);
+            // .then(() => this.redirect());
     }
 
     renderErrors() {
