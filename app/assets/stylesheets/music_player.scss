@@ -394,8 +394,8 @@ img.white-browse {
 
 .results {
     font-family: "Circular Bold";
-    font-size: 50px;
-    padding: 100px;
+    font-size: 20px;
+    padding: 50px;
 }
 
 .love {
@@ -421,9 +421,34 @@ img.white-browse {
 }
 
 .no-search h3 {
-    font-size: 16px;
+    font-size:16px;
+}
+
+.no-search h1 {
+    font-size: 40px;
 }
 
 .no-search {
     text-align: center;
+}
+
+.index-label {
+    font-family: "Circular Bold";
+    font-size: 50px;
+    // padding: 30px;
+}
+
+.index {
+    display: flex;
+    flex-direction: row;
+    // padding: 30px;
+}
+
+.spac {
+    padding: 40px;
+    text-align: center;
+}
+
+#searchpic img {
+    border-radius: 50%;
 }

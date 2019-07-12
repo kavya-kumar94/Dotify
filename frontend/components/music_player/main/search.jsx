@@ -40,8 +40,8 @@ class Search extends React.Component {
         let artistList = artists ? (artists.map((artist) => {
             // debugger
             return (
-                <div>
-                    <NavLink to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink>
+                <div className="spac">
+                    <NavLink id="searchpic" to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink>
                     {artist.name}
                 </div>
                )})) : null;
@@ -50,7 +50,7 @@ class Search extends React.Component {
 
         let albumList = albums ? albums.map((album) => {
             return (
-                <div> 
+                <div className="spac"> 
                     <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
                     {album.title}
                 </div>
@@ -67,38 +67,38 @@ class Search extends React.Component {
 
         //     // debugger;
 
-        // const resultAlbums = albumList ? (
-        //     <div className="index-root">
-        //         <div className="index-container">
-        //             <h1 className="index-label">Albums</h1>
-        //             <div className="index">
-        //                 {albumList}
-        //             </div>
+        const resultAlbums = albumList[0] ? (
+            <div className="index-root">
+                <div className="index-container">
+                    <h1 className="index-label">Albums</h1>
+                    <div className="index">
+                        {albumList}
+                    </div>
 
-        //         </div>
-        //     </div>
-        // ) : null;
-
-
-
-        // const resultArtists = artistList ? (
-        //     <div className="index-root">
-        //         <div className="index-container">
-        //             <h1 className="index-label">Artists</h1>
-        //             <div className="index">
-        //                 {artistList}
-        //             </div>
-        //         </div>
-        //     </div>
-        // ) : null;
+                </div>
+            </div>
+        ) : null;
 
 
 
-        const displayResults = ( artistList[0] || albumList[0] ) ? (
+        const resultArtists = artistList[0] ? (
+            <div className="index-root">
+                <div className="index-container">
+                    <h1 className="index-label">Artists</h1>
+                    <div className="index">
+                        {artistList}
+                    </div>
+                </div>
+            </div>
+        ) : null;
+
+
+
+        const displayResults = ( resultArtists || resultAlbums ) ? (
                 <div className="search-results">
                     <div className="index-container">
-                        {artistList}
-                        {albumList}
+                        {resultArtists}
+                        {resultAlbums}
                         {/* {songList} */}
                     </div>
                 </div>
