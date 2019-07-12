@@ -386,6 +386,19 @@ img.white-browse {
     border: none;
 }
 
+#searchinputbox {
+    max-width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#searchinputbox:focus,
+#searchinputbox:active {
+    outline: none;
+    box-shadow: 0 0 5px transparent !important;
+    border: 1px solid transparent !important;
+}
+
 .SearchInputBox:active {
     outline: none;
     border: none;
@@ -395,7 +408,7 @@ img.white-browse {
 .results {
     font-family: "Circular Bold";
     font-size: 20px;
-    padding: 50px;
+    padding: 30px;
 }
 
 .love {

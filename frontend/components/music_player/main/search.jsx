@@ -120,6 +120,7 @@ class Search extends React.Component {
                             <div className="search-input-container">
                                 <input
                                     type="text"
+                                    id="searchinputbox"
                                     className="SearchInputBox"
                                     placeholder="Start typing..."
                                     onKeyPress={this.handleKeyPress}
