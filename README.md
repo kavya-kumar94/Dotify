@@ -27,10 +27,15 @@ Dotify is a full-stack single-page web app based on the music streaming platform
 ### Features
 #### Create and delete a Playlist
 Playlists can be created on any of the index pages and can be edited and deleted
+  <p align="center">
+    <img width="460" height="300" src="https://user-images.githubusercontent.com/48187134/61151547-0a3a7480-a49b-11e9-9896-1263757b61b5.gif">
+  </p>
 
 #### Search
 As you search the songs, Dotify renders the results with each enter keystroke. There is no need for a "search" button.
-
+<p align="center">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/48187134/61152018-30144900-a49c-11e9-8319-b8fad2c53916.gif">
+</p>
 
 ### External Resources
 * [Amazon Web Services](https://aws.amazon.com/)
