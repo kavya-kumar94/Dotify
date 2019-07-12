@@ -1,24 +1,15 @@
-# README
+# Dotify
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Table of Contents
 
-* Ruby version
+### Introduction 
 
-* System dependencies
+### Technologies
+#### Frontend
+#### Backend
 
-* Configuration
+### Features
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### External Resources
+### To-do
