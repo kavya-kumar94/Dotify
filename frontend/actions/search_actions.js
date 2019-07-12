@@ -6,13 +6,14 @@ export const CLEAR_SEARCH = "CLEAR_SEARCH"
 
 
 export const receiveSearchResults = (results) => {
-    let { artists } = results;
-    let { albums } = results;
+    // let { artists } = results;
+    // let { albums } = results;
     // let { songs } = results;
     return {
         type: RECEIVE_SEARCH_RESULTS,
-        artists,
-        albums,
+        results
+        // artists,
+        // albums,
         // songs
     }
 

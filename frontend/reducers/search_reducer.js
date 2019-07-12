@@ -1,7 +1,7 @@
 import {
     RECEIVE_SEARCH_RESULTS,
     CLEAR_SEARCH
-} from '../../actions/search_actions';
+} from '../actions/search_actions';
 
 import { merge } from 'lodash';
 

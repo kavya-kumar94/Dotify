@@ -20,7 +20,11 @@ const albumsReducer = (state = {}, action) => {
         case RECEIVE_ARTIST:
             return merge({}, state, action.payload.albums);
         case RECEIVE_SEARCH_RESULTS:
-            return merge({}, state, action.albums)
+            if (action.results.albums === undefined) {
+                return state;
+            } else {
+                return merge({}, state, action.results.albums)
+            }
         default:
             return state;
     }

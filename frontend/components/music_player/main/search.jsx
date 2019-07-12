@@ -136,10 +136,13 @@ class Search extends React.Component {
 }
 
 
-const msp = state => {
+const msp = (state) => {
+    // debugger;
     return {
-        artists: Object.values(state.entities.artists),
-        albums: Object.values(state.entities.albums),
+        artists: state.ui.search.artists ? Object.values(state.ui.search.artists) : [],
+        albums: state.ui.search.albums ? Object.values(state.ui.search.albums) : []
+        // artists: Object.values(state.entities.artists),
+        // albums: Object.values(state.entities.albums),
         // songs: Object.values(state.entities.songs)
     }
 }
