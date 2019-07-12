@@ -18,7 +18,6 @@ class AlbumShow extends React.Component {
 
     render() {
         if (this.props.album === undefined) return null;
-        // debugger;
         const { album, songs } = this.props;
         let newAlbum = (
             <div className="alb-sho">
@@ -70,7 +69,6 @@ class AlbumShow extends React.Component {
 
 const msp = (state, ownProps) => {
     const albumId = ownProps.match.params.albumId;
-    // debugger;
     const album = state.entities.albums[albumId];
     const albumsongs = Object.values(state.entities.songs).filter(song => song.album_id == albumId);
     const songIds = albumsongs.map(song => song.id);

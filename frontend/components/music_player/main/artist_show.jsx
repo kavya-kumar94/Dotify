@@ -13,7 +13,6 @@ class ArtistShow extends React.Component {
     }
 
     render() {
-        // debugger;
         if (this.props.artist === undefined) return null;
         const { artist, albums, songs } = this.props;
         let newArtist = (
@@ -78,7 +77,6 @@ const msp = (state, ownProps) => {
     const artist = state.entities.artists[artistId];
     const albums = Object.values(state.entities.albums).filter(album => album.artist_id == artistId);
     const albumIds = albums.map(album => album.id);
-    // debugger;
     let songs = [];
     Object.values(state.entities.songs).forEach( song => albumIds.includes(song.album_id) ? songs.push(song) : null) 
 

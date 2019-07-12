@@ -5,11 +5,11 @@ import configureStore from './store/store';
 import { login, logout, signup, deleteUser } from './actions/session_actions'
 import {receiveArtists } from './actions/artist_actions';
 
-window.receiveArtists = receiveArtists;
-window.login = login;
-window.logout = logout;
-window.signup = signup;
-window.deleteUser = deleteUser
+// window.receiveArtists = receiveArtists;
+// window.login = login;
+// window.logout = logout;
+// window.signup = signup;
+// window.deleteUser = deleteUser
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;

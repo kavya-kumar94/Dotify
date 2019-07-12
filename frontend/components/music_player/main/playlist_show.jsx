@@ -14,7 +14,6 @@ class PlaylistShow extends React.Component {
     }
 
     redirectPlaylists() {
-        // debugger;
         this.props.deletePlaylist(this.props.playlist.id).then(this.props.history.push('/library/playlists'))
     }
 
@@ -58,7 +57,6 @@ const msp = (state, ownProps) => {
     const songIds = tracks.map( song => song.playlist_id)
     let songs = [];
     Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
-    // debugger;
     return {
         playlist: playlist,
         songs: songs

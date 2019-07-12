@@ -38,7 +38,6 @@ class Search extends React.Component {
         // const artists = Object.values(this.state.artists);
         // const albums = Object.values(this.state.albums);
         let artistList = artists ? (artists.map((artist) => {
-            // debugger
             return (
                 <div className="spac">
                     <NavLink id="searchpic" to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink>
@@ -65,7 +64,6 @@ class Search extends React.Component {
         //     )
         // }) : null;
 
-        //     // debugger;
 
         const resultAlbums = albumList[0] ? (
             <div className="index-root">
@@ -139,7 +137,6 @@ class Search extends React.Component {
 
 
 const msp = (state) => {
-    // debugger;
     return {
         artists: state.ui.search.artists ? Object.values(state.ui.search.artists) : [],
         albums: state.ui.search.albums ? Object.values(state.ui.search.albums) : []
@@ -149,7 +146,6 @@ const msp = (state) => {
     }
 }
 const mdp = dispatch => {
-    // debugger;
     return {
         fetchSearchResults: (input) => dispatch(fetchSearchResults(input)),
         clearSearch: () => dispatch(clearSearch())

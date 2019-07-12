@@ -41,7 +41,6 @@ class SessionForm extends React.Component {
     }
 
     // usernameTyper() {
-    //     // debugger;
     //     this.props.clearErrors();
     //     let i = 0;
     //     let username = ' demouser'

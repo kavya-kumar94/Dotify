@@ -11,7 +11,6 @@ json.artists do
 end
 
   json.albums do
-    # debugger
     @artist.albums.each do |album|
       json.set! album.id do
         json.extract! album, :id, :title, :year, :genre_id, :artist_id
