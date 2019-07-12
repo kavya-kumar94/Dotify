@@ -26,6 +26,10 @@ class Player extends React.Component{
                 </div> */}
                 <div className="left-play">
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
+                    <div className="texts">
+                        <p className="soname">Song Title</p>
+                        <p className="arname">Artist Name</p>
+                    </div>
                     <img className="love" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"/>
                 </div>
                 {/* <div className="center-play">

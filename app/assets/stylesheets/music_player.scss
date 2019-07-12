@@ -278,8 +278,13 @@ img.white-browse {
 .left-play {
     display: flex;
     flex-direction: row;
-    margin-right: 300px;
+    margin-right: 700px;
 }
+
+// .left-play p {
+//     margin-top: 40px;
+//     margin-left: 5px;
+// }
 
 .right-play {
     display: flex;
@@ -391,4 +396,26 @@ img.white-browse {
     font-family: "Circular Bold";
     font-size: 50px;
     padding: 100px;
+}
+
+.love {
+    margin-top: 35px;
+    margin-left: 30px;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 13px;
+}
+
+.soname {
+    font-family: "Circular Bold";
+}
+
+.arname {
+    font-family: "Circular";
+    color: #b3b3b3;
+    font-size: 13px;
 }
