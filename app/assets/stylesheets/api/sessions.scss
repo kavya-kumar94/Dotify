@@ -238,7 +238,7 @@ button.sign-up {
   width: 100%;
   display: inline-flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   z-index: 2;
 };
 
@@ -266,9 +266,9 @@ span:hover {
   font-weight: bold;
   font-size: 25px;
   color: white;
-  float: left;
   padding-top: 22px;
-  padding-right: 800px;
+  padding-left: 20px;
+  float: left;
   display: flex;
 }
 
