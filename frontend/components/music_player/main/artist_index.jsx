@@ -16,9 +16,10 @@ class ArtistIndex extends React.Component {
 
     render() {
         const { artists, openModal } = this.props
-        let artistsNew = artists.map(artist => {
+        let artistsNew = artists.map((artist, idx) => {
+            
             return (
-                <div className="art-ind">
+                <div key={idx} className="art-ind">
                     <li><NavLink to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink></li>
                     <li><NavLink to={`/artists/${artist.id}`}>{artist.name}</NavLink></li>
                 </div>

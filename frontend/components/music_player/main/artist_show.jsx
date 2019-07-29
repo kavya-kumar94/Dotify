@@ -28,8 +28,8 @@ class ArtistShow extends React.Component {
                 <div className="art-sho">
                     <h3>Popular</h3>
                     <div className="track6">
-                    {songs.map( song => {
-                        return <div className="art-song">
+                    {songs.map( (song,idx) => {
+                        return <div key={idx} className="art-song">
                             <div className="parent">
                                 <div className="track5">
                                 <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
@@ -51,8 +51,8 @@ class ArtistShow extends React.Component {
                     <h3>Albums</h3>
                     <div className="albs3">
 
-                    {albums.map( album => {
-                        return <div className="alb-info2">
+                    {albums.map( (album, idx) => {
+                        return <div key={idx} className="alb-info2">
                             <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
                                 <li>{album.title}</li>
                                 </div>

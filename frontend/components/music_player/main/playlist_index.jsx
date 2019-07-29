@@ -19,9 +19,9 @@ class PlaylistIndex extends React.Component {
 
     render() {
         const { playlists, openModal } = this.props
-        let playlistsNew = playlists.map( playlist => {
+        let playlistsNew = playlists.map( (playlist,idx) => {
             return(
-                <div className="playlist-link">
+                <div key={idx} className="playlist-link">
                     <li><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image}/></NavLink></li>
                     <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
                     <li><NavLink to={`/playlists/${playlist.id}`}>{playlist.creatorName}</NavLink></li>

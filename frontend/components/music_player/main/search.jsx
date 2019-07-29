@@ -37,9 +37,9 @@ class Search extends React.Component {
         
         // const artists = Object.values(this.state.artists);
         // const albums = Object.values(this.state.albums);
-        let artistList = artists ? (artists.map((artist) => {
+        let artistList = artists ? (artists.map((artist, idx) => {
             return (
-                <div className="spac">
+                <div key={idx} className="spac">
                     <NavLink id="searchpic" to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink>
                     {artist.name}
                 </div>
@@ -47,9 +47,9 @@ class Search extends React.Component {
 
 
 
-        let albumList = albums ? albums.map((album) => {
+        let albumList = albums ? albums.map((album ,idx) => {
             return (
-                <div className="spac"> 
+                <div key={idx} className="spac"> 
                     <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
                     {album.title}
                 </div>

@@ -16,9 +16,9 @@ class AlbumIndex extends React.Component {
 
     render() {
         const { albums, openModal } = this.props
-        let albumsNew = albums.map(album => {
+        let albumsNew = albums.map((album,idx) => {
             return (
-                <div className="albs">
+                <div key={idx} className="albs">
                     <li><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
                     <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     {/* <h2>{album.title}</h2> */}
