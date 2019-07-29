@@ -24,6 +24,8 @@
     font-family: "Circular Bold";
     display: flex;
     flex-direction: column;
+    margin: auto;
+    text-align: center;
 }
 
 .playlist-input {
@@ -60,7 +62,8 @@
   z-index: 10;
   height: 60px;
   width: 60px;
-  margin-left: 290px;
+  margin: auto;
+  // margin-left: 290px;
   transition: all .2s ease-in-out;
 }
 
@@ -75,7 +78,13 @@
 .modal-buttons {
     display: flex;
     flex-direction: row;
-    margin-left: 150px;
+    margin-top: 20px;
+    width: 250px;
+    margin: auto;
+}
+
+.modal-buttons button {
+  margin: auto;
 }
 
 .yesplay {
@@ -88,8 +97,8 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     color: white;
-    margin: 15px;
     margin-top: 20px;
+    // margin: center;
 }
 
 .canc-play {
@@ -102,9 +111,9 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     color: #b3b3b3;
-    margin: 15px;
     margin-top: 20px;
     transition: all .2s ease-in-out;
+    // margin: center;
 }
 
 .yesplay:hover {
@@ -161,7 +170,7 @@
 }
 
 .p-title {
-    font-family: "Circular Bold";
+    font-family: "Circular";
     font-size: 16px;
     margin: auto;
     margin-top: 10px;
