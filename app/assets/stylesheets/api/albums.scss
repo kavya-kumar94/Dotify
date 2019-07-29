@@ -122,6 +122,21 @@
     text-align: center;
 }
 
+.a-title {
+    font-size: 16px;
+}
+
+.a-art {
+    color: #fff;
+    opacity: 0.6;
+}
+
+.a-art:hover {
+    color: #fff;
+    opacity: 1;
+    text-decoration: underline;
+}
+
 .play-btn:hover {
     background-color: #1ED760;
     transform: scale(1.1);

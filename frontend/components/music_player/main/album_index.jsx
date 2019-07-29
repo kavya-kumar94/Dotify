@@ -20,9 +20,9 @@ class AlbumIndex extends React.Component {
             return (
                 <div key={idx} className="albs">
                     <li><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
-                    <li><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
+                    <li className="a-title"><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     {/* <h2>{album.title}</h2> */}
-                    <li><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
+                    <li className="a-art"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
                     {/* <button className="play-btn">PLAY</button> */}
                     {/* <p>{album.year}</p> */}
                     {/* <p>{album.songs.count}</p> */}
