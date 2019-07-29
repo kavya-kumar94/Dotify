@@ -5,6 +5,9 @@
     position: fixed;
     height: 100%;
     width: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .main-div {
@@ -60,8 +63,12 @@
 
 .user-nav {
     color: #b3b3b3;
-    margin-top: 320px;
-    border-top: 0.5px solid #b3b3b3
+    border-top: 0.5px solid #b3b3b3;
+    margin-bottom: 120px;
+    font-family: "Circular";
+    width: 60%;
+    align-items: center;
+    margin-left: 40px;
 }
 
 .navbar-username {

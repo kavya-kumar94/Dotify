@@ -65,10 +65,9 @@ class Navbar extends React.Component {
                                     </div>
                                 </NavLink>
                             </li>
-                        {showUser}
                         </ul>
                     </div>
-
+                    {showUser}
                 </div>
         )
     }
