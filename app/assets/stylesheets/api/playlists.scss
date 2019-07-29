@@ -143,30 +143,41 @@
     padding: 35px;
 }
 
+.playlist-index {
+  padding-left: 40px;
+}
+
 .playlist-link {
   display: flex;
   // flex-wrap: wrap;
   flex-direction: column;
   float: left;
   text-align: center;
-  padding: 10px;
+  padding: 5px;
   font-family: "Circular";
   font-size: 14px;
   list-style: none;
 }
 
-// .playlist-link h2 {
-//     font-family: "Circular Bold";
-//     font-size: 35px;
-//     margin: auto;
+.p-title {
+    font-family: "Circular Bold";
+    font-size: 16px;
+    margin: auto;
+    margin-top: 10px;
 //     padding-bottom: 15px;
 //     padding-top: 15px;
-// }
+}
+
+.p-creator{
+  font-family: "Circular";
+  color: #fff;
+  opacity: .6;
+}
 
 .playlist-link li {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  // margin-top: 10px;
 }
 
 .playlist-form h1 {
@@ -195,7 +206,6 @@
 .play-show h2 {
   font-family: "Circular Bold";
   font-size: 40px;
-
 }
 
 .play-show li {
@@ -229,3 +239,4 @@
     background-color: #1ED760;
     transform: scale(1.1);
   }
+
