@@ -56,7 +56,7 @@
   font-size: 50px;
 }
 
-.modal-cancel {
+#modal-cancel {
   background: none;
   border: none;
   z-index: 10;
@@ -67,8 +67,9 @@
   transition: all .2s ease-in-out;
 }
 
-.modal-cancel:hover {
+#modal-cancel:hover {
     transform: scale(1.1);
+    color: #fff !important;
 }
 
 .playlist-form {
@@ -78,13 +79,15 @@
 .modal-buttons {
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
+    padding-top: 20px;
     width: 250px;
     margin: auto;
 }
 
 .modal-buttons button {
   margin: auto;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .yesplay {
@@ -98,12 +101,13 @@
     letter-spacing: 0.2em;
     color: white;
     margin-top: 20px;
-    // margin: center;
-}
-
-.canc-play {
-  font-family: "Circular";
-   z-index: 1;
+    // margin-left: 25px;
+    // margin-right: 5px;
+  }
+  
+  .canc-play {
+    font-family: "Circular";
+    z-index: 1;
     border-radius: 500px;
     padding: 12px 38px 12px;
     background-color: rgba(24, 24, 24, 0.7);
@@ -113,7 +117,8 @@
     color: #b3b3b3;
     margin-top: 20px;
     transition: all .2s ease-in-out;
-    // margin: center;
+    // margin-left: 25px;
+    // margin-right: 25px;
 }
 
 .yesplay:hover {

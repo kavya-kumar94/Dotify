@@ -52,7 +52,7 @@ class NewPlaylistForm extends React.Component {
             
         return (
             <div className="modal">
-                <button className="modal-cancel" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
+                <button id="modal-cancel" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png"/></button>
                 <form className="playlist-form" onSubmit={this.handleSubmit}>
                     <h1>Create new playlist</h1>
                     <div className="err">
