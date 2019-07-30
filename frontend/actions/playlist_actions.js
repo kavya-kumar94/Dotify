@@ -56,9 +56,15 @@ export const createPlaylist = (playlist) => dispatch => {
         
 }
 
-
 export const addSongToPlaylist = (playlistId, songId) => dispatch => (
     PlaylistSongApiUtil.addSongToPlaylist(playlistId, songId).then(
+        // message => dispatch(receivePlaylistErrors(message)),
+        err => dispatch(receivePlaylistErrors(err.responseJSON))
+    )
+);
+
+export const deletePlaylistSong = (playlistId, songId) => dispatch => (
+    PlaylistSongApiUtil.deletePlaylistSong(playlistId, songId).then(
         // message => dispatch(receivePlaylistErrors(message)),
         err => dispatch(receivePlaylistErrors(err.responseJSON))
     )
