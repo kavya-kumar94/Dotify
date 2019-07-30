@@ -19,3 +19,10 @@ export const addSongToPlaylist = (playlistId, songId) => (
         url: `api/playlists/${playlistId}/songs/${songId}`
     })
 );
+
+export const fetchPlaylistSongs = (playlistId) => (
+    $.ajax({
+        method: 'GET',
+        url: `api/playlists/${playlistId}`
+    })
+)

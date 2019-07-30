@@ -1,11 +1,15 @@
 import * as PlaylistApiUtil from '../util/playlist_api_util'
 import * as PlaylistSongApiUtil from '../util/playlist_song_api_util'
+import { RECEIVE_SONGS } from './song_actions';
 
 export const RECEIVE_PLAYLIST = "RECEIVE_PLAYLIST";
 export const RECEIVE_PLAYLISTS = "RECEIVE_PLAYLISTS";
 export const DELETE_PLAYLIST = "DELETE_PLAYLIST";
 export const RECEIVE_PLAYLIST_ERRORS = "RECEIVE_PLAYLIST_ERRORS";
 export const CLEAR_PLAYLIST_ERRORS = "CLEAR_PLAYLIST_ERRORS";
+export const ADD_SONG_TO_PLAYLIST = "ADD_SONG_TO_PLAYLIST";
+export const REMOVE_SONG_FROM_PLAYLIST = "REMOVE_SONG_FROM_PLAYLIST";
+export const RECEIVE_PLAYLIST_SONGS = "RECEIVE_PLAYLIST_SONGS"
 
 export const receivePlaylist = (payload) => {
     return {
@@ -35,6 +39,13 @@ export const receivePlaylistErrors = (errors) => {
     }
 }
 
+export const receivePlaylistSongs = (playlistSongs) => {
+    return{
+        type: RECEIVE_PLAYLIST_SONGS,
+        playlistSongs
+    }
+}
+
 export const clearPlaylistErrors = () => {
     return {
         type: CLEAR_PLAYLIST_ERRORS
@@ -47,6 +58,10 @@ export const fetchPlaylist = (playlistId) => dispatch => {
 
 export const fetchPlaylists = () => dispatch => {
     return PlaylistApiUtil.fetchPlaylists().then( playlists => dispatch(receivePlaylists(playlists)))
+}
+
+export const fetchPlaylistSongs = (playlistId) => dispatch => {
+    return PlaylistSongApiUtil.fetchPlaylistSongs(playlistId).then( playlistSongs => dispatch(receivePlaylistSongs(playlistSongs)))
 }
 
 export const createPlaylist = (playlist) => dispatch => {

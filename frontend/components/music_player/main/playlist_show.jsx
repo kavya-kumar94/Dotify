@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-import { fetchPlaylist, deletePlaylist } from '../../../actions/playlist_actions'
+import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs } from '../../../actions/playlist_actions'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
@@ -11,6 +11,7 @@ class PlaylistShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchPlaylist(this.props.match.params.playlistId);
+        // this.props.fetchPlaylistSongs(this.props.playlistId);
     }
 
     redirectPlaylists() {
@@ -29,10 +30,10 @@ class PlaylistShow extends React.Component {
                 <button className="play-btn">PLAY</button>
                 <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
                 <ul>
-                    { songs.map( song => {
-                        return  <div>
+                    {Object.values(songs).map( (song, idx) => { 
+                        return <li key={idx}>
                          {song.title}
-                        </div>
+                        </li>
                     })}
                     {/* {playlist.playlistSongIds.map( id => {
                         return <li>{songs.id}</li> */}
@@ -53,10 +54,12 @@ class PlaylistShow extends React.Component {
 const msp = (state, ownProps) => {
     const playlistId = ownProps.match.params.playlistId;
     const playlist= state.entities.playlists[playlistId];
-    const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
-    const songIds = tracks.map( song => song.playlist_id)
-    let songs = [];
-    Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
+    // const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
+    // const songIds = tracks.map( song => song.playlist_id)
+    debugger;
+    const songs = state.entities.songs;
+    // let songs = [];
+    // Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
     return {
         playlist: playlist,
         songs: songs
@@ -66,7 +69,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId)),
-        deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId))
+        deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
+        fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId))
     }
 }
 
