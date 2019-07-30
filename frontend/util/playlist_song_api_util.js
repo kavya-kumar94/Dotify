@@ -6,12 +6,12 @@
 //     });
 // };
 
-// export const deletePlaylistSong = (id) => {
-//     return $.ajax({
-//         method: "DELETE",
-//         url: `/api/playlistsongs/${id}`
-//     });
-// };
+export const deletePlaylistSong = (playlistId, songId) => {
+    return $.ajax({
+        method: "DELETE",
+        url: `/api/playlists/${playlistId}/songs/${songId}`
+    });
+};
 
 export const addSongToPlaylist = (playlistId, songId) => (
     $.ajax({
