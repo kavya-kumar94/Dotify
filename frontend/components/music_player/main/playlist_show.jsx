@@ -29,11 +29,11 @@ class PlaylistShow extends React.Component {
                 <button className="play-btn">PLAY</button>
                 <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
                 <ul>
-                    {/* { songs.map( song => {
+                    { songs.map( song => {
                         return  <div>
                          {song.title}
                         </div>
-                    })} */}
+                    })}
                     {/* {playlist.playlistSongIds.map( id => {
                         return <li>{songs.id}</li> */}
                     {/* })} */}
