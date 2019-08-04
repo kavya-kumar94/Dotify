@@ -10,6 +10,7 @@ export const CLEAR_PLAYLIST_ERRORS = "CLEAR_PLAYLIST_ERRORS";
 export const ADD_SONG_TO_PLAYLIST = "ADD_SONG_TO_PLAYLIST";
 export const REMOVE_SONG_FROM_PLAYLIST = "REMOVE_SONG_FROM_PLAYLIST";
 export const RECEIVE_PLAYLIST_SONGS = "RECEIVE_PLAYLIST_SONGS"
+export const CLEAR_PLAYLIST_SONGS = "CLEAR_PLAYLIST_SONGS";
 
 export const receivePlaylist = (payload) => {
     return {
@@ -43,6 +44,12 @@ export const receivePlaylistSongs = (playlistSongs) => {
     return{
         type: RECEIVE_PLAYLIST_SONGS,
         playlistSongs
+    }
+}
+
+export const clearPlaylistSongs = () => {
+    return{
+        type: CLEAR_PLAYLIST_SONGS,
     }
 }
 

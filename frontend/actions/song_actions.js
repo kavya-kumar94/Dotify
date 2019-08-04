@@ -5,6 +5,9 @@ export const RECEIVE_SONG_ID = "RECEIVE_SONG_ID";
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 
+export const CLEAR_PLAYLIST_SONGS = "CLEAR_PLAYLIST_SONGS";
+
+
 export const receiveSong = (song) => {
     return {
         type: RECEIVE_SONG,
@@ -37,4 +40,11 @@ export const fetchSong = (id) => dispatch => {
 
 export const fetchSongs = () => dispatch => {
     return SongApiUtil.fetchSongs().then(songs => dispatch(receiveSongs(songs)))
+}
+
+
+export const clearPlaylistSongs = () => {
+    return {
+        type: CLEAR_PLAYLIST_SONGS,
+    }
 }

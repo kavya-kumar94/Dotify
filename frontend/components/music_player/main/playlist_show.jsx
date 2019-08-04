@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs } from '../../../actions/playlist_actions'
+import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs } from '../../../actions/playlist_actions'
 
 class PlaylistShow extends React.Component {
     constructor(props) {
@@ -10,6 +10,7 @@ class PlaylistShow extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearPlaylistSongs();
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         // this.props.fetchPlaylistSongs(this.props.playlistId);
     }
@@ -23,22 +24,38 @@ class PlaylistShow extends React.Component {
         const { playlist , songs} = this.props;
         let newPlaylist = (
             <div className="play-show">
-                <li className="playshowimg"><NavLink to={`/playlists/${playlist.id}`}><img src= {playlist.playlist_image} /></NavLink></li>
-                {/* style={{ background- image: url("undefined") }}  */}
-                <h2>{playlist.title}</h2>
-                <li>{playlist.creator}</li>
-                <button className="play-btn">PLAY</button>
-                <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
-                <ul>
-                    {Object.values(songs).map( (song, idx) => { 
-                        return <li key={idx}>
-                         {song.title}
-                        </li>
-                    })}
-                    {/* {playlist.playlistSongIds.map( id => {
-                        return <li>{songs.id}</li> */}
-                    {/* })} */}
-                </ul>
+                <div className="play-show1">
+                    <li className="playshowimg"><NavLink to={`/playlists/${playlist.id}`}><img src= {playlist.playlist_image} /></NavLink></li>
+                    {/* style={{ background- image: url("undefined") }}  */}
+                    <h2>{playlist.title}</h2>
+                    <li>{playlist.creator}</li>
+                    <button className="play-btn">PLAY</button>
+                    <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
+                </div>
+
+                <div className="play-show2">
+                    <ul className="song-list">
+                        {Object.values(songs).map( (song, idx) => { 
+                            return <div key={idx} className="playsongs">
+                                <div>
+                                    <li>
+                                    <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
+                                    {song.title}
+                                    </li>
+                                </div>
+
+                                <div>
+                                    {song.duration}
+                                </div>
+
+                            </div>
+
+                        })}
+                        {/* {playlist.playlistSongIds.map( id => {
+                            return <li>{songs.id}</li> */}
+                        {/* })} */}
+                    </ul>
+                </div>
             </div>
         )
 
@@ -56,7 +73,7 @@ const msp = (state, ownProps) => {
     const playlist= state.entities.playlists[playlistId];
     // const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
     // const songIds = tracks.map( song => song.playlist_id)
-    debugger;
+    // debugger;
     const songs = state.entities.songs;
     // let songs = [];
     // Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
@@ -70,7 +87,8 @@ const mdp = dispatch => {
     return {
         fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId)),
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
-        fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId))
+        fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId)),
+        clearPlaylistSongs: () => dispatch(clearPlaylistSongs())
     }
 }
 
