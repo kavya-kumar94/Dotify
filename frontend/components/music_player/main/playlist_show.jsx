@@ -6,7 +6,27 @@ import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs }
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
+            noteClass: "playsongs"
+        }
+        this.note = this.note.bind(this);
+        this.play = this.play.bind(this);
         this.redirectPlaylists = this.redirectPlaylists.bind(this);
+    }
+
+    note() {
+        this.setState({
+            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
+            noteClass: "playsongs"
+        })
+    }
+
+    play() {
+        this.setState({
+            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
+            noteClass: "play-show3"
+        })
     }
 
     componentDidMount() {
@@ -22,6 +42,7 @@ class PlaylistShow extends React.Component {
     render() {
         if (this.props.playlist === undefined) return null;
         const { playlist , songs} = this.props;
+        let noteClass = this.state.noteClass;
         let newPlaylist = (
             <div className="play-show">
                 <div className="play-show1">
@@ -36,10 +57,12 @@ class PlaylistShow extends React.Component {
                 <div className="play-show2">
                     <ul className="song-list">
                         {Object.values(songs).map( (song, idx) => { 
-                            return <div key={idx} className="playsongs">
-                                <div>
+                            return <div key={idx} onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
+                                <div className="flex">
+                                    <div>
+                                        <img id="art-note" src={this.state.noteIcon} />
+                                    </div>
                                     <li>
-                                    <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
                                     {song.title}
                                     </li>
                                 </div>
