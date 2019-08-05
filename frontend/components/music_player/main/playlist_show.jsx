@@ -27,7 +27,8 @@ class PlaylistShow extends React.Component {
         let newPlaylist = (
             <div className="play-show">
                 <div className="play-show1">
-                    <li className="playshowimg"><NavLink to={`/playlists/${playlist.id}`}><img src= {playlist.playlist_image} /></NavLink></li>
+                    {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
+                    <li className="playshowimg"><img src= {playlist.playlist_image} /></li>
                     {/* style={{ background- image: url("undefined") }}  */}
                     <h2>{playlist.title}</h2>
                     <li>{playlist.creator}</li>

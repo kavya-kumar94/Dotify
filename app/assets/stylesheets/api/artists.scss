@@ -71,11 +71,13 @@ img:hover {
 
 .art-sho {
     width: 100%;
+    padding: 20px;
     // margin-right: 700px;
 }
 
 .art-sho h3 {
-    font-size: 30px;
+    font-size: 36px;
+    font-family: "Circular Bold"
 }
 
 .bg-img{
@@ -148,15 +150,39 @@ img:hover {
 }
 
 .art-song {
-    // justify-content: space-between;
-    // align-items: center;
+     display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Circular";
+  font-size: 16px;
+  color: #b3b3b3;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+  padding-bottom: .7em;
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+}
+
+.art-song2 {
     display: flex;
-    flex-direction: row;
-    // border: 1px red solid;
-    width: 100%;
-    height: 50%;
-    justify-content: space-between;
-    // width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Circular";
+  font-size: 16px;
+  color: #b3b3b3;
+  align-items: center;
+  transition-property: background-color;
+  transition-duration: .2s;
+  transition-timing-function: linear;
+  padding-bottom: .7em;
+    padding-right: 0.7em;
+    padding-left: 0.7em;
+}
+
+.art-song2:hover, .art-song2:focus {
+    background-color: rgba(0, 0, 0, .3);
 }
 
 .alb-info2 {
