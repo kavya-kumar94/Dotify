@@ -178,3 +178,16 @@
   flex-direction: column;
   margin-top: 10px;
 }
+
+#add-song-menu {
+    height: 20px;
+    width: 20px;
+    padding-right: 30px;
+}
+
+
+.add-duration {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

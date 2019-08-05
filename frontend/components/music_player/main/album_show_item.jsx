@@ -7,7 +7,8 @@ class AlbumShowItem extends React.Component {
         super(props);
         this.state = {
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "playsongs"
+            noteClass: "playsongs",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif"
         }
         this.note = this.note.bind(this);
         this.play = this.play.bind(this);
@@ -16,14 +17,16 @@ class AlbumShowItem extends React.Component {
     note() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "playsongs"
+            noteClass: "playsongs",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif"
         })
     }
 
     play() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
-            noteClass: "play-show3"
+            noteClass: "play-show3",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
         })
     }
 
@@ -65,7 +68,8 @@ class AlbumShowItem extends React.Component {
                     </div>
                 </div>
 
-                <div>
+                <div className="add-duration">
+                    <img id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 
