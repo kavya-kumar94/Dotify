@@ -1,32 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs } from '../../../actions/playlist_actions'
-
+import ShowItem from './show_item';
+import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs } from '../../../actions/playlist_actions';
+import { connect } from 'react-redux';
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "playsongs"
-        }
-        this.note = this.note.bind(this);
-        this.play = this.play.bind(this);
         this.redirectPlaylists = this.redirectPlaylists.bind(this);
-    }
-
-    note() {
-        this.setState({
-            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "playsongs"
-        })
-    }
-
-    play() {
-        this.setState({
-            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
-            noteClass: "play-show3"
-        })
     }
 
     componentDidMount() {
@@ -41,8 +21,9 @@ class PlaylistShow extends React.Component {
 
     render() {
         if (this.props.playlist === undefined) return null;
-        const { playlist , songs} = this.props;
-        let noteClass = this.state.noteClass;
+
+        const { playlist, songs } = this.props;
+
         let newPlaylist = (
             <div className="play-show">
                 <div className="play-show1">
@@ -58,29 +39,10 @@ class PlaylistShow extends React.Component {
                 <div className="play-show2">
                     <ul className="song-list">
                         {Object.values(songs).map( (song, idx) => { 
-                            return <div key={idx} onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
-                                <div className="flex">
-                                    <div>
-                                        <img id="art-note" src={this.state.noteIcon} />
-                                    </div>
-                                    <li>
-                                    {song.title}
-                                    </li>
-                                    <li>
-                                    {song.album}
-                                    </li>
-                                    <li>
-                                    {song.artist}
-                                    </li>
-                                </div>
+                            return <ShowItem key={idx} song={song} />
+                        }
 
-                                <div>
-                                    {song.duration}
-                                </div>
-
-                            </div>
-
-                        })}
+                        )}
                         {/* {playlist.playlistSongIds.map( id => {
                             return <li>{songs.id}</li> */}
                         {/* })} */}
@@ -97,10 +59,9 @@ class PlaylistShow extends React.Component {
     }
 }
 
-
 const msp = (state, ownProps) => {
     const playlistId = ownProps.match.params.playlistId;
-    const playlist= state.entities.playlists[playlistId];
+    const playlist = state.entities.playlists[playlistId];
     // const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
     // const songIds = tracks.map( song => song.playlist_id)
     // debugger;
@@ -122,5 +83,6 @@ const mdp = dispatch => {
     }
 }
 
-export default connect(msp,mdp)(PlaylistShow);
+
+export default connect(msp, mdp)(PlaylistShow);
 
