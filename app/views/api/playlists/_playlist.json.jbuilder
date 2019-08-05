@@ -25,6 +25,9 @@ json.songs do
     playlist.songs.each do |song|
         json.set! song.id do
             json.extract! song, :title, :duration, :album_id, :genre_id
+            json.artist_name song.artist.name 
+            json.artist_id song.artist.id
+            json.album_title song.album.title 
             if song.audio.attached?
                 json.audio url_for(song.audio)
             else

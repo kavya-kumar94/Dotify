@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 
 
 class ShowItem extends React.Component {
@@ -30,21 +30,21 @@ class ShowItem extends React.Component {
     render() {
         let noteClass = this.state.noteClass;
         const song = this.props.song;
+        // debugger;
         return(
         <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
             <div className="flex">
                 <div>
                     <img id="art-note" src={this.state.noteIcon} />
                 </div>
-                <li>
-                    {song.title}
-                </li>
-                <li>
-                    {song.album}
-                </li>
-                <li>
-                    {song.artist}
-                </li>
+                <div className="song-info">
+                    <li>{song.title}</li>
+                    <div className="alb-art">
+                            <li><span><NavLink to={`/albums/${song.album_id}`}>{song.album_title}</NavLink></span></li>
+                            <li className="sep">•</li>
+                            <li><span><NavLink to={`/artists/${song.artist_id}`}>{song.artist_name}</NavLink></span></li>
+                    </div>
+                </div>
             </div>
 
             <div>

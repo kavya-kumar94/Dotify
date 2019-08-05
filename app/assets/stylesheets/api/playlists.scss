@@ -291,8 +291,40 @@
   font-family: "Circular";
   font-size: 16px;
   color: white;
-  align-items: center;
+  padding-top: 10px;
   height: 60px;
+  align-items: center;
+}
+
+.song-info li{
+  display: flex;
+  margin-top: 3px;
+  justify-content: flex-start;
+}
+
+.alb-art {
+  font-size: 14px;
+  font-family: "Circular";
+  display: flex;
+  justify-content: flex-start;
+}
+
+.alb-art li span{
+  padding-right: 5px;
+  opacity: 0.6;
+}
+
+.alb-art li span:hover {
+  opacity: 0.99;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.sep {
+  font-size: .6em;
+  opacity: 0.6;
+  align-items: center;
+  padding-right: 5px;
 }
 
 .playsongs {
@@ -316,6 +348,12 @@
   margin: auto;
   letter-spacing: 0.2em;
 
+}
+
+#art-note {
+  padding-right: 8px;
+  display: flex;
+  margin-bottom: 15px;
 }
 
 // .playsongs li {
