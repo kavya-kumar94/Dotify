@@ -66,6 +66,12 @@ class PlaylistShow extends React.Component {
                                     <li>
                                     {song.title}
                                     </li>
+                                    <li>
+                                    {song.album}
+                                    </li>
+                                    <li>
+                                    {song.artist}
+                                    </li>
                                 </div>
 
                                 <div>

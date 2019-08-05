@@ -58,6 +58,7 @@ class AlbumShow extends React.Component {
                                         <div className="track5">
                                             <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
                                             <li id="song-title">{song.title}</li>
+                                            <li>{album.artist_name}</li>
                                         </div>
                                         {/* </div> */}
                                         {/* <div className="stitle"> */}
