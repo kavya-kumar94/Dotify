@@ -26,7 +26,8 @@ class AlbumShow extends React.Component {
                 <h2>{album.title}</h2>
                 <li className="artist-hov"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
                 <button className="play-btn">PLAY</button>
-                <li>{album.year}</li>
+                    <div className="song-count">{album.year} • {songs.length} SONGS</div>
+                {/* <div className="song-count"></div> */}
                 <div className="album-pics">
                     <img className="like-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"/>
                     <img className="extra-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"/>
