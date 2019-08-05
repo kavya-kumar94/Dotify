@@ -68,7 +68,6 @@ class AlbumShow extends React.Component {
                                             <li>{song.duration}</li>
                                         </div>
 
-
                                     </div>
                                 </div>
                             })}
