@@ -5,6 +5,23 @@ import { NavLink } from 'react-router-dom'
 class AlbumShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            loveIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
+        };
+        this.love = this.love.bind(this);
+        this.unlove = this.unlove.bind(this);
+    }
+
+    love() {
+        this.setState({
+            loveIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_filled.png"
+        })
+    }
+
+    unlove() {
+        this.setState({
+            loveIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
+        })
     }
 
     componentDidMount() {
@@ -29,7 +46,7 @@ class AlbumShow extends React.Component {
                     <div className="song-count">{album.year} • {songs.length} SONGS</div>
                 {/* <div className="song-count"></div> */}
                 <div className="album-pics">
-                    <img className="like-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"/>
+                        <img onClick={this.state.loveIcon === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} className="like-album" src={this.state.loveIcon} />
                     <img className="extra-album" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"/>
                 </div>
             </div>
