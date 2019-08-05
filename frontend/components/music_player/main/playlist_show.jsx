@@ -52,6 +52,7 @@ class PlaylistShow extends React.Component {
                     <li>{playlist.creator}</li>
                     <button className="play-btn">PLAY</button>
                     <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
+                    <div className="song-count">{Object.values(songs).length} SONGS</div>
                 </div>
 
                 <div className="play-show2">

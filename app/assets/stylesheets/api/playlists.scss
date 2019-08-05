@@ -309,6 +309,12 @@
   padding-left: 0.7em;
 }
 
+.song-count {
+  font-size: 11px;
+  font-family: "Circular";
+  color: #b3b3b3;
+}
+
 // .playsongs li {
 //   display: flex;
 //   flex-direction: row;
@@ -327,12 +333,13 @@
     width: 100px;
     border: none;
     z-index: 1;
-    padding: 10px;
+    padding:10px;
     // margin-top: 20px;
     border-radius: 500px;
     background-color: #1DB954;
     transition: all .2s ease-in-out;
-    margin: 20px auto;
+    margin: 5px auto;
+    margin-bottom: 10px;
     text-align: center;
   }
 
