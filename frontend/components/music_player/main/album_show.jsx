@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAlbum } from '../../../actions/album_actions'
-import { NavLink } from 'react-router-dom'
+import { fetchAlbum } from '../../../actions/album_actions';
+import { NavLink } from 'react-router-dom';
+import AlbumShowItem from './album_show_item';
 class AlbumShow extends React.Component {
     constructor(props) {
         super(props);
@@ -53,22 +54,7 @@ class AlbumShow extends React.Component {
             <div className="songs-list">
                         <div className="track6">
                             {songs.map((song,idx) => {
-                                return <div key={idx} className="art-song">
-                                    <div className="parent">
-                                        <div className="track5">
-                                            <img id="art-note" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png" />
-                                            <li id="song-title">{song.title}</li>
-                                            <li>{album.artist_name}</li>
-                                        </div>
-                                        {/* </div> */}
-                                        {/* <div className="stitle"> */}
-                                        {/* </div> */}
-                                        {/* <div id="duration"> */}
-                                        <div>
-                                            <li>{song.duration}</li>
-                                        </div>
-                                    </div>
-                                </div>
+                                return <AlbumShowItem key={idx} song={song} />
                             })}
                         </div>
                     

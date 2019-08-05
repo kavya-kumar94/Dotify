@@ -12,7 +12,9 @@ json.album do
   json.songs do
     album.songs.each do |song|
       json.set! song.id do
-        json.extract! song, :id, :title, :album_id, :genre_id, :duration 
+        json.extract! song, :id, :title, :album_id, :genre_id, :duration
+        json.artist_name song.artist.name 
+        json.artist_id song.artist.id
         json.album song.album.title
         if song.audio.attached?
             json.audio url_for(song.audio)
