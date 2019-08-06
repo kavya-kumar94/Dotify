@@ -180,8 +180,9 @@
 }
 
 #add-song-menu {
-    height: 20px;
-    width: 20px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
     padding-right: 30px;
 }
 
@@ -190,4 +191,32 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+
+.add-song-bg {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+
+.add-song-dropdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.add-song-bg {
+    color: white;
+    font-family: "Circular Bold";
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
 }

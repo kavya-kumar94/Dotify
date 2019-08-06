@@ -1,18 +1,21 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import { connect } from 'react-redux'
+import { openContextMenu} from '../../../actions/context_menu_actions';
 
 class AlbumShowItem extends React.Component {
     constructor(props) {
         super(props);
+        this.moreMenu = React.createRef();
         this.state = {
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
             noteClass: "playsongs",
-            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif"
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif",
         }
         this.note = this.note.bind(this);
         this.play = this.play.bind(this);
     }
+
 
     note() {
         this.setState({
@@ -33,6 +36,7 @@ class AlbumShowItem extends React.Component {
     render() {
         let noteClass = this.state.noteClass;
         const song = this.props.song;
+        let { openContextMenu } = this.props
         // debugger;
         return (
             // <div className="art-song">
@@ -69,7 +73,7 @@ class AlbumShowItem extends React.Component {
                 </div>
 
                 <div className="add-duration">
-                    <img id="add-song-menu" src={this.state.addIcon} />
+                    <img onClick={ ()=>openContextMenu("add-song")} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 
@@ -78,6 +82,11 @@ class AlbumShowItem extends React.Component {
     }
 }
 
+const mdp = dispatch => {
+    return {
+        openContextMenu: (contextMenu) => dispatch(openContextMenu(contextMenu))
+    }
+}
 
 
-export default AlbumShowItem;
+export default connect(null, mdp)(AlbumShowItem);

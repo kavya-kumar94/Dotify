@@ -279,14 +279,15 @@ img.white-browse {
 .player-div {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     // margin-right: 300px;
+    padding-left: 20px;
 }
 
 .left-play {
     display: flex;
     flex-direction: row;
-    margin-right: 700px;
+    // margin-right: 700px;
 }
 
 // .left-play p {
@@ -298,6 +299,7 @@ img.white-browse {
     display: flex;
     flex-direction: row;
     margin: auto 0;
+    padding-right: 20px;
 }
 
 .center-play {
@@ -352,6 +354,7 @@ img.white-browse {
 .right-play img {
     height: 25px;
     width: 25px;
+    padding: 10px;
 }
 
 #track_img {
