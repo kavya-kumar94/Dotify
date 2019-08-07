@@ -181,7 +181,7 @@
 }
 
 #add-song-menu {
-    display: inline-block;
+    display: block;
     height: 25px;
     width: 25px;
     padding-right: 30px;
@@ -235,7 +235,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    // text-align: center;
     border-radius: 5px;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { closeModal } from '../../../actions/modal_actions';
+import { closeModal, openModal } from '../../../actions/modal_actions';
 import { addSongToPlaylist } from '../../../actions/playlist_actions';
 
 class AddSongForm extends React.Component {
@@ -47,14 +47,14 @@ class AddSongForm extends React.Component {
 
 
     render() {
-        let { closeModal } = this.props;
+        let { closeModal, openModal } = this.props;
 
 
         return (
             <div className="contextMenu">
                 {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
-                    <h1>Add to Playlist</h1>
+                    <h1 onClick={() => openModal("add-to-play")}>Add to Playlist</h1>
                     <h1>Remove from Playlist</h1>
 
                     {/* <div className="err">
@@ -83,6 +83,7 @@ class AddSongForm extends React.Component {
 
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
+    openModal: (modal) => dispatch(openModal(modal)),
     addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
 })
 

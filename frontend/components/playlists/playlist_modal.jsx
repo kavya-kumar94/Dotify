@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import NewPlaylistForm from './new_playlist_form'
 import AddSongForm from '../music_player/main/add_song_form';
+import AddToPlay from '../music_player/main/add_to_play';
 class Modal extends React.Component {
 
     constructor(props) {
@@ -19,14 +20,22 @@ class Modal extends React.Component {
 
         let component;
         let classes;
+        let child;
         switch (modal) {
             case 'new-playlist':
                 component = <NewPlaylistForm />;
                 classes="modal-background";
+                child="modal-child";
                 break;
             case 'add-song':
                 component = <AddSongForm />;
                 classes="add-song-bg";
+                child="addsong-child";
+                break;
+            case 'add-to-play':
+                component = <AddToPlay />;
+                classes="modal-background",
+                child="play-child";
                 break;
             default:
                 return null;
@@ -35,7 +44,7 @@ class Modal extends React.Component {
 
         return (
             <div className={classes} onClick={closeModal}>
-                <div className="modal-child" onClick={e => e.stopPropagation()}>
+                <div className={child} onClick={e => e.stopPropagation()}>
                     {component}
                 </div>
             </div>

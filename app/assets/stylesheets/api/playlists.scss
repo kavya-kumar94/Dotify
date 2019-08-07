@@ -76,6 +76,11 @@
     text-align: center;
 }
 
+.playlist-form h2 {
+  font-size: 72px;
+  font-family: "Circular Bold";
+}
+
 .modal-buttons {
     display: flex;
     flex-direction: row;
@@ -394,3 +399,39 @@
     transform: scale(1.1);
   }
 
+
+  #close-play {
+    height: 32px;
+    width: 32px;
+    margin: auto;
+    margin-bottom: 40px;
+    transition: all .2s ease-in-out;
+
+  }
+
+  #close-play:hover {
+    transform: scale(1.1);
+  }
+
+  .play-child {
+    margin-top: 40px;
+  }
+
+  .yassplay {
+    font-family: "Circular";
+    z-index: 1;
+    border-radius: 500px;
+    padding: 9px 22px;
+    background-color: #1DB954;
+    border: 0px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: white;
+    margin-top: 20px;
+  }
+
+  .yassplay:hover {
+    transform: scale(1.1);
+    // padding: 12px 40px 12px;
+    background-color: #1ED760;
+}
