@@ -32,8 +32,11 @@ class PlaylistShow extends React.Component {
                     {/* style={{ background- image: url("undefined") }}  */}
                     <h2>{playlist.title}</h2>
                     <li>{playlist.creator}</li>
-                    <button className="play-btn">PLAY</button>
-                    <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
+                    <div className="btns-play-show">
+                        <button className="play-btn">PLAY</button>
+                        <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
+
+                    </div>
                     <div className="song-count">{Object.values(songs).length} SONGS</div>
                 </div>
 

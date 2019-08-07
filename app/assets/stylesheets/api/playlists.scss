@@ -208,7 +208,7 @@
   display: flex;
   flex-direction: row;
   list-style: none;
-  padding: 100px;
+  padding: 50px;
   // margin: auto;
   width: 100vw;
   max-width: 100%;
@@ -438,4 +438,9 @@
 
 .addtoplayul {
   margin: auto;
+}
+
+.btns-play-show {
+  display: flex;
+  flex-direction: column;
 }
