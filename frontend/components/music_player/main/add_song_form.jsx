@@ -52,9 +52,11 @@ class AddSongForm extends React.Component {
 
         return (
             <div className="contextMenu">
-                <button id="context-cancel" onClick={closeModal}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /></button>
+                {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
                     <h1>Add to Playlist</h1>
+                    <h1>Remove from Playlist</h1>
+
                     {/* <div className="err">
                         {this.renderErrors()}
                     </div> */}

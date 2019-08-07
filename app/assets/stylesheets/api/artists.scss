@@ -26,11 +26,11 @@
 #show-img {
     object-fit: cover;
     display: flex;
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     flex-direction: row;
-    padding-bottom: 10px;
-    box-shadow: 1px 1px 15px 0px #171b2a;
+    // padding-bottom: 10px;
+    box-shadow: 1px 1px 30px 0px #171b2a;
     opacity: 1;
 
     // background: url(music_note.jpg) no-repeat scroll 0 0;
@@ -69,9 +69,12 @@
     max-width: 150px;
     max-height: 150px;
     flex-direction: row;
-    padding-bottom: 10px;
-    box-shadow: 1px 1px 15px 0px #171b2a;
+    // padding-bottom: 10px;
+    transition-timing-function: cubic-bezier(.3,0,.4,1);
+    box-shadow: 0px 0px 30px 0px #171b2a;
     opacity: 1;
+    transition-property: filter,-webkit-filter;
+    transition: opacity 0.3s ease-in-out;
 
     // background: url(music_note.jpg) no-repeat scroll 0 0;
 

@@ -73,7 +73,7 @@ class AlbumShowItem extends React.Component {
                 </div>
 
                 <div className="add-duration">
-                    <img onClick={() => {debugger; openModal("add-song")}} id="add-song-menu" src={this.state.addIcon} />
+                    <img onClick={() => openModal("add-song")} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 

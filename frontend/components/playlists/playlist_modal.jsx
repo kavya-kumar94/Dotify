@@ -18,13 +18,15 @@ class Modal extends React.Component {
 
 
         let component;
-
+        let classes;
         switch (modal) {
             case 'new-playlist':
                 component = <NewPlaylistForm />;
+                classes="modal-background";
                 break;
             case 'add-song':
                 component = <AddSongForm />;
+                classes="add-song-bg";
                 break;
             default:
                 return null;
@@ -32,7 +34,7 @@ class Modal extends React.Component {
 
 
         return (
-            <div className="modal-background" onClick={closeModal}>
+            <div className={classes} onClick={closeModal}>
                 <div className="modal-child" onClick={e => e.stopPropagation()}>
                     {component}
                 </div>

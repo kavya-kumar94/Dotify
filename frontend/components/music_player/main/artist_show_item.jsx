@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { openModal } from '../../../actions/modal_actions';
+import { connect } from 'react-redux'
 
 
 class ArtistShowItem extends React.Component {
@@ -7,7 +9,9 @@ class ArtistShowItem extends React.Component {
         super(props);
         this.state = {
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "art-song"
+            noteClass: "art-song",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif",
+
         }
         this.note = this.note.bind(this);
         this.play = this.play.bind(this);
@@ -16,14 +20,18 @@ class ArtistShowItem extends React.Component {
     note() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "art-song"
+            noteClass: "art-song",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif"
+
         })
     }
 
     play() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
-            noteClass: "art-song2"
+            noteClass: "art-song2",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
+
         })
     }
 
@@ -49,6 +57,8 @@ class ArtistShowItem extends React.Component {
 
         let noteClass = this.state.noteClass;
         const song = this.props.song;
+        let { openModal } = this.props
+
         // debugger;
         return (
             <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
@@ -66,7 +76,8 @@ class ArtistShowItem extends React.Component {
                     </div>
                 </div>
 
-                <div>
+                <div className="add-duration">
+                    <img onClick={() => openModal("add-song")} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 
@@ -75,6 +86,11 @@ class ArtistShowItem extends React.Component {
     }
 }
 
+const mdp = dispatch => {
+    return {
+        openModal: (modal) => dispatch(openModal(modal))
+    }
+}
 
 
-export default ArtistShowItem;
+export default connect(null, mdp)(ArtistShowItem);

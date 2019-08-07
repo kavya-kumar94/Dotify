@@ -37,7 +37,7 @@ class ArtistShow extends React.Component {
 
                     {albums.map( (album, idx) => {
                         return <div key={idx} className="alb-info2">
-                            <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
+                            <NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image} /></NavLink>
                                 <li>{album.title}</li>
                                 </div>
                                 })}

@@ -16,8 +16,8 @@
     flex-direction: column;
     list-style: none;
     // margin-left: 100px;
-    justify-content: space-evenly;
-    width: 100vw;
+    justify-content: flex-start;
+    max-width: 100%;
     // border: 1px solid red;
 }
 
@@ -84,9 +84,9 @@
     flex-direction: column;
     list-style: none;
     margin: 50px;
-    margin-top: 100px;
+    margin-top: 10px;
     justify-content: center;
-    height: 200px;
+    height: 20%;
     // margin-top: 50px;
 }
 
@@ -94,6 +94,7 @@
     font-family: "Circular Bold";
     font-size: 35px;
     margin: auto;
+    text-align: center;
     // padding-bottom: 15px;
     // padding-top: 15px;
 }
@@ -200,7 +201,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
   z-index: 20;
 }
 
@@ -214,10 +214,56 @@
 
 
 .contextMenu {
-    color: white;
-    font-family: "Circular Bold";
+  position: relative;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   left: 0;
+  background: #282828;
+  width: 205px;
+  height: 80px;
+  z-index: 20;
+  color: rgb(179, 179, 179);
+  font-family: "Circular";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 3px;
+}
+
+.add-song-form {
+    position: relative;
     display: flex;
     flex-direction: column;
-    margin: auto;
     text-align: center;
+    border-radius: 5px;
 }
+
+.add-song-form h1{
+    border: black;
+    padding: 3px 20px;
+    line-height: 32px;
+}
+
+.add-song-form h1:hover {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    text-decoration: none;
+}
+
+#context-cancel {
+    z-index: 1;
+    border-radius: 500px;
+    // padding: 12px 38px 12px;
+    // background-color: rgba(24, 24, 24, 0.7);
+    // border: 1px solid #b3b3b3;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    letter-spacing: 0.2em;
+    // color: #b3b3b3;
+    margin-top: 20px;
+    transition: all .2s ease-in-out;
+}
+
