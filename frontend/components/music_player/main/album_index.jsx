@@ -19,7 +19,7 @@ class AlbumIndex extends React.Component {
         let albumsNew = albums.map((album,idx) => {
             return (
                 <div key={idx} className="albs">
-                    <li><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
+                    <li><NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image}/></NavLink></li>
                     <li className="a-title"><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     {/* <h2>{album.title}</h2> */}
                     <li className="a-art"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>

@@ -23,7 +23,7 @@ class UserShow extends React.Component {
             let playlistsNew = playlists.map((playlist,idx) => {
                 return (
                     <div key={idx} className="playlist-link">
-                        <li><NavLink to={`/playlists/${playlist.id}`}><img src={playlist.playlist_image} /></NavLink></li>
+                        <li><NavLink to={`/playlists/${playlist.id}`}><img id="cover-img" src={playlist.playlist_image} /></NavLink></li>
                         <li className="p-title"><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
                         <li className="p-creator">{playlist.creatorName}</li>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import NewPlaylistForm from './new_playlist_form'
-
+import AddSongForm from '../music_player/main/add_song_form';
 class Modal extends React.Component {
 
     constructor(props) {
@@ -22,6 +22,9 @@ class Modal extends React.Component {
         switch (modal) {
             case 'new-playlist':
                 component = <NewPlaylistForm />;
+                break;
+            case 'add-song':
+                component = <AddSongForm />;
                 break;
             default:
                 return null;

@@ -111,7 +111,7 @@ class Player extends React.Component{
                 <div className="right-play">
                     <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>
                     <img className="volume" onClick={this.state.volume === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png" ? this.unmute : this.mute} src={this.state.volume} />
-                    <input type="range" id="volume" name="volume" min="0" max="1" step="0.01" class="progress-bar-input" value="0.5"></input>
+                    <input type="range" id="volume" name="volume" min="0" max="1" step="0.01" className="progress-bar-input" value="0.5"></input>
                 </div>  
                 {/* < ReactAudioPlayer className="aud"
                     src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"

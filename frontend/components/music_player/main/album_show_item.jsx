@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { openContextMenu} from '../../../actions/context_menu_actions';
+import { openModal} from '../../../actions/modal_actions';
 
 class AlbumShowItem extends React.Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class AlbumShowItem extends React.Component {
     render() {
         let noteClass = this.state.noteClass;
         const song = this.props.song;
-        let { openContextMenu } = this.props
+        let { openModal } = this.props
         // debugger;
         return (
             // <div className="art-song">
@@ -73,7 +73,7 @@ class AlbumShowItem extends React.Component {
                 </div>
 
                 <div className="add-duration">
-                    <img onClick={ ()=>openContextMenu("add-song")} id="add-song-menu" src={this.state.addIcon} />
+                    <img onClick={() => {debugger; openModal("add-song")}} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 
@@ -82,9 +82,10 @@ class AlbumShowItem extends React.Component {
     }
 }
 
+
 const mdp = dispatch => {
     return {
-        openContextMenu: (contextMenu) => dispatch(openContextMenu(contextMenu))
+        openModal: (modal) => dispatch(openModal(modal))
     }
 }
 

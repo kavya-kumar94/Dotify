@@ -40,7 +40,7 @@ class AlbumShow extends React.Component {
         let newAlbum = (
             <div className="alb-sho">
             <div className="album-show">
-                <li className="alb-img"><NavLink to={`/albums/${album.id}`}><img src={album.album_image}/></NavLink></li>
+                    <li id="show-img" className="alb-img"><NavLink to={`/albums/${album.id}`}><img id="show-img" src={album.album_image}/></NavLink></li>
                 <h2>{album.title}</h2>
                 <li className="artist-hov"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
                 <button className="play-btn">PLAY</button>

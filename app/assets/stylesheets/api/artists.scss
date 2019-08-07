@@ -23,12 +23,56 @@
     opacity: 0.4;
 }
 
-img {
+#show-img {
+    object-fit: cover;
+    display: flex;
+    width: 200px;
+    height: 200px;
+    flex-direction: row;
+    padding-bottom: 10px;
+    box-shadow: 1px 1px 15px 0px #171b2a;
+    opacity: 1;
+
+    // background: url(music_note.jpg) no-repeat scroll 0 0;
+
+    &:before {
+    content: '';
+    // position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
+    // opacity: 0;
+    // transition: opacity 0.3s ease-in-out;
+    }  
+
+    // &:hover {
+    // #show-img {
+    //    &:before {
+    //       opacity: .5;
+    //    }
+    //    &:after {
+    //       opacity: 0.6;
+    //    }
+    // }
+    // }
+}
+
+#show-img:hover {
+    // opacity: 0.2;
+    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
+}
+
+#cover-img {
     object-fit: cover;
     max-width: 150px;
     max-height: 150px;
     flex-direction: row;
     padding-bottom: 10px;
+    box-shadow: 1px 1px 15px 0px #171b2a;
+    opacity: 1;
+
     // background: url(music_note.jpg) no-repeat scroll 0 0;
 
     &:before {
@@ -44,7 +88,7 @@ img {
     }  
 
     &:hover {
-    img {
+    #cover-img {
        &:before {
           opacity: .5;
        }
@@ -55,7 +99,7 @@ img {
     }
 }
 
-img:hover {
+#cover-img:hover {
     opacity: 0.2;
     background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
 }

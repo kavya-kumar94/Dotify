@@ -3,7 +3,7 @@ import { OPEN_CONTEXT_MENU, CLOSE_CONTEXT_MENU } from '../actions/context_menu_a
 export default function modalPlaylistReducer(state = null, action) {
     switch (action.type) {
         case OPEN_CONTEXT_MENU:
-            return action.context;
+            return action.payload;
         case CLOSE_CONTEXT_MENU:
             return null;
         default:

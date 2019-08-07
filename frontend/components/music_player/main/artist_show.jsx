@@ -18,8 +18,8 @@ class ArtistShow extends React.Component {
         let newArtist = (
             <div className="artist-show">
                 <div className="artist-header">
-                <div className="bg-img">
-                    <img className="artist-show-bg" src={artist.artist_image} />
+                    <div id="show-img" className="bg-img">
+                    <img className="artist-show-bg" id="show-img" src={artist.artist_image} />
                 </div>
                     <h2 className="artist-name">{artist.name}</h2>
                     <button className="play-btn">PLAY</button>
