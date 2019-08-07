@@ -26,8 +26,8 @@
 #show-img {
     object-fit: cover;
     display: flex;
-    width: 220px;
-    height: 220px;
+    width: 240px;
+    height: 240px;
     flex-direction: row;
     // padding-bottom: 10px;
     box-shadow: 1px 1px 30px 0px #171b2a;
@@ -61,7 +61,7 @@
 
 #show-img:hover {
     // opacity: 0.2;
-    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
+    // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
 }
 
 #cover-img {
@@ -85,7 +85,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
+    // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     }  
@@ -104,7 +104,7 @@
 
 #cover-img:hover {
     opacity: 0.2;
-    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
+    // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png) no-repeat scroll 0 0;
 }
 
 .art-ind img {

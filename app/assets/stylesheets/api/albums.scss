@@ -5,7 +5,7 @@
 .alb-sho {
     display: flex;
     flex-direction: row;
-    margin-top: 60px;
+    margin-top: 30px;
     // max-width: 100%;
     width: 1000px;
     // border: 1px solid blue;
@@ -197,10 +197,10 @@
 
 .add-song-bg {
   position: fixed;
-  top: 0;
+  top: 10%;
   bottom: 0;
   right: 0;
-  left: 0;
+  left: 80%;
   z-index: 20;
 }
 
@@ -214,11 +214,11 @@
 
 
 .contextMenu {
-  position: relative;
-//   top: 0;
-//   bottom: 0;
-//   right: 0;
-//   left: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background: #282828;
   width: 205px;
   height: 80px;
@@ -231,8 +231,13 @@
   border-radius: 3px;
 }
 
+.add-song-child {
+    display: flex;
+    position: absolute;
+}
+
 .add-song-form {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     // text-align: center;
@@ -241,6 +246,7 @@
 
 .add-song-form h1{
     border: black;
+    // width: 100%;
     padding: 3px 20px;
     line-height: 32px;
 }
@@ -250,6 +256,7 @@
     background-color: #333;
     border-color: #333;
     text-decoration: none;
+    width: 85%;
 }
 
 #context-cancel {
