@@ -65,7 +65,7 @@ class AddToPlay extends React.Component {
                     <h2>Add to playlist</h2>
                         <button onClick={() => openModal('new-playlist')} className="yassplay" type="submit">NEW PLAYLIST</button>
                 </form>
-                        <ul>
+                        <ul className="addtoplayul">
                             {playlists.map((playlist, idx) => {
                                 return (
                                     <div key={idx} className="playlist-link">
