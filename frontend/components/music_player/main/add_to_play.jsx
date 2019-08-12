@@ -54,7 +54,7 @@ class AddToPlay extends React.Component {
 
 
     render() {
-        let { closeModal, playlists } = this.props;
+        let { closeModal, playlists, openModal } = this.props;
 
 
         return (
