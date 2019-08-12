@@ -5,6 +5,7 @@ class Api::PlaylistSongsController < ApplicationController
             render json: ["Song is already in playlist '#{Playlist.find(@playlist_song.playlist_id).name}'"], status: 401
         else
             @playlist_song.save
+            render json: ['Track was added to your playlist.']
         end
     end
 

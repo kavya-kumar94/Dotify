@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux';
-
-
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
+import { receiveCurrentSongId, clearCurrentSong } from '../../actions/player_actions';
+import { fetchSongs } from '../../actions/song_actions';
 class Player extends React.Component{
     constructor(props) {
         super(props);
@@ -11,82 +13,131 @@ class Player extends React.Component{
             shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png",
             play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png",
             repeat: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png",
-            volume: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png"
+            volume_icon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png",
+            playing: false,
+            time: "",
+            volume: 100,
+            previousVolume: 0,
+            duration: "",
+            timeDuration: "",
+            timePosition: "",
+            currentSong: 0,
+            presentSong: this.props.presentSong,
+            change: false,
+            duration: "",
         }
 
-        this.love = this.love.bind(this);
-        this.unlove = this.unlove.bind(this);
-        this.shuffle = this.shuffle.bind(this);
-        this.unshuffle = this.unshuffle.bind(this);
 
-        this.play = this.play.bind(this);
-        this.pause = this.pause.bind(this);
-        this.repeat = this.repeat.bind(this);
-        this.unrepeat = this.unrepeat.bind(this);
-        this.mute = this.mute.bind(this);
-        this.unmute = this.unmute.bind(this);
+        this.setVolume = this.setVolume.bind(this);
+        this.setTime = this.setTime.bind(this);
+        this.song = this.song.bind(this);
+        this.nextSong = this.nextSong.bind(this);
+        this.sound = React.createRef();
+        this.setState = this.setState.bind(this);
+        this.changeSong = this.changeSong.bind(this);
+        this.previousSong = this.previousSong.bind(this);
+        this.nextSong = this.nextSong.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.toggleMute = this.toggleMute.bind(this);
+        this.songTime = this.songTime.bind(this);
     }
 
-    love() {
-        this.setState({
-            love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_filled.png"
-        })
+    componentDidMount() {
+        this.props.fetchSongs();
+        if (this.sound) {
+            setInterval(() => this.setState({
+                duration: this.sound.duration,
+                time: this.songTime(this.sound.currentTime),
+                timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
+                timePosition: `${this.sound.currentTime}`,
+            }), 0)
+
+            this.setState({ presentSong: this.props.presentSong })
+        }
     }
 
-    unlove() {
-        this.setState({
-            love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
-        })
+    componentDidUpdate(prevProps) {
+        if (this.props.presentSong !== prevProps.presentSong) {
+            let song = this.props.presentSong
+            this.setState({ presentSong: song })
+            this.song();
+        }
+
+        if (this.state.change) {
+            this.song();
+            this.changeSong();
+            this.setState({ change: false })
+        }
+
     }
 
-    shuffle() {
-        this.setState({
-            shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png"
-        })
+    changeSong() {
+        this.setState({ presentSong: this.props.songs[this.state.currentSong] })
     }
+
+    song() {
+        if (this.state.playing === false) {
+            this.sound.play();
+            this.setState({ playing: true })
+        } else if (this.state.playing === true) {
+            this.sound.pause();
+            this.setState({ playing: false })
+        }
+    }
+
+    previousSong() {
+        if (this.state.playing === true) {
+            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
+        } else {
+            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
+        }
+    }
+
+
+    nextSong() {
+        if (this.state.playing === true) {
+            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
+        } else {
+            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
+        }
+    }
+
+
+    handleClick() {
+        this.changeSong();
+        this.song();
+    }
+
+    setVolume(vol) {
+        this.sound.volume = vol / 100;
+        this.setState({ volume: vol });
+    }
+
+    songTime(time) {
+        let rounded = Math.floor(time);
+        let minutes = Math.floor(rounded / 60);
+        let seconds = Math.floor(rounded % 60);
+        seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
+        return `${minutes}:${seconds}`;
+    }
+
+    toggleMute() {
+        if (this.sound.volume > 0) {
+            this.setState({ previousVolume: this.sound.volume, volume: 0 })
+            this.sound.volume = 0
+        } else {
+            this.setState({ volume: this.state.previousVolume })
+            this.sound.volume = this.state.previousVolume
+        }
+    }
+
+
+    setTime(position) {
+        this.sound.currentTime = position;
+        this.setState({ time: position })
+    }
+
     
-    unshuffle() {
-        this.setState({
-            shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_green.png"
-        })
-    }
-    
-    play() {
-        this.setState({
-            play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
-        })
-    }
-    
-    pause() {
-        this.setState({
-            play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
-        })
-    }
-    
-    repeat() {
-        this.setState({
-            repeat: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png"
-        })
-    }
-
-    unrepeat() {
-        this.setState({
-            repeat: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_green.png"
-        })
-    }
-
-    mute() {
-        this.setState({
-            volume: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png"
-        })
-    }
-
-    unmute() {
-        this.setState({
-            volume: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_green.png"
-        })
-    }
-
     render() {
         return (
             <div className="player-div">
@@ -110,8 +161,8 @@ class Player extends React.Component{
                 </div>
                 <div className="right-play">
                     <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>
-                    <img className="volume" onClick={this.state.volume === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png" ? this.unmute : this.mute} src={this.state.volume} />
-                    <input type="range" id="volume" name="volume" min="0" max="1" step="0.01" className="progress-bar-input" value="0.5"></input>
+                    {this.state.volume > 0 ? <i onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
+                    <input type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
                 </div>  
                 {/* < ReactAudioPlayer className="aud"
                     src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"
@@ -123,32 +174,21 @@ class Player extends React.Component{
     }
 }
 
-        // const msp = (state) => {
-        //     let playlist = null;
-        //     let currentSong = state.nowPlaying.currentSong;
-        //     let currentArtist = null;
-        //     let currentAlbum = null;
-        //     if (currentSong) {
-        //         currentArtist = state.entities.artists[currentSong.artist_id];
-        //         currentAlbum = state.entities.albums[currentSong.album_id];
-        //     }
 
-        //     return {
-        //         currentSong,
-        //         currentArtist,
-        //         currentAlbum,
-        //         queue: state.nowPlaying.queue,
-        //         playStatus: state.nowPlaying.playStatus,
-        //     }
-        // };
+    const msp = (state, props) => {
+        let songs = Object.values(state.entities.songs);
+        return {
+            songs,
+            presentSong: state.ui.currentSongId,
+        }
+    }
 
+    const mdp = dispatch => {
+        return {
+        receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
+        clearCurrentSong: () => dispatch(clearCurrentSong()),
+        fetchSongs: () => dispatch(fetchSongs()),
+        }
+    };
 
-        // const mdp = (dispatch) => ({
-            
-        //     playCurrentSong: songId => dispatch(playCurrentSong(songId)),
-        //     updatePlayStatus: status => dispatch(updatePlayStatus(status))
-
-        // })
-
-
-export default Player;
+export default connect(msp, mdp)(Player);

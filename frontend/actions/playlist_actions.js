@@ -11,6 +11,8 @@ export const ADD_SONG_TO_PLAYLIST = "ADD_SONG_TO_PLAYLIST";
 export const REMOVE_SONG_FROM_PLAYLIST = "REMOVE_SONG_FROM_PLAYLIST";
 export const RECEIVE_PLAYLIST_SONGS = "RECEIVE_PLAYLIST_SONGS"
 export const RECEIVE_PLAYLIST_SONG_ERRORS = "RECEIVE_PLAYLIST_SONG_ERRORS"
+export const RECEIVE_PLAYLIST_MESSAGE = "RECEIVE_PLAYLIST_MESSAGE"
+export const CLEAR_PLAYLIST_MESSAGE = "CLEAR_PLAYLIST_MESSAGE"
 export const CLEAR_PLAYLIST_SONGS = "CLEAR_PLAYLIST_SONGS";
 export const CLEAR_PLAYLIST_SONG_ERRORS = "CLEAR_PLAYLIST_SONG_ERRORS";
 
@@ -49,6 +51,11 @@ export const receivePlaylistSongErrors = (errors) => {
     }
 }
 
+export const receivePlaylistMessage = message => ({
+    type: RECEIVE_PLAYLIST_MESSAGE,
+    message
+})
+
 export const receivePlaylistSongs = (playlistSongs) => {
     return{
         type: RECEIVE_PLAYLIST_SONGS,
@@ -59,6 +66,12 @@ export const receivePlaylistSongs = (playlistSongs) => {
 export const clearPlaylistSongs = () => {
     return{
         type: CLEAR_PLAYLIST_SONGS,
+    }
+}
+
+export const clearPlaylistMessage = () => {
+    return{
+        type: CLEAR_PLAYLIST_MESSAGE,
     }
 }
 
@@ -95,7 +108,7 @@ export const createPlaylist = (playlist) => dispatch => {
 
 export const addSongToPlaylist = (playlistId, songId) => dispatch => (
     PlaylistSongApiUtil.addSongToPlaylist(playlistId, songId).then(
-        // message => dispatch(receivePlaylistErrors(message)),
+        message => dispatch(receivePlaylistMessage(message)),
         err => dispatch(receivePlaylistSongErrors(err.responseJSON))
     )
 );

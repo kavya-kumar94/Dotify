@@ -7,16 +7,11 @@ import { addSongToPlaylist } from '../../../actions/playlist_actions';
 class AddSongForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            title: ""
-        }
-        this.changeTitle = this.changeTitle.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.state = {
+        //     songId: this.props.song.id
+        // }
     }
 
-    changeTitle(e) {
-        this.setState({ title: e.target.value });
-    }
 
 
     // redirect() {
@@ -24,14 +19,7 @@ class AddSongForm extends React.Component {
     // }
 
 
-    handleSubmit(e) {
-        e.preventDefault();
-        let {song, playlist} = this.props;
-        // this.setState({ title: '' });
-        this.props.addSongToPlaylist(playlist.id, song.id)
-            .then(this.props.closeContextMenu);
-        // .then(() => this.redirect());
-    }
+
 
     renderErrors() {
         return (
@@ -72,17 +60,16 @@ class AddSongForm extends React.Component {
 }
 
 
-const msp = (state) => {
-    return {
-       playlists:  state.entities.playlists
-    }
-};
+// const msp = (state) => {
+//     return {
+//        playlists:  state.entities.playlists
+//     }
+// };
 
 
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     openModal: (modal) => dispatch(openModal(modal)),
-    addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
 })
 
 export default withRouter(connect(null, mdp)(AddSongForm));

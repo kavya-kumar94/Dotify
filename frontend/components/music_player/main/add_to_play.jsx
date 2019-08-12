@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { openModal,closeModal } from '../../../actions/modal_actions';
-import { createPlaylist, fetchPlaylists } from '../../../actions/playlist_actions';
+import { createPlaylist, fetchPlaylists, addSongToPlaylist } from '../../../actions/playlist_actions';
 import { NavLink, Link } from 'react-router-dom';
 
 
@@ -10,10 +10,12 @@ class AddToPlay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: ""
+            // songId: this.props.song.id,
+            playlistId: null
         }
         this.changeTitle = this.changeTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.addSong = this.addSong.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +42,23 @@ class AddToPlay extends React.Component {
         // .then(() => this.redirect());
     }
 
+
+    addSong(playlist_id) {
+        return (e) => {
+        e.preventDefault();
+        let song_id = this.state.song_id ;
+        // this.setState({ title: '' });
+        this.props.addSongToPlaylist(playlist_id, song_id)
+            .then(this.props.closeModal)
+            .then(() => this.redirectToShow(playlist_id));
+
+        // .then(() => this.redirect());
+        }
+    }
+
+    redirectToShow(playlist_id) {
+        this.props.history.push(`/playlists/${playlist_id}`);
+    }
     // renderErrors() {
     //     return (
     //         <ul>
@@ -54,13 +73,13 @@ class AddToPlay extends React.Component {
 
 
     render() {
-        let { closeModal, playlists, openModal } = this.props;
+        let { closeModal, playlists, openModal, song } = this.props;
 
 
         return (
             <div className="modal">
                 <img onClick={closeModal} id="close-play" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" />
-                <form className="playlist-form" >
+                <form className="playlist-form" onSubmit={this.handleSubmit} >
                     {/* onSubmit={this.handleSubmit} */}
                     <h2>Add to playlist</h2>
                         <button onClick={() => openModal('new-playlist')} className="yassplay" type="submit">NEW PLAYLIST</button>
@@ -70,7 +89,7 @@ class AddToPlay extends React.Component {
                                 return (
                                     <div key={idx} className="playlist-link">
                                         <li><NavLink to={`/playlists/${playlist.id}`}><img id="cover-img" src={playlist.playlist_image} /></NavLink></li>
-                                        <li className="p-title"><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
+                                        <li onClick={() => this.addSong(playlist.id)} className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
                                         {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
                                     </div>
@@ -110,6 +129,7 @@ class AddToPlay extends React.Component {
 const msp = state => {
     return {
         playlists: Object.values(state.entities.playlists),
+        errors: state.errors.playlist
     }
 }
 
@@ -118,7 +138,8 @@ const mdp = (dispatch) => ({
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
-    
+    addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
+
 })
 
 export default withRouter(connect(msp, mdp)(AddToPlay));

@@ -40,7 +40,7 @@ class Search extends React.Component {
         let artistList = artists ? (artists.map((artist, idx) => {
             return (
                 <div key={idx} className="spac">
-                    <NavLink id="searchpic" to={`/artists/${artist.id}`}><img src={artist.artist_image} /></NavLink>
+                    <NavLink id="searchpic" to={`/artists/${artist.id}`}><img id="cover-img" src={artist.artist_image} /></NavLink>
                     {artist.name}
                 </div>
                )})) : null;
@@ -50,7 +50,7 @@ class Search extends React.Component {
         let albumList = albums ? albums.map((album ,idx) => {
             return (
                 <div key={idx} className="spac"> 
-                    <NavLink to={`/albums/${album.id}`}><img src={album.album_image} /></NavLink>
+                    <NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image} /></NavLink>
                     {album.title}
                 </div>
             )}) : null;
