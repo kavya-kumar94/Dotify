@@ -114,7 +114,8 @@ class Player extends React.Component{
 
     setVolume(vol) {
         // this.sound.volume = (vol/100);
-        this.state.volume = (vol / 100);
+        let audio = document.getElementById('audio');
+        audio.volume = (vol/100);
         this.setState({ volume: vol });
     }
 
@@ -127,12 +128,16 @@ class Player extends React.Component{
     }
 
     toggleMute() {
-        if (this.state.volume > 0) {
-            this.setState({ previousVolume: this.state.volume , volume: 0
+        let audio = document.getElementById('audio');
+        if (audio.volume > 0) {
+            this.setState({ previousVolume: audio.volume , volume: 0
              })
+             audio.volume = 0;
             // this.state.volume = 0
         } else {
-            this.setState({ volume: this.state.previousVolume  })
+            audio.volume = this.state.previousVolume;
+            this.setState({ volume: this.state.previousVolume *100  });
+            debugger;
             // this.state.volume = this.state.previousVolume
         }
     }
@@ -146,9 +151,10 @@ class Player extends React.Component{
     
     render() {
         let { presentSong } = this.props;
+        let audio = document.getElementById("audio");
         return (
             <div className="player-div">
-                <audio id="audio" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BI%2BJust%2BCan't%2BStop%2BLoving%2BYou%2B(Clean).mp3"></audio>
+                <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BI%2BJust%2BCan't%2BStop%2BLoving%2BYou%2B(Clean).mp3"></audio>
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
