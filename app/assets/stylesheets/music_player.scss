@@ -308,8 +308,22 @@ img.white-browse {
 
 .center-play {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: auto 0;
+}
+
+.icons-playbar {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+#duration-bar {
+    width: 260px;
+}
+
+.duration-bar {
+    // height: 4px;
 }
 
 .center-play .play {
@@ -482,9 +496,17 @@ img.white-browse {
 }
 
 .fa-volume-mute {
+    display: flex;
     text-align: center;
+    align-items: center;
+    opacity: 0.7;
+    margin-right: 3px;
 }
 
 .fa-volume-up {
+    margin-right: 3px;
+    display: flex;
+    opacity: 0.7;
     text-align: center;
+    align-items: center;
 }

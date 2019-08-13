@@ -109,7 +109,8 @@ class Player extends React.Component{
     }
 
     setVolume(vol) {
-        this.sound.volume = vol / 100;
+        // this.sound.volume = (vol/100);
+        this.state.volume = (vol / 100);
         this.setState({ volume: vol });
     }
 
@@ -122,23 +123,25 @@ class Player extends React.Component{
     }
 
     toggleMute() {
-        if (this.sound.volume > 0) {
-            this.setState({ previousVolume: this.sound.volume, volume: 0 })
-            this.sound.volume = 0
+        if (this.state.volume > 0) {
+            this.setState({ previousVolume: this.state.volume , volume: 0
+             })
+            // this.state.volume = 0
         } else {
-            this.setState({ volume: this.state.previousVolume })
-            this.sound.volume = this.state.previousVolume
+            this.setState({ volume: this.state.previousVolume  })
+            // this.state.volume = this.state.previousVolume
         }
     }
 
 
     setTime(position) {
-        this.sound.currentTime = position;
+        this.state.currentTime = position;
         this.setState({ time: position })
     }
 
     
     render() {
+        let { presentSong } = this.props;
         return (
             <div className="player-div">
 
@@ -147,22 +150,29 @@ class Player extends React.Component{
                 <div className="left-play">
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
                     <div className="texts">
-                        <p className="soname">Song Title</p>
+                        <p className="soname">{presentSong.title}</p>
+                        {/* <p className="soname">Song Title</p> */}
                         <p className="arname">Artist Name</p>
                     </div>
                     <img className="love" onClick={this.state.love === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} src={this.state.love} />
                 </div>
                  <div className="center-play">
-                    <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
-                    <img className="prev" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
-                    <img className="play" onClick={this.state.play === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png" ? this.pause : this.play} src={this.state.play}/>
-                    <img className="next" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
-                    <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
+                     <div className="icons-playbar">
+                        <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
+                        <img className="prev" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
+                        <img className="play" onClick={this.state.play === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png" ? this.pause : this.play} src={this.state.play}/>
+                        <img className="next" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
+                        <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
+                     </div>
+
+                     <div className="duration-bar">
+                        <input type="range" id="duration-bar" min="0" max="99" step="1" value="50"/>
+                     </div>
                 </div>
                 <div className="right-play">
                     <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>
-                    {this.state.volume > 0 ? <i onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
-                    <input type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
+                    {this.state.volume > 0 ? <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
+                    <input ref={this.sound} type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
                 </div>  
                 {/* < ReactAudioPlayer className="aud"
                     src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"
