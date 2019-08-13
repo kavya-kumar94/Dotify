@@ -166,7 +166,9 @@ class Player extends React.Component{
                      </div>
 
                      <div className="duration-bar">
+                         <li>0:00</li>
                         <input type="range" id="duration-bar" min="0" max="99" step="1" value="50"/>
+                        <li>0:00</li>
                      </div>
                 </div>
                 <div className="right-play">
@@ -174,6 +176,7 @@ class Player extends React.Component{
                     {this.state.volume > 0 ? <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
                     <input ref={this.sound} type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
                 </div>  
+                <audio ref={this.sound} src={this.props.presentSong}></audio>
                 {/* < ReactAudioPlayer className="aud"
                     src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"
                     autoPlay
