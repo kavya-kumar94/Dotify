@@ -44,12 +44,13 @@ class Player extends React.Component{
 
     componentDidMount() {
         this.props.fetchSongs();
-        if (this.sound) {
+        let audio = document.querySelector('#audio');
+        if (audio) {
             setInterval(() => this.setState({
-                duration: this.sound.duration,
-                time: this.songTime(this.sound.currentTime),
-                timeDuration: `${Math.floor(this.sound.duration / 60)}:${Math.floor(this.sound.duration % 60)}`,
-                timePosition: `${this.sound.currentTime}`,
+                duration: audio.duration,
+                time: this.songTime(audio.currentTime),
+                timeDuration: `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`,
+                timePosition: `${audio.currentTime}`,
             }), 0)
 
             this.setState({ presentSong: this.props.presentSong })
@@ -76,12 +77,15 @@ class Player extends React.Component{
     }
 
     song() {
+        let audio = document.getElementById('audio');
+        debugger;
         if (this.state.playing === false) {
-            this.sound.play();
-            this.setState({ playing: true })
+            audio.play();
+            this.setState({
+                playing: true, play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"})
         } else if (this.state.playing === true) {
-            this.sound.pause();
-            this.setState({ playing: false })
+            audio.pause();
+            this.setState({ playing: false, play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"})
         }
     }
 
@@ -144,14 +148,14 @@ class Player extends React.Component{
         let { presentSong } = this.props;
         return (
             <div className="player-div">
-
+                <audio id="audio" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BI%2BJust%2BCan't%2BStop%2BLoving%2BYou%2B(Clean).mp3"></audio>
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
                     <div className="texts">
-                        <p className="soname">{presentSong.title}</p>
-                        {/* <p className="soname">Song Title</p> */}
+                        {/* <p className="soname">{presentSong.title}</p> */}
+                        <p className="soname">Song Title</p>
                         <p className="arname">Artist Name</p>
                     </div>
                     <img className="love" onClick={this.state.love === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} src={this.state.love} />
@@ -160,7 +164,7 @@ class Player extends React.Component{
                      <div className="icons-playbar">
                         <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
                         <img className="prev" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
-                        <img className="play" onClick={this.state.play === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png" ? this.pause : this.play} src={this.state.play}/>
+                        <img className="play" onClick={() => this.song()} src={this.state.play}/>
                         <img className="next" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
                         <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
                      </div>
@@ -176,7 +180,6 @@ class Player extends React.Component{
                     {this.state.volume > 0 ? <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
                     <input ref={this.sound} type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
                 </div>  
-                <audio ref={this.sound} src={this.props.presentSong}></audio>
                 {/* < ReactAudioPlayer className="aud"
                     src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"
                     autoPlay

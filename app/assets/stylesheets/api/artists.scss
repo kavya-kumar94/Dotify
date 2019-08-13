@@ -42,7 +42,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
+    // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
     // opacity: 0;
     // transition: opacity 0.3s ease-in-out;
     }  
@@ -141,7 +141,7 @@
 }
 
 .art-sho {
-    width: 100%;
+    max-width: 100%;
     padding: 20px;
     // margin-right: 700px;
 }
