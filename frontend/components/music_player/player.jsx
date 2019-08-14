@@ -121,7 +121,7 @@ class Player extends React.Component{
 
 
     nextSong() {
-        if (this.state.playing === true) {
+        if (this.props.playing === true) {
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
         } else {
             this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
@@ -172,8 +172,10 @@ class Player extends React.Component{
     
     render() {
         let { presentSong, playing } = this.props;
-        let icon = playing === true ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
-        // let audio = document.getElementById("audio");
+        let audio = document.querySelector('#audio');
+        let audiopause = audio !== null ? audio.paused : null;
+        let icon = audiopause == false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
+        // let icon = playing === true ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
         return (
             <div className="player-div">
                 <audio id="audio" volume={this.state.volume} src={presentSong.audio} autoPlay></audio>
