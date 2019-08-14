@@ -1,6 +1,7 @@
 export const RECEIVE_CURRENT_SONG_ID = "RECEIVE_CURRENT_SONG_ID";
 export const UPDATE_PLAY_STATUS = "UPDATE_PLAY_STATUS";
 export const PLAY_CURRENT_LIST = "PLAY_CURRENT_LIST";
+export const PLAY_CURRENT_SONG = "PLAY_CURRENT_SONG";
 export const CLEAR_CURRENT_SONG = "CLEAR_CURRENT_SONG";
 
 
@@ -23,6 +24,10 @@ export const playCurrentList = playlist => ({
     playlist
 });
 
+export const playCurrentSong = status => ({
+    type: PLAY_CURRENT_SONG,
+    status
+})
 
 export const updatePlayStatus = status => ({
     type: UPDATE_PLAY_STATUS,

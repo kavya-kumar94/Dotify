@@ -13,7 +13,7 @@ export default combineReducers({
     albums,
     artists,
     genres,
-    playlist_errors,
+    // playlist_errors,
     playlists,
     songs
 });

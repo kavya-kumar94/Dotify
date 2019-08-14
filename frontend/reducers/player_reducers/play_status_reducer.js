@@ -11,7 +11,7 @@ const musicControlReducer = (state = {}, action) => {
     switch (action.type) {
         case PLAY_CURRENT_LIST:
         case PLAY_CURRENT_SONG:
-            return merge({}, state, { playStatus: 'play' });
+            return merge({}, state, { playStatus: true });
         case UPDATE_PLAY_STATUS:
             return merge({}, state, { playStatus: action.status });
         default:

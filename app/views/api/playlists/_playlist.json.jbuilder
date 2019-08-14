@@ -28,6 +28,12 @@ json.songs do
             json.artist_name song.artist.name 
             json.artist_id song.artist.id
             json.album_title song.album.title 
+            if song.album.album_image.attached?
+                json.album_image url_for(song.album.album_image)
+            else
+                json.album_image ""
+            end
+            
             if song.audio.attached?
                 json.audio url_for(song.audio)
             else

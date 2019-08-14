@@ -3,7 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
-import { receiveCurrentSongId, clearCurrentSong } from '../../actions/player_actions';
+import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
 class Player extends React.Component{
     constructor(props) {
@@ -44,7 +44,7 @@ class Player extends React.Component{
     }
 
     componentDidMount() {
-        this.props.fetchSong(this.props.presentSong.id).then((song) => console.log(song));
+        this.props.receiveCurrentSongId(this.props.presentSong).then((song) => console.log(song));
         let audio = document.querySelector('#audio');
 
         // let min = Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`;
@@ -57,7 +57,7 @@ class Player extends React.Component{
                 timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
                 timeDuration: `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`,
                 // timePosition: `${Math.floor(audio.currentTime / 60)}:${Math.floor(audio.currentTime % 60)}`,
-                currentTime: `${audio.currentTime}`,
+                currentTime: (audio.currentTime/2.3),
             }), 0)
 
             this.setState({ presentSong: this.props.presentSong })
@@ -162,15 +162,17 @@ class Player extends React.Component{
         let audio = document.getElementById("audio");
         return (
             <div className="player-div">
-                <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BI%2BJust%2BCan't%2BStop%2BLoving%2BYou%2B(Clean).mp3"></audio>
+                <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"></audio>
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
                     <div className="texts">
                         {/* <p className="soname">{presentSong.title}</p> */}
-                        <p className="soname">{presentSong.title}</p>
-                        <p className="arname">{presentSong.artist_name}</p>
+                        <p className="soname">Song Title</p>
+                        <p className="arname">Artist Name</p>
+                        {/* <p className="soname">{presentSong.title}</p>
+                        <p className="arname">{presentSong.artist_name}</p> */}
                     </div>
                     <img className="love" onClick={this.state.love === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} src={this.state.love} />
                 </div>
@@ -209,12 +211,15 @@ class Player extends React.Component{
         let songs = Object.values(state.entities.songs);
         return {
             songs,
-            presentSong: state.ui.currentSongId,
+            presentSong: state.ui.nowPlaying.currentSong,
+            playStatus: state.ui.nowPlaying.playStatus
         }
     }
 
     const mdp = dispatch => {
         return {
+        playCurrentSong: (status) => dispatch(playCurrentSong(status)),
+        updatePlayStatus: (status) => dispatch(updatePlayStatus(status)),
         receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
         clearCurrentSong: () => dispatch(clearCurrentSong()),
         fetchSong: (songId) => dispatch(fetchSong(songId)),
