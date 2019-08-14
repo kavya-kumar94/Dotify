@@ -3,6 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
+import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../actions/player_actions';
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
 class Player extends React.Component{
@@ -41,10 +42,11 @@ class Player extends React.Component{
         this.handleClick = this.handleClick.bind(this);
         this.toggleMute = this.toggleMute.bind(this);
         this.songTime = this.songTime.bind(this);
+        this.handlePlay = this.handlePlay.bind(this);
     }
 
     componentDidMount() {
-        this.props.receiveCurrentSongId(this.props.presentSong).then((song) => console.log(song));
+        // this.props.receiveCurrentSongId(this.props.presentSong);
         let audio = document.querySelector('#audio');
 
         // let min = Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`;
@@ -60,7 +62,7 @@ class Player extends React.Component{
                 currentTime: (audio.currentTime/2.3),
             }), 0)
 
-            this.setState({ presentSong: this.props.presentSong })
+            this.setState({ presentSong: this.props.presentSong });
         }
     }
 
@@ -70,8 +72,6 @@ class Player extends React.Component{
             this.setState({ presentSong: song })
             this.song();
         }
-        console.log(this.state.presentSong);
-        debugger
 
         if (this.state.change) {
             this.song();
@@ -79,6 +79,12 @@ class Player extends React.Component{
             this.setState({ change: false })
         }
 
+    }
+
+    handlePlay() {
+        this.props.setCurrentSong(this.props.song);
+        // this.props.setQueue(this.props.queue);
+        this.props.toggleSong();
     }
 
     changeSong() {
@@ -162,7 +168,7 @@ class Player extends React.Component{
         let audio = document.getElementById("audio");
         return (
             <div className="player-div">
-                <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"></audio>
+                <audio id="audio" volume={this.state.volume} src={presentSong}></audio>
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
@@ -211,18 +217,20 @@ class Player extends React.Component{
         let songs = Object.values(state.entities.songs);
         return {
             songs,
-            presentSong: state.ui.nowPlaying.currentSong,
-            playStatus: state.ui.nowPlaying.playStatus
+            presentSong: state.ui.playStatus.currentSong,
         }
     }
 
     const mdp = dispatch => {
         return {
-        playCurrentSong: (status) => dispatch(playCurrentSong(status)),
-        updatePlayStatus: (status) => dispatch(updatePlayStatus(status)),
-        receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
-        clearCurrentSong: () => dispatch(clearCurrentSong()),
-        fetchSong: (songId) => dispatch(fetchSong(songId)),
+            setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+            toggleSong: () => (dispatch(toggleSong())),
+            setQueue: (queue) => (dispatch(setQueue(queue)))
+        // playCurrentSong: (status) => dispatch(playCurrentSong(status)),
+        // updatePlayStatus: (status) => dispatch(updatePlayStatus(status)),
+        // receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
+        // clearCurrentSong: () => dispatch(clearCurrentSong()),
+        // fetchSong: (songId) => dispatch(fetchSong(songId)),
         }
     };
 

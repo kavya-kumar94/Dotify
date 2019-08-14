@@ -3,20 +3,66 @@ import {
     PLAY_CURRENT_LIST,
     UPDATE_PLAY_STATUS,
 } from '../../actions/player_actions';
+
+import {
+    SET_CURRENT_SONG,
+    TOGGLE_SONG,
+    SET_QUEUE,
+    ADD_TO_QUEUE,
+    TOGGLE_SHUFFLE
+} from '../../actions/player_actions';
+
 import { merge } from 'lodash';
 
-const musicControlReducer = (state = {}, action) => {
+const nullState = {
+    currentSong: {
+        audio: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"
+    },
+    playing: false,
+    queue: [],
+    shuffle: false
+};
+
+
+const musicControlReducer = (state = nullState, action) => {
     Object.freeze(state);
+    let newState = merge({}, state);
 
     switch (action.type) {
-        case PLAY_CURRENT_LIST:
-        case PLAY_CURRENT_SONG:
-            return merge({}, state, { playStatus: true });
-        case UPDATE_PLAY_STATUS:
-            return merge({}, state, { playStatus: action.status });
+        case SET_CURRENT_SONG:
+            newState.currentSong = action.song;
+            return newState;
+        case TOGGLE_SONG:
+            if (newState.playing === true) {
+                newState.playing = false;
+            } else {
+                newState.playing = true;
+            }
+            return newState;
+        case SET_QUEUE:
+            newState.queue = action.queue;
+            return newState;
+        case ADD_TO_QUEUE:
+            newState.queue.push(action.song);
+            return newState;
         default:
             return state;
     }
 }
+
+
+// const musicControlReducer = (state = {}, action) => {
+//     Object.freeze(state);
+
+//     switch (action.type) {
+//         case PLAY_CURRENT_LIST:
+//         case PLAY_CURRENT_SONG:
+//             return merge({}, state, { playStatus: true });
+//         case UPDATE_PLAY_STATUS:
+//             return merge({}, state, { playStatus: action.status });
+//         default:
+//             return state;
+//     }
+// }
 
 export default musicControlReducer;

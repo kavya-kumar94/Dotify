@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { openModal} from '../../../actions/modal_actions';
-
+import { setCurrentSong, setQueue, toggleSong, addToQueue} from '../../../actions/player_actions';
 class AlbumShowItem extends React.Component {
     constructor(props) {
         super(props);
@@ -13,6 +13,7 @@ class AlbumShowItem extends React.Component {
             addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif",
         }
         this.note = this.note.bind(this);
+        this.handlePlay = this.handlePlay.bind(this);
         this.play = this.play.bind(this);
     }
 
@@ -31,6 +32,12 @@ class AlbumShowItem extends React.Component {
             noteClass: "play-show3",
             addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
         })
+    }
+
+    handlePlay() {
+        this.props.setCurrentSong(this.props.song);
+        // this.props.setQueue(this.props.queue);
+        this.props.toggleSong();
     }
 
     render() {
@@ -60,7 +67,7 @@ class AlbumShowItem extends React.Component {
             <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
                 <div className="flex">
                     <div>
-                        <img id="art-note" src={this.state.noteIcon} />
+                        <img onClick={this.handlePlay} id="art-note" src={this.state.noteIcon} />
                     </div>
                     <div className="song-info">
                         <li id="song-name">{song.title}</li>
@@ -82,10 +89,19 @@ class AlbumShowItem extends React.Component {
     }
 }
 
+const msp = state => {
+    return {
+        currentSong: state.ui.playStatus.currentSong,
+    }
+}
+
 
 const mdp = dispatch => {
     return {
-        openModal: (modal) => dispatch(openModal(modal))
+        openModal: (modal) => dispatch(openModal(modal)),
+        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+        toggleSong: () => (dispatch(toggleSong())),
+        setQueue: (queue) => (dispatch(setQueue(queue)))
     }
 }
 

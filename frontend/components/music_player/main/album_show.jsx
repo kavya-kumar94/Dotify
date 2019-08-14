@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { fetchAlbum } from '../../../actions/album_actions';
 import { NavLink } from 'react-router-dom';
 import AlbumShowItem from './album_show_item';
+import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
+
+
 class AlbumShow extends React.Component {
     constructor(props) {
         super(props);
@@ -10,6 +13,7 @@ class AlbumShow extends React.Component {
             loveIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
         };
         this.love = this.love.bind(this);
+        this.handlePlay = this.handlePlay.bind(this);
         this.unlove = this.unlove.bind(this);
     }
 
@@ -23,6 +27,12 @@ class AlbumShow extends React.Component {
         this.setState({
             loveIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"
         })
+    }
+
+    handlePlay() {
+        this.props.setCurrentSong(this.props.song);
+        // this.props.setQueue(this.props.queue);
+        this.props.toggleSong();
     }
 
     componentDidMount() {
@@ -82,13 +92,17 @@ const msp = (state, ownProps) => {
 
     return {
         album: album,
-        songs: songs
+        songs: songs,
+        currentSong: state.ui.playStatus.currentSong
     }
 }
 
 const mdp = dispatch => {
     return {
-        fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId))
+        fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
+        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+        toggleSong: () => (dispatch(toggleSong())),
+        setQueue: (queue) => (dispatch(setQueue(queue)))
     }
 }
 
