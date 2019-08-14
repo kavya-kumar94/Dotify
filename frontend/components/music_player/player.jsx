@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
 import { receiveCurrentSongId, clearCurrentSong } from '../../actions/player_actions';
-import { fetchSongs } from '../../actions/song_actions';
+import { fetchSong } from '../../actions/song_actions';
 class Player extends React.Component{
     constructor(props) {
         super(props);
@@ -43,7 +43,7 @@ class Player extends React.Component{
     }
 
     componentDidMount() {
-        this.props.fetchSongs();
+        this.props.fetchSong(this.props.presentSong.id).then((song) => console.log(song));
         let audio = document.querySelector('#audio');
         if (audio) {
             setInterval(() => this.setState({
@@ -63,6 +63,8 @@ class Player extends React.Component{
             this.setState({ presentSong: song })
             this.song();
         }
+        console.log(this.state.presentSong);
+        debugger
 
         if (this.state.change) {
             this.song();
@@ -73,12 +75,12 @@ class Player extends React.Component{
     }
 
     changeSong() {
-        this.setState({ presentSong: this.props.songs[this.state.currentSong] })
+        this.setState({ presentSong: this.props.songs[this.state.currentSong] });
+        this.props.receiveCurrentSongId(presentSong);
     }
 
     song() {
         let audio = document.getElementById('audio');
-        debugger;
         if (this.state.playing === false) {
             audio.play();
             this.setState({
@@ -137,7 +139,6 @@ class Player extends React.Component{
         } else {
             audio.volume = this.state.previousVolume;
             this.setState({ volume: this.state.previousVolume *100  });
-            debugger;
             // this.state.volume = this.state.previousVolume
         }
     }
@@ -161,8 +162,8 @@ class Player extends React.Component{
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
                     <div className="texts">
                         {/* <p className="soname">{presentSong.title}</p> */}
-                        <p className="soname">Song Title</p>
-                        <p className="arname">Artist Name</p>
+                        <p className="soname">{presentSong.title}</p>
+                        <p className="arname">{presentSong.artist_name}</p>
                     </div>
                     <img className="love" onClick={this.state.love === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} src={this.state.love} />
                 </div>
@@ -209,7 +210,7 @@ class Player extends React.Component{
         return {
         receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
         clearCurrentSong: () => dispatch(clearCurrentSong()),
-        fetchSongs: () => dispatch(fetchSongs()),
+        fetchSong: (songId) => dispatch(fetchSong(songId)),
         }
     };
 

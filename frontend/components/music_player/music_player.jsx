@@ -20,6 +20,8 @@ class MusicPlayer extends React.Component {
     }
 
     render() {
+
+        let { songs, playing, song } = this.props;
         return (
                 <div className="music-player">
                     <Navbar />
