@@ -176,12 +176,12 @@ class Player extends React.Component{
         // let audio = document.getElementById("audio");
         return (
             <div className="player-div">
-                <audio id="audio" volume={this.state.volume} src={presentSong.audio}></audio>
+                <audio id="audio" volume={this.state.volume} src={presentSong.audio} autoPlay></audio>
                 {/* <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"></audio> */}
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
-                    <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
+                    <img src={presentSong.album_image} id="track_img"/>
                     <div className="texts">
                         {/* <p className="soname">{presentSong.title}</p> */}
                         <p className="soname">{presentSong.title}</p>

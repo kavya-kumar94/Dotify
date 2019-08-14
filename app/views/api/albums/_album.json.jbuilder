@@ -14,6 +14,11 @@ json.album do
       json.set! song.id do
         json.extract! song, :id, :title, :album_id, :genre_id, :duration
         json.artist_name song.artist.name 
+         if song.album.album_image.attached?
+            json.album_image url_for(song.album.album_image)
+        else
+            json.album_image ""
+        end    
         json.artist_id song.artist.id
         json.album song.album.title
         if song.audio.attached?

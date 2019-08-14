@@ -11,12 +11,21 @@ class AlbumShowItem extends React.Component {
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
             noteClass: "playsongs",
             addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif",
+            playing: false,
+            currentSong: this.props.currentSong
         }
         this.note = this.note.bind(this);
         this.handlePlay = this.handlePlay.bind(this);
         this.play = this.play.bind(this);
+        this.song = this.song.bind(this);
     }
 
+    componentDidMount() {
+        let audio = document.querySelector('#audio');
+        if(audio) {
+            this.setState({ currentSong: this.props.currentSong });
+        }
+    }
 
     note() {
         this.setState({
@@ -28,7 +37,7 @@ class AlbumShowItem extends React.Component {
 
     play() {
         this.setState({
-            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
+            noteIcon: this.props.playing === false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png",
             noteClass: "play-show3",
             addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
         })
@@ -38,9 +47,49 @@ class AlbumShowItem extends React.Component {
         let audio = document.querySelector("#audio");
         this.props.toggleSong();
         audio.play();
-        this.props.setCurrentSong(this.props.song);
         // this.props.setQueue(this.props.queue);
     }
+    
+    song() {
+        let audio = document.getElementById('audio');
+        console.log(this.props.playing);
+        
+        if (this.props.playing === false) {
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Automatic playback started!
+                    // Show playing UI.
+                    console.log("done")
+                })
+                    .catch(error => {
+                        // Auto-play was prevented
+                        // Show paused UI.
+                    });
+            }
+            // audio.play();
+            this.props.setCurrentSong(this.props.song);
+            this.props.toggleSong();
+            this.setState({
+                playing: true,
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
+            })
+        } else if (this.props.playing === true ) {
+            this.props.setCurrentSong(this.props.song);
+            audio.pause();
+            this.props.toggleSong();
+            this.setState({
+                playing: false,
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
+            })
+        }
+    }
+
+    changeSong() {
+        this.setState({ currentSong: this.props.songs[this.state.currentSong] });
+        this.props.setCurrentSong(currentSong);
+    }
+
 
     render() {
         let noteClass = this.state.noteClass;
@@ -69,7 +118,7 @@ class AlbumShowItem extends React.Component {
             <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
                 <div className="flex">
                     <div>
-                        <img onClick={this.handlePlay} id="art-note" src={this.state.noteIcon} />
+                        <img onClick={() => this.song()} id="art-note" src={this.state.noteIcon} />
                     </div>
                     <div className="song-info">
                         <li id="song-name">{song.title}</li>
