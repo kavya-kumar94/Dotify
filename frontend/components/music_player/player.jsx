@@ -21,6 +21,7 @@ class Player extends React.Component{
             duration: "",
             timeDuration: "",
             timePosition: "",
+            currentTime: "",
             currentSong: 0,
             presentSong: this.props.presentSong,
             change: false,
@@ -45,12 +46,18 @@ class Player extends React.Component{
     componentDidMount() {
         this.props.fetchSong(this.props.presentSong.id).then((song) => console.log(song));
         let audio = document.querySelector('#audio');
+
+        // let min = Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`;
+        // let sec = Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`;
+        
         if (audio) {
             setInterval(() => this.setState({
                 duration: audio.duration,
                 time: this.songTime(audio.currentTime),
+                timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
                 timeDuration: `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`,
-                timePosition: `${audio.currentTime}`,
+                // timePosition: `${Math.floor(audio.currentTime / 60)}:${Math.floor(audio.currentTime % 60)}`,
+                currentTime: `${audio.currentTime}`,
             }), 0)
 
             this.setState({ presentSong: this.props.presentSong })
@@ -177,9 +184,9 @@ class Player extends React.Component{
                      </div>
 
                      <div className="duration-bar">
-                         <li>0:00</li>
-                        <input type="range" id="duration-bar" min="0" max="99" step="1" value="50"/>
-                        <li>0:00</li>
+                         <li>{this.state.timePosition}</li>
+                        <input type="range" id="duration-bar" min="0" max="99" step="1" onChange={(e) => this.setTime(this.state.timePosition)} value={this.state.currentTime} />
+                        <li>{this.state.timeDuration}</li>
                      </div>
                 </div>
                 <div className="right-play">
