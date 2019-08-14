@@ -92,6 +92,7 @@ const msp = (state, ownProps) => {
 
     return {
         album: album,
+        albumId: albumId,
         songs: songs,
         currentSong: state.ui.playStatus.currentSong
     }

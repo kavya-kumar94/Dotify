@@ -35,9 +35,11 @@ class AlbumShowItem extends React.Component {
     }
 
     handlePlay() {
-        this.props.setCurrentSong(this.props.song);
-        // this.props.setQueue(this.props.queue);
+        // let audio = document.querySelector("#audio");
         this.props.toggleSong();
+        this.props.setCurrentSong(this.props.song);
+        // audio.play();
+        // this.props.setQueue(this.props.queue);
     }
 
     render() {

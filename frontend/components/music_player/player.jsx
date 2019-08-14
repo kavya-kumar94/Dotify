@@ -66,20 +66,20 @@ class Player extends React.Component{
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.presentSong !== prevProps.presentSong) {
-            let song = this.props.presentSong
-            this.setState({ presentSong: song })
-            this.song();
-        }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.presentSong !== prevProps.presentSong) {
+    //         let song = this.props.presentSong
+    //         this.setState({ presentSong: song })
+    //         this.song();
+    //     }
 
-        if (this.state.change) {
-            this.song();
-            this.changeSong();
-            this.setState({ change: false })
-        }
+    //     if (this.state.change) {
+    //         this.song();
+    //         this.changeSong();
+    //         this.setState({ change: false })
+    //     }
 
-    }
+    // }
 
     handlePlay() {
         this.props.setCurrentSong(this.props.song);
@@ -89,17 +89,20 @@ class Player extends React.Component{
 
     changeSong() {
         this.setState({ presentSong: this.props.songs[this.state.currentSong] });
-        this.props.receiveCurrentSongId(presentSong);
+        this.props.setCurrentSong(presentSong);
     }
 
     song() {
         let audio = document.getElementById('audio');
-        if (this.state.playing === false) {
+        if (this.props.playing === true) {
             audio.play();
+            this.props.toggleSong();
             this.setState({
-                playing: true, play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"})
-        } else if (this.state.playing === true) {
+                playing: true,
+                play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"})
+        } else if (this.props.playing === false) {
             audio.pause();
+            this.props.toggleSong();
             this.setState({ playing: false, play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"})
         }
     }
@@ -165,17 +168,18 @@ class Player extends React.Component{
     
     render() {
         let { presentSong } = this.props;
-        let audio = document.getElementById("audio");
+        // let audio = document.getElementById("audio");
         return (
             <div className="player-div">
-                <audio id="audio" volume={this.state.volume} src={presentSong}></audio>
+                <audio id="audio" volume={this.state.volume} src={presentSong.audio}></audio>
+                {/* <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"></audio> */}
                 {/* <div className="track">
                 </div> */}
                 <div className="left-play">
                     <img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid3.jpeg" id="track_img"/>
                     <div className="texts">
                         {/* <p className="soname">{presentSong.title}</p> */}
-                        <p className="soname">Song Title</p>
+                        <p className="soname">{presentSong.title}</p>
                         <p className="arname">Artist Name</p>
                         {/* <p className="soname">{presentSong.title}</p>
                         <p className="arname">{presentSong.artist_name}</p> */}
@@ -218,6 +222,7 @@ class Player extends React.Component{
         return {
             songs,
             presentSong: state.ui.playStatus.currentSong,
+            playing: state.ui.playStatus.playing
         }
     }
 
