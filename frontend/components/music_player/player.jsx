@@ -94,16 +94,20 @@ class Player extends React.Component{
 
     song() {
         let audio = document.getElementById('audio');
-        if (this.props.playing === true) {
+        console.log(this.props.playing);
+        if (this.props.playing === false) {
             audio.play();
             this.props.toggleSong();
             this.setState({
                 playing: true,
-                play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"})
-        } else if (this.props.playing === false) {
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
+            })
+        } else if (this.props.playing === true) {
             audio.pause();
             this.props.toggleSong();
-            this.setState({ playing: false, play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"})
+            this.setState({ playing: false, 
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
+            })
         }
     }
 
@@ -167,7 +171,8 @@ class Player extends React.Component{
 
     
     render() {
-        let { presentSong } = this.props;
+        let { presentSong, playing } = this.props;
+        let icon = playing === true ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
         // let audio = document.getElementById("audio");
         return (
             <div className="player-div">
@@ -180,7 +185,7 @@ class Player extends React.Component{
                     <div className="texts">
                         {/* <p className="soname">{presentSong.title}</p> */}
                         <p className="soname">{presentSong.title}</p>
-                        <p className="arname">Artist Name</p>
+                        <p className="arname">{presentSong.artist_name}</p>
                         {/* <p className="soname">{presentSong.title}</p>
                         <p className="arname">{presentSong.artist_name}</p> */}
                     </div>
@@ -190,7 +195,7 @@ class Player extends React.Component{
                      <div className="icons-playbar">
                         <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
                         <img className="prev" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
-                        <img className="play" onClick={() => this.song()} src={this.state.play}/>
+                        <img className="play" onClick={() => this.song()} src={icon}/>
                         <img className="next" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
                         <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
                      </div>

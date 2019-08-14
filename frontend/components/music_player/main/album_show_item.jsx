@@ -35,10 +35,10 @@ class AlbumShowItem extends React.Component {
     }
 
     handlePlay() {
-        // let audio = document.querySelector("#audio");
+        let audio = document.querySelector("#audio");
         this.props.toggleSong();
+        audio.play();
         this.props.setCurrentSong(this.props.song);
-        // audio.play();
         // this.props.setQueue(this.props.queue);
     }
 
@@ -94,6 +94,7 @@ class AlbumShowItem extends React.Component {
 const msp = state => {
     return {
         currentSong: state.ui.playStatus.currentSong,
+        playing: state.ui.playStatus.playing,
     }
 }
 
@@ -108,4 +109,4 @@ const mdp = dispatch => {
 }
 
 
-export default connect(null, mdp)(AlbumShowItem);
+export default connect(msp, mdp)(AlbumShowItem);
