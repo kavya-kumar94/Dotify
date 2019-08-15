@@ -16,7 +16,10 @@ import { merge } from 'lodash';
 
 const nullState = {
     currentSong: {
-        audio: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"
+        audio: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3",
+        title: "SICKO MODE",
+        album_image: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.jpg",
+        artist_name: "Travis Scott"
     },
     playing: false,
     queue: [],

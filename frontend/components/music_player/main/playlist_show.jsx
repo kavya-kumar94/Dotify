@@ -3,16 +3,69 @@ import { NavLink } from 'react-router-dom'
 import ShowItem from './show_item';
 import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs } from '../../../actions/playlist_actions';
 import { connect } from 'react-redux';
+import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
+import { receiveSongId } from '../../../actions/song_actions'
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props);
         this.redirectPlaylists = this.redirectPlaylists.bind(this);
+        this.song = this.song.bind(this);
+        this.changeSong = this.changeSong.bind(this);
+        this.state = {
+            playing: false,
+            currentSong: this.props.currentSong,
+        }
     }
 
     componentDidMount() {
         this.props.clearPlaylistSongs();
         this.props.fetchPlaylist(this.props.match.params.playlistId);
+        let audio = document.querySelector('#audio');
+        if (audio) {
+            this.setState({ currentSong: this.props.currentSong });
+        }
         // this.props.fetchPlaylistSongs(this.props.playlistId);
+    }
+
+
+    song() {
+        let audio = document.getElementById('audio');
+        console.log(this.props.playing);
+
+        if (this.props.playing === false) {
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Automatic playback started!
+                    // Show playing UI.
+                    console.log("done")
+                })
+                    .catch(error => {
+                        // Auto-play was prevented
+                        // Show paused UI.
+                    });
+            }
+            // audio.play();
+            this.props.setCurrentSong(this.state.currentSong);
+            this.props.toggleSong();
+            this.setState({
+                playing: true,
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
+            })
+        } else if (this.props.playing === true) {
+            this.props.setCurrentSong(this.state.currentSong);
+            audio.pause();
+            this.props.toggleSong();
+            this.setState({
+                playing: false,
+                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
+            })
+        }
+    }
+
+    changeSong() {
+        this.setState({ currentSong: this.props.songs[Object.keys(songs)[0]] });
+        this.props.setCurrentSong(this.props.currentSong);
     }
 
     redirectPlaylists() {
@@ -33,7 +86,7 @@ class PlaylistShow extends React.Component {
                     <h2>{playlist.title}</h2>
                     <li>{playlist.creator}</li>
                     <div className="btns-play-show">
-                        <button className="play-btn">PLAY</button>
+                        <button onClick={() => this.changeSong()} className="play-btn">PLAY</button>
                         <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
 
                     </div>
@@ -74,7 +127,9 @@ const msp = (state, ownProps) => {
     // Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
     return {
         playlist: playlist,
-        songs: songs
+        songs: songs,
+        currentSong: state.ui.playStatus.currentSong,
+        playing: state.ui.playStatus.playing,
     }
 }
 
@@ -83,7 +138,11 @@ const mdp = dispatch => {
         fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId)),
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
         fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId)),
-        clearPlaylistSongs: () => dispatch(clearPlaylistSongs())
+        clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
+        setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
+        toggleSong: () => (dispatch(toggleSong())),
+        setQueue: (queue) => (dispatch(setQueue(queue))),
+        receiveSongId: (songId) => dispatch(receiveSongId(songId))
     }
 }
 

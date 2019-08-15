@@ -169,7 +169,6 @@ class Player extends React.Component{
     setTime(position) {
         // this.state.currentTime = position;
         this.setState({ currentTime: position })
-        debugger
     }
 
     
