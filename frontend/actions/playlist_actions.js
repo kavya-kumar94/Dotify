@@ -106,8 +106,8 @@ export const createPlaylist = (playlist) => dispatch => {
         
 }
 
-export const addSongToPlaylist = (data) => dispatch => (
-    PlaylistSongApiUtil.addSongToPlaylist(data).then(
+export const addSongToPlaylist = (playlistId, songId) => dispatch => (
+    PlaylistSongApiUtil.addSongToPlaylist(playlistId, songId).then(
         message => dispatch(receivePlaylistMessage(message)).fail(err => dispatch(receivePlaylistSongErrors(err.responseJSON)))
     )
 );

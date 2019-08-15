@@ -84,8 +84,7 @@ class ShowItem extends React.Component {
         <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
             <div className="flex">
                 <div>
-                        <img 
-                         id="art-note" src={this.state.noteIcon} />
+                        <img onClick={()=>this.song()} id="art-note" src={this.state.noteIcon} />
                 </div>
                 <div className="song-info">
                     <li>{song.title}</li>

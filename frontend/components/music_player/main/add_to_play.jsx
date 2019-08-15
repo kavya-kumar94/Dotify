@@ -45,17 +45,16 @@ class AddToPlay extends React.Component {
 
 
     addSong(playlist_id, songId) {
-        debugger
-        this.setState({
-            songId: songId,
-            playlist_id: playlist_id
-        })
-        let playlistsong = { songId: songId, playlist_id: playlist_id }
+        // this.setState({
+        //     songId: songId,
+        //     playlist_id: playlist_id
+        // })
         return (e) => {
+        // let playlistsong = { songId: songId, playlist_id: playlist_id }
         e.preventDefault();
-        this.props.addSongToPlaylist(playlistsong)
+        this.props.addSongToPlaylist(playlist_id, songId)
             .then(this.props.closeModal)
-            .then(this.redirectToShow(playlistsong.playlist_id));
+            .then(this.redirectToShow(playlist_id));
 
         // .then(() => this.redirect());
         }
@@ -93,7 +92,7 @@ class AddToPlay extends React.Component {
                             {playlists.map((playlist, idx) => {
                                 return (
                                     <div key={idx} className="playlist-link">
-                                        <li onClick={() => this.addSong(playlist.id, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
+                                        <li onClick={this.addSong(playlist.id, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
                                         <li className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
                                         {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
@@ -145,7 +144,7 @@ const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
-    addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
+    addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
 
 })
 
