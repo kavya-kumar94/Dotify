@@ -10,7 +10,7 @@ class AddToPlay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // songId: this.props.song.id,
+            // songId: this.props.songId,
             playlistId: null
         }
         this.changeTitle = this.changeTitle.bind(this);
@@ -44,10 +44,12 @@ class AddToPlay extends React.Component {
 
 
     addSong(playlist_id) {
+        debugger
         return (e) => {
         e.preventDefault();
         let song_id = this.state.song_id ;
         // this.setState({ title: '' });
+        debugger;
         this.props.addSongToPlaylist(playlist_id, song_id)
             .then(this.props.closeModal)
             .then(() => this.redirectToShow(playlist_id));
@@ -73,7 +75,7 @@ class AddToPlay extends React.Component {
 
 
     render() {
-        let { closeModal, playlists, openModal, song } = this.props;
+        let { closeModal, playlists, openModal } = this.props;
 
 
         return (
@@ -88,8 +90,8 @@ class AddToPlay extends React.Component {
                             {playlists.map((playlist, idx) => {
                                 return (
                                     <div key={idx} className="playlist-link">
-                                        <li><NavLink to={`/playlists/${playlist.id}`}><img id="cover-img" src={playlist.playlist_image} /></NavLink></li>
-                                        <li onClick={() => this.addSong(playlist.id)} className="p-title">{playlist.title}</li>
+                                        <li onClick={() => this.addSong(playlist.id)} ><img id="cover-img" src={playlist.playlist_image} /></li>
+                                        <li className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
                                         {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
                                     </div>
@@ -121,13 +123,14 @@ class AddToPlay extends React.Component {
 
 // const msp = (state) => {
 //     return {
-//         last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length - 1],
-//         errors: state.errors.playlist
+//         // last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length - 1],
+//         // errors: state.errors.playlist
 //     }
 // };
 
 const msp = state => {
     return {
+        // songId: state.ui.modal.songId,
         playlists: Object.values(state.entities.playlists),
         errors: state.errors.playlist
     }

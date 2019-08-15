@@ -59,9 +59,8 @@ class Player extends React.Component{
                 timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
                 timeDuration: `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`,
                 // timePosition: `${Math.floor(audio.currentTime / 60)}:${Math.floor(audio.currentTime % 60)}`,
-                currentTime: (audio.currentTime/2.3),
-            }), 0)
-
+                currentTime: (audio.currentTime/420),
+            }), 1000)
             this.setState({ presentSong: this.props.presentSong });
         }
     }
@@ -168,8 +167,9 @@ class Player extends React.Component{
 
 
     setTime(position) {
-        this.state.currentTime = position;
-        this.setState({ time: position })
+        // this.state.currentTime = position;
+        this.setState({ currentTime: position })
+        debugger
     }
 
     
@@ -207,7 +207,7 @@ class Player extends React.Component{
 
                      <div className="duration-bar">
                          <li>{this.state.timePosition}</li>
-                        <input type="range" id="duration-bar" min="0" max="99" step="1" onChange={(e) => this.setTime(this.state.timePosition)} value={this.state.currentTime} />
+                        <input ref={this.sound} type="range" id="duration-bar" name="duration-bar" min="0" max="99" step="1" onChange={(e) => this.setTime(e.currentTarget.value)} value={this.state.currentTime} />
                         <li>{this.state.timeDuration}</li>
                      </div>
                 </div>

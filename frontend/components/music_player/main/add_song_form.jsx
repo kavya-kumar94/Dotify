@@ -60,11 +60,11 @@ class AddSongForm extends React.Component {
 }
 
 
-// const msp = (state) => {
-//     return {
-//        playlists:  state.entities.playlists
-//     }
-// };
+const msp = (state) => {
+    return {
+        // songId: state.ui.modal.songId
+    }
+};
 
 
 const mdp = (dispatch) => ({
@@ -72,4 +72,4 @@ const mdp = (dispatch) => ({
     openModal: (modal) => dispatch(openModal(modal)),
 })
 
-export default withRouter(connect(null, mdp)(AddSongForm));
+export default withRouter(connect(msp, mdp)(AddSongForm));
