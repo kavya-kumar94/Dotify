@@ -46,7 +46,7 @@ const msp = state => {
 
 const mdp = dispatch => {
     return {
-        closeContextMenu: () => dispatch(closeContextMenu())
+        closeContextMenu: () => dispatch(closeContextMenu()),
     };
 };
 

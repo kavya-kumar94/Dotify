@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { closeModal, openModal } from '../../../actions/modal_actions';
 import { addSongToPlaylist } from '../../../actions/playlist_actions';
+import { receiveSongId } from '../../../actions/song_actions';
 
 class AddSongForm extends React.Component {
     constructor(props) {
@@ -33,15 +34,20 @@ class AddSongForm extends React.Component {
         );
     }
 
+    songAdd(songId) {
+        this.props.openModal("add-to-play");
+        this.props.receiveSongId(songId);
+    }
+
 
     render() {
-        let { closeModal, openModal } = this.props;
+        let { closeModal, openModal, songId } = this.props;
 
         return (
             <div style={{ display: 'inline-block' }} className="contextMenu">
                 {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
-                    <h1 onClick={() => openModal("add-to-play")}>Add to Playlist</h1>
+                    <h1 onClick={() => this.songAdd(songId)}>Add to Playlist</h1>
                     <h1>Remove from Playlist</h1>
 
                     {/* <div className="err">
@@ -62,7 +68,7 @@ class AddSongForm extends React.Component {
 
 const msp = (state) => {
     return {
-        // songId: state.ui.modal.songId
+        songId: state.entities.addSong
     }
 };
 
@@ -70,6 +76,7 @@ const msp = (state) => {
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     openModal: (modal) => dispatch(openModal(modal)),
+    receiveSongId: (songId) => dispatch(receiveSongId(songId))
 })
 
 export default withRouter(connect(msp, mdp)(AddSongForm));

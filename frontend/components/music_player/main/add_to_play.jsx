@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { openModal,closeModal } from '../../../actions/modal_actions';
 import { createPlaylist, fetchPlaylists, addSongToPlaylist } from '../../../actions/playlist_actions';
+import { receiveSongId } from '../../../actions/song_actions';
 import { NavLink, Link } from 'react-router-dom';
 
 
@@ -10,8 +11,8 @@ class AddToPlay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            // songId: this.props.songId,
-            playlistId: null
+            songId: this.props.songId,
+            playlist_id: null
         }
         this.changeTitle = this.changeTitle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,16 +44,18 @@ class AddToPlay extends React.Component {
     }
 
 
-    addSong(playlist_id) {
+    addSong(playlist_id, songId) {
         debugger
+        this.setState({
+            songId: songId,
+            playlist_id: playlist_id
+        })
+        let playlistsong = { songId: songId, playlist_id: playlist_id }
         return (e) => {
         e.preventDefault();
-        let song_id = this.state.song_id ;
-        // this.setState({ title: '' });
-        debugger;
-        this.props.addSongToPlaylist(playlist_id, song_id)
+        this.props.addSongToPlaylist(playlistsong)
             .then(this.props.closeModal)
-            .then(() => this.redirectToShow(playlist_id));
+            .then(this.redirectToShow(playlistsong.playlist_id));
 
         // .then(() => this.redirect());
         }
@@ -75,7 +78,7 @@ class AddToPlay extends React.Component {
 
 
     render() {
-        let { closeModal, playlists, openModal } = this.props;
+        let { closeModal, playlists, openModal, songId } = this.props;
 
 
         return (
@@ -90,7 +93,7 @@ class AddToPlay extends React.Component {
                             {playlists.map((playlist, idx) => {
                                 return (
                                     <div key={idx} className="playlist-link">
-                                        <li onClick={() => this.addSong(playlist.id)} ><img id="cover-img" src={playlist.playlist_image} /></li>
+                                        <li onClick={() => this.addSong(playlist.id, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
                                         <li className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
                                         {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
@@ -130,7 +133,7 @@ class AddToPlay extends React.Component {
 
 const msp = state => {
     return {
-        // songId: state.ui.modal.songId,
+        songId: state.entities.addSong,
         playlists: Object.values(state.entities.playlists),
         errors: state.errors.playlist
     }
@@ -141,7 +144,8 @@ const mdp = (dispatch) => ({
     fetchPlaylists: () => dispatch(fetchPlaylists()),
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
-    addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
+    receiveSongId: (songId) => dispatch(receiveSongId(songId)),
+    addSongToPlaylist: (data) => dispatch(addSongToPlaylist(data)),
 
 })
 

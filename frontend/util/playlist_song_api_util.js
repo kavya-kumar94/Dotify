@@ -13,10 +13,11 @@ export const deletePlaylistSong = (playlistId, songId) => {
     });
 };
 
-export const addSongToPlaylist = (playlistId, songId) => (
+export const addSongToPlaylist = (data) => (
     $.ajax({
         method: 'POST',
-        url: `api/playlists/${playlistId}/songs/${songId}`
+        url: `api/playlists/${playlistId}/songs/${songId}`,
+        data: { playlistsong: data }
     })
 );
 

@@ -7,6 +7,7 @@ import genres from './genres_reducer';
 import playlist_errors from './playlist_errors_reducer';
 import playlists from './playlists_reducer';
 import songs from './songs_reducer';
+import addSong from './add_song_reducer';
 
 export default combineReducers({
     users,
@@ -15,5 +16,6 @@ export default combineReducers({
     genres,
     // playlist_errors,
     playlists,
-    songs
+    songs,
+    addSong
 });

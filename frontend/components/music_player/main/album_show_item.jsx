@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { openModal} from '../../../actions/modal_actions';
 import { setCurrentSong, setQueue, toggleSong, addToQueue} from '../../../actions/player_actions';
+import { receiveSongId } from '../../../actions/song_actions'
 class AlbumShowItem extends React.Component {
     constructor(props) {
         super(props);
@@ -90,11 +91,15 @@ class AlbumShowItem extends React.Component {
         this.props.setCurrentSong(currentSong);
     }
 
+    songAdd(songId) {
+        this.props.openModal("add-song");
+        this.props.receiveSongId(songId);
+    }
 
     render() {
         let noteClass = this.state.noteClass;
         const song = this.props.song;
-        let { openModal } = this.props
+        let { openModal, receiveSongId } = this.props
         // debugger;
         return (
             // <div className="art-song">
@@ -131,7 +136,8 @@ class AlbumShowItem extends React.Component {
                 </div>
 
                 <div className="add-duration">
-                    <img onClick={() => openModal("add-song")} id="add-song-menu" src={this.state.addIcon} />
+                    {/* <img onClick={() => openModal("add-song")} id="add-song-menu" src={this.state.addIcon} /> */}
+                    <img onClick={() => this.songAdd(song.id)} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 
@@ -144,6 +150,7 @@ const msp = state => {
     return {
         currentSong: state.ui.playStatus.currentSong,
         playing: state.ui.playStatus.playing,
+        // songId: state.entities.addSong.songId
     }
 }
 
@@ -153,7 +160,8 @@ const mdp = dispatch => {
         openModal: (modal) => dispatch(openModal(modal)),
         setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
         toggleSong: () => (dispatch(toggleSong())),
-        setQueue: (queue) => (dispatch(setQueue(queue)))
+        setQueue: (queue) => (dispatch(setQueue(queue))),
+        receiveSongId: (songId) => dispatch(receiveSongId(songId))
     }
 }
 

@@ -59,7 +59,7 @@ class Player extends React.Component{
                 timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
                 timeDuration: `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`,
                 // timePosition: `${Math.floor(audio.currentTime / 60)}:${Math.floor(audio.currentTime % 60)}`,
-                currentTime: (audio.currentTime/420),
+                currentTime: (audio.currentTime/2.3),
             }), 1000)
             this.setState({ presentSong: this.props.presentSong });
         }
