@@ -115,9 +115,9 @@ class Player extends React.Component{
         let titles = songs.map(song => song.title);
         let title = presentSong.title;
         // if (this.state.currentSong) {
-            this.setState({currentSong: titles.indexOf(title) - 1})
+            this.setState({currentSong: (titles.indexOf(title) - 1 % songs.length)})
             // this.setState({ currentSong: index === -1 ? songs.length - 1 : (index-1), playing: false, change: true, presentSong: songs[this.state.currentSong - 1]});
-            this.props.setCurrentSong(songs[titles.indexOf(title) - 1]);
+        this.props.setCurrentSong(songs[(titles.indexOf(title) - 1) % songs.length]);
             // debugger;
         // } else {
         //     this.setState({ currentSong: this.state.currentSong === 0 ? songs.length - 1 : (this.state.currentSong - 1) % songs.length, presentSong: songs[this.state.currentSong - 1] });
@@ -130,8 +130,8 @@ class Player extends React.Component{
         let { songs, presentSong } = this.props;
         let titles = songs.map(song => song.title);
         let title = presentSong.title;
-        this.setState({ currentSong: titles.indexOf(title) + 1 })
-        this.props.setCurrentSong(songs[titles.indexOf(title) + 1]);
+        this.setState({ currentSong: (titles.indexOf(title) + 1% songs.length) })
+        this.props.setCurrentSong(songs[(titles.indexOf(title) + 1) % songs.length]);
 
         // if (this.state.currentSong === 0 || this.state.currentSong === 1) {
         //     let index = songs.indexOf(presentSong)
@@ -142,7 +142,7 @@ class Player extends React.Component{
         //     this.setState({ currentSong: (index + 1) % songs.length, playing: true, presentSong: songs[this.state.currentSong +1] });
         //     this.props.setCurrentSong(songs[this.state.currentSong]);
         // }
-        // debugger;
+        debugger;
     }
 
 

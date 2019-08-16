@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import { fetchPlaylists } from '../../../actions/playlist_actions';
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.logoutUser = this.logoutUser.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchPlaylists();
     }
 
     logoutUser() {
@@ -12,7 +17,7 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const { currentUser } = this.props;
+        const { currentUser, playlists } = this.props;
         const showUser = currentUser ? (
             <div className="user-nav">
                 <Link className="user-link"to='/browse'>
@@ -27,7 +32,16 @@ class Navbar extends React.Component {
         ) : (
                 null
             );
-            return(
+
+        let playlistsNew = playlists.map((playlist, idx) => {
+            return (
+                <div key={idx} className="">
+                    <li className=""><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
+                </div>
+            )
+        })
+
+        return(
               
                 <div className="main_nav">
                     <div className="navbar-container">
@@ -65,6 +79,13 @@ class Navbar extends React.Component {
                                     </div>
                                 </NavLink>
                             </li>
+                            <li>
+                                <div>PLAYLISTS</div>
+                                <ul>
+                                    {playlistsNew}
+
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                     {showUser}
@@ -73,4 +94,17 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+const msp = state => {
+    return {
+        playlists: Object.values(state.entities.playlists)
+    }
+}
+
+
+const mdp = dispatch => {
+    return {
+        fetchPlaylists: () => dispatch(fetchPlaylists())
+    }
+}
+
+export default connect(msp, mdp)(Navbar);
