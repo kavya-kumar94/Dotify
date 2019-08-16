@@ -13,7 +13,7 @@ json.playlists do
     json.set! playlist.id do 
         json.extract! playlist, :id, :title, :creator_id
         json.creator playlist.creator.username 
-        json.playlistSongIds playlist.playlist_songs.map { |playlist_song| playlist_song.id }
+        json.playlistSongIds playlist.playlist_songs.map { |playlist_song| playlist_song.song.id }
         if playlist.playlist_image.attached?
             json.playlist_image url_for(playlist.playlist_image)
         else

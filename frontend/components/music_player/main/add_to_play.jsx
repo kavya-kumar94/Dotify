@@ -53,8 +53,8 @@ class AddToPlay extends React.Component {
         // let playlistsong = { songId: songId, playlist_id: playlist_id }
         e.preventDefault();
         this.props.addSongToPlaylist(playlist, songId)
-            .then(this.props.closeModal)
-            .then(this.redirectToShow(playlist.id));
+            .then(() => this.props.closeModal())
+            .then(() => this.redirectToShow(playlist.id));
 
         // .then(() => this.redirect());
         }
@@ -134,7 +134,8 @@ const msp = state => {
     return {
         songId: state.entities.addSong,
         playlists: Object.values(state.entities.playlists),
-        errors: state.errors.playlist
+        errors: state.errors.playlist,
+        songs: state.entities.songs
     }
 }
 

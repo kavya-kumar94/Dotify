@@ -1,10 +1,9 @@
 class Api::PlaylistSongsController < ApplicationController
     def create
-        @playlist_song = PlaylistSong.create(playlist_song_params)
-        if PlaylistSong.exists?(playlist_id: @playlist_song.playlist_id, song_id: @playlist_song.song_id)
+        if PlaylistSong.exists?(playlist_id: params[:playlist_id], song_id: params[:song_id])
             render json: ["Song is already in playlist '#{Playlist.find(@playlist_song.playlist_id).name}'"], status: 401
         else
-            @playlist_song.save
+            @playlist_song = PlaylistSong.create({playlist_id: params[:playlist_id], song_id: params[:song_id]})
             render json: ['Track was added to your playlist.']
         end
     end
