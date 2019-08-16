@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArtist } from '../../../actions/artist_actions'
+import { setCurrentSong } from '../../../actions/player_actions'
 import { NavLink } from 'react-router-dom'
 import ArtistShowItem from './artist_show_item';
 class ArtistShow extends React.Component {
@@ -14,7 +15,7 @@ class ArtistShow extends React.Component {
 
     render() {
         if (this.props.artist === undefined) return null;
-        const { artist, albums, songs } = this.props;
+        const { artist, albums, songs, setCurrentSong } = this.props;
         let newArtist = (
             <div className="artist-show">
                 <div className="artist-header">
@@ -22,7 +23,7 @@ class ArtistShow extends React.Component {
                     <img className="artist-show-bg" id="show-img" src={artist.artist_image} />
                 </div>
                     <h2 className="artist-name">{artist.name}</h2>
-                    <button className="play-btn">PLAY</button>
+                    <button onClick={() => setCurrentSong(Object.values(songs)[0])} className="play-btn">PLAY</button>
 
 
                 <div className="art-sho">
@@ -67,13 +68,15 @@ const msp = (state, ownProps) => {
     return {
         artist: artist,
         albums: albums,
-        songs: songs
+        songs: songs,
+        presentSong: state.ui.playStatus.currentSong
     }
 }
 
 const mdp = dispatch => {
     return {
-        fetchArtist: (artistId) => dispatch(fetchArtist(artistId))
+        fetchArtist: (artistId) => dispatch(fetchArtist(artistId)),
+        setCurrentSong: (song) => dispatch(setCurrentSong(song))
     }
 }
 

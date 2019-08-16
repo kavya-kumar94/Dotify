@@ -16,7 +16,7 @@ export const deletePlaylistSong = (playlistId, songId) => {
 export const addSongToPlaylist = (playlist, songId) => (
     $.ajax({
         method: 'PATCH',
-        url: `api/playlists/${playlist.id}`,
+        url: `api/playlist_songs/${playlist.id}`,
         playlistId: playlist.id,
         songId
     })

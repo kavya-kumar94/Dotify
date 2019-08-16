@@ -36,7 +36,7 @@ class PlaylistShow extends React.Component {
     render() {
         if (this.props.playlist === undefined) return null;
 
-        const { playlist, songs } = this.props;
+        const { playlist, songs, presentSong, setCurrentSong } = this.props;
 
         let newPlaylist = (
             <div className="play-show">
@@ -47,7 +47,7 @@ class PlaylistShow extends React.Component {
                     <h2>{playlist.title}</h2>
                     <li>{playlist.creator}</li>
                     <div className="btns-play-show">
-                        <button className="play-btn">PLAY</button>
+                        <button onClick={()=> setCurrentSong(Object.values(songs)[0])} className="play-btn">PLAY</button>
                         <button onClick={() => this.redirectPlaylists()} className="delete-btn-play-show">DELETE</button>
 
                     </div>
@@ -68,7 +68,6 @@ class PlaylistShow extends React.Component {
                 </div>
             </div>
         )
-
         return (
         <div className="div-margin">
             {newPlaylist}
@@ -89,6 +88,7 @@ const msp = (state, ownProps) => {
     return {
         playlist: playlist,
         songs: songs,
+        presentSong: state.ui.playStatus.currentSong
         // playing: state.ui.playStatus.playing,
     }
 }
@@ -99,6 +99,7 @@ const mdp = dispatch => {
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
         fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId)),
         clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
+        setCurrentSong: (song) => dispatch(setCurrentSong(song))
     }
 }
 

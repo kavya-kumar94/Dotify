@@ -46,14 +46,14 @@ class AlbumShow extends React.Component {
 
     render() {
         if (this.props.album === undefined) return null;
-        const { album, songs } = this.props;
+        const { album, songs, setCurrentSong } = this.props;
         let newAlbum = (
             <div className="alb-sho">
             <div className="album-show">
                     <li id="show-img" className="alb-img"><NavLink to={`/albums/${album.id}`}><img id="show-img" src={album.album_image}/></NavLink></li>
                 <h2>{album.title}</h2>
                 <li className="artist-hov"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>
-                <button className="play-btn">PLAY</button>
+                    <button onClick={() => setCurrentSong(Object.values(songs)[0])} className="play-btn">PLAY</button>
                     <div className="song-count">{album.year} • {songs.length} SONGS</div>
                 {/* <div className="song-count"></div> */}
                 <div className="album-pics">
