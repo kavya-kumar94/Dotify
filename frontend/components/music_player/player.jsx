@@ -110,24 +110,39 @@ class Player extends React.Component{
     }
 
     previousSong() {
-        console.log(this.props.songs);
-        let audio = document.getElementById('audio');
-        if (!audio.paused) {
-            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length, playing: false, change: true });
-            this.changeSong();
-        } else {
-            this.setState({ currentSong: this.state.currentSong === 0 ? this.props.songs.length - 1 : (this.state.currentSong - 1) % this.props.songs.length });
-            this.changeSong();
-        }
+        let { songs, presentSong } = this.props;
+        // let audio = document.getElementById('audio');
+        let titles = songs.map(song => song.title);
+        let title = presentSong.title;
+        // if (this.state.currentSong) {
+            this.setState({currentSong: titles.indexOf(title) - 1})
+            // this.setState({ currentSong: index === -1 ? songs.length - 1 : (index-1), playing: false, change: true, presentSong: songs[this.state.currentSong - 1]});
+            this.props.setCurrentSong(songs[titles.indexOf(title) - 1]);
+            // debugger;
+        // } else {
+        //     this.setState({ currentSong: this.state.currentSong === 0 ? songs.length - 1 : (this.state.currentSong - 1) % songs.length, presentSong: songs[this.state.currentSong - 1] });
+        //     this.props.setCurrentSong(songs[this.state.currentSong]);
+        // }
     }
 
 
     nextSong() {
-        if (this.props.playing === true) {
-            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length, playing: false, change: true });
-        } else {
-            this.setState({ currentSong: (this.state.currentSong + 1) % this.props.songs.length });
-        }
+        let { songs, presentSong } = this.props;
+        let titles = songs.map(song => song.title);
+        let title = presentSong.title;
+        this.setState({ currentSong: titles.indexOf(title) + 1 })
+        this.props.setCurrentSong(songs[titles.indexOf(title) + 1]);
+
+        // if (this.state.currentSong === 0 || this.state.currentSong === 1) {
+        //     let index = songs.indexOf(presentSong)
+        //     this.setState({ currentSong: (index + 1) % songs.length, playing: false, change: true, presentSong: songs[this.state.currentSong+1] });
+        //     this.props.setCurrentSong(songs[this.state.currentSong + 1]);
+        // } else {
+        //     let index = songs.indexOf(presentSong) + 1
+        //     this.setState({ currentSong: (index + 1) % songs.length, playing: true, presentSong: songs[this.state.currentSong +1] });
+        //     this.props.setCurrentSong(songs[this.state.currentSong]);
+        // }
+        // debugger;
     }
 
 

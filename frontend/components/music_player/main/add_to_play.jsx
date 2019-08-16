@@ -44,7 +44,7 @@ class AddToPlay extends React.Component {
     }
 
 
-    addSong(playlist_id, songId) {
+    addSong(playlist, songId) {
         // this.setState({
         //     songId: songId,
         //     playlist_id: playlist_id
@@ -52,9 +52,9 @@ class AddToPlay extends React.Component {
         return (e) => {
         // let playlistsong = { songId: songId, playlist_id: playlist_id }
         e.preventDefault();
-        this.props.addSongToPlaylist(playlist_id, songId)
+        this.props.addSongToPlaylist(playlist, songId)
             .then(this.props.closeModal)
-            .then(this.redirectToShow(playlist_id));
+            .then(this.redirectToShow(playlist.id));
 
         // .then(() => this.redirect());
         }
@@ -92,7 +92,7 @@ class AddToPlay extends React.Component {
                             {playlists.map((playlist, idx) => {
                                 return (
                                     <div key={idx} className="playlist-link">
-                                        <li onClick={this.addSong(playlist.id, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
+                                        <li onClick={this.addSong(playlist, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
                                         <li className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
                                         {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
@@ -144,7 +144,7 @@ const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
-    addSongToPlaylist: (playlistId, songId) => dispatch(addSongToPlaylist(playlistId, songId)),
+    addSongToPlaylist: (playlist, songId) => dispatch(addSongToPlaylist(playlist, songId)),
 
 })
 
