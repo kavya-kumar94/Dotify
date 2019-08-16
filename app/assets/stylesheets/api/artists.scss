@@ -35,17 +35,17 @@
 
     // background: url(music_note.jpg) no-repeat scroll 0 0;
 
-    &:before {
-    content: '';
-    // position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    // &:before {
+    // content: '';
+    // // position: absolute;
+    // height: 100%;
+    // width: 100%;
+    // top: 0;
+    // left: 0;
     // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
     // opacity: 0;
     // transition: opacity 0.3s ease-in-out;
-    }  
+    // }  
 
     // &:hover {
     // #show-img {
@@ -78,26 +78,26 @@
 
     // background: url(music_note.jpg) no-repeat scroll 0 0;
 
-    &:before {
-    content: '';
-    // position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    }  
+    // &:before {
+    // content: '';
+    // // position: absolute;
+    // height: 100%;
+    // width: 100%;
+    // top: 0;
+    // left: 0;
+    // // background-image: url(https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png);
+    // opacity: 0;
+    // transition: opacity 0.3s ease-in-out;
+    // }  
 
     &:hover {
     #cover-img {
-       &:before {
-          opacity: .5;
-       }
-       &:after {
-          opacity: 0.6;
-       }
+    //    &:before {
+    //       opacity: .5;
+    //    }
+    //    &:after {
+    //       opacity: 0.6;
+    //    }
     }
     }
 }
