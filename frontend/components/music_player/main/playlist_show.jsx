@@ -27,7 +27,9 @@ class PlaylistShow extends React.Component {
         // this.props.fetchPlaylistSongs(this.props.playlistId);
     }
 
-    // componentDid
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.playlist.id) !== 
+    // }
 
 
     redirectPlaylists() {

@@ -1,4 +1,4 @@
-import { RECEIVE_PLAYLIST, RECEIVE_PLAYLISTS, DELETE_PLAYLIST, RECEIVE_PLAYLIST_SONGS, CLEAR_PLAYLIST_SONGS, ADD_SONG_TO_PLAYLIST } from '../actions/playlist_actions';
+import { RECEIVE_PLAYLIST, RECEIVE_PLAYLISTS, DELETE_PLAYLIST, RECEIVE_PLAYLIST_SONGS, CLEAR_PLAYLIST_SONGS, DELETE_SONG_FROM_PLAYLIST } from '../actions/playlist_actions';
 import { merge } from 'lodash';
 
 
@@ -13,6 +13,10 @@ const playlistsReducer = (state = {}, action) => {
             return {};
         case RECEIVE_PLAYLIST:
             return merge({}, state, action.payload.playlists);
+        case DELETE_SONG_FROM_PLAYLIST:
+            let newerState = merge({}, state);
+            delete newerState[action.songId];
+            return newerState;
         case DELETE_PLAYLIST:
             let newState = merge({}, state);
             delete newState[action.playlistId]

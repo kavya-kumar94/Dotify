@@ -48,7 +48,7 @@ class AddSongForm extends React.Component {
                 {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
                     <h1 onClick={() => this.songAdd(songId)}>Add to Playlist</h1>
-                    <h1>Remove from Playlist</h1>
+                    {/* <h1> onClick={()=> deleteSongFromPlaylist(playlist, songId)} Remove from Playlist</h1> */}
 
                     {/* <div className="err">
                         {this.renderErrors()}
@@ -68,7 +68,8 @@ class AddSongForm extends React.Component {
 
 const msp = (state) => {
     return {
-        songId: state.entities.addSong
+        songId: state.entities.addSong,
+        playlist: state.entities.playlists
     }
 };
 
@@ -76,7 +77,7 @@ const msp = (state) => {
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     openModal: (modal) => dispatch(openModal(modal)),
-    receiveSongId: (songId) => dispatch(receiveSongId(songId))
+    receiveSongId: (songId) => dispatch(receiveSongId(songId)),
 })
 
 export default withRouter(connect(msp, mdp)(AddSongForm));
