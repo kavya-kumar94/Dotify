@@ -21,6 +21,7 @@ class ArtistIndex extends React.Component {
             return (
                 <div key={idx} className="art-ind">
                     <li><NavLink to={`/artists/${artist.id}`}><img id="cover-img" src={artist.artist_image} /></NavLink></li>
+                    <li className="art-on-hov"><NavLink to={`/artists/${artist.id}`}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png" /></NavLink></li>
                     <li><NavLink to={`/artists/${artist.id}`}>{artist.name}</NavLink></li>
                 </div>
             )

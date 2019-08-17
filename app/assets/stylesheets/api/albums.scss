@@ -163,23 +163,50 @@
 }
 
 .albs {
-    display: flex;
-    display: flex;
-    // flex-wrap: wrap;
-    flex-direction: column;
-    float: left;
-    text-align: center;
-    padding: 10px;
-    font-family: "Circular";
-    font-size: 14px;
-    margin-left: 50px;
+    display: inline-block;
+  position: relative;
+  // flex-wrap: wrap;
+  flex-direction: column;
+  // float: left;
+  text-align: center;
+  padding: 15px;
+  font-family: "Circular";
+  font-size: 14px;
+  list-style: none;
+  padding: 15px;
+  margin-left: 50px;
 }
 
-.albs li {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-}
+
+.albs .play-on-hov {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    z-index: 100;
+  }
+
+  .albs:hover .play-on-hov {
+    display: inline;
+  }
+
+  .play-on-hov {
+    // opacity: 0.6;
+    height: 80px;
+    width: 80px;
+    transition: all .2s ease-in-out;
+  }
+  .play-on-hov:hover {
+    // opacity: 1;
+    transform: scale(1.1);
+    // background: opacify($color: #000000, $amount: 0.2)
+  }
+
+// .albs li {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 10px;
+// }
 
 #add-song-menu {
     display: block;

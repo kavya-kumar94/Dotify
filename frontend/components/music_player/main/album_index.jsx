@@ -20,6 +20,7 @@ class AlbumIndex extends React.Component {
             return (
                 <div key={idx} className="albs">
                     <li><NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image}/></NavLink></li>
+                    <li className="play-on-hov"><NavLink to={`/albums/${album.id}`}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png" /></NavLink></li>
                     <li className="a-title"><NavLink to={`/albums/${album.id}`}>{album.title}</NavLink></li>
                     {/* <h2>{album.title}</h2> */}
                     <li className="a-art"><NavLink to={`/artists/${album.artist_id}`}>{album.artist_name}</NavLink></li>

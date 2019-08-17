@@ -43,7 +43,7 @@ class PlaylistShow extends React.Component {
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
             });
-        }, 4000);
+        }, 6000);
         if(this.props.errors) {
         return (
             <ul>

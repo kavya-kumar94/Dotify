@@ -4,6 +4,7 @@ import { fetchAlbum } from '../../../actions/album_actions';
 import { NavLink } from 'react-router-dom';
 import AlbumShowItem from './album_show_item';
 import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
+import { clearPlaylistErrors } from '../../../actions/playlist_actions';
 
 
 class AlbumShow extends React.Component {
@@ -44,9 +45,12 @@ class AlbumShow extends React.Component {
         // audio.play();
     }
 
+
     render() {
         if (this.props.album === undefined) return null;
         const { album, songs, setCurrentSong } = this.props;
+        let classfile = this.props.errors.length > 0 ? "alert" : "classno"
+
         let newAlbum = (
             <div className="alb-sho">
             <div className="album-show">
@@ -94,7 +98,8 @@ const msp = (state, ownProps) => {
         album: album,
         albumId: albumId,
         songs: songs,
-        currentSong: state.ui.playStatus.currentSong
+        currentSong: state.ui.playStatus.currentSong,
+        errors: state.errors.playlist
     }
 }
 
@@ -103,7 +108,8 @@ const mdp = dispatch => {
         fetchAlbum: (albumId) => dispatch(fetchAlbum(albumId)),
         setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
         toggleSong: () => (dispatch(toggleSong())),
-        setQueue: (queue) => (dispatch(setQueue(queue)))
+        setQueue: (queue) => (dispatch(setQueue(queue))),
+        clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
     }
 }
 
