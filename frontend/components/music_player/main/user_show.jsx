@@ -24,6 +24,7 @@ class UserShow extends React.Component {
                 return (
                     <div key={idx} className="playlist-link">
                         <li><NavLink to={`/playlists/${playlist.id}`}><img id="cover-img" src={playlist.playlist_image} /></NavLink></li>
+                        <li className="play-on-hov"><NavLink to={`/playlists/${playlist.id}`}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png" /></NavLink></li>
                         <li className="p-title"><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
                         <li className="p-creator">{playlist.creatorName}</li>
 
