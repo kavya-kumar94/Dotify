@@ -476,6 +476,7 @@ img.white-browse {
     max-width: 100%;
     box-sizing: border-box;
     outline: none;
+    caret-color: #1DB954;
 }
 
 #searchinputbox:focus,
@@ -520,11 +521,12 @@ img.white-browse {
 }
 
 .no-search h3 {
-    font-size:16px;
+    font-size:14px;
+    color: #b3b3b3;
 }
 
 .no-search h1 {
-    font-size: 40px;
+    font-size: 28px;
 }
 
 .no-search {
