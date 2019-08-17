@@ -32,6 +32,9 @@
     // padding-bottom: 10px;
     box-shadow: 1px 1px 30px 0px #171b2a;
     opacity: 1;
+    transition-timing-function: cubic-bezier(.3,0,.4,1);
+    transition-property: filter,-webkit-filter;
+    transition: opacity 0.05s ease-in-out;
 
     // background: url(music_note.jpg) no-repeat scroll 0 0;
 
@@ -74,7 +77,7 @@
     box-shadow: 0px 0px 30px 0px #171b2a;
     opacity: 1;
     transition-property: filter,-webkit-filter;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
 
     // background-image: url(music_note.jpg) no-repeat scroll 0 0;
 
@@ -218,14 +221,14 @@
   }
 
   .art-on-hov {
-    opacity: 0.6;
+    // opacity: 0.6;
     height: 80px;
     width: 80px;
     background: opacity($color: 0.6);
     transition: all .2s ease-in-out;
   }
   .art-on-hov:hover {
-    opacity: 1;
+    // opacity: 1;
     transform: scale(1.1);
     // background: opacify($color: #000000, $amount: 0.2)
   }
@@ -285,8 +288,33 @@
 }
 
 .alb-info2 {
-    text-align: center;
+    display: inline-block;
+  position: relative;
+  // flex-wrap: wrap;
+  flex-direction: column;
+  // float: left;
+  text-align: center;
+  padding: 15px;
+  font-family: "Circular";
+  font-size: 14px;
+  list-style: none;
+  padding: 15px;
+//   margin-left: 50px;
 }
+
+
+.alb-info2 .play-on-hov {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 30%;
+    z-index: 100;
+  }
+
+  .alb-info2:hover .play-on-hov {
+    display: inline;
+  }
+
 
 .albs3 {
     display: flex;
