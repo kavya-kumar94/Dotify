@@ -444,3 +444,31 @@
   display: flex;
   flex-direction: column;
 }
+
+.play-style {
+  font-size: 11px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    font-weight: var(--glue-font-weight-normal);
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    margin-top: 25px;
+  }
+  
+  .list-of-playlists {
+    letter-spacing: .10em;
+    color: #b3b3b3;
+  }
+
+  .list-of-playlists li {
+    padding-top: 10px;
+  }
+
+  .list-of-playlists li:hover {
+    color: white;
+  }
+
+  .list-of-playlists:active {
+    color:white;
+  }

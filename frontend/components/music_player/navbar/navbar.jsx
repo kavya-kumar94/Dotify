@@ -80,8 +80,8 @@ class Navbar extends React.Component {
                                 </NavLink>
                             </li>
                             <li>
-                                <div>PLAYLISTS</div>
-                                <ul>
+                                <div className="play-style">PLAYLISTS</div>
+                                <ul className="list-of-playlists">
                                     {playlistsNew}
 
                                 </ul>
