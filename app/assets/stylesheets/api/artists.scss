@@ -303,7 +303,7 @@
 }
 
 
-.alb-info2 .play-on-hov {
+.alb-info2 .sho-on-hov {
     display: none;
     position: absolute;
     top: 25%;
@@ -311,10 +311,19 @@
     z-index: 100;
   }
 
-  .alb-info2:hover .play-on-hov {
+  .alb-info2:hover .sho-on-hov {
     display: inline;
   }
 
+  .sho-on-hov {
+    width: 20px;
+    height: 10px;
+    transition: all .2s ease-in-out;
+  }
+
+  .sho-on-hov:hover {
+    transform: scale(1.1);
+  }
 
 .albs3 {
     display: flex;

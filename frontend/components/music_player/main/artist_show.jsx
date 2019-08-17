@@ -38,8 +38,8 @@ class ArtistShow extends React.Component {
 
                     {albums.map( (album, idx) => {
                         return <div key={idx} className="alb-info2">
-                            <NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image} /></NavLink>
-                            <li className="play-on-hov"><NavLink to={`/albums/${album.id}`}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png" /></NavLink></li>
+                            <li><NavLink to={`/albums/${album.id}`}><img id="cover-img" src={album.album_image} /></NavLink></li>
+                            <li className="sho-on-hov"><NavLink to={`/albums/${album.id}`}><img src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png" /></NavLink></li>
                                 <li>{album.title}</li>
                                 </div>
                                 })}
