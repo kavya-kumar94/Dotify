@@ -454,6 +454,7 @@
     text-transform: uppercase;
     letter-spacing: .16em;
     margin-top: 25px;
+    padding-left: 25px;
   }
   
   .list-of-playlists {
@@ -463,12 +464,14 @@
 
   .list-of-playlists li {
     padding-top: 10px;
+    padding-left: 25px;
   }
 
   .list-of-playlists li:hover {
     color: white;
   }
 
-  .list-of-playlists:active {
+
+  .newactive {
     color:white;
   }

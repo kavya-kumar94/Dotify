@@ -155,7 +155,7 @@
     display: flex;
     flex-direction: column;
     font-family: "Circular";
-    padding-left: 25px;
+    // padding-left: 25px;
     padding-top: 25px;
     font-size: 14px;
 }
@@ -169,19 +169,36 @@
     flex-direction: row;
 }
 
+.inactive {
+    color: #b3b3b3;
+    margin-bottom: 15px;
+    display: flex;
+    padding-left: 10px;
+    // flex-direction: row;
+    border-left: 4px solid transparent;
+    // border-bottom: 2px solid transparent;
+    &.active{
+            color: white;
+            padding-left: 10px;
+            border-left: 4px solid #1DB954;
+
+    }
+}
+
+
 .not-active {
     color: #b3b3b3;
     margin-bottom: 15px;
     display: flex;
+    // padding-left: 10px;
     // flex-direction: row;
-    // border-left: 2px solid transparent;
-    // border-bottom: 2px solid transparent;
+    // border-left: 4px solid transparent;
+    border-bottom: 2px solid transparent;
+    // justify-content: center;
     // transition: all .2s ease-in-out;
     // margin: 7px;
 
-    &.active{
-        color: white;
-    //     border-left: 2px solid #1DB954;
+    
     //     width: 40%;
     //     // margin-left: 3px;
     //     // transform: scale(1.0);
@@ -194,11 +211,12 @@
     //         // padding-top: 20px; /* This creates some space between the element and the border. */
     //         border-left: 2px solid #1DB954; /* This creates the border. Replace black with whatever color you want. */
     //         }
-    }
 
     &.selected{
         color: white;
         border-bottom: 2px solid #1DB954;
+        // width: 30%;
+        // justify-content: center;
         // width: 40%;
     //     justify-content: center;
     //     // transform: scale(1.0);
@@ -279,6 +297,7 @@ img.white-browse {
     display: flex;
     flex-direction: row;
     font-size: 25px;
+    padding-left: 25px;
     font-family: "Circular Bold";
     margin-bottom: 25px;
 }
