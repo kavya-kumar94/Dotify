@@ -19,8 +19,8 @@ class ArtistShow extends React.Component {
         let newArtist = (
             <div className="artist-show">
                 <div className="artist-header">
-                    <div id="show-img" className="bg-img">
-                    <img className="artist-show-bg" id="show-img" src={artist.artist_image} />
+                    <div id="art-img" className="bg-img">
+                    <img className="artist-show-bg" id="art-img2" src={artist.artist_image} />
                 </div>
                     <h2 className="artist-name">{artist.name}</h2>
                     <button onClick={() => setCurrentSong(Object.values(songs)[0])} className="play-btn">PLAY</button>

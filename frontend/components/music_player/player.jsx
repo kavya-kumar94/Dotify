@@ -12,7 +12,7 @@ class Player extends React.Component{
         this.state = {
             love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png",
             shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png",
-            play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png",
+            play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png",
             repeat: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png",
             volume_icon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png",
             playing: false,
@@ -196,7 +196,7 @@ class Player extends React.Component{
         let { presentSong, playing } = this.props;
         let audio = document.querySelector('#audio');
         let audiopause = audio !== null ? audio.paused : null;
-        let icon = audiopause == false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
+        let icon = audiopause == false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_white.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png";
         // let icon = playing === true ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
         return (
             <div className="player-div">
@@ -218,9 +218,10 @@ class Player extends React.Component{
                  <div className="center-play">
                      <div className="icons-playbar">
                         <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
-                        <img className="prev" onClick={() => this.previousSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_grey.png"/>
+                        <img className="prev" onClick={() => this.previousSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_white.png"/>
                         <img className="play" onClick={() => this.song()} src={icon}/>
-                        <img className="next" onClick={() => this.nextSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_grey.png"/>
+                        <img src="" className="play-hov" />
+                        <img className="next" onClick={() => this.nextSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_white.png"/>
                         <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
                      </div>
 

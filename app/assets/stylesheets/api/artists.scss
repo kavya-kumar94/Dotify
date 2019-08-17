@@ -280,3 +280,17 @@
     width: 100%;
 }
 
+#art-img {
+    display: flex;
+}
+
+#art-img2 {
+    position: absolute;
+    background: linear-gradient(transparent -30%, #181818);
+    content: "";
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}

@@ -21,7 +21,7 @@ const nullState = {
         album_image: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.jpg",
         artist_name: "Travis Scott"
     },
-    playing: false,
+    playing: true,
     queue: [],
     shuffle: false
 };
