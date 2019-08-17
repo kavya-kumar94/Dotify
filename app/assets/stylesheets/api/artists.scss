@@ -200,6 +200,7 @@
     padding: 10px;
     font-family: "Circular";
     font-size: 14px;
+    margin-left: 50px;
 }
 
 .art-ind li {
@@ -286,7 +287,8 @@
 
 #art-img2 {
     position: absolute;
-    background: linear-gradient(transparent -30%, #181818);
+  object-fit: cover;
+    background: linear-gradient(to bottom, transparent -30%, #121212);
     content: "";
     top: 0;
     right: 0;

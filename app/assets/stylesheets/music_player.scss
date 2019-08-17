@@ -1,6 +1,6 @@
 .main_nav {
     grid-area: navbar;
-    background: #031018;
+    background: #000;
     padding-bottom: 20px;
     position: fixed;
     height: 100%;
@@ -120,7 +120,7 @@
 
 .music-player {
     display: grid;
-    background-image: linear-gradient(to bottom right, #334c57, #01070a);
+    background: linear-gradient(to right bottom, #2d3958, #000),linear-gradient(transparent, #000 70%);
     color: white;
     height: 100%;
     min-height: 100vh;
