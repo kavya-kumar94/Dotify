@@ -8,6 +8,7 @@ import playlist_errors from './playlist_errors_reducer';
 import playlists from './playlists_reducer';
 import songs from './songs_reducer';
 import addSong from './add_song_reducer';
+import addPlaylist from './add_playlist_reducer';
 
 export default combineReducers({
     users,
@@ -17,5 +18,6 @@ export default combineReducers({
     // playlist_errors,
     playlists,
     songs,
-    addSong
+    addSong,
+    addPlaylist
 });

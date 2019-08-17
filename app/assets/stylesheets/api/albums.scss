@@ -232,12 +232,38 @@
   border-radius: 3px;
 }
 
+.contextMenu2 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #282828;
+  width: 205px;
+  height: 80px;
+  z-index: 20;
+  color: rgb(179, 179, 179);
+  font-family: "Circular";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 3px;
+}
+
 .add-song-child {
     display: flex;
     position: absolute;
 }
 
 .add-song-form {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    // text-align: center;
+    border-radius: 5px;
+}
+
+.rem-song-form {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -252,7 +278,22 @@
     line-height: 32px;
 }
 
+.rem-song-form h1{
+    border: black;
+    // width: 100%;
+    padding: 3px 20px;
+    line-height: 32px;
+}
+
 .add-song-form h1:hover {
+    color: #fff;
+    background-color: #333;
+    border-color: #333;
+    text-decoration: none;
+    width: 87%;
+}
+
+.rem-song-form h1:hover {
     color: #fff;
     background-color: #333;
     border-color: #333;

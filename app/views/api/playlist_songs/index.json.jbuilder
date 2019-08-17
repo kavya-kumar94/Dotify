@@ -12,6 +12,6 @@ json.set! @playlist_song.playlist_id do
 end
 
 
-# json.message do
-#     json.array! @message
-# end
+json.message do
+    json.array! @message
+end

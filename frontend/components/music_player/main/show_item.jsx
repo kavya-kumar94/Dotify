@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
 import { receiveSongId } from '../../../actions/song_actions'
+import { fetchPlaylist, receivePlaylistId } from '../../../actions/playlist_actions'
+import { openModal } from '../../../actions/modal_actions'
 import { connect } from 'react-redux'
 
 
@@ -11,12 +13,14 @@ class ShowItem extends React.Component {
         this.state = {
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
             noteClass: "playsongs",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif",
             playing: false,
             currentSong: this.props.currentSong
         }
         this.note = this.note.bind(this);
         this.play = this.play.bind(this);
         this.song = this.song.bind(this);
+        this.songRemove = this.songRemove.bind(this);
 
     }
 
@@ -25,19 +29,24 @@ class ShowItem extends React.Component {
         if (audio) {
             this.setState({ currentSong: this.props.currentSong });
         }
+        // this.props.receivePlaylistId(playlistId)
+        // this.props.fetchPlaylist(this.props.match.params.playlistId);
+
     }
 
     note() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/music_note.png",
-            noteClass: "playsongs"
+            noteClass: "playsongs",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/handtinytrans.gif"
         })
     }
 
     play() {
         this.setState({
             noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
-            noteClass: "play-show3"
+            noteClass: "play-show3",
+            addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
         })
     }
 
@@ -76,9 +85,32 @@ class ShowItem extends React.Component {
         }
     }
 
+
+    songRemove(playlistId, songId) {
+        this.props.openModal("remove-song");
+        this.props.receiveSongId(songId);
+        this.props.receivePlaylistId(playlistId);
+    }
+
     render() {
         let noteClass = this.state.noteClass;
-        const song = this.props.song;
+        const song  = this.props.song;
+        const playlistId  = this.props.playlistId;
+        let index;
+        let newIndex;
+        this.props.songs.map((song1, idx) => {
+            if(song1.title === song.title) {
+                index = idx;
+            }
+        })
+
+        this.props.songIds.map((id, idx2) => {
+            if(idx2 === index) {
+                newIndex = id;
+            }
+        });
+
+        let { openModal } = this.props;
         // debugger;
         return(
         <div onMouseEnter={this.play} onMouseLeave={this.note} className={noteClass}>
@@ -96,7 +128,8 @@ class ShowItem extends React.Component {
                 </div>
             </div>
 
-            <div>
+            <div className="add-duration">
+                    <img onClick={() => this.songRemove(playlistId, newIndex)} id="add-song-menu" src={this.state.addIcon} />
                 {song.duration}
             </div>
 
@@ -105,11 +138,16 @@ class ShowItem extends React.Component {
     }
 }
 
-const msp = state => {
+const msp = (state) => {
+    // console.dir(ownProps);
+    // const playlistId = ownProps.match.params.playlistId;
     return {
+        // playlistId,
         currentSong: state.ui.playStatus.currentSong,
         playing: state.ui.playStatus.playing,
-        // songId: state.entities.addSong.songId
+        songIds: Object.keys(state.entities.songs),
+        songs: Object.values(state.entities.songs)
+        // songId: state.entities.addSong
     }
 }
 
@@ -120,7 +158,9 @@ const mdp = dispatch => {
         setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
         toggleSong: () => (dispatch(toggleSong())),
         setQueue: (queue) => (dispatch(setQueue(queue))),
-        receiveSongId: (songId) => dispatch(receiveSongId(songId))
+        receiveSongId: (songId) => dispatch(receiveSongId(songId)),
+        receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId)),
+        fetchPlaylist: (playlistId) => dispatch(fetchPlaylist(playlistId)),
     }
 }
 

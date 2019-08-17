@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import ShowItem from './show_item';
-import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs } from '../../../actions/playlist_actions';
+import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs, receivePlaylistId } from '../../../actions/playlist_actions';
 import { connect } from 'react-redux';
 import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
 import { receiveSongId } from '../../../actions/song_actions'
@@ -17,6 +17,7 @@ class PlaylistShow extends React.Component {
     componentDidMount() {
         this.props.clearPlaylistSongs();
         this.props.fetchPlaylist(this.props.match.params.playlistId);
+        this.props.receivePlaylistId(this.props.match.params.playlistId);
         // let audio = document.querySelector('#audio');
         // let { songs } = this.props;
         // if (audio) {
@@ -39,7 +40,7 @@ class PlaylistShow extends React.Component {
     render() {
         if (this.props.playlist === undefined) return null;
 
-        const { playlist, songs, presentSong, setCurrentSong } = this.props;
+        const { playlist, songs, setCurrentSong, playlistId } = this.props;
 
         let newPlaylist = (
             <div className="play-show">
@@ -60,7 +61,7 @@ class PlaylistShow extends React.Component {
                 <div className="play-show2">
                     <ul className="song-list">
                         {Object.values(songs).map( (song, idx) => { 
-                            return <ShowItem key={idx} song={song} />
+                            return <ShowItem key={idx} song={song} playlistId={playlist.id} />
                         }
 
                         )}
@@ -71,6 +72,7 @@ class PlaylistShow extends React.Component {
                 </div>
             </div>
         )
+        // debugger;
         return (
         <div className="div-margin">
             {newPlaylist}
@@ -82,17 +84,21 @@ class PlaylistShow extends React.Component {
 const msp = (state, ownProps) => {
     const playlistId = ownProps.match.params.playlistId;
     const playlist = state.entities.playlists[playlistId];
-    // const tracks = Object.values(state.entities.songs).filter( song => song.playlist_id == playlistId)
+    const songs = Object.keys(state.entities.songs).map(str => parseInt(str)).filter(song => playlist && playlist.playlistSongIds.includes(song))
     // const songIds = tracks.map( song => song.playlist_id)
     // debugger;
-    const songs = state.entities.songs;
+    // const songs = state.entities.songs;
     // let songs = [];
     // Object.values(state.entities.songs).forEach( song => songIds.includes(song.playlist_id) ? songs.push(song) : null )
+    let newSongs = {}
+    for(let i = 0; i < songs.length; i++) {
+        newSongs[songs[i]] = state.entities.songs[songs[i]];
+    }
+    
     return {
         playlist: playlist,
-        songs: songs,
-        presentSong: state.ui.playStatus.currentSong
-        // playing: state.ui.playStatus.playing,
+        songs: newSongs,
+        currentSong: state.ui.playStatus.currentSong,
     }
 }
 
@@ -102,7 +108,10 @@ const mdp = dispatch => {
         deletePlaylist: (playlistId) => dispatch(deletePlaylist(playlistId)),
         fetchPlaylistSongs: (playlistId) => dispatch(fetchPlaylistSongs(playlistId)),
         clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
-        setCurrentSong: (song) => dispatch(setCurrentSong(song))
+        setCurrentSong: (song) => dispatch(setCurrentSong(song)),
+        toggleSong: () => (dispatch(toggleSong())),
+        setQueue: (queue) => (dispatch(setQueue(queue))),
+        receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId))
     }
 }
 
