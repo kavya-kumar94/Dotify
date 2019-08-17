@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import ShowItem from './show_item';
-import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs, receivePlaylistId } from '../../../actions/playlist_actions';
+import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs, receivePlaylistId, clearPlaylistErrors } from '../../../actions/playlist_actions';
 import { connect } from 'react-redux';
 import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
 import { receiveSongId } from '../../../actions/song_actions'
@@ -16,6 +16,7 @@ class PlaylistShow extends React.Component {
 
     componentDidMount() {
         this.props.clearPlaylistSongs();
+        this.props.clearPlaylistErrors();
         this.props.fetchPlaylist(this.props.match.params.playlistId);
         this.props.receivePlaylistId(this.props.match.params.playlistId);
         // let audio = document.querySelector('#audio');
@@ -37,6 +38,25 @@ class PlaylistShow extends React.Component {
         }
     }
 
+    renderErrors() {
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 4000);
+        if(this.props.errors) {
+        return (
+            <ul>
+                {this.props.errors.map((error, i) => (
+                    <li key={`error-${i}`}>
+                        {error}
+                    </li>
+                ))}
+            </ul>
+        );
+        }
+    }
+
 
     redirectPlaylists() {
         this.props.deletePlaylist(this.props.playlist.id).then(this.props.history.push('/library/playlists'))
@@ -45,10 +65,14 @@ class PlaylistShow extends React.Component {
     render() {
         if (this.props.playlist === undefined) return null;
 
+         let classfile = this.props.errors.length > 0 ? "alert" : "classno"
+
         const { playlist, songs, setCurrentSong, playlistId } = this.props;
 
         let newPlaylist = (
             <div className="play-show">
+                <div className="play-show-div">
+
                 <div className="play-show1">
                     {/* <NavLink to={`/playlists/${playlist.id}`}></NavLink> */}
                     <li id="show-img" className="playshowimg"><img id="show-img" src= {playlist.playlist_image} /></li>
@@ -75,6 +99,15 @@ class PlaylistShow extends React.Component {
                         {/* })} */}
                     </ul>
                 </div>
+                </div>
+                <div className="error-div">
+                    {console.log(this.props.errors)}
+                <div class={classfile} role="alert">
+                        {/* <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button> */}
+                        {this.renderErrors()}
+                    </div>
+                </div>
+                    
             </div>
         )
         // debugger;
@@ -104,6 +137,7 @@ const msp = (state, ownProps) => {
         playlist: playlist,
         songs: newSongs,
         currentSong: state.ui.playStatus.currentSong,
+        errors: state.errors.playlist
     }
 }
 
@@ -116,7 +150,8 @@ const mdp = dispatch => {
         setCurrentSong: (song) => dispatch(setCurrentSong(song)),
         toggleSong: () => (dispatch(toggleSong())),
         setQueue: (queue) => (dispatch(setQueue(queue))),
-        receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId))
+        receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId)),
+        clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
     }
 }
 

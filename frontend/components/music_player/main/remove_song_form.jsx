@@ -44,8 +44,8 @@ class RemoveSongForm extends React.Component {
     }
     
     songAdd(songId) {
-        this.props.receiveSongId(songId);
         this.props.openModal("add-to-play");
+        this.props.receiveSongId(songId);
     }
 
     render() {

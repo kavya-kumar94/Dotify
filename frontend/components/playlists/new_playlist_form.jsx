@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
-import { createPlaylist } from '../../actions/playlist_actions';
+import { createPlaylist, clearPlaylistErrors } from '../../actions/playlist_actions';
 
 class NewPlaylistForm extends React.Component {
     constructor(props) {
@@ -18,6 +18,9 @@ class NewPlaylistForm extends React.Component {
         this.setState({title: e.target.value});
     }
 
+    componentDidMount() {
+        this.props.clearPlaylistErrors();
+    }
 
     // redirect() {
         // this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
@@ -34,7 +37,8 @@ class NewPlaylistForm extends React.Component {
     }
 
     renderErrors() {
-        return (
+        if(this.props.errors) {
+            return (
             <ul>
                 {this.props.errors.map((error, i) => (
                     <li key={`error-${i}`}>
@@ -42,7 +46,8 @@ class NewPlaylistForm extends React.Component {
                     </li>
                 ))}
             </ul>
-        );
+        )
+        };
     }
 
 
@@ -92,6 +97,7 @@ const msp = (state) => {
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
+    clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
 })
 
 export default withRouter(connect(msp, mdp)(NewPlaylistForm));

@@ -15,7 +15,7 @@ const playlistErrorsReducer = (state = [], action) => {
         case CLEAR_PLAYLIST_MESSAGE:
             return [];
         case CLEAR_PLAYLIST_ERRORS:
-            return {};
+            return [];
         case CLEAR_PLAYLIST_SONG_ERRORS:
             return {};
         default:

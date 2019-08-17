@@ -207,7 +207,7 @@
 
 .play-show {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   list-style: none;
   padding: 50px;
   // margin: auto;
@@ -217,6 +217,41 @@
   max-height: 100%;
   // justify-content: space-evenly;
   // text-align: center;
+}
+
+.play-show-div {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  // padding: 50px;
+  // margin: auto;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+
+}
+
+.classyes {
+  display: flex;
+}
+
+.classno {
+  display: none;
+}
+
+.alert {
+  position: fixed;
+  bottom: 20%;
+  font-family: "Circular";
+  font-size: 20px;
+  background-color:#579bea;
+  border-radius: 2%;
+  padding: 5px;
+  width: 500px;
+  text-align: center;
+  margin-left: 30%;
+  color: black;
 }
 
 .play-show1 {

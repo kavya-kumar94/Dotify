@@ -18,6 +18,7 @@ class ArtistShowItem extends React.Component {
         this.note = this.note.bind(this);
         this.play = this.play.bind(this);
         this.song = this.song.bind(this);
+        this.songAdd = this.songAdd.bind(this);
 
     }
 
@@ -81,6 +82,11 @@ class ArtistShowItem extends React.Component {
         }
     }
 
+    songAdd(songId) {
+        this.props.openModal("add-song");
+        this.props.receiveSongId(songId);
+    }
+
     render() {
         // <div className="art-song">
         //     <div className="parent">
@@ -123,7 +129,7 @@ class ArtistShowItem extends React.Component {
                 </div>
 
                 <div className="add-duration">
-                    <img onClick={() => openModal("add-song")} id="add-song-menu" src={this.state.addIcon} />
+                    <img onClick={() => this.songAdd(song.id)} id="add-song-menu" src={this.state.addIcon} />
                     {song.duration}
                 </div>
 

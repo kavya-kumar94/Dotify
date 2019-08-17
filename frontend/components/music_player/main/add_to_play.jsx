@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { openModal,closeModal } from '../../../actions/modal_actions';
-import { createPlaylist, fetchPlaylists, addSongToPlaylist } from '../../../actions/playlist_actions';
+import { createPlaylist, fetchPlaylists, addSongToPlaylist, clearPlaylistErrors } from '../../../actions/playlist_actions';
 import { receiveSongId } from '../../../actions/song_actions';
 import { NavLink, Link } from 'react-router-dom';
 
@@ -21,6 +21,7 @@ class AddToPlay extends React.Component {
 
     componentDidMount() {
         this.props.fetchPlaylists();
+        this.props.clearPlaylistErrors();
     }
 
     changeTitle(e) {
@@ -63,23 +64,30 @@ class AddToPlay extends React.Component {
     redirectToShow(playlist_id) {
         this.props.history.push(`/playlists/${playlist_id}`);
     }
-    // renderErrors() {
-    //     return (
-    //         <ul>
-    //             {this.props.errors.map((error, i) => (
-    //                 <li key={`error-${i}`}>
-    //                     {error}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
+    renderErrors() {
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 4000);
+        if (this.props.errors) {
+            return (
+                <ul>
+                    {this.props.errors.map((error, i) => (
+                        <li key={`error-${i}`}>
+                            {error}
+                        </li>
+                    ))}
+                </ul>
+            );
+        }
+    }
 
 
     render() {
         let { closeModal, playlists, openModal, songId } = this.props;
 
-
+        let classfile = this.props.errors.length > 0 ? "alert" : "classno"
         return (
             <div className="modal">
                 <img onClick={closeModal} id="close-play" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" />
@@ -88,6 +96,14 @@ class AddToPlay extends React.Component {
                     <h2>Add to playlist</h2>
                         <button onClick={() => openModal('new-playlist')} className="yassplay" type="submit">NEW PLAYLIST</button>
                 </form>
+                <div className="error-div">
+                    {console.log(this.props.errors)}
+                    <div class={classfile} role="alert">
+                        {/* <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button> */}
+                        {this.renderErrors()}
+                    </div>
+                </div>
+
                         <ul className="addtoplayul">
                             {playlists.map((playlist, idx) => {
                                 return (
@@ -145,6 +161,7 @@ const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
+    clearPlaylistErrors: () => dispatch(clearPlaylistErrors()),
     addSongToPlaylist: (playlist, songId) => dispatch(addSongToPlaylist(playlist, songId)),
 
 })
