@@ -20,10 +20,24 @@ class MusicPlayer extends React.Component {
     }
 
     render() {
+        let location = this.props.history.location.pathname;
+        let nclass;
+        if (location.includes("playlists")) {
+            nclass = "playlists";
+        } else if (location.includes("albums")) {
+            nclass = "album";
+        } else if (location.includes("artists")) {
+            nclass = "artist";
+        } else if (location.includes("search")) {
+            nclass = "music-player";
+        } else {
+            nclass = "music-player";
+        }
+
 
         let { songs, playing, song } = this.props;
         return (
-                <div className="music-player">
+                <div className={nclass}>
                     <Navbar />
                     <Player />
                     <Route exact path='/search' component={Main} />
