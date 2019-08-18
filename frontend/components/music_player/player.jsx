@@ -13,7 +13,7 @@ class Player extends React.Component{
             love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png",
             shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png",
             play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png",
-            repeat: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png",
+            repeat: false,
             volume_icon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png",
             playing: false,
             time: "",
@@ -43,6 +43,7 @@ class Player extends React.Component{
         this.toggleMute = this.toggleMute.bind(this);
         this.songTime = this.songTime.bind(this);
         this.handlePlay = this.handlePlay.bind(this);
+        this.repeat = this.repeat.bind(this);
     }
 
     componentDidMount() {
@@ -95,14 +96,14 @@ class Player extends React.Component{
         let audio = document.getElementById('audio');
         if (this.props.playing === false) {
             audio.play();
-            // this.props.toggleSong();
+            this.props.toggleSong();
             this.setState({
                 playing: true,
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
             })
         } else if (this.props.playing === true) {
             audio.pause();
-            // this.props.toggleSong();
+            this.props.toggleSong();
             this.setState({ playing: false, 
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
             })
@@ -114,17 +115,20 @@ class Player extends React.Component{
         // let audio = document.getElementById('audio');
         let titles = songs.map(song => song.title);
         let title = presentSong.title;
+        let nums;
         if(titles.indexOf(title) === 0 ) {
-            this.setState({currentSong: (titles.length - 1)})
-            this.props.setCurrentSong(songs[titles.length -1]);
+            this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title)) : (titles.length - 1)})
+            nums = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.length - 1)]);
+            this.props.setCurrentSong(nums);
             if (this.props.playing === false) {
                 this.props.toggleSong();
             }
         } else {
         // if (this.state.currentSong) {
-            this.setState({currentSong: (titles.indexOf(title) - 1 % songs.length)})
+            this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) - 1 % songs.length)})
+            nums =  (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) - 1) % songs.length]);
             // this.setState({ currentSong: index === -1 ? songs.length - 1 : (index-1), playing: false, change: true, presentSong: songs[this.state.currentSong - 1]});
-        this.props.setCurrentSong(songs[(titles.indexOf(title) - 1) % songs.length]);
+        this.props.setCurrentSong(nums);
             if(this.props.playing === false) {
                 this.props.toggleSong();
             }
@@ -141,8 +145,10 @@ class Player extends React.Component{
         let { songs, presentSong } = this.props;
         let titles = songs.map(song => song.title);
         let title = presentSong.title;
-        this.setState({ currentSong: (titles.indexOf(title) + 1% songs.length) })
-        this.props.setCurrentSong(songs[(titles.indexOf(title) + 1) % songs.length]);
+        this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) + 1% songs.length) });
+        let number;
+        number = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) + 1) % songs.length]);
+        this.props.setCurrentSong(number);
         if (this.props.playing === false) {
             this.props.toggleSong();
         }
@@ -156,6 +162,10 @@ class Player extends React.Component{
         //     this.props.setCurrentSong(songs[this.state.currentSong]);
         // }
         // debugger;
+    }
+
+    repeat() {
+        this.setState({ repeat: !this.state.repeat });
     }
 
 
@@ -230,7 +240,7 @@ class Player extends React.Component{
                         <img className="play" onClick={() => this.song()} src={icon}/>
                         <img src="" className="play-hov" />
                         <img className="next" onClick={() => this.nextSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_white.png"/>
-                        <img className="repeat" onClick={this.state.repeat === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_grey.png" ? this.unrepeat : this.repeat} src={this.state.repeat} />
+                        <img className="repeat" onClick={this.repeat} src={this.state.repeat ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_green.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat-white.png"} />
                      </div>
 
                      <div className="duration-bar">
