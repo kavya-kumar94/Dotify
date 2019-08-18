@@ -205,6 +205,30 @@
     transform: scale(1.1);
     // background: opacify($color: #000000, $amount: 0.2)
   }
+ .playlist-link .add-on-hov {
+    display: none;
+    position: absolute;
+    top: 29%;
+    left: 33%;
+    z-index: 100;
+  }
+
+  .playlist-link:hover .add-on-hov {
+    display: inline;
+  }
+
+  .add-on-hov {
+    // opacity: 0.6;
+    font-size: 50px;
+    height: 80px;
+    width: 80px;
+    transition: all .2s ease-in-out;
+  }
+  .add-on-hov:hover {
+    // opacity: 1;
+    transform: scale(1.1);
+    // background: opacify($color: #000000, $amount: 0.2)
+  }
 
 .p-title {
     font-family: "Circular";
