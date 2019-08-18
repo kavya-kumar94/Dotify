@@ -306,7 +306,7 @@
 .alb-info2 .sho-on-hov {
     display: none;
     position: absolute;
-    top: 25%;
+    top: 30%;
     left: 30%;
     z-index: 100;
   }
@@ -317,7 +317,7 @@
 
   .sho-on-hov {
     width: 20px;
-    height: 10%;
+    height: 1px;
     transition: all .2s ease-in-out;
   }
 

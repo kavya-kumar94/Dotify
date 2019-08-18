@@ -9,7 +9,9 @@ class Navbar extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPlaylists();
+        if(this.props.playlists.length === 0) {
+            this.props.fetchPlaylists();
+        }
     }
 
     logoutUser() {
@@ -17,7 +19,9 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const { currentUser, playlists } = this.props;
+        const { currentUser } = this.props;
+        let { playlists = {} } = this.props;
+
         const showUser = currentUser ? (
             <div className="user-nav">
                 <Link className="user-link"to='/browse/featured'>
