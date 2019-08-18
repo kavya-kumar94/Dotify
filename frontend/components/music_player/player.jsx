@@ -95,14 +95,14 @@ class Player extends React.Component{
         let audio = document.getElementById('audio');
         if (this.props.playing === false) {
             audio.play();
-            this.props.toggleSong();
+            // this.props.toggleSong();
             this.setState({
                 playing: true,
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
             })
         } else if (this.props.playing === true) {
             audio.pause();
-            this.props.toggleSong();
+            // this.props.toggleSong();
             this.setState({ playing: false, 
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
             })
@@ -117,11 +117,17 @@ class Player extends React.Component{
         if(titles.indexOf(title) === 0 ) {
             this.setState({currentSong: (titles.length - 1)})
             this.props.setCurrentSong(songs[titles.length -1]);
+            if (this.props.playing === false) {
+                this.props.toggleSong();
+            }
         } else {
         // if (this.state.currentSong) {
             this.setState({currentSong: (titles.indexOf(title) - 1 % songs.length)})
             // this.setState({ currentSong: index === -1 ? songs.length - 1 : (index-1), playing: false, change: true, presentSong: songs[this.state.currentSong - 1]});
         this.props.setCurrentSong(songs[(titles.indexOf(title) - 1) % songs.length]);
+            if(this.props.playing === false) {
+                this.props.toggleSong();
+            }
         }
             // debugger;
         // } else {
@@ -137,7 +143,9 @@ class Player extends React.Component{
         let title = presentSong.title;
         this.setState({ currentSong: (titles.indexOf(title) + 1% songs.length) })
         this.props.setCurrentSong(songs[(titles.indexOf(title) + 1) % songs.length]);
-
+        if (this.props.playing === false) {
+            this.props.toggleSong();
+        }
         // if (this.state.currentSong === 0 || this.state.currentSong === 1) {
         //     let index = songs.indexOf(presentSong)
         //     this.setState({ currentSong: (index + 1) % songs.length, playing: false, change: true, presentSong: songs[this.state.currentSong+1] });
@@ -147,7 +155,7 @@ class Player extends React.Component{
         //     this.setState({ currentSong: (index + 1) % songs.length, playing: true, presentSong: songs[this.state.currentSong +1] });
         //     this.props.setCurrentSong(songs[this.state.currentSong]);
         // }
-        debugger;
+        // debugger;
     }
 
 
