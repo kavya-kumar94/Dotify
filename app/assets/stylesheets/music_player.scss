@@ -614,9 +614,43 @@ img.white-browse {
 }
 
 .spac {
+     display: inline-block;
+  position: relative;
+  // flex-wrap: wrap;
+  flex-direction: column;
+  // float: left;
+  font-family: "Circular";
+  font-size: 14px;
+  list-style: none;
+  margin-left: 50px;
     padding: 40px;
     text-align: center;
 }
+
+.spac .spac-on-hov {
+    display: none;
+    position: absolute;
+    top: 34%;
+    left: 36%;
+    z-index: 100;
+  }
+
+  .spac:hover .spac-on-hov {
+    display: inline;
+  }
+
+  .spac-on-hov {
+    // opacity: 0.6;
+    height: 60px;
+    width: 60px;
+    background: opacity($color: 0.6);
+    transition: all .2s ease-in-out;
+  }
+  .spac-on-hov:hover {
+    // opacity: 1;
+    transform: scale(1.1);
+    // background: opacify($color: #000000, $amount: 0.2)
+  }
 
 #searchpic img {
     border-radius: 50%;
