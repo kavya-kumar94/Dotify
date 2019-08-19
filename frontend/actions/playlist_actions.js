@@ -118,11 +118,22 @@ export const createPlaylist = (playlist) => dispatch => {
         
 }
 
-export const addSongToPlaylist = (playlist, songId) => dispatch => (
-    PlaylistSongApiUtil.addSongToPlaylist(playlist, songId).then(message => dispatch(receivePlaylistMessage(message))).fail(err => {
+export const addSongToPlaylist = (playlist, songId) => dispatch => {
+    debugger;
+    return (
+    PlaylistSongApiUtil.addSongToPlaylist(playlist, songId)
+    .then(message => {
+        debugger;
+        return(
+        dispatch(receivePlaylistMessage(message))
+    )})
+    .fail(err => {
+        debugger;
+        return(
         dispatch(receivePlaylistSongErrors(err.responseJSON))
-    })
-);
+    )})
+    )
+};
 
 export const removeSongFromPlaylist = (playlistId, songId) => dispatch => (
     PlaylistSongApiUtil.removeSongFromPlaylist(playlistId, songId).then(

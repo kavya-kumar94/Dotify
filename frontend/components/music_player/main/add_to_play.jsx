@@ -32,6 +32,9 @@ class AddToPlay extends React.Component {
     // redirect() {
     // this.props.history.push(`/playlists/${this.props.last_playlist.id}`);
     // }
+    componentWillReceiveProps(nextProps) {
+        debugger;
+    }
 
 
     handleSubmit(e) {

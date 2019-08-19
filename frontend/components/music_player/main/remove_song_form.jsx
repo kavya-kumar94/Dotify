@@ -40,7 +40,8 @@ class RemoveSongForm extends React.Component {
         // this.props.receiveSongId(songId);
         // this.props.receivePlaylistId(playlistId);
         // .then(() => 
-        this.props.removeSongFromPlaylist(this.props.playlistId, this.props.songId);
+        this.props.removeSongFromPlaylist(this.props.playlistId, this.props.songId)
+        .then(this.props.closeModal());
     }
     
     songAdd(songId) {
