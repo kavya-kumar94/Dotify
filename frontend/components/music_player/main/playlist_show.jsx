@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import ShowItem from './show_item';
 import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs, receivePlaylistId, clearPlaylistErrors } from '../../../actions/playlist_actions';
 import { connect } from 'react-redux';
-import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
+import { setCurrentSong, setQueue, toggleSong, addToQueue, clearQueue } from '../../../actions/player_actions';
 import { receiveSongId } from '../../../actions/song_actions'
 class PlaylistShow extends React.Component {
     constructor(props) {
@@ -101,8 +101,7 @@ class PlaylistShow extends React.Component {
                 </div>
                 </div>
                 <div className="error-div">
-                    {console.log(this.props.errors)}
-                <div class={classfile} role="alert">
+                <div className={classfile} role="alert">
                         {/* <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button> */}
                         {this.renderErrors()}
                     </div>
@@ -137,7 +136,8 @@ const msp = (state, ownProps) => {
         playlist: playlist,
         songs: newSongs,
         currentSong: state.ui.playStatus.currentSong,
-        errors: state.errors.playlist
+        errors: state.errors.playlist,
+        queue: state.ui.playStatus.queue
     }
 }
 
@@ -150,6 +150,7 @@ const mdp = dispatch => {
         setCurrentSong: (song) => dispatch(setCurrentSong(song)),
         toggleSong: () => (dispatch(toggleSong())),
         setQueue: (queue) => (dispatch(setQueue(queue))),
+        clearQueue: () => dispatch(clearQueue()),
         receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId)),
         clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
     }
