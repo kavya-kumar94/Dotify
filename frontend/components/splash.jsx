@@ -66,6 +66,10 @@ class Splash extends React.Component {
                     </div>
                 </div>
 
+                <div className="web">
+                    <h3><a href="kavyakumar.com" target="_blank">Developed by Kavya Kumar</a></h3>
+                </div>
+
             </div>
 
         </div>
