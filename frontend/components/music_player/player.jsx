@@ -10,7 +10,7 @@ class Player extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png",
+            love: false,
             shuffle: false,
             play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png",
             repeat: false,
@@ -47,6 +47,7 @@ class Player extends React.Component{
         this.handlePlay = this.handlePlay.bind(this);
         this.repeat = this.repeat.bind(this);
         this.shuffle = this.shuffle.bind(this);
+        this.love = this.love.bind(this);
     }
 
     componentDidMount() {
@@ -246,6 +247,10 @@ class Player extends React.Component{
         this.setState({ currentTime: position })
     }
 
+    love() {
+        this.setState({ love: !this.state.love})
+    }
+
     
     render() {
         let { presentSong, playing } = this.props;
@@ -268,7 +273,7 @@ class Player extends React.Component{
                         {/* <p className="soname">{presentSong.title}</p>
                         <p className="arname">{presentSong.artist_name}</p> */}
                     </div>
-                    <img className="love" onClick={this.state.love === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png" ? this.love : this.unlove} src={this.state.love} />
+                    <img className="love" onClick={this.love} src={this.state.love ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_filled.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"} />
                 </div>
                  <div className="center-play">
                      <div className="icons-playbar">

@@ -109,6 +109,7 @@ class AddToPlay extends React.Component {
                                 return (
                                     <div key={idx} className="playlist-link">
                                         <li onClick={this.addSong(playlist, songId)} ><img id="cover-img" src={playlist.playlist_image} /></li>
+                                        {/* <span clasName="add-on-hov"><span class="spoticon-add-to-playlist-32"></span></span> */}
                                         <li onClick={this.addSong(playlist, songId)} className="add-on-hov"><i class="fas fa-plus-circle"></i></li>
                                         <li className="p-title">{playlist.title}</li>
                                         <li className="p-creator">{playlist.creatorName}</li>
