@@ -64,6 +64,7 @@ class Player extends React.Component{
         audio.addEventListener('ended', this.end); 
         audio.addEventListener('error', this.nextSong); 
         audio.addEventListener('timeupdate', this.updateProgress); 
+        audio.addEventListener('click', this.setProgress); 
 
 
         if (audio) {
@@ -82,9 +83,9 @@ class Player extends React.Component{
     componentWillUnmount() {
         let audio = document.querySelector('#audio');
         audio.removeEventListener('ended', this.end);
-        audio.removeEventListe
-        ner('error', this.next);
+        audio.removeEventListener('error', this.next);
         audio.removeEventListener('timeupdate', this.updateProgress); 
+        audio.removeEventListener('click', this.setProgress); 
 
 
     }
