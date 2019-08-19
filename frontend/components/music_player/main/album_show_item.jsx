@@ -38,7 +38,7 @@ class AlbumShowItem extends React.Component {
 
     play() {
         this.setState({
-            noteIcon: this.props.playing === false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png",
+            noteIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_white.png",
             noteClass: "play-show3",
             addIcon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/3dots.png"
         })

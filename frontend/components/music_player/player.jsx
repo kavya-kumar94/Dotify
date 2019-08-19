@@ -19,6 +19,7 @@ class Player extends React.Component{
             time: "",
             volume: 100,
             previousVolume: 0,
+            progress: 0,
             duration: "",
             timeDuration: "",
             timePosition: "",
@@ -48,6 +49,10 @@ class Player extends React.Component{
         this.repeat = this.repeat.bind(this);
         this.shuffle = this.shuffle.bind(this);
         this.love = this.love.bind(this);
+        this.end = this.end.bind(this);
+        this.updateProgress = this.updateProgress.bind(this);
+        this.setProgress = this.setProgress.bind(this);
+
     }
 
     componentDidMount() {
@@ -56,7 +61,11 @@ class Player extends React.Component{
 
         // let min = Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`;
         // let sec = Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`;
-        
+        audio.addEventListener('ended', this.end); 
+        audio.addEventListener('error', this.nextSong); 
+        audio.addEventListener('timeupdate', this.updateProgress); 
+
+
         if (audio) {
             setInterval(() => this.setState({
                 duration: audio.duration,
@@ -70,20 +79,44 @@ class Player extends React.Component{
         }
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.presentSong !== prevProps.presentSong) {
-    //         let song = this.props.presentSong
-    //         this.setState({ presentSong: song })
-    //         this.song();
-    //     }
+    componentWillUnmount() {
+        let audio = document.querySelector('#audio');
+        audio.removeEventListener('ended', this.end);
+        audio.removeEventListe
+        ner('error', this.next);
+        audio.removeEventListener('timeupdate', this.updateProgress); 
 
-    //     if (this.state.change) {
-    //         this.song();
-    //         this.changeSong();
-    //         this.setState({ change: false })
-    //     }
 
-    // }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.presentSong.title !== prevProps.presentSong.title || this.props.queue[0].title !== prevProps.queue[0].title) {
+            
+            this.props.setCurrentSong(this.props.presentSong);
+            // this.setState({ 
+            // presentSong: this.props.presentSong
+            // })
+            this.props.setQueue(this.props.songs);
+            // this.song();
+            // debugger;
+        }
+
+        // if (this.state.change) {
+        //     this.song();
+        //     this.changeSong();
+        //     this.setState({ change: false })
+        // }
+
+    }
+
+    end() {
+        if (this.state.repeat) {
+            this.play()
+        } else {
+            this.setState({ playing: false, currentTime: "0:00" });
+            this.nextSong();
+        }
+    }
 
     handlePlay() {
         this.props.setCurrentSong(this.props.song);
@@ -251,6 +284,29 @@ class Player extends React.Component{
         this.setState({ love: !this.state.love})
     }
 
+    setProgress(e) {
+        let audio = document.querySelector('#audio');
+        let target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
+        let width = target.clientWidth;
+        let rect = target.getBoundingClientRect();
+        let offsetX = e.clientX - rect.left;
+        let duration = audio.currentTime;
+        let currentTime = (duration * offsetX) / width;
+        let progress = (currentTime * 100) / duration;
+
+        this.state.currentTime = currentTime;
+        this.setState({ progress: progress });
+        audio.play();
+    }
+
+    updateProgress() {
+        let audio = document.querySelector('#audio');
+        let duration = audio.duration;
+        let currentTime = audio.currentTime;
+        let progress = (currentTime * 100) / duration;
+
+        this.setState({ progress: progress });
+    }
     
     render() {
         let { presentSong, playing } = this.props;
@@ -284,12 +340,17 @@ class Player extends React.Component{
                         <img className="next" onClick={() => this.nextSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_white.png"/>
                         <img className="repeat" onClick={() => this.repeat()} src={this.state.repeat ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_green.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat-white.png"} />
                      </div>
+                        <div className="duration-bar">
+                            <li>{this.state.timePosition}</li>
+                            <div className="player-progress-container" onClick={this.setProgress}>
+                                <span className="player-progress-value" style={{ width: this.state.progress + '%' }}></span>
+                            </div>
+                            <li>{this.state.timeDuration}</li>
+                        </div>
 
-                     <div className="duration-bar">
-                         <li>{this.state.timePosition}</li>
+                     {/* <div className="duration-bar">
                         <input ref={this.sound} type="range" id="duration-bar" name="duration-bar" min="0" max="99" step="1" onChange={(e) => this.setTime(e.currentTarget.value)} value={this.state.currentTime} />
-                        <li>{this.state.timeDuration}</li>
-                     </div>
+                     </div> */}
                 </div>
                 <div className="right-play">
                     <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>

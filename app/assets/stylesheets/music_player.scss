@@ -434,6 +434,7 @@ img.white-browse {
     letter-spacing: .015em;
     min-width: 40px;
     text-align: center;
+    align-items: center;
     color: #b3b3b3;
 }
 
@@ -691,3 +692,23 @@ img.white-browse {
 #volume {
     width: 118px;
 }
+
+ .player-progress-container {
+      position: relative;
+      width: 465px;
+      height: 5px;
+      margin-top: 6px;
+    //   margin-left: 205px;
+      margin-bottom: 20px;
+      background-color: #414141;
+      align-items: center;
+  }
+
+   .player-progress-value {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background-color: #1DB954;
+      align-items: center;
+  }
