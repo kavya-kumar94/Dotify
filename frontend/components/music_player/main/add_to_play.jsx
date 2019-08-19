@@ -47,26 +47,6 @@ class AddToPlay extends React.Component {
         // .then(() => this.redirect());
     }
 
-
-    addSong(playlist, songId) {
-        // this.setState({
-        //     songId: songId,
-        //     playlist_id: playlist_id
-        // })
-        return (e) => {
-        // let playlistsong = { songId: songId, playlist_id: playlist_id }
-        e.preventDefault();
-        this.props.addSongToPlaylist(playlist, songId)
-            .then(() => this.props.closeModal())
-            .then(() => this.redirectToShow(playlist.id));
-
-        // .then(() => this.redirect());
-        }
-    }
-
-    redirectToShow(playlist_id) {
-        this.props.history.push(`/playlists/${playlist_id}`);
-    }
     renderErrors() {
         window.setTimeout(function () {
             $(".alert").fadeTo(500, 0).slideUp(500, function () {
@@ -84,6 +64,26 @@ class AddToPlay extends React.Component {
                 </ul>
             );
         }
+    }
+
+    addSong(playlist, songId) {
+        // this.setState({
+        //     songId: songId,
+        //     playlist_id: playlist_id
+        // })
+        return (e) => {
+        // let playlistsong = { songId: songId, playlist_id: playlist_id }
+        e.preventDefault();
+        this.props.addSongToPlaylist(playlist, songId)
+            .then(() => this.props.closeModal())
+            .then(() => this.redirectToShow(playlist.id))
+
+        // .then(() => this.redirect());
+        }
+    }
+
+    redirectToShow(playlist_id) {
+        this.props.history.push(`/playlists/${playlist_id}`);
     }
 
 
