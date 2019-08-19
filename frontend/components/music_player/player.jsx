@@ -3,7 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
-import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../actions/player_actions';
+import { setCurrentSong, setQueue, toggleSong, clearQueue, addToQueue } from '../../actions/player_actions';
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
 class Player extends React.Component{
@@ -199,6 +199,7 @@ class Player extends React.Component{
     }
 
     shuffle() {
+        this.props.clearQueue();
         let shuffled = this.random(this.props.songs.slice());
         if (!this.state.shuffle) this.props.setQueue(shuffled);
         this.setState({ shuffle: !this.state.shuffle });
@@ -316,7 +317,8 @@ class Player extends React.Component{
         return {
             setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
             toggleSong: () => (dispatch(toggleSong())),
-            setQueue: (queue) => (dispatch(setQueue(queue)))
+            setQueue: (queue) => (dispatch(setQueue(queue))),
+            clearQueue: () => dispatch(clearQueue())
         // playCurrentSong: (status) => dispatch(playCurrentSong(status)),
         // updatePlayStatus: (status) => dispatch(updatePlayStatus(status)),
         // receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),

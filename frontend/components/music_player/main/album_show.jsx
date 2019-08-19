@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchAlbum } from '../../../actions/album_actions';
 import { NavLink } from 'react-router-dom';
 import AlbumShowItem from './album_show_item';
+import { clearPlaylistSongs } from '../../../actions/song_actions';
 import { setCurrentSong, setQueue, toggleSong, addToQueue } from '../../../actions/player_actions';
 import { clearPlaylistErrors } from '../../../actions/playlist_actions';
 
@@ -37,6 +38,7 @@ class AlbumShow extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearPlaylistSongs();
         this.props.fetchAlbum(this.props.match.params.albumId);
     }
 
@@ -109,7 +111,8 @@ const mdp = dispatch => {
         setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
         toggleSong: () => (dispatch(toggleSong())),
         setQueue: (queue) => (dispatch(setQueue(queue))),
-        clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
+        clearPlaylistErrors: () => dispatch(clearPlaylistErrors()),
+        clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
     }
 }
 

@@ -7,6 +7,8 @@ export const CLEAR_CURRENT_SONG = "CLEAR_CURRENT_SONG";
 export const SET_CURRENT_SONG = 'SET_CURRENT_SONG';
 export const TOGGLE_SONG = 'TOGGLE_SONG';
 export const SET_QUEUE = 'SET_QUEUE';
+export const CLEAR_QUEUE = 'CLEAR_QUEUE';
+
 export const ADD_TO_QUEUE = 'ADD_TO_QUEUE';
 export const TOGGLE_SHUFFLE = 'TOGGLE_SHUFFLE';
 
@@ -55,6 +57,10 @@ export const toggleSong = () => ({
 export const setQueue = (queue) => ({
     type: SET_QUEUE,
     queue
+})
+
+export const clearQueue = () => ({
+    type: CLEAR_QUEUE,
 })
 
 export const addToQueue = (song) => ({

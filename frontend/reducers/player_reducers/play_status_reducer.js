@@ -9,6 +9,7 @@ import {
     TOGGLE_SONG,
     SET_QUEUE,
     ADD_TO_QUEUE,
+    CLEAR_QUEUE,
     TOGGLE_SHUFFLE
 } from '../../actions/player_actions';
 
@@ -49,6 +50,9 @@ const musicControlReducer = (state = nullState, action) => {
             return newState;
         case SET_QUEUE:
             newState.queue = action.queue;
+            return newState;
+        case CLEAR_QUEUE:
+            newState.queue = [];
             return newState;
         case ADD_TO_QUEUE:
             newState.queue.push(action.song);

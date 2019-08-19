@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchArtist } from '../../../actions/artist_actions'
+import { clearPlaylistSongs } from '../../../actions/song_actions'
 import { setCurrentSong } from '../../../actions/player_actions'
 import { NavLink } from 'react-router-dom'
 import ArtistShowItem from './artist_show_item';
@@ -10,6 +11,7 @@ class ArtistShow extends React.Component {
     }
 
     componentDidMount() {
+        this.props.clearPlaylistSongs();
         this.props.fetchArtist(this.props.match.params.artistId);
     }
 
@@ -77,7 +79,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
     return {
         fetchArtist: (artistId) => dispatch(fetchArtist(artistId)),
-        setCurrentSong: (song) => dispatch(setCurrentSong(song))
+        setCurrentSong: (song) => dispatch(setCurrentSong(song)),
+        clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
     }
 }
 
