@@ -234,7 +234,7 @@ class Player extends React.Component{
     }
 
     shuffle() {
-        this.props.clearQueue();
+        // this.props.clearQueue();
         let shuffled = this.random(this.props.songs.slice());
         if (!this.state.shuffle) this.props.setQueue(shuffled);
         this.setState({ shuffle: !this.state.shuffle });
@@ -295,7 +295,7 @@ class Player extends React.Component{
         let currentTime = (duration * offsetX) / width;
         let progress = (currentTime * 100) / duration;
 
-        this.state.currentTime = currentTime;
+        audio.currentTime = currentTime;
         this.setState({ progress: progress });
         audio.play();
     }
