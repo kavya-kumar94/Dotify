@@ -292,7 +292,7 @@ class Player extends React.Component{
         let width = target.clientWidth;
         let rect = target.getBoundingClientRect();
         let offsetX = e.clientX - rect.left;
-        let duration = audio.currentTime;
+        let duration = audio.duration;
         let currentTime = (duration * offsetX) / width;
         let progress = (currentTime * 100) / duration;
 
