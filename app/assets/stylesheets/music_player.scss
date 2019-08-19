@@ -479,6 +479,11 @@ img.white-browse {
     margin: auto;
     margin-left: 11px;
     margin-right: 11px;
+    opacity: 0.6;
+}
+
+.center-play .shuffle:hover {
+    opacity: 1;
 }
 
 .center-play .repeat {
@@ -487,6 +492,11 @@ img.white-browse {
     margin: auto;
     margin-left: 11px;
     margin-right: 11px;
+    opacity: 0.6;
+}
+
+.center-play .repeat:hover {
+    opacity: 1;
 }
 
 .left-play img {
