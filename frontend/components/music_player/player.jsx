@@ -91,13 +91,14 @@ class Player extends React.Component{
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.presentSong.title !== prevProps.presentSong.title || this.props.queue[0].title !== prevProps.queue[0].title) {
+        if (this.props.presentSong.title !== prevProps.presentSong.title) {
+        // if (this.props.presentSong.title !== prevProps.presentSong.title || this.props.queue[0].title !== prevProps.queue[0].title) {
             
             this.props.setCurrentSong(this.props.presentSong);
             // this.setState({ 
             // presentSong: this.props.presentSong
             // })
-            this.props.setQueue(this.props.songs);
+            // this.props.setQueue(this.props.songs);
             // this.song();
             // debugger;
         }
@@ -234,7 +235,7 @@ class Player extends React.Component{
     }
 
     shuffle() {
-        // this.props.clearQueue();
+        this.props.clearQueue();
         let shuffled = this.random(this.props.songs.slice());
         if (!this.state.shuffle) this.props.setQueue(shuffled);
         this.setState({ shuffle: !this.state.shuffle });
