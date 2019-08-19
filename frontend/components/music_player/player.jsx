@@ -11,7 +11,7 @@ class Player extends React.Component{
         super(props);
         this.state = {
             love: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png",
-            shuffle: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png",
+            shuffle: false,
             play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png",
             repeat: false,
             volume_icon: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/volume_grey.png",
@@ -27,6 +27,8 @@ class Player extends React.Component{
             presentSong: this.props.presentSong,
             change: false,
             duration: "",
+            songs: this.props.songs,
+            active: this.props.presentSong
         }
 
 
@@ -44,6 +46,7 @@ class Player extends React.Component{
         this.songTime = this.songTime.bind(this);
         this.handlePlay = this.handlePlay.bind(this);
         this.repeat = this.repeat.bind(this);
+        this.shuffle = this.shuffle.bind(this);
     }
 
     componentDidMount() {
@@ -111,61 +114,94 @@ class Player extends React.Component{
     }
 
     previousSong() {
-        let { songs, presentSong } = this.props;
+        let { songs, presentSong, queue } = this.props;
         // let audio = document.getElementById('audio');
-        let titles = songs.map(song => song.title);
+        let a;
+        if(this.state.shuffle) {
+            a = queue;
+        } else {
+            a = songs;
+        }
+        let titles = a.map(a1 => a1.title);
         let title = presentSong.title;
         let nums;
         if(titles.indexOf(title) === 0 ) {
             this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title)) : (titles.length - 1)})
-            nums = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.length - 1)]);
+            nums = (this.state.repeat) ? (a[titles.indexOf(title) % a.length]) : (a[(titles.length - 1)]);
             this.props.setCurrentSong(nums);
             if (this.props.playing === false) {
                 this.props.toggleSong();
             }
         } else {
-        // if (this.state.currentSong) {
-            this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) - 1 % songs.length)})
-            nums =  (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) - 1) % songs.length]);
-            // this.setState({ currentSong: index === -1 ? songs.length - 1 : (index-1), playing: false, change: true, presentSong: songs[this.state.currentSong - 1]});
+            this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % a.length) : (titles.indexOf(title) - 1 % a.length)})
+            nums =  (this.state.repeat) ? (a[titles.indexOf(title) % a.length]) : (a[(titles.indexOf(title) - 1) % a.length]);
         this.props.setCurrentSong(nums);
             if(this.props.playing === false) {
                 this.props.toggleSong();
             }
         }
-            // debugger;
+        // let titles = songs.map(song => song.title);
+        // let title = presentSong.title;
+        // let nums;
+        // if(titles.indexOf(title) === 0 ) {
+        //     this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title)) : (titles.length - 1)})
+        //     nums = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.length - 1)]);
+        //     this.props.setCurrentSong(nums);
+        //     if (this.props.playing === false) {
+        //         this.props.toggleSong();
+        //     }
         // } else {
-        //     this.setState({ currentSong: this.state.currentSong === 0 ? songs.length - 1 : (this.state.currentSong - 1) % songs.length, presentSong: songs[this.state.currentSong - 1] });
-        //     this.props.setCurrentSong(songs[this.state.currentSong]);
+        //     this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) - 1 % songs.length)})
+        //     nums =  (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) - 1) % songs.length]);
+        // this.props.setCurrentSong(nums);
+        //     if(this.props.playing === false) {
+        //         this.props.toggleSong();
+        //     }
         // }
     }
 
 
     nextSong() {
-        let { songs, presentSong } = this.props;
-        let titles = songs.map(song => song.title);
+        let { songs, presentSong, queue } = this.props;
+        let b;
+        if (this.state.shuffle) {
+            b = queue;
+        } else {
+            b = songs;
+        }
+        let titles = b.map(b1 => b1.title);
         let title = presentSong.title;
-        this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) + 1% songs.length) });
+        this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % b.length) : (titles.indexOf(title) + 1% b.length) });
         let number;
-        number = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) + 1) % songs.length]);
+        number = (this.state.repeat) ? (b[titles.indexOf(title) % b.length]) : (b[(titles.indexOf(title) + 1) % b.length]);
         this.props.setCurrentSong(number);
         if (this.props.playing === false) {
             this.props.toggleSong();
         }
-        // if (this.state.currentSong === 0 || this.state.currentSong === 1) {
-        //     let index = songs.indexOf(presentSong)
-        //     this.setState({ currentSong: (index + 1) % songs.length, playing: false, change: true, presentSong: songs[this.state.currentSong+1] });
-        //     this.props.setCurrentSong(songs[this.state.currentSong + 1]);
-        // } else {
-        //     let index = songs.indexOf(presentSong) + 1
-        //     this.setState({ currentSong: (index + 1) % songs.length, playing: true, presentSong: songs[this.state.currentSong +1] });
-        //     this.props.setCurrentSong(songs[this.state.currentSong]);
-        // }
-        // debugger;
     }
 
     repeat() {
         this.setState({ repeat: !this.state.repeat });
+    }
+
+    random(array) {
+        var currentIndex = array.length,
+            temporaryValue,
+            randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+    shuffle() {
+        let shuffled = this.random(this.props.songs.slice());
+        if (!this.state.shuffle) this.props.setQueue(shuffled);
+        this.setState({ shuffle: !this.state.shuffle });
     }
 
 
@@ -235,12 +271,12 @@ class Player extends React.Component{
                 </div>
                  <div className="center-play">
                      <div className="icons-playbar">
-                        <img className="shuffle" onClick={this.state.shuffle === "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_grey.png" ? this.unshuffle : this.shuffle} src={this.state.shuffle} />
+                        <img className="shuffle" onClick={() => this.shuffle()} src={this.state.shuffle ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_green.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/shuffle_white.png"} />
                         <img className="prev" onClick={() => this.previousSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/prev_white.png"/>
                         <img className="play" onClick={() => this.song()} src={icon}/>
                         <img src="" className="play-hov" />
                         <img className="next" onClick={() => this.nextSong()} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/next_white.png"/>
-                        <img className="repeat" onClick={this.repeat} src={this.state.repeat ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_green.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat-white.png"} />
+                        <img className="repeat" onClick={() => this.repeat()} src={this.state.repeat ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat_green.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/repeat-white.png"} />
                      </div>
 
                      <div className="duration-bar">
@@ -270,7 +306,9 @@ class Player extends React.Component{
         return {
             songs,
             presentSong: state.ui.playStatus.currentSong,
-            playing: state.ui.playStatus.playing
+            playing: state.ui.playStatus.playing,
+            shuffle: state.ui.playStatus.shuffle,
+            queue: state.ui.playStatus.queue
         }
     }
 
