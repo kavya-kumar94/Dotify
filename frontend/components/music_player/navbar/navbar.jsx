@@ -40,7 +40,12 @@ class Navbar extends React.Component {
         let playlistsNew = allPlaylists.map((playlist, idx) => {
             return (
                 <div key={idx} className="">
-                    <li activeClassName="newactive"><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
+                    <NavLink className="inactive" activeClassName="active" to={`/playlists/${playlist.id}`}>
+                    <div className="play-titles">
+                        {playlist.title}
+                    </div>
+                    </NavLink>
+                    
                 </div>
             )
         })
