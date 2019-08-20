@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { openModal,closeModal } from '../../../actions/modal_actions';
-import { createPlaylist, fetchPlaylists, addSongToPlaylist, clearPlaylistErrors } from '../../../actions/playlist_actions';
+import { createPlaylist, fetchPlaylists, addSongToPlaylist, clearPlaylistErrors, clearPlaylistSongs } from '../../../actions/playlist_actions';
 import { receiveSongId } from '../../../actions/song_actions';
 import { NavLink, Link } from 'react-router-dom';
 
@@ -77,6 +77,7 @@ class AddToPlay extends React.Component {
         this.props.addSongToPlaylist(playlist, songId)
             .then(() => this.props.closeModal())
             .then(() => this.redirectToShow(playlist.id))
+            .then(()=> this.props.clearPlaylistSongs())
 
         // .then(() => this.redirect());
         }
@@ -167,6 +168,7 @@ const mdp = (dispatch) => ({
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
     clearPlaylistErrors: () => dispatch(clearPlaylistErrors()),
+    clearPlaylistSongs: () => dispatch(clearPlaylistSongs()),
     addSongToPlaylist: (playlist, songId) => dispatch(addSongToPlaylist(playlist, songId)),
 
 })

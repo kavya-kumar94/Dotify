@@ -344,6 +344,7 @@
   margin-left: 100px;
   align-items: center;
   text-align: center;
+  // width: 100vw;
 }
 
 .div-margin {
@@ -374,7 +375,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 600px;
+  // width: 600px;
+  width: 1200px;
   font-family: "Circular";
   font-size: 16px;
   color: #b3b3b3;
@@ -454,7 +456,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 600px;
+  // width: 600px;
+  width: 1200px;
   font-family: "Circular";
   font-size: 16px;
   color: #b3b3b3;
@@ -594,4 +597,4 @@
     color:white;
   }
 
- 
+//  .song-list 
