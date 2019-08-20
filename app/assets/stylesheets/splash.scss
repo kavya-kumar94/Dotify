@@ -110,3 +110,13 @@
       position: absolute;
       right: 3%;
     }
+
+    .web h3 a {
+      color: white;
+      transition: all .2s ease-in-out;
+      
+    }
+    .web h3 a:hover {
+      color: orange;
+      transform: scale(1.1);
+    }
