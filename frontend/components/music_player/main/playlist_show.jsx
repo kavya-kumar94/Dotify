@@ -59,7 +59,7 @@ class PlaylistShow extends React.Component {
 
 
     redirectPlaylists() {
-        this.props.deletePlaylist(this.props.playlist.id).then(this.props.history.push('/library/playlists'))
+        this.props.deletePlaylist(this.props.playlist.id).then(() => this.props.history.push('/library/playlists'))
     }
 
     render() {
