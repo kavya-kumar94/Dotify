@@ -44,7 +44,7 @@ class AddSongForm extends React.Component {
         let { closeModal, openModal, songId } = this.props;
 
         return (
-            <div style={{ display: 'inline-block' }} className="contextMenu">
+            <div style={{ display: 'inline-block', position: 'relative', top: '0', bottom: '0', left: '0', right: '0' }} className="contextMenu">
                 {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
                     <h1 onClick={() => this.songAdd(songId)}>Add to Playlist</h1>
