@@ -425,6 +425,7 @@ img.white-browse {
 .duration-bar {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 .duration-bar li{
     list-style: none;
@@ -446,6 +447,7 @@ img.white-browse {
     margin-right: 11px;
     opacity: 0.6;
     transition: opacity .2s linear;
+    cursor: pointer;
 }
 
 .center-play .play:hover {
@@ -461,6 +463,7 @@ img.white-browse {
     margin-left: 11px;
     margin-right: 11px;
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .center-play .prev:hover {
@@ -478,6 +481,7 @@ img.white-browse {
     margin-left: 11px;
     margin-right: 11px;
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .center-play .shuffle {
@@ -487,6 +491,7 @@ img.white-browse {
     margin-left: 11px;
     margin-right: 11px;
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .center-play .shuffle:hover {
@@ -500,6 +505,7 @@ img.white-browse {
     margin-left: 11px;
     margin-right: 11px;
     opacity: 0.6;
+    cursor: pointer;
 }
 
 .center-play .repeat:hover {
@@ -702,6 +708,7 @@ img.white-browse {
       margin-bottom: 20px;
       background-color: #414141;
       align-items: center;
+      cursor: pointer;
   }
 
    .player-progress-value {
@@ -711,4 +718,5 @@ img.white-browse {
       bottom: 0;
       background-color: #1DB954;
       align-items: center;
+      cursor: pointer;
   }
