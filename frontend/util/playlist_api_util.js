@@ -5,6 +5,13 @@ export const fetchPlaylists = () => {
   });
 };
 
+export const fetchAllPlaylists = () => {
+  return $.ajax({
+    method: "GET",
+    url: "/api/playlists",
+  });
+};
+
 export const fetchPlaylist = (playlistId) => {
   return $.ajax({
     method: "GET",

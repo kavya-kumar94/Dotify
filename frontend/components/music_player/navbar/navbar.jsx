@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchPlaylists } from '../../../actions/playlist_actions';
+import { fetchAllPlaylists } from '../../../actions/all_playlists_actions';
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -9,9 +9,9 @@ class Navbar extends React.Component {
     }
 
     componentDidMount() {
-        if(this.props.playlists.length === 0) {
-            this.props.fetchPlaylists();
-        }
+        // if(this.props.playlists.length === 0) {
+            this.props.fetchAllPlaylists();
+        // }
     }
 
     logoutUser() {
@@ -20,7 +20,7 @@ class Navbar extends React.Component {
 
     render() {
         const { currentUser } = this.props;
-        let { playlists = {} } = this.props;
+        let { allPlaylists } = this.props;
 
         const showUser = currentUser ? (
             <div className="user-nav">
@@ -37,7 +37,7 @@ class Navbar extends React.Component {
                 null
             );
 
-        let playlistsNew = playlists.map((playlist, idx) => {
+        let playlistsNew = allPlaylists.map((playlist, idx) => {
             return (
                 <div key={idx} className="">
                     <li activeClassName="newactive"><NavLink to={`/playlists/${playlist.id}`}>{playlist.title}</NavLink></li>
@@ -100,14 +100,14 @@ class Navbar extends React.Component {
 
 const msp = state => {
     return {
-        playlists: Object.values(state.entities.playlists)
+        allPlaylists: Object.values(state.entities.allPlaylists)
     }
 }
 
 
 const mdp = dispatch => {
     return {
-        fetchPlaylists: () => dispatch(fetchPlaylists())
+        fetchAllPlaylists: () => dispatch(fetchAllPlaylists())
     }
 }
 
