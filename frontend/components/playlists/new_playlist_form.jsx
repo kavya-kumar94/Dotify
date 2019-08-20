@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import { createPlaylist, clearPlaylistErrors } from '../../actions/playlist_actions';
+import {fetchAllPlaylists } from '../../actions/all_playlists_actions';
 
 class NewPlaylistForm extends React.Component {
     constructor(props) {
@@ -32,7 +33,8 @@ class NewPlaylistForm extends React.Component {
         let playlist = this.state;
         // this.setState({ title: '' });
         this.props.createPlaylist(playlist)
-            .then(this.props.closeModal);
+            .then(this.props.closeModal)
+            .then(this.props.fetchAllPlaylists);
             // .then(() => this.redirect());
     }
 
@@ -89,7 +91,8 @@ class NewPlaylistForm extends React.Component {
 const msp = (state) => {
     return{
         last_playlist: state.entities.playlists[Object.keys(state.entities.playlists).length-1],
-        errors: state.errors.playlist
+        errors: state.errors.playlist,
+        allPlaylists: state.entities.allPlaylists
     }
 };
 
@@ -97,7 +100,8 @@ const msp = (state) => {
 const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     createPlaylist: (playlist) => dispatch(createPlaylist(playlist)),
-    clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
+    clearPlaylistErrors: () => dispatch(clearPlaylistErrors()),
+    fetchAllPlaylists: ()=> dispatch(fetchAllPlaylists())
 })
 
 export default withRouter(connect(msp, mdp)(NewPlaylistForm));

@@ -15,12 +15,12 @@ class Navbar extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // let current = this.props.allPlaylists[this.props.allPlaylists.length - 1]
-        // let previous = prevProps.allPlaylists[prevProps.allPlaylists.length - 1]
-        // if (current !== undefined && previous !== undefined
-        //     && current.id !== previous.id) {
-            // this.props.fetchAllPlaylists();
-        // }
+        let current = this.props.allPlaylists[this.props.allPlaylists.length - 1]
+        let previous = prevProps.allPlaylists[prevProps.allPlaylists.length - 1]
+        if (current !== undefined && previous !== undefined
+            && current.id !== previous.id) {
+            this.props.fetchAllPlaylists();
+        }
         // debugger;
         // if(this.props.allPlaylists !== prevProps.allPlaylists) {
         //     this.props.fetchAllPlaylists();

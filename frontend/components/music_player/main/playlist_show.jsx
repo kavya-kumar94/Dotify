@@ -5,6 +5,7 @@ import { fetchPlaylist, deletePlaylist, fetchPlaylistSongs, clearPlaylistSongs, 
 import { connect } from 'react-redux';
 import { setCurrentSong, setQueue, toggleSong, addToQueue, clearQueue } from '../../../actions/player_actions';
 import { receiveSongId } from '../../../actions/song_actions'
+import { fetchAllPlaylists } from '../../../actions/all_playlists_actions';
 class PlaylistShow extends React.Component {
     constructor(props) {
         super(props);
@@ -59,7 +60,9 @@ class PlaylistShow extends React.Component {
 
 
     redirectPlaylists() {
-        this.props.deletePlaylist(this.props.playlist.id).then(() => this.props.history.push('/library/playlists'))
+        this.props.deletePlaylist(this.props.playlist.id)
+        .then(()=> this.props.fetchAllPlaylists())
+        .then(() => this.props.history.push('/library/playlists'))
     }
 
     render() {
@@ -137,7 +140,8 @@ const msp = (state, ownProps) => {
         songs: newSongs,
         currentSong: state.ui.playStatus.currentSong,
         errors: state.errors.playlist,
-        queue: state.ui.playStatus.queue
+        queue: state.ui.playStatus.queue,
+        allPlaylists: state.entities.allPlaylists
     }
 }
 
@@ -152,7 +156,8 @@ const mdp = dispatch => {
         setQueue: (queue) => (dispatch(setQueue(queue))),
         clearQueue: () => dispatch(clearQueue()),
         receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId)),
-        clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
+        clearPlaylistErrors: () => dispatch(clearPlaylistErrors()),
+        fetchAllPlaylists: () => dispatch(fetchAllPlaylists())
     }
 }
 
