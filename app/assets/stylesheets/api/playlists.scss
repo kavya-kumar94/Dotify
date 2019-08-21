@@ -375,8 +375,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // width: 600px;
-  width: 1200px;
+  width: 600px;
+  // width: 1200px;
   font-family: "Circular";
   font-size: 16px;
   color: #b3b3b3;
@@ -457,7 +457,7 @@
   flex-direction: row;
   justify-content: space-between;
   // width: 600px;
-  width: 1200px;
+  width: 600px;
   font-family: "Circular";
   font-size: 16px;
   color: #b3b3b3;
@@ -598,3 +598,26 @@
   }
 
 //  .song-list 
+
+// @media only screen   
+// and (min-width: 1370px)  
+// and (max-width: 1605px) {
+//   .playsongs {
+//     width: 1200px;
+//   }
+
+//   .play-show3 {
+//     width: 1200px;
+//   }
+// }
+
+@media (min-width: 1370px) {
+    .playsongs {
+      width: 1200px;
+    }
+  
+    .play-show3 {
+      width: 1200px;
+    }
+}
+
