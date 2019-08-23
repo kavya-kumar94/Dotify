@@ -46,6 +46,7 @@ class AlbumShowItem extends React.Component {
 
     handlePlay() {
         let audio = document.querySelector("#audio");
+        this.props.setCurrentSong(this.props.song);
         this.props.toggleSong();
         audio.play();
         // this.props.setQueue(this.props.queue);
@@ -53,7 +54,7 @@ class AlbumShowItem extends React.Component {
     
     song() {
         let audio = document.getElementById('audio');
-        console.log(this.props.playing);
+        // console.log(this.props.playing);
         
         if (this.props.playing === false) {
             var playPromise = audio.play();

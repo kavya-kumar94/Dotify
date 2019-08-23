@@ -134,15 +134,15 @@ class Player extends React.Component{
     song() {
         let audio = document.getElementById('audio');
         if (this.props.playing === false) {
-            audio.play();
-            this.props.toggleSong();
+            audio.play()
+            this.props.toggleSong()
             this.setState({
                 playing: true,
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
             })
         } else if (this.props.playing === true) {
-            audio.pause();
-            this.props.toggleSong();
+            audio.pause()
+            this.props.toggleSong()
             this.setState({ playing: false, 
                 // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
             })
