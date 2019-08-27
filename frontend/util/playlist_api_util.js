@@ -5,6 +5,7 @@ export const fetchPlaylists = () => {
   });
 };
 
+
 export const fetchAllPlaylists = () => {
   return $.ajax({
     method: "GET",
