@@ -48,6 +48,7 @@ export const receivePlaylistErrors = (errors) => {
         errors
     }
 }
+
 export const deleteSongFromPlaylist = (playlistId, songId) => {
     return {
         type: REMOVE_SONG_FROM_PLAYLIST,

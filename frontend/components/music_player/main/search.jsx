@@ -8,15 +8,25 @@ class Search extends React.Component {
         super(props);
         this.state = {
             input: "",
-            // artists: {},
-            // albums: {},
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.onKeyPressed = this.onKeyPressed.bind(this);
     }
 
     componentDidMount() {
         this.props.clearSearch();
+        document.addEventListener("keydown", this.onKeyPressed.bind(this));
+
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.onKeyPressed.bind(this));
+    }
+
+    onKeyPressed(e) {
+        this.props.fetchSearchResults(this.state)
+        // console.log(e.keyCode);
     }
 
     handleKeyPress(e) {
@@ -92,7 +102,14 @@ class Search extends React.Component {
             </div>
         ) : null;
 
+        
 
+
+        let res = (resultArtists === null && resultAlbums === null && this.state.input !== "") ? `No results found for "${this.state.input}".` : "Search Dotify."
+        let res2 = (resultArtists === null && resultAlbums === null && this.state.input !== "") ? "Please make sure your words are spelled correctly or use less or different keywords." : "Find your favorite artists and albums."
+            
+               
+        
 
         const displayResults = ( resultArtists || resultAlbums ) ? (
                 <div className="search-results">
@@ -103,16 +120,19 @@ class Search extends React.Component {
                     </div>
                 </div>
     
-        ) : (
-                    <div className="search-content">
-                        <div className="search-content-container">
-                            <div className="no-search">
-                                <h1>Search Dotify.</h1>
-                            <h3>Find your favorite artists and albums.</h3>
-                            </div>
-                        </div>
-                    </div>
+        ) : (<div className="search-content">
+            <div className="search-content-container">
+                <div className="no-search">
+                    <h1>{res}</h1>
+                    <h3>{res2}</h3>
+                    {/* <h1>Search Dotify.</h1>
+                    <h3>Find your favorite artists and albums.</h3> */}
+                </div>
+            </div>
+        </div>
             )
+        
+        
         return (
                 <div className="search">
                     <div className="search-header">
@@ -123,8 +143,11 @@ class Search extends React.Component {
                                     id="searchinputbox"
                                     className="SearchInputBox"
                                     placeholder="Start typing..."
-                                    onKeyPress={this.handleKeyPress}
-                                    onChange={this.handleChange} />
+                                    onChange={this.handleChange}
+                                    onKeyDown={this.onKeyPressed}
+                                    tabIndex="0"
+                                    // onKeyPress={this.handleKeyPress} 
+                                    />
                             </div>
                         </div>
                     </div>
