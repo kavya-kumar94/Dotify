@@ -10,36 +10,44 @@ class Search extends React.Component {
             input: "",
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
+        // this.handleKeyPress = this.handleKeyPress.bind(this);
         this.onKeyPressed = this.onKeyPressed.bind(this);
     }
 
     componentDidMount() {
         this.props.clearSearch();
         document.addEventListener("keydown", this.onKeyPressed.bind(this));
-
     }
 
     componentWillUnmount() {
         document.removeEventListener("keydown", this.onKeyPressed.bind(this));
-    }
+    }  
 
     onKeyPressed(e) {
+        console.log(e.keyCode);
         this.props.fetchSearchResults(this.state)
-        // console.log(e.keyCode);
     }
 
-    handleKeyPress(e) {
-        if (e.key === 'Enter') {
-            this.props.fetchSearchResults(this.state)
-        }
-    }
+    // handleKeyPress(e) {
+    //     if (e.key === 'Enter') {
+    //         this.props.fetchSearchResults(this.state)
+    //     }
+    // }
+
+
+    // update(field) {
+    //     return e => {
+    //         this.setState({
+    //             [field]: e.target.value
+    //         });
+    //         this.props.fetchSearchResults(e.target.value)
+    //     };
+    // }
 
     handleChange(e) {
-        // const {  search } = this.state;
-
         this.setState({ input: e.target.value });
     }
+
 
     render() {
         let { artists, albums } = this.props;
@@ -106,6 +114,8 @@ class Search extends React.Component {
 
 
         let res = (resultArtists === null && resultAlbums === null && this.state.input !== "") ? `No results found for "${this.state.input}".` : "Search Dotify."
+        // let res = (this.state.input !== "" && this.state.searchres === true) ? `No results found for "${this.state.input}".` : "Search Dotify."
+        // let res2 = (this.state.input !== "" && this.state.searchres === true) ? "Please make sure your words are spelled correctly or use less or different keywords." : "Find your favorite artists and albums."
         let res2 = (resultArtists === null && resultAlbums === null && this.state.input !== "") ? "Please make sure your words are spelled correctly or use less or different keywords." : "Find your favorite artists and albums."
             
                
@@ -143,6 +153,7 @@ class Search extends React.Component {
                                     id="searchinputbox"
                                     className="SearchInputBox"
                                     placeholder="Start typing..."
+                                    // onChange={this.update("input")}
                                     onChange={this.handleChange}
                                     onKeyDown={this.onKeyPressed}
                                     tabIndex="0"
@@ -164,7 +175,7 @@ class Search extends React.Component {
 const msp = (state) => {
     return {
         artists: state.ui.search.artists ? Object.values(state.ui.search.artists) : [],
-        albums: state.ui.search.albums ? Object.values(state.ui.search.albums) : []
+        albums: state.ui.search.albums ? Object.values(state.ui.search.albums) : [],
         // artists: Object.values(state.entities.artists),
         // albums: Object.values(state.entities.albums),
         // songs: Object.values(state.entities.songs)
