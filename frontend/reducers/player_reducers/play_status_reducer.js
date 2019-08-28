@@ -22,7 +22,7 @@ const nullState = {
         album_image: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.jpg",
         artist_name: "Travis Scott"
     },
-    playing: true,
+    playing: false,
     queue: [{
         audio: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3",
         title: "SICKO MODE",

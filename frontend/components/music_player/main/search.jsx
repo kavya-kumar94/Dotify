@@ -15,7 +15,6 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        this.props.clearSearch();
         document.addEventListener("keydown", this.onKeyPressed.bind(this));
     }
 
@@ -25,6 +24,7 @@ class Search extends React.Component {
 
     onKeyPressed(e) {
         console.log(e.keyCode);
+        this.props.clearSearch();
         this.props.fetchSearchResults(this.state)
     }
 
