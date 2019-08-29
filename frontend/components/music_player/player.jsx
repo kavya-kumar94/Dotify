@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faHeart, faPlay, faStepForward, faStepBackward, faVolumeMute, faVolumeUp, faPause } from '@fortawesome/free-solid-svg-icons'
 import { setCurrentSong, setQueue, toggleSong, clearQueue, addToQueue } from '../../actions/player_actions';
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
@@ -131,24 +129,6 @@ class Player extends React.Component{
         this.props.setCurrentSong(this.props.presentSong);
     }
 
-    song() {
-        let audio = document.getElementById('audio');
-        if (this.props.playing === false) {
-            audio.play()
-            this.props.toggleSong()
-            this.setState({
-                playing: true,
-                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png"
-            })
-        } else if (this.props.playing === true) {
-            audio.pause()
-            this.props.toggleSong()
-            this.setState({ playing: false, 
-                // play: "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png"
-            })
-        }
-    }
-
     previousSong() {
         let { songs, presentSong, queue } = this.props;
         // let audio = document.getElementById('audio');
@@ -248,7 +228,6 @@ class Player extends React.Component{
     }
 
     setVolume(vol) {
-        // this.sound.volume = (vol/100);
         let audio = document.getElementById('audio');
         audio.volume = (vol/100);
         this.setState({ volume: vol });
@@ -268,17 +247,14 @@ class Player extends React.Component{
             this.setState({ previousVolume: audio.volume , volume: 0
              })
              audio.volume = 0;
-            // this.state.volume = 0
         } else {
             audio.volume = this.state.previousVolume;
             this.setState({ volume: this.state.previousVolume *100  });
-            // this.state.volume = this.state.previousVolume
         }
     }
 
 
     setTime(position) {
-        // this.state.currentTime = position;
         this.setState({ currentTime: position })
     }
 
@@ -309,27 +285,37 @@ class Player extends React.Component{
 
         this.setState({ progress: progress });
     }
+
+    song() {
+        let audio = document.getElementById('audio');
+        if (this.props.playing === false) {
+            audio.play()
+            this.props.toggleSong()
+            this.setState({
+                playing: true,
+            })
+        } else if (this.props.playing === true) {
+            audio.pause()
+            this.props.toggleSong()
+            this.setState({
+                playing: false,
+            })
+        }
+    }
     
     render() {
         let { presentSong, playing } = this.props;
         let audio = document.querySelector('#audio');
         let audiopause = audio !== null ? audio.paused : null;
         let icon = audiopause == false ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_white.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_circle_white.png";
-        // let icon = playing === true ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/pause_grey.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/play_grey.png";
         return (
             <div className="player-div">
                 <audio id="audio" volume={this.state.volume} src={presentSong.audio} autoPlay></audio>
-                {/* <audio id="audio" volume={this.state.volume} src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/2-04%2BNice%2BFor%2BWhat.mp3"></audio> */}
-                {/* <div className="track">
-                </div> */}
                 <div className="left-play">
                     <img src={presentSong.album_image} id="track_img"/>
                     <div className="texts">
-                        {/* <p className="soname">{presentSong.title}</p> */}
                         <p className="soname">{presentSong.title}</p>
                         <p className="arname">{presentSong.artist_name}</p>
-                        {/* <p className="soname">{presentSong.title}</p>
-                        <p className="arname">{presentSong.artist_name}</p> */}
                     </div>
                     <img className="love" onClick={this.love} src={this.state.love ? "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_filled.png" : "https://dotify-app-dev.s3-us-west-1.amazonaws.com/love_empty.png"} />
                 </div>
@@ -349,21 +335,12 @@ class Player extends React.Component{
                             </div>
                             <li>{this.state.timeDuration}</li>
                         </div>
-
-                     {/* <div className="duration-bar">
-                        <input ref={this.sound} type="range" id="duration-bar" name="duration-bar" min="0" max="99" step="1" onChange={(e) => this.setTime(e.currentTarget.value)} value={this.state.currentTime} />
-                     </div> */}
                 </div>
                 <div className="right-play">
                     <img className="playlist" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/playlist-grey.png"/>
                     {this.state.volume > 0 ? <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-up"></i> : <i ref={this.sound} onClick={() => this.toggleMute()} className="fas fa-volume-mute"></i>}
                     <input ref={this.sound} type="range" id="volume" name="volume" min="0" max="99" step="1" className="progress-bar-input" value={this.state.volume} onChange={(e) => this.setVolume(e.currentTarget.value)} />
                 </div>  
-                {/* < ReactAudioPlayer className="aud"
-                    src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/03.%2BSICKO%2BMODE.mp3"
-                    autoPlay
-                    controls
-                /> */}
             </div>
         )
     }
@@ -387,11 +364,6 @@ class Player extends React.Component{
             toggleSong: () => (dispatch(toggleSong())),
             setQueue: (queue) => (dispatch(setQueue(queue))),
             clearQueue: () => dispatch(clearQueue())
-        // playCurrentSong: (status) => dispatch(playCurrentSong(status)),
-        // updatePlayStatus: (status) => dispatch(updatePlayStatus(status)),
-        // receiveCurrentSongId: (song) => dispatch(receiveCurrentSongId(song)),
-        // clearCurrentSong: () => dispatch(clearCurrentSong()),
-        // fetchSong: (songId) => dispatch(fetchSong(songId)),
         }
     };
 

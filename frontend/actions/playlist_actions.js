@@ -120,16 +120,13 @@ export const createPlaylist = (playlist) => dispatch => {
 }
 
 export const addSongToPlaylist = (playlist, songId) => dispatch => {
-    debugger;
     return (
     PlaylistSongApiUtil.addSongToPlaylist(playlist, songId)
     .then(message => {
-        debugger;
         return(
         dispatch(receivePlaylistMessage(message))
     )})
     .fail(err => {
-        debugger;
         return(
         dispatch(receivePlaylistSongErrors(err.responseJSON))
     )})
@@ -138,16 +135,10 @@ export const addSongToPlaylist = (playlist, songId) => dispatch => {
 
 export const removeSongFromPlaylist = (playlistId, songId) => dispatch => (
     PlaylistSongApiUtil.removeSongFromPlaylist(playlistId, songId).then(
-        // message => dispatch(receivePlaylistErrors(message)),
         ({playlist_id, song_id}) => dispatch(deleteSongFromPlaylist(playlist_id, song_id))
     )
 );
 
-
-// export const updatePlaylist = (playlist) => dispatch => {
-//     return PlaylistApiUtil.updatePlaylist(playlist).then( playlist => dispatch(receivePlaylist(playlist))),
-//         err => dispatch(receivePlaylistErrors(err.responseJSON));
-// }
 
 export const deletePlaylist = (playlistId) => dispatch => {
     return PlaylistApiUtil.deletePlaylist(playlistId).then( playlist => dispatch(destroyPlaylist(playlist)))

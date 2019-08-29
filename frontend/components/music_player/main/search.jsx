@@ -10,29 +10,30 @@ class Search extends React.Component {
             input: "",
         }
         this.handleChange = this.handleChange.bind(this);
-        // this.handleKeyPress = this.handleKeyPress.bind(this);
-        this.onKeyPressed = this.onKeyPressed.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        // this.onKeyPressed = this.onKeyPressed.bind(this);
     }
 
     componentDidMount() {
-        document.addEventListener("keydown", this.onKeyPressed.bind(this));
+        this.props.clearSearch();
+        // document.addEventListener("keydown", this.onKeyPressed.bind(this));
     }
 
     componentWillUnmount() {
-        document.removeEventListener("keydown", this.onKeyPressed.bind(this));
+        // document.removeEventListener("keydown", this.onKeyPressed.bind(this));
     }  
 
-    onKeyPressed(e) {
-        console.log(e.keyCode);
-        this.props.clearSearch();
-        this.props.fetchSearchResults(this.state)
-    }
-
-    // handleKeyPress(e) {
-    //     if (e.key === 'Enter') {
-    //         this.props.fetchSearchResults(this.state)
-    //     }
+    // onKeyPressed(e) {
+    //     console.log(e.keyCode);
+    //     this.props.clearSearch();
+    //     this.props.fetchSearchResults(this.state)
     // }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.props.fetchSearchResults(this.state)
+        }
+    }
 
 
     // update(field) {
@@ -155,9 +156,9 @@ class Search extends React.Component {
                                     placeholder="Start typing..."
                                     // onChange={this.update("input")}
                                     onChange={this.handleChange}
-                                    onKeyDown={this.onKeyPressed}
-                                    tabIndex="0"
-                                    // onKeyPress={this.handleKeyPress} 
+                                    // onKeyDown={this.onKeyPressed}
+                                    // tabIndex="0"
+                                    onKeyPress={this.handleKeyPress} 
                                     />
                             </div>
                         </div>
