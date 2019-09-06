@@ -6,7 +6,7 @@
 #  title      :string           not null
 #  album_id   :integer          not null
 #  genre_id   :integer          not null
-#  duration   :integer
+#  duration   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

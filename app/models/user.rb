@@ -32,6 +32,10 @@ class User < ApplicationRecord
     has_many :playlists,
         foreign_key: :creator_id,
         class_name: :Playlist
+
+    has_many :likes,
+        foreign_key: :user_id,
+        class_name: :Like
     
     after_initialize :ensure_session_token
 

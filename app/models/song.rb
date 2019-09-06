@@ -6,7 +6,7 @@
 #  title      :string           not null
 #  album_id   :integer          not null
 #  genre_id   :integer          not null
-#  duration   :integer
+#  duration   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -33,6 +33,10 @@ class Song < ApplicationRecord
     has_many :playlists,
         through: :playlist_songs,
         source: :playlist
+
+    has_many :likes,
+        foreign_key: :song_id,
+        class_name: :Like
 
 
     has_one_attached :audio
