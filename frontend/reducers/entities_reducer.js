@@ -16,7 +16,7 @@ export default combineReducers({
     users,
     albums,
     artists,
-    likes,
+    // likes,
     genres,
     // playlist_errors,
     playlists,

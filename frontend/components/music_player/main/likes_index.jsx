@@ -30,7 +30,7 @@ class LikesIndex extends React.Component {
 
 export const msp = state => {
     return {
-        likes: Object.values(state.entities.likes)
+        likes: Object.values(state.entities.songs)
     }
 }
 
