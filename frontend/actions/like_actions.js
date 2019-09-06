@@ -1,6 +1,6 @@
 import * as LikeAPIUtil from '../util/likes_api_util'
 
-export const RECEIVE_LIKED_SONG = "RECEIVE_LIKED_SONG"
+export const RECEIVE_LIKED_SONGS = "RECEIVE_LIKED_SONGS"
 
 
 export const receiveLikedSongs = (songs) => {
@@ -10,8 +10,8 @@ export const receiveLikedSongs = (songs) => {
     }
 }
 
-export const fetchLikedSongs = (songs) => dispatch => {
-    return LikeAPIUtil.fetchLikedSongs(songs).then(songs => dispatch(receiveLikedSongs(songs)))
+export const fetchLikedSongs = () => dispatch => {
+    return LikeAPIUtil.fetchLikedSongs().then(songs => dispatch(receiveLikedSongs(songs)))
 }
 
 export const saveSong = (userId, songId) => dispatch => {
