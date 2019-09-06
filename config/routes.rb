@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     delete '/playlists/:playlist_id/songs/:song_id' => 'playlist_songs#destroy'
     resources :songs, only: [:show, :index]
     resources :search, only: [:index]
-    resources :likes, only: [:index]
+    resources :likes, only: [:index, :create, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
