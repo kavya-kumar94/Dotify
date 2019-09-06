@@ -17,12 +17,13 @@ class LikesIndex extends React.Component {
     render() {
         let {likes} = this.props
         return (
-            <div className="track6">
-                {likes.map((like, idx) => {
-                    return <LikeIndexItem key={idx} like={like} />
-                })}
+            <div className="likes">
+                <div className="track6">
+                    {likes.map((like, idx) => {
+                        return <LikeIndexItem key={idx} like={like} />
+                    })}
+                </div>
             </div>
-               
         )
     }
 }
