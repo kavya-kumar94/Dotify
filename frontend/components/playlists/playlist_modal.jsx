@@ -5,6 +5,7 @@ import NewPlaylistForm from './new_playlist_form'
 import AddSongForm from '../music_player/main/add_song_form';
 import AddToPlay from '../music_player/main/add_to_play';
 import RemoveSongForm from '../music_player/main/remove_song_form';
+import UnlikeSongForm from '../music_player/main/unlike_song_form'
 class Modal extends React.Component {
 
     constructor(props) {
@@ -41,6 +42,11 @@ class Modal extends React.Component {
                 component= <RemoveSongForm />;
                 classes="add-song-bg";
                 child="addsong-child";
+                break;
+            case 'unlike-song':
+                component=<UnlikeSongForm />
+                classes="add-song-bg"
+                child="addsong-child"
                 break;
             default:
                 return null;
