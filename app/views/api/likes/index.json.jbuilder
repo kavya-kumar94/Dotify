@@ -13,6 +13,7 @@
         # album = Album.find(song.album_id)
         json.album_title song.album.title
         json.artist_name song.artist.name
+        json.artist_id song.artist.id
         song.album.album_image.attached? ? (json.album_image url_for(song.album.album_image)) : (json.album_image "")
     end
 end

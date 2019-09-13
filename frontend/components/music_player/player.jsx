@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setCurrentSong, setQueue, toggleSong, clearQueue, addToQueue } from '../../actions/player_actions';
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
+import { saveSong, unsaveSong } from '../../actions/like_actions';
 class Player extends React.Component{
     constructor(props) {
         super(props);
@@ -259,6 +260,7 @@ class Player extends React.Component{
     }
 
     love() {
+        this.props.saveSong(this.props.userId, this.props.song.id)
         this.setState({ love: !this.state.love})
     }
 
@@ -348,13 +350,18 @@ class Player extends React.Component{
 
 
     const msp = (state, props) => {
+        debugger;
         let songs = Object.values(state.entities.songs);
+        let song = Object.values(state.entities.songs).filter(song => song.title === Object.values(state.ui.playStatus.currentSong).title);
+        debugger;
         return {
             songs,
+            song,
             presentSong: state.ui.playStatus.currentSong,
             playing: state.ui.playStatus.playing,
             shuffle: state.ui.playStatus.shuffle,
-            queue: state.ui.playStatus.queue
+            queue: state.ui.playStatus.queue,
+            userId: state.session.id
         }
     }
 
@@ -363,7 +370,9 @@ class Player extends React.Component{
             setCurrentSong: (song) => (dispatch(setCurrentSong(song))),
             toggleSong: () => (dispatch(toggleSong())),
             setQueue: (queue) => (dispatch(setQueue(queue))),
-            clearQueue: () => dispatch(clearQueue())
+            clearQueue: () => dispatch(clearQueue()),
+            saveSong: (userId, songId) => dispatch(saveSong(userId, songId)),
+            unsaveSong: (likedSongId) => dispatch(unsaveSong(likedSongId))
         }
     };
 
