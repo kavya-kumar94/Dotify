@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { closeModal, openModal } from '../../../actions/modal_actions';
 import { addSongToPlaylist, removeSongFromPlaylist, receivePlaylistId } from '../../../actions/playlist_actions';
 import { receiveSongId } from '../../../actions/song_actions';
+import { unsaveSong } from '../../../actions/like_actions';
 
 class RemoveSongForm extends React.Component {
     constructor(props) {
@@ -25,8 +26,8 @@ class RemoveSongForm extends React.Component {
         );
     }
 
-    songRemove(playlistId, songId) {
-        this.props.removeSongFromPlaylist(this.props.playlistId, this.props.songId)
+    songRemove(likeId) {
+        this.props.unsaveSong(likeId)
             .then(this.props.closeModal());
     }
 
@@ -36,12 +37,12 @@ class RemoveSongForm extends React.Component {
     }
 
     render() {
-        let { closeModal, openModal, songId, removeSongFromPlaylist, playlistId } = this.props;
+        let { closeModal, openModal, songId, likeId, removeSongFromPlaylist, playlistId } = this.props;
         return (
             <div style={{ display: 'inline-block' }} className="contextMenu2">
                 <form className="rem-song-form" onSubmit={this.handleSubmit}>
                     <h1 onClick={() => this.songAdd(songId)}>Add to Playlist</h1>
-                    <h1 onClick={() => this.songRemove(playlistId, songId)}> Remove from Liked Songs</h1>
+                    <h1 onClick={() => this.songRemove(likeId)}> Remove from Likes</h1>
                 </form>
             </div>
         )
@@ -51,8 +52,12 @@ class RemoveSongForm extends React.Component {
 
 
 const msp = (state) => {
+    let songId= state.entities.addSong;
+    let song = Object.values(state.entities.songs).filter(song => song.id === songId)
+    let likeId = song[0].likeId
     return {
-        songId: state.entities.addSong,
+        songId,
+        likeId,
         playlist: state.entities.playlists,
         playlistId: state.entities.addPlaylist,
     }
@@ -64,6 +69,7 @@ const mdp = (dispatch) => ({
     openModal: (modal) => dispatch(openModal(modal)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
     receivePlaylistId: (playlistId) => dispatch(receivePlaylistId(playlistId)),
+    unsaveSong: (likedSongId) => dispatch(unsaveSong(likedSongId)),
     removeSongFromPlaylist: (playlistId, songId) => dispatch(removeSongFromPlaylist(playlistId, songId))
 })
 

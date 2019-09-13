@@ -7,7 +7,7 @@ import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions'
 import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 import { RECEIVE_ARTIST } from '../actions/artist_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
-import { RECEIVE_LIKED_SONGS } from '../actions/like_actions'
+import { RECEIVE_LIKED_SONGS,  } from '../actions/like_actions'
 import { merge } from 'lodash';
 
 const songsReducer = (state = {}, action) => {

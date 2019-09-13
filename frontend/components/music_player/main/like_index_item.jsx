@@ -83,7 +83,7 @@ class LikeIndexItem extends React.Component {
     }
 
     songAdd(songId) {
-        this.props.openModal("add-song");
+        this.props.openModal("unlike-song");
         this.props.receiveSongId(songId);
     }
 
