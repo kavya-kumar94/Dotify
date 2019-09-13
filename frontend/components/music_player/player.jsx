@@ -260,7 +260,7 @@ class Player extends React.Component{
     }
 
     love() {
-        this.props.saveSong(this.props.userId, this.props.song.id)
+        this.props.saveSong(this.props.userId, this.props.likeId)
         this.setState({ love: !this.state.love})
     }
 
@@ -352,11 +352,12 @@ class Player extends React.Component{
     const msp = (state, props) => {
         debugger;
         let songs = Object.values(state.entities.songs);
-        let song = Object.values(state.entities.songs).filter(song => song.title === Object.values(state.ui.playStatus.currentSong).title);
+        let song = Object.values(state.entities.songs).filter(song => song.title === state.ui.playStatus.currentSong.title);
+        let likeId = song.id
         debugger;
         return {
             songs,
-            song,
+            likeId,
             presentSong: state.ui.playStatus.currentSong,
             playing: state.ui.playStatus.playing,
             shuffle: state.ui.playStatus.shuffle,
