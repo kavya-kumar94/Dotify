@@ -26,8 +26,89 @@ Dotify is a full-stack single-page web app based on the music streaming platform
 * [PostgreSQL](https://www.postgresql.org/)
 * [Amazon Web Services](https://aws.amazon.com/)
 ### Code Snippets
-Tracker that moves as the duration of the song changes
+Implement tracker that moves as the duration of the song changes. Upon component mounting, the duration and positions are set. The progress is calculated and updated based on the offset of the two elements.
+```js
+componentDidMount() {
+        let audio = document.querySelector('#audio');
+        audio.addEventListener('ended', this.end); 
+        audio.addEventListener('error', this.nextSong); 
+        audio.addEventListener('timeupdate', this.updateProgress); 
+        audio.addEventListener('click', this.setProgress); 
 
+
+        if (audio) {
+            setInterval(() => this.setState({
+                duration: audio.duration,
+                time: this.songTime(audio.currentTime),
+                timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
+                timeDuration: (Math.floor(audio.duration % 60) < 10 ? `${Math.floor(audio.duration / 60)}:0${Math.floor(audio.duration % 60)}` : `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`),
+                currentTime: (audio.currentTime/2.3),
+            }), 1000)
+            this.setState({ presentSong: this.props.presentSong });
+        }
+    }
+
+setTime(position) {
+        this.setState({ currentTime: position })
+    }
+
+setProgress(e) {
+        let audio = document.querySelector('#audio');
+        let target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
+        let width = target.clientWidth;
+        let rect = target.getBoundingClientRect();
+        let offsetX = e.clientX - rect.left;
+        let duration = audio.duration;
+        let currentTime = (duration * offsetX) / width;
+        let progress = (currentTime * 100) / duration;
+
+        audio.currentTime = currentTime;
+        this.setState({ progress: progress });
+        audio.play();
+    }
+
+    updateProgress() {
+        let audio = document.querySelector('#audio');
+        let duration = audio.duration;
+        let currentTime = audio.currentTime;
+        let progress = (currentTime * 100) / duration;
+
+        this.setState({ progress: progress });
+    }
+
+    songTime(time) {
+        let rounded = Math.floor(time);
+        let minutes = Math.floor(rounded / 60);
+        let seconds = Math.floor(rounded % 60);
+        seconds >= 10 ? seconds = seconds : seconds = `0${seconds}`;
+        return `${minutes}:${seconds}`;
+    }
+```
+
+Use Fisher-Yates shuffle to implement shuffle button. Fisher-Yates is an algorithm for generating a random permutation of a finite sequence.
+
+```js
+random(array) {
+        var currentIndex = array.length,
+            temporaryValue,
+            randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
+    }
+
+    shuffle() {
+        this.props.clearQueue();
+        let shuffled = this.random(this.props.songs.slice());
+        if (!this.state.shuffle) this.props.setQueue(shuffled);
+        this.setState({ shuffle: !this.state.shuffle });
+    }
+```
 ### Features
 #### Create and delete a Playlist
 Playlists can be created on any of the index pages and can be edited and deleted
