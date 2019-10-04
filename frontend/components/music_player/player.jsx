@@ -55,11 +55,7 @@ class Player extends React.Component{
     }
 
     componentDidMount() {
-        // this.props.receiveCurrentSongId(this.props.presentSong);
         let audio = document.querySelector('#audio');
-
-        // let min = Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`;
-        // let sec = Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`;
         audio.addEventListener('ended', this.end); 
         audio.addEventListener('error', this.nextSong); 
         audio.addEventListener('timeupdate', this.updateProgress); 
@@ -72,7 +68,6 @@ class Player extends React.Component{
                 time: this.songTime(audio.currentTime),
                 timePosition: (Math.floor(audio.currentTime / 60) === 0 ? "0" : `${Math.floor(audio.currentTime / 60)}`) + ":" + (Math.floor(audio.currentTime % 60) < 10 ? `0${Math.floor(audio.currentTime % 60)}` : `${Math.floor(audio.currentTime % 60)}`),
                 timeDuration: (Math.floor(audio.duration % 60) < 10 ? `${Math.floor(audio.duration / 60)}:0${Math.floor(audio.duration % 60)}` : `${Math.floor(audio.duration / 60)}:${Math.floor(audio.duration % 60)}`),
-                // timePosition: `${Math.floor(audio.currentTime / 60)}:${Math.floor(audio.currentTime % 60)}`,
                 currentTime: (audio.currentTime/2.3),
             }), 1000)
             this.setState({ presentSong: this.props.presentSong });
@@ -90,23 +85,9 @@ class Player extends React.Component{
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.presentSong.title !== prevProps.presentSong.title) {
-        // if (this.props.presentSong.title !== prevProps.presentSong.title || this.props.queue[0].title !== prevProps.queue[0].title) {
-            
+        if (this.props.presentSong.title !== prevProps.presentSong.title) {            
             this.props.setCurrentSong(this.props.presentSong);
-            // this.setState({ 
-            // presentSong: this.props.presentSong
-            // })
-            // this.props.setQueue(this.props.songs);
-            // this.song();
-            // debugger;
         }
-
-        // if (this.state.change) {
-        //     this.song();
-        //     this.changeSong();
-        //     this.setState({ change: false })
-        // }
 
     }
 
@@ -121,7 +102,6 @@ class Player extends React.Component{
 
     handlePlay() {
         this.props.setCurrentSong(this.props.song);
-        // this.props.setQueue(this.props.queue);
         this.props.toggleSong();
     }
 
@@ -132,7 +112,6 @@ class Player extends React.Component{
 
     previousSong() {
         let { songs, presentSong, queue } = this.props;
-        // let audio = document.getElementById('audio');
         let a;
         if(this.state.shuffle) {
             a = queue;
@@ -157,24 +136,6 @@ class Player extends React.Component{
                 this.props.toggleSong();
             }
         }
-        // let titles = songs.map(song => song.title);
-        // let title = presentSong.title;
-        // let nums;
-        // if(titles.indexOf(title) === 0 ) {
-        //     this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title)) : (titles.length - 1)})
-        //     nums = (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.length - 1)]);
-        //     this.props.setCurrentSong(nums);
-        //     if (this.props.playing === false) {
-        //         this.props.toggleSong();
-        //     }
-        // } else {
-        //     this.setState({ currentSong: (this.state.repeat) ? (titles.indexOf(title) % songs.length) : (titles.indexOf(title) - 1 % songs.length)})
-        //     nums =  (this.state.repeat) ? (songs[titles.indexOf(title) % songs.length]) : (songs[(titles.indexOf(title) - 1) % songs.length]);
-        // this.props.setCurrentSong(nums);
-        //     if(this.props.playing === false) {
-        //         this.props.toggleSong();
-        //     }
-        // }
     }
 
 
