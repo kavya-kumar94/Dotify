@@ -4,6 +4,7 @@
 ### Table of Contents
 * [Introduction](https://github.com/kavya-kumar94/Dotify#introduction)
 * [Technologies](https://github.com/kavya-kumar94/Dotify#technologies)
+* [Code Snippets](https://github.com/kavya-kumar94/Dotify#code-snippets)
 * [Features](https://github.com/kavya-kumar94/Dotify#features)
 * [External Resources](https://github.com/kavya-kumar94/Dotify#external-resources)
 * [Todo](https://github.com/kavya-kumar94/Dotify#todo)
@@ -24,6 +25,9 @@ Dotify is a full-stack single-page web app based on the music streaming platform
 * [Ruby on Rails](https://rubyonrails.org/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Amazon Web Services](https://aws.amazon.com/)
+### Code Snippets
+Tracker that moves as the duration of the song changes
+
 ### Features
 #### Create and delete a Playlist
 Playlists can be created on any of the index pages and can be edited and deleted
@@ -37,12 +41,17 @@ As you search the songs, Dotify renders the results with each enter keystroke. T
   <img width="460" height="300" src="https://user-images.githubusercontent.com/48187134/61152018-30144900-a49c-11e9-8319-b8fad2c53916.gif">
 </p>
 
+#### Navigation with continuous playing music
+As you navigate through different pages, the current song will continue to play. 
+
+#### Add and Remove songs from playlists
+Songs can be added and removed from playlists.
+
+
 ### External Resources
 * [Amazon Web Services](https://aws.amazon.com/)
 * [Heroku](https://www.heroku.com/)
 * [Spotify Branding Guidelines](https://developer.spotify.com/branding-guidelines/)
 * Font Circular
 ### Todo
-* Add music player to navbar with play, pause, previous, and next functionality
 * Add user and playlist follows
-* Add and remove songs from playlists
