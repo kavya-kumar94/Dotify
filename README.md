@@ -3,28 +3,15 @@
 [Dotify live!](https://dotify-app.herokuapp.com/#/)
 ### Table of Contents
 * [Introduction](https://github.com/kavya-kumar94/Dotify#introduction)
-* [Technologies](https://github.com/kavya-kumar94/Dotify#technologies)
 * [Code Snippets](https://github.com/kavya-kumar94/Dotify#code-snippets)
 * [Features](https://github.com/kavya-kumar94/Dotify#features)
+* [Technologies](https://github.com/kavya-kumar94/Dotify#technologies)
 * [External Resources](https://github.com/kavya-kumar94/Dotify#external-resources)
 * [Todo](https://github.com/kavya-kumar94/Dotify#todo)
 
 ### Introduction 
 Dotify is a full-stack single-page web app based on the music streaming platform `Spotify`. Browse artists, albums, and playlists, as well as create your own playlists. This app utilizes React/Redux and is hosted on Heroku.
 
-### Technologies
-#### Frontend
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
-* Webpack
-* [Heroku](https://www.heroku.com/)
-* SCSS 
-* [React Router](https://reacttraining.com/react-router/)
-* [React Audio Player](https://www.npmjs.com/package/react-audio-player)
-#### Backend
-* [Ruby on Rails](https://rubyonrails.org/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [Amazon Web Services](https://aws.amazon.com/)
 ### Code Snippets
 Implement tracker that moves as the duration of the song changes. Upon component mounting, the duration and positions are set. The progress is calculated and updated based on the offset of the two elements.
 ```js
@@ -133,6 +120,21 @@ Songs can be added and removed from playlists.
 <p align="center">
   <img width="460" height="300" src="add_song.gif">
 </p>
+
+
+### Technologies
+#### Frontend
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* Webpack
+* [Heroku](https://www.heroku.com/)
+* SCSS 
+* [React Router](https://reacttraining.com/react-router/)
+* [React Audio Player](https://www.npmjs.com/package/react-audio-player)
+#### Backend
+* [Ruby on Rails](https://rubyonrails.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Amazon Web Services](https://aws.amazon.com/)
 
 ### External Resources
 * [Amazon Web Services](https://aws.amazon.com/)
