@@ -127,6 +127,7 @@ As you navigate through different pages, the current song will continue to play.
 <p align="center">
   <img width="460" height="300" src="contin_nav.gif">
 </p>
+
 #### Add and Remove songs from playlists
 Songs can be added and removed from playlists.
 <p align="center">
