@@ -5,6 +5,7 @@ import { setCurrentSong, setQueue, toggleSong, clearQueue, addToQueue } from '..
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
 import { saveSong, unsaveSong } from '../../actions/like_actions';
+import { sign } from 'crypto';
 class Player extends React.Component{
     constructor(props) {
         super(props);
@@ -313,8 +314,10 @@ class Player extends React.Component{
     const msp = (state, props) => {
         debugger;
         let songs = Object.values(state.entities.songs);
-        let song = Object.values(state.entities.songs).filter(song => song.title === state.ui.playStatus.currentSong.title);
-        let likeId = song.id
+        let songIdx;
+        // let song = Object.values(state.entities.songs).filter(song => song.title === state.ui.playStatus.currentSong.title);
+        Object.values(state.entities.songs).map((song, idx) => song.title === state.ui.playStatus.currentSong.title ? songIdx = idx : null)
+        let likeId = Object.keys(state.entities.songs).filter(song => song = songIdx)
         debugger;
         return {
             songs,

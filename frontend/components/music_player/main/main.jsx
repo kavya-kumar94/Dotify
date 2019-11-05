@@ -46,7 +46,7 @@ class Main extends React.Component {
                <li>
                    <div className="link-main">
                        <NavLink className="not-active" activeClassName="selected" to="/library/likes">
-                           LIKED SONGS
+                            LIKES
                         </NavLink>
                    </div>
                </li>
