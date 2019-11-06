@@ -16,6 +16,7 @@ Playlist.destroy_all
 PlaylistFollow.destroy_all
 Genre.destroy_all
 UserFollow.destroy_all
+Like.destroy_all
 PlaylistSong.destroy_all
 
 
@@ -43,6 +44,11 @@ user6 = User.create(username: 'kavya', email: 'kavya@gmail.com', password: '1234
 # user6.followers << user3
 
 # Playlists
+g = Playlist.create(title: 'TSwift', creator_id: user6.id)
+
+g_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/tswift.jpg')
+g.playlist_image.attach(io: g_pic, filename: 'g.jpg')
+g.save!
 
 a = Playlist.create(title: 'Chill', creator_id: user6.id)
 
@@ -98,6 +104,16 @@ drake_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.
 drake.artist_image.attach(io: drake_pic, filename: 'drake.jpg')
 drake.save!
 
+taylor = Artist.create(id: 5, name: 'Taylor Swift', genre_id: 1)
+taylor_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/taylor_swift.jpg')
+taylor.artist_image.attach(io: taylor_pic, filename: 'taylor.jpg')
+taylor.save!
+
+kanye = Artist.create(id: 6, name: 'Kanye', genre_id: 3)
+kanye_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/kanye.jpg')
+kanye.artist_image.attach(io: kanye_pic, filename: 'kanye.jpg')
+kanye.save!
+
 majid = Artist.create(id: 2, name: 'Majid Jordan', genre_id: 3 )
 
 majid_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/majid.jpg')
@@ -122,6 +138,17 @@ scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 
 scorpion_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
 scorpion.album_image.attach(io: scorpion_pic, filename: 'scorpion.jpg')
 scorpion.save!
+
+jik = Album.create(title: 'Jesus is King', year: 2019, genre_id: 3, artist_id: 6)
+
+jik_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/jik.jpg')
+jik.album_image.attach(io: jik_pic, filename: 'jik.jpg')
+jik.save!
+
+lover = Album.create(title: 'Lover', year: 2019, genre_id: 1, artist_id: 5)
+lover_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/taylor_swift.jpg')
+lover.album_image.attach(io: lover_pic, filename: 'lover.jpg')
+lover.save!
 
 astroworld = Album.create( title: 'Astroworld', year: 2018, genre_id: 1, artist_id: 4)
 
@@ -231,6 +258,8 @@ song_58 = Song.create(title: "Rock With You", album_id: offthewall.id, genre_id:
 song_59 = Song.create(title: "Wanna Be Startin' Somethin", album_id: thriller.id, genre_id: 2, duration: "6:00")
 song_60 = Song.create(title: "Say Say Say", album_id: pipesofpeace.id, genre_id: 2, duration: "3:50")
 
+song_61 = Song.create(title: "")
+
 
 
 
@@ -248,6 +277,13 @@ b.songs << song_8
 b.songs << song_9
 b.songs << song_10
 
+c.songs << song_56
+c.songs << song_57
+c.songs << song_58
+c.songs << song_59
+c.songs << song_60
+
+g.songs << 
 # Song AWS
 
 song_1.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/1-01%2BSurvival.mp3"), filename: "1-01 Survival.mp3")
