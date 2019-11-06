@@ -277,6 +277,23 @@
   justify-content: space-evenly;
   border-radius: 3px;
 }
+.contextMenu3 {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #282828;
+  width: 165px;
+  height: 80px;
+  z-index: 20;
+  color: rgb(179, 179, 179);
+  font-family: "Circular";
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 3px;
+}
 
 .add-song-child {
     display: flex;
