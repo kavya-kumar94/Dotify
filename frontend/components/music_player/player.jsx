@@ -225,9 +225,11 @@ class Player extends React.Component{
         if(!this.state.love) {
             this.props.saveSong(this.props.userId, this.props.likeId)
             this.setState({ love: !this.state.love})
+            alert('Song has been added to your likes!')
         } else {
             this.props.unsaveSong(this.props.likeId)
             this.setState({love: !this.state.love})
+            alert('Song has been removed from your likes!')
         }
     }
 
