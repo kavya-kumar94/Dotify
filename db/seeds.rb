@@ -141,8 +141,8 @@ scorpion.save!
 
 jik = Album.create(title: 'Jesus is King', year: 2019, genre_id: 3, artist_id: 6)
 
-jik_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/jik.jpg')
-jik.album_image.attach(io: jik_pic, filename: 'jik.jpg')
+jik_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/jik2.jpg')
+jik.album_image.attach(io: jik_pic, filename: 'jik2.jpg')
 jik.save!
 
 lover = Album.create(title: 'Lover', year: 2019, genre_id: 1, artist_id: 5)
