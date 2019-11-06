@@ -258,8 +258,30 @@ song_58 = Song.create(title: "Rock With You", album_id: offthewall.id, genre_id:
 song_59 = Song.create(title: "Wanna Be Startin' Somethin", album_id: thriller.id, genre_id: 2, duration: "6:00")
 song_60 = Song.create(title: "Say Say Say", album_id: pipesofpeace.id, genre_id: 2, duration: "3:50")
 
-song_61 = Song.create(title: "")
+song_61 = Song.create(title: "I Forgot That You Existed", album_id: lover.id, genre_id: 1, duration: "2:52")
+song_62 = Song.create(title: "Cruel Summer", album_id: lover.id, genre_id: 1, duration: "3:00")
+song_63 = Song.create(title: "Lover", album_id: lover.id, genre_id: 1, duration: "3:58")
+song_64 = Song.create(title: "The Man", album_id: lover.id, genre_id: 1, duration: "3:11")
+song_65 = Song.create(title: "The Archer", album_id: lover.id, genre_id: 1, duration: "3:39")
+song_66 = Song.create(title: "I Think He Knows", album_id: lover.id, genre_id: 1, duration: "2:54")
+song_67 = Song.create(title: "Miss Americana and the Heartbreak Prince", album_id: lover.id, genre_id: 1, duration: "3:55")
+song_68 = Song.create(title: "Paper Rings", album_id: lover.id, genre_id: 1, duration: "3:43")
+song_69 = Song.create(title: "Cornelia Street", album_id: lover.id, genre_id: 1, duration: "4:48")
+song_70 = Song.create(title: "Death by a Thousand Cuts", album_id: lover.id, genre_id: 1, duration: "3:19")
+song_71 = Song.create(title: "London Boy", album_id: lover.id, genre_id: 1, duration: "3:11")
+song_72 = Song.create(title: "Afterglow", album_id: lover.id, genre_id: 1, duration: "3:44")
+song_73 = Song.create(title: "Daylight", album_id: lover.id, genre_id: 1, duration: "4:54")
 
+song_74 = Song.create(title: "Every Hour", album_id: jik.id, genre_id: 3, duration: "1:52")
+song_75 = Song.create(title: "Selah", album_id: jik.id, genre_id: 3, duration: "2:45")
+song_76 = Song.create(title: "Follow God", album_id: jik.id, genre_id: 3, duration: "1:45")
+song_77 = Song.create(title: "Closed On Sunday", album_id: jik.id, genre_id: 3, duration: "2:32")
+song_78 = Song.create(title: "On God", album_id: jik.id, genre_id: 3, duration: "2:17")
+song_79 = Song.create(title: "Everything We Need", album_id: jik.id, genre_id: 3, duration: "1:57")
+song_80 = Song.create(title: "Water", album_id: jik.id, genre_id: 3, duration: "2:49")
+song_81 = Song.create(title: "God Is", album_id: jik.id, genre_id: 3, duration: "3:24")
+song_82 = Song.create(title: "Hands On", album_id: jik.id, genre_id: 3, duration: "3:24")
+song_83 = Song.create(title: "Use This Gospel", album_id: jik.id, genre_id: 3, duration: "3:34")
 
 
 
@@ -283,7 +305,13 @@ c.songs << song_58
 c.songs << song_59
 c.songs << song_60
 
-g.songs << 
+g.songs << song_61
+g.songs << song_62
+g.songs << song_63
+g.songs << song_64
+g.songs << song_65
+g.songs << song_66
+
 # Song AWS
 
 song_1.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/1-01%2BSurvival.mp3"), filename: "1-01 Survival.mp3")
@@ -350,3 +378,19 @@ song_57.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com
 song_58.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BRock%2BWith%2BYou%2B(Clean).mp3"), filename: "rockwithyou.mp3")
 song_59.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BSpead%2BDemon%2B(Extended).mp3"), filename: "speeddemon.mp3")
 song_60.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/Michael%2BJackson%2B-%2BWanna%2BBe%2BStartin'%2BSomethin'%2B(Clean).mp3"), filename: "startin.mp3")
+
+song_61.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+I+Forgot+That+You+Existed.mp3"), filename: "Taylor Swift - I Forgot That You Existed.mp3")
+song_62.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Cruel+Summer.mp3"), filename: "Taylor Swift - Cruel Summer.mp3")
+song_63.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Lover.mp3"), filename: "Taylor Swift - Lover.mp3")
+song_64.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+The+Man.mp3"), filename: "Taylor Swift - The Man.mp3")
+song_65.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+The+Archer.mp3"), filename: "Taylor Swift - The Archer.mp3")
+song_66.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+I+Think+He+Knows.mp3"), filename: "Taylor Swift - I Think He Knows.mp3")
+song_67.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Miss+Americana+%26+The+Heartbreak+Prince.mp3"), filename: "Taylor Swift - Miss Americana & The Heartbreak Prince.mp3")
+song_68.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Paper+Rings.mp3"), filename: "Taylor Swift - Paper Rings.mp3")
+song_69.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Cornelia+Street.mp3"), filename: "Taylor Swift - Cornelia Street.mp3")
+song_70.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Death+By+A+Thousand+Cuts.mp3"), filename: "Taylor Swift - Death By A Thousand Cuts.mp3")
+song_71.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+London+Boy.mp3"), filename: "Taylor Swift - London Boy.mp3")
+song_72.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Afterglow.mp3"), filename: "Taylor Swift - Afterglow.mp3")
+song_73.audio.attach(io: open("https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/Taylor+Swift+-+Daylight.mp3"), filename: "Taylor Swift - Daylight.mp3")
+
+song_74.audio.attach(io: open(""))
