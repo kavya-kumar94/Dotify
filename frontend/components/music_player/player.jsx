@@ -225,14 +225,22 @@ class Player extends React.Component{
 
     displayAlert() {
         window.setTimeout(function () {
-            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(".new-alert").fadeTo(500, 0).slideUp(500, function () {
                 $(this).remove();
             });
-        }, 1000);
+        }, 1500);
         if(!this.state.love) {
-            this.setState({ alerts: 'Song has been added to your likes' })
-        } else {
-            this.setState({ alerts: 'Song has been removed from your likes' }) 
+            alert('Song has been added to your likes')
+            // return(
+                //     <li>Song has been added to your likes</li>
+                // )
+                // this.setState({ alerts: 'Song has been added to your likes' })
+            } else {
+                alert('Song has been removed from your likes')
+            // return(
+            //     <li>Song has been removed from your likes</li>
+            // )
+            // this.setState({ alerts: 'Song has been removed from your likes' }) 
         }
     }
 
@@ -240,11 +248,11 @@ class Player extends React.Component{
         if(!this.state.love) {
             this.props.saveSong(this.props.userId, this.props.likeId)
             this.setState({ love: !this.state.love})
-            this.displayAlert();
+            this.displayAlert()
         } else {
             this.props.unsaveSong(this.props.likeId)
             this.setState({love: !this.state.love})
-            this.displayAlert();
+            this.displayAlert()
         }
     }
 
@@ -297,11 +305,9 @@ class Player extends React.Component{
         return (
             <div className="player-div">
                 <audio id="audio" volume={this.state.volume} src={presentSong.audio} autoPlay></audio>
-                <div className="error-div">
-                    <div class="new-alert" role="alert">
+                    {/* <div className="new-alert" role="new-alert">
                         {this.state.alerts}
-                    </div>
-                </div>
+                    </div> */}
                 <div className="left-play">
                     <img src={presentSong.album_image} id="track_img"/>
                     <div className="texts">

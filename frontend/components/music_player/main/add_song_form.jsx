@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { closeModal, openModal } from '../../../actions/modal_actions';
 import { addSongToPlaylist } from '../../../actions/playlist_actions';
 import { receiveSongId } from '../../../actions/song_actions';
+import { saveSong } from '../../../actions/like_actions';
+
 
 class AddSongForm extends React.Component {
     constructor(props) {
@@ -11,6 +13,7 @@ class AddSongForm extends React.Component {
         // this.state = {
         //     songId: this.props.song.id
         // }
+        this.likeSong = this.likeSong.bind(this);
     }
 
 
@@ -39,16 +42,20 @@ class AddSongForm extends React.Component {
         this.props.receiveSongId(songId);
     }
 
+    likeSong() {
+        this.props.saveSong(this.props.userId, this.props.songId)
+    }
+
 
     render() {
-        let { closeModal, openModal, songId } = this.props;
+        let { closeModal, openModal, songId, userId } = this.props;
 
         return (
             <div style={{ display: 'inline-block', position: 'relative', top: '0', bottom: '0', left: '0', right: '0' }} className="contextMenu">
                 {/* <img onClick={closeModal} id="context-cancel" src="https://dotify-app-dev.s3-us-west-1.amazonaws.com/cancel-logo.png" /> */}
                 <form className="add-song-form" onSubmit={this.handleSubmit}>
                     <h1 onClick={() => this.songAdd(songId)}>Add to Playlist</h1>
-                    {/* <h1> onClick={()=> deleteSongFromPlaylist(playlist, songId)} Remove from Playlist</h1> */}
+                    <h1 onClick={() => this.likeSong(userId, songId)}>Save to Likes</h1>
 
                     {/* <div className="err">
                         {this.renderErrors()}
@@ -69,7 +76,8 @@ class AddSongForm extends React.Component {
 const msp = (state) => {
     return {
         songId: state.entities.addSong,
-        playlist: state.entities.playlists
+        playlist: state.entities.playlists,
+        userId: state.session.id
     }
 };
 
@@ -78,6 +86,7 @@ const mdp = (dispatch) => ({
     closeModal: () => dispatch(closeModal()),
     openModal: (modal) => dispatch(openModal(modal)),
     receiveSongId: (songId) => dispatch(receiveSongId(songId)),
+    saveSong: (userId, songId) => dispatch(saveSong(userId, songId))
 })
 
 export default withRouter(connect(msp, mdp)(AddSongForm));

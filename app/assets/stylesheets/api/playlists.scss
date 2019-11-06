@@ -330,19 +330,40 @@
   color: white;
 }
 
-
 .new-alert {
-  position: fixed;
-  bottom: 20%;
-  font-family: "Circular";
-  font-size: 15px;
-  background-color:#579bea;
-  border-radius: 3%;
-  // padding: 5px;
-  width: 300px;
-  text-align: center;
-  margin-left: 20%;
-  color: white;
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    position: fixed;
+    bottom: 20%;
+    font-family: "Circular";
+    font-size: 15px;
+    background-color:#579bea;
+    border-radius: 3%;
+    width: 300px;
+    text-align: center;
+    margin-left: 20%;
+    color: white;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
 }
 
 .play-show1 {
