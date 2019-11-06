@@ -222,8 +222,13 @@ class Player extends React.Component{
     }
 
     love() {
-        this.props.saveSong(this.props.userId, this.props.likeId)
-        this.setState({ love: !this.state.love})
+        if(!this.state.love) {
+            this.props.saveSong(this.props.userId, this.props.likeId)
+            this.setState({ love: !this.state.love})
+        } else {
+            this.props.unsaveSong(this.props.likeId)
+            this.setState({love: !this.state.love})
+        }
     }
 
     setProgress(e) {
@@ -317,7 +322,7 @@ class Player extends React.Component{
         let songIdx;
         // let song = Object.values(state.entities.songs).filter(song => song.title === state.ui.playStatus.currentSong.title);
         Object.values(state.entities.songs).map((song, idx) => song.title === state.ui.playStatus.currentSong.title ? songIdx = idx : null)
-        let likeId = Object.keys(state.entities.songs).filter(song => song = songIdx)
+        let likeId = Object.keys(state.entities.songs)[songIdx]
         debugger;
         return {
             songs,
