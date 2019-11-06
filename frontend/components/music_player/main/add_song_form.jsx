@@ -44,6 +44,8 @@ class AddSongForm extends React.Component {
 
     likeSong() {
         this.props.saveSong(this.props.userId, this.props.songId)
+        this.props.closeModal()
+        alert('Song has been added to your likes')
     }
 
 
