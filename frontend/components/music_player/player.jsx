@@ -5,7 +5,7 @@ import { setCurrentSong, setQueue, toggleSong, clearQueue, addToQueue } from '..
 import { receiveCurrentSongId, clearCurrentSong, playCurrentSong } from '../../actions/player_actions';
 import { fetchSong } from '../../actions/song_actions';
 import { saveSong, unsaveSong } from '../../actions/like_actions';
-import { sign } from 'crypto';
+import {  clearPlaylistErrors } from '../../actions/playlist_actions';
 class Player extends React.Component{
     constructor(props) {
         super(props);
@@ -29,7 +29,8 @@ class Player extends React.Component{
             change: false,
             duration: "",
             songs: this.props.songs,
-            active: this.props.presentSong
+            active: this.props.presentSong,
+            alerts: ""
         }
 
 
@@ -52,10 +53,11 @@ class Player extends React.Component{
         this.end = this.end.bind(this);
         this.updateProgress = this.updateProgress.bind(this);
         this.setProgress = this.setProgress.bind(this);
-
+        this.displayAlert = this.displayAlert.bind(this);
     }
 
     componentDidMount() {
+        this.setState({ alerts: ""})
         let audio = document.querySelector('#audio');
         audio.addEventListener('ended', this.end); 
         audio.addEventListener('error', this.nextSong); 
@@ -221,15 +223,28 @@ class Player extends React.Component{
         this.setState({ currentTime: position })
     }
 
+    displayAlert() {
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 1000);
+        if(!this.state.love) {
+            this.setState({ alerts: 'Song has been added to your likes' })
+        } else {
+            this.setState({ alerts: 'Song has been removed from your likes' }) 
+        }
+    }
+
     love() {
         if(!this.state.love) {
             this.props.saveSong(this.props.userId, this.props.likeId)
             this.setState({ love: !this.state.love})
-            alert('Song has been added to your likes!')
+            this.displayAlert();
         } else {
             this.props.unsaveSong(this.props.likeId)
             this.setState({love: !this.state.love})
-            alert('Song has been removed from your likes!')
+            this.displayAlert();
         }
     }
 
@@ -282,6 +297,11 @@ class Player extends React.Component{
         return (
             <div className="player-div">
                 <audio id="audio" volume={this.state.volume} src={presentSong.audio} autoPlay></audio>
+                <div className="error-div">
+                    <div class="new-alert" role="alert">
+                        {this.state.alerts}
+                    </div>
+                </div>
                 <div className="left-play">
                     <img src={presentSong.album_image} id="track_img"/>
                     <div className="texts">
@@ -344,7 +364,8 @@ class Player extends React.Component{
             setQueue: (queue) => (dispatch(setQueue(queue))),
             clearQueue: () => dispatch(clearQueue()),
             saveSong: (userId, songId) => dispatch(saveSong(userId, songId)),
-            unsaveSong: (likedSongId) => dispatch(unsaveSong(likedSongId))
+            unsaveSong: (likedSongId) => dispatch(unsaveSong(likedSongId)),
+            clearPlaylistErrors: () => dispatch(clearPlaylistErrors())
         }
     };
 

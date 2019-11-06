@@ -330,6 +330,21 @@
   color: white;
 }
 
+
+.new-alert {
+  position: fixed;
+  bottom: 20%;
+  font-family: "Circular";
+  font-size: 15px;
+  background-color:#579bea;
+  border-radius: 3%;
+  // padding: 5px;
+  width: 300px;
+  text-align: center;
+  margin-left: 20%;
+  color: white;
+}
+
 .play-show1 {
   text-align: center;
 }
