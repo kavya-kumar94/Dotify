@@ -133,22 +133,11 @@ travis.artist_image.attach(io: travis_pic, filename: 'mj.jpg')
 travis.save!
 # Albums
 
-scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 1)
-
-scorpion_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
-scorpion.album_image.attach(io: scorpion_pic, filename: 'scorpion.jpg')
-scorpion.save!
-
-jik = Album.create(title: 'Jesus is King', year: 2019, genre_id: 3, artist_id: 6)
-
-jik_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/jik3.jpg')
-jik.album_image.attach(io: jik_pic, filename: 'jik3.jpg')
-jik.save!
-
 lover = Album.create(title: 'Lover', year: 2019, genre_id: 1, artist_id: 5)
 lover_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/taylor_swift.jpg')
 lover.album_image.attach(io: lover_pic, filename: 'lover.jpg')
 lover.save!
+
 
 astroworld = Album.create( title: 'Astroworld', year: 2018, genre_id: 1, artist_id: 4)
 
@@ -156,41 +145,46 @@ astro_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/astro_cover.
 astroworld.album_image.attach(io: astro_pic, filename: 'astro.jpg')
 astroworld.save!
 
-spacebetween = Album.create( title: 'The Space Between', year: 2017, genre_id: 3, artist_id: 2)
+jik = Album.create(title: 'Jesus is King', year: 2019, genre_id: 3, artist_id: 6)
+jik_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/new_music/jik3.jpg')
+jik.album_image.attach(io: jik_pic, filename: 'jik3.jpg')
+jik.save!
 
+scorpion = Album.create( title: 'Scorpion', year: 2018, genre_id: 1, artist_id: 1)
+scorpion_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/drake_album.jpg')
+scorpion.album_image.attach(io: scorpion_pic, filename: 'scorpion.jpg')
+scorpion.save!
+
+spacebetween = Album.create( title: 'The Space Between', year: 2017, genre_id: 3, artist_id: 2)
 sbw_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/sbw_cover.jpg')
 spacebetween.album_image.attach(io: sbw_pic, filename: 'sbw.jpg')
 spacebetween.save!
 
 bad = Album.create( title: 'Bad', year: 1987, genre_id: 2, artist_id: 3)
-
 bad_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/bad_cover.png')
 bad.album_image.attach(io: bad_pic, filename: 'bad.jpg')
 bad.save!
 
 gottobethere = Album.create( title: 'Got To Be There', year: 1972, genre_id: 2, artist_id: 3)
-
 g2bthere_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/g2bthere_cover.jpg')
 gottobethere.album_image.attach(io: g2bthere_pic, filename: 'g2bthere.jpg')
 gottobethere.save!
 
 offthewall = Album.create( title: 'Off The Wall', year: 1979, genre_id: 2, artist_id: 3)
-
 offthewall_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/offthewall_cover.jpg')
 offthewall.album_image.attach(io: offthewall_pic, filename: 'offthewall.jpg')
 offthewall.save!
 
 thriller = Album.create( title: 'Thriller', year: 1983, genre_id: 2, artist_id: 3)
-
 thriller_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/thriller_cover.jpg')
 thriller.album_image.attach(io: thriller_pic, filename: 'thriller.jpg')
 thriller.save!
 
 pipesofpeace = Album.create( title: 'Pipes of Peace', year: 1983, genre_id: 2, artist_id: 3)
-
 pop_pic = open('https://dotify-app-dev.s3-us-west-1.amazonaws.com/pop_cover.jpg')
 pipesofpeace.album_image.attach(io: pop_pic, filename: 'pop.jpg')
 pipesofpeace.save!
+
 # Songs
 
 song_1 = Song.create(title: "Survival", album_id: scorpion.id, genre_id: 1,  duration: "2:16" )
